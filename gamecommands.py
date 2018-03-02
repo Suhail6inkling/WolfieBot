@@ -22,6 +22,41 @@ class GameCommands():
             for p in players:
                 if "Player" not in [y.name for y in p.roles]:
                     await self.client.add_roles(p, player_role)
+        else:
+            await self.client.say("You need to be a GM to use this command!")
+
+    @commands.command(pass_context=True)
+    async def endgame(self, ctx):
+        if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            player_role = discord.utils.get(ctx.message.server.roles, name="Player")
+            dead_role = discord.utils.get(ctx.message.server.roles, name="Dead")
+            mayor_role = discord.utils.get(ctx.message.server.roles, name="Mayor")
+            deputy_role = discord.utils.get(ctx.message.server.roles, name="Deputy")
+            for user in [m for m in ctx.message.server.members if player_role in m.roles]:
+                await self.client.remove_roles(user,player_role)
+            for user in [m for m in ctx.message.server.members if dead_role in m.roles]:
+                await self.client.remove_roles(user,dead_role)
+            for user in [m for m in ctx.message.server.members if mayor_role in m.roles]:
+                await self.client.remove_roles(user,mayor_role)
+            for user in [m for m in ctx.message.server.members if deputy_role in m.roles]:
+                await self.client.remove_roles(user,deputy_role)
+            for c in [c for c in ctx.message.server.channels]:
+                if c.name == "wolves":
+                    await self.client.delete_channel(c)
+                elif c.name == "coven":
+                    await self.client.delete_channel(c)
+                elif c.name == "twins":
+                    await self.client.delete_channel(c)
+                elif c.name == "tardis":
+                    await self.client.delete_channel(c)
+                elif c.name == "seance":
+                    await self.client.delete_channel(c)
+            for user in ctx.message.server.members:
+                await ctx.invoke(self.client.get_command("lockjaw"),user=user,status="f")
+                await ctx.invoke(self.client.get_command("medium"),user=user,status="f")
+            await self.client.say("Game ended successfully!")
+        else:
+            await self.client.say("You need to be a GM to use this command!")
 
     @commands.command(pass_context=True)
     async def rungame(self, ctx, *, message: str):
@@ -29,6 +64,10 @@ class GameCommands():
         await self.client.say("This command is in development.")
         return
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            game_channel = self.client.get_channel("392995027909083137")
+            voting_channel = self.client.get_channel("393470084217176075")
+            notes_channel = self.client.get_channel("393476547954212874")
+            dead_channel = self.client.get_channel("392995124423950344")
             player_role = discord.utils.get(ctx.message.server.roles, name="Player")
             message = message.split("; ")
             gamemode = message[0]
@@ -83,6 +122,7 @@ class GameCommands():
     @commands.command(pass_context=True)
     async def giveroles(self, ctx, *, message: str):
         global PlayerInfo
+        notes_channel = self.client.get_channel("393476547954212874")
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             message = message.split(", ")
             x = []
@@ -165,6 +205,8 @@ class GameCommands():
     async def daytimer(self, ctx, *, message: str):
         global Day
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            game_channel = self.client.get_channel("392995027909083137")
+            voting_channel = self.client.get_channel("393470084217176075")
             message = message.split("; ")
             n = message[0]
             secs = int(message[1])
@@ -184,6 +226,8 @@ class GameCommands():
             perms.add_reactions = True
             player = discord.utils.get(ctx.message.server.roles, name="Player")
             await self.client.edit_channel_permissions(game_channel, player, perms)
+            for chan in [c for c in ctx.message.server.channels if c.name == "seance"]:
+                await self.client.delete_channel(chan)
             Day = True
             for i in range(0, secs):
                 await asyncio.sleep(1)
@@ -222,6 +266,7 @@ class GameCommands():
     @commands.command(pass_context=True)
     async def playervote(self, ctx):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            voting_channel = self.client.get_channel("393470084217176075")
             options = ""
             role = discord.utils.get(ctx.message.server.roles, name="Player")
             players = [p.nick for p in ctx.message.server.members if role in p.roles and p.nick != None]
@@ -277,6 +322,8 @@ class GameCommands():
                 if "Deputy" in [y.name for y in player.roles]:
                     deputy_role = discord.utils.get(ctx.message.server.roles, name="Deputy")
                     await self.client.remove_roles(player, deputy_role)
+                await ctx.invoke(self.client.get_command("lockjaw"),user=player,status="f")
+                await ctx.invoke(self.client.get_command("medium"),user=player,status="f")
             else:
                 await self.client.say("User is either already dead or not in the game.")
         else:
@@ -318,11 +365,99 @@ class GameCommands():
             await self.client.say("You need to be a GM to use this command!")
 
     @commands.command(pass_context=True)
+    async def wolves(self, ctx):
+        if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            server = ctx.message.server
+            everyone_perms = discord.PermissionOverwrite(read_messages=False)
+            wolf_perms = discord.PermissionOverwrite(read_messages=True)
+            everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
+            gm = discord.ChannelPermissions(target=discord.utils.get(server.roles, name="Game Master"),overwrite=wolf_perms)
+            wolves_channel = discord.utils.get(server.channels,name="wolves")
+            if wolves_channel == None:
+                wolves_channel = await self.client.create_channel(server, "wolves", everyone, gm)
+            players = ctx.message.mentions
+            for p in players:
+                await self.client.edit_channel_permissions(wolves_channel, p, wolf_perms)
+        else:
+            await client.say("You need to be a GM to use this command!")
+
+    @commands.command(pass_context=True)
+    async def twin(self, ctx, p1: discord.Member, p2: discord.Member):
+        if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            server = ctx.message.server
+            everyone_perms = discord.PermissionOverwrite(read_messages=False)
+            twin_perms = discord.PermissionOverwrite(read_messages=True)
+            everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
+            gm = discord.ChannelPermissions(target=discord.utils.get(server.roles, name="Game Master"),overwrite=twin_perms)
+            p1 = discord.ChannelPermissions(target=p1,overwrite=twin_perms)
+            p2 = discord.ChannelPermissions(target=p2,overwrite=twin_perms)
+            await self.client.create_channel(server, "twins", everyone, gm, p1, p2)
+        else:
+            await client.say("You need to be a GM to use this command!")
+
+    @commands.command(pass_context=True)
+    async def tardis(self, ctx, timelord: discord.Member, companion: discord.Member):
+        if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            server = ctx.message.server
+            everyone_perms = discord.PermissionOverwrite(read_messages=False)
+            crew_perms = discord.PermissionOverwrite(read_messages=True)
+            everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
+            gm = discord.ChannelPermissions(target=discord.utils.get(server.roles, name="Game Master"),overwrite=crew_perms)
+            tardises = [c for c in server.channels if c.name=="tardis"]
+            if tardises == []:
+                everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
+                gm = discord.ChannelPermissions(target=discord.utils.get(server.roles, name="Game Master"),overwrite=crew_perms)
+                tl = discord.ChannelPermissions(target=timelord,overwrite=crew_perms)
+                tardis_channel = await self.client.create_channel(server, "tardis", everyone, gm, tl)
+            else:
+                tardis_channel = [c for c in tardises if c.permissions_for(timelord).read_messages == True][0]
+            if tardis_channel.permissions_for(companion).read_messages == False:
+                await self.client.edit_channel_permissions(tardis_channel, companion, crew_perms)
+            else:
+                await self.client.delete_channel_permissions(tardis_channel, companion)
+        else:
+            await client.say("You need to be a GM to use this command!")
+
+    @commands.command(pass_context=True)
+    async def coven(self, ctx, p=""):
+        if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            server = ctx.message.server
+            everyone_perms = discord.PermissionOverwrite(read_messages=False)
+            fate_perms = discord.PermissionOverwrite(read_messages=True)
+            everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
+            gm = discord.ChannelPermissions(target=discord.utils.get(server.roles, name="Game Master"),overwrite=fate_perms)
+            coven_channel = discord.utils.get(server.channels,name="coven")
+            if coven_channel == None:
+                coven_channel = await self.client.create_channel(server, "coven", everyone, gm)
+            players = ctx.message.mentions
+            if isinstance(p, list):
+                players = p
+            for p in players:
+                await self.client.edit_channel_permissions(coven_channel, p, fate_perms)
+        else:
+            await client.say("You need to be a GM to use this command!")
+
+    @commands.command(pass_context=True)
+    async def seance(self, ctx, medium: discord.Member, target: discord.Member):
+        if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            server = ctx.message.server
+            everyone_perms = discord.PermissionOverwrite(read_messages=False)
+            seance_perms = discord.PermissionOverwrite(read_messages=True)
+            everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
+            gm = discord.ChannelPermissions(target=discord.utils.get(server.roles, name="Game Master"),overwrite=seance_perms)
+            seance_channel = await self.client.create_channel(server, "seance", everyone, gm)
+            players = [medium, target]
+            for p in players:
+                await self.client.edit_channel_permissions(seance_channel, p, seance_perms)
+        else:
+            await client.say("You need to be a GM to use this command!")
+
+    @commands.command(pass_context=True)
     async def lockjaw(self, ctx, user: discord.Member, status: str):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            game_channel = self.client.get_channel("392995027909083137")
+            voting_channel = self.client.get_channel("393470084217176075")
             status = status.lower()
-            await self.client.say(user.name)
-            await self.client.say(game_channel.name)
             if status == "t" or status == "true":
                 gperms = discord.PermissionOverwrite()
                 vperms = discord.PermissionOverwrite()
@@ -340,14 +475,14 @@ class GameCommands():
     @commands.command(pass_context=True)
     async def medium(self, ctx, user: discord.Member, status: str):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            dead_channel = self.client.get_channel("392995124423950344")
             status = status.lower()
             if status == "t" or status == "true":
                 perms = discord.PermissionOverwrite()
                 perms.read_messages = True
                 await self.client.edit_channel_permissions(dead_channel, user, perms)
             elif status == "f" or status == "false":
-                await self.client.delete_channel_permissions(game_channel, user)
-                await self.client.delete_channel_permissions(voting_channel, user)
+                await self.client.delete_channel_permissions(dead_channel, user)
         else:
             await client.say("You need to be a GM to use this command!")
 
