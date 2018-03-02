@@ -34,7 +34,7 @@ client.remove_command("help")
 
 @client.command(pass_context=True)
 async def help(ctx):
-    await client.say("""Hi there! My name is **Wolfie**! I'm the (WIP) bot for the **Werewolf Server** built by **Army** :3. This is what I can do:
+    await client.say("""Hi there! My name is **Wolfie**! I'm the (WIP) bot for the **Werewolf Server**. This is what I can do:
 ```md
 <w.help> - Shows this message.
 <w.gm_help> - Shows commands available for GMs only.
@@ -56,6 +56,7 @@ async def gm_help(ctx):
 <w.setplayers (mentions)> - Sets all users mentioned as Player.
 <w.gamestatus> - Returns all players in the current game with information about them. 
 <w.giveroles (player: role, etc)> - Gives players listed the applied role.
+<w.wolves (mentions)> - Creates #wolves if it does not exist, and gives mentioned players permissions for it.
 <w.playervote> - Creates a vote in #voting for the players.
 <w.daytimer (n; seconds; announcements)> - Sets a timer for the day, unlocks #game at start, locks #game when it ends. Seperate lines in announcements with /.
 <w.night> - Ends day.
@@ -63,7 +64,12 @@ async def gm_help(ctx):
 <w.deputy (@player)> - Sets given player as Deputy.
 <w.kill (@player)> - Kills the given player.
 <w.lockjaw (@player boolean)> - If boolean true, lockjaws player; if false, unlockjaws player.
-<w.medium (@player boolean)> - If boolean true, gives player perms to see #dead; if false, removes perms.```""")
+<w.medium (@player boolean)> - If boolean true, gives player perms to see #dead; if false, removes perms.
+<w.twin (@twin1 @twin2)> - Creates #twins channel for specified players.
+<w.tardis (@timelord @companion)> - Creates/fetches #tardis channel for timelord, if companion is not companion gives them permissions, otherwise removes permissions.
+<w.coven (mentions)> - Creates #coven if it does not exist, and gives mentioned players permissions for it.
+<w.seance (@medium @target)> - Creates a seance between medium and target; this is removed at the start of a day.
+<w.endgame> - Ends game, removing all game roles and permissions from all members of server and deleting all group priv channels.```""")
 
 @client.command(pass_context=True)
 async def gamerules(ctx):
@@ -198,7 +204,6 @@ Precede tags with 'x-' to exclude roles with them.
 Example: <w.randomrole good>
 Output: 'Jailor'```""")
     else:
-        global AllRoles, Modifiers
         conditions = message.split(" ")
         for c in conditions:
             c = c.lower()
@@ -281,7 +286,6 @@ Output: '3 roles found:
  - Dire Wolf
  - Werewolf'```""")
     else:
-        global AllRoles, Modifiers
         conditions = message.split(" ")
         for c in conditions:
             c = c.lower()
@@ -448,7 +452,6 @@ Truth & Claw - <w.generatelist tac [players]>```")
 
 @generatelist.command()
 async def standard(*, message: str):
-    global GoodRoles, EvilRoles, NeutralRoles, AchievableRoles, Modifiers, AchievableModifiers
     Good=list(GoodRoles)
     for r in Good:
         if r in AchievableRoles:
@@ -601,7 +604,6 @@ async def anons(*, message: str):
 
 @generatelist.command()
 async def duality(*, message: str):
-    global InvestigativeRoles, KillingRoles, AchievableRoles
     PlayerList = message.split(", ")
     PlayerList = sorted(PlayerList)
     if len(PlayerList) % 2 != 0:
