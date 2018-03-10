@@ -12,10 +12,10 @@ client = commands.Bot(command_prefix=prefix)
 
 startup_extensions = ["roledescriptions","gamecommands"]
 
-game_channel = client.get_channel("392995027909083137")
-voting_channel = client.get_channel("393470084217176075")
-notes_channel = client.get_channel("393476547954212874")
-dead_channel = client.get_channel("392995124423950344")
+game_channel = client.get_channel(392995027909083137)
+voting_channel = client.get_channel(393470084217176075)
+notes_channel = client.get_channel(393476547954212874)
+dead_channel = client.get_channel(392995124423950344)
 
 global Day, PlayerInfo
 Day = False
@@ -26,50 +26,61 @@ async def on_ready():
     print("Bot Online!")
     print("Name: {}".format(client.user.name))
     print("ID: {}".format(client.user.id))
-    await client.change_presence(game=discord.Game(name="Say w.help"))
-    chan = client.get_channel("392995207894925313")
-    await client.send_message(chan, "WolfieBot online!")
+    await client.change_presence(activity=discord.Game(name="Say w.help"))
+    chan = client.get_channel(392995207894925313)
+    await chan.send("WolfieBot online!")
 
 client.remove_command("help")
 
 @client.command(pass_context=True)
 async def help(ctx):
-    await client.say("""Hi there! My name is **Wolfie**! I'm the (WIP) bot for the **Werewolf Server**. This is what I can do:
+    await ctx.send("""Hi there! My name is **Wolfie**! I'm the (WIP) bot for the **Werewolf Server**. This is what I can do:
 ```md
 <w.help> - Shows this message.
 <w.gm_help> - Shows commands available for GMs only.
 <w.gamerules> - Provides a link to the rules for playing the game.
+
+<w.register (name)> - Creates a private channel for command user using name provided.
 <w.rolelist> - Provides a list of roles in the game, plus commands to see more information.
+<w.listroles (space seperated list of tags as parameters)> - Lists all roles that have all the tags provided.
+<w.icon (role)> - Displays icon for given role.
+
 <w.generatelist> - Shows commands to generate rolelists.
+<w.vote (options to vote between seperated by commas)> - Displays a list of specified options to vote on.
+
 <w.randomchoice (comma seperated list of options)> - Randomly chooses from given options.
 <w.randomrole (space seperated list of tags as parameters)> - Randomly gives a role that has all the tags provided.
-<w.listroles (space seperated list of tags as parameters)> - Lists all roles that have all the tags provided.
 <w.flip (number of coins to flip)> - Flips a specified amount of coins.
 <w.roll (#d#)> - Rolls specified dice.
-<w.vote (options to vote between seperated by commas)> - Displays a list of specified options to vote on.
-<w.score (wins:loses)> - Displays score for given statistics.
-<w.icon (role)> - Displays icon for given role.```""")
+<w.magic8ball> - Ask Wolfie a question!
+
+<w.score (wins:loses)> - Displays score for given statistics.```""")
 
 @client.command(pass_context=True)
 async def gm_help(ctx):
-    await client.say("""```md
+    await ctx.send("""```md
 <w.setplayers (mentions)> - Sets all users mentioned as Player.
+<w.giveroles (player: role [(modifier)], etc)> - Gives players listed the applied role.
 <w.gamestatus> - Returns all players in the current game with information about them. 
-<w.giveroles (player: role, etc)> - Gives players listed the applied role.
-<w.wolves (mentions)> - Creates #wolves if it does not exist, and gives mentioned players permissions for it.
-<w.playervote> - Creates a vote in #voting for the players.
+
 <w.daytimer (n; seconds; announcements)> - Sets a timer for the day, unlocks #game at start, locks #game when it ends. Seperate lines in announcements with /.
+<w.playervote> - Creates a vote in #voting for the players.
 <w.night> - Ends day.
+
 <w.mayor (@player)> - Sets given player as Mayor.
 <w.deputy (@player)> - Sets given player as Deputy.
 <w.kill (@player)> - Kills the given player.
-<w.lockjaw (@player boolean)> - If boolean true, lockjaws player; if false, unlockjaws player.
-<w.medium (@player boolean)> - If boolean true, gives player perms to see #dead; if false, removes perms.
+
+<w.wolves (mentions)> - Creates #wolves if it does not exist, and gives mentioned players permissions for it.
 <w.twin (@twin1 @twin2)> - Creates #twins channel for specified players.
 <w.tardis (@timelord @companion)> - Creates/fetches #tardis channel for timelord, if companion is not companion gives them permissions, otherwise removes permissions.
 <w.coven (mentions)> - Creates #coven if it does not exist, and gives mentioned players permissions for it.
 <w.seance (@medium @target)> - Creates a seance between medium and target; this is removed at the start of a day.
-<w.endgame> - Ends game, removing all game roles and permissions from all members of server and deleting all group priv channels.```""")
+
+<w.lockjaw (@player boolean)> - If boolean true, lockjaws player; if false, unlockjaws player.
+<w.medium (@player boolean)> - If boolean true, gives player perms to see #dead; if false, removes perms.
+
+<w.endgame> - Ends game, removing all game roles and permissions from all members of guild and deleting all group priv channels.```""")
 
 @client.command(pass_context=True)
 async def gamerules(ctx):
@@ -77,11 +88,11 @@ async def gamerules(ctx):
 If you have any questions or suggestions for improvement on the rules, contact Army with them. They'll be happy to help!
 (If on mobile, press on the icon to access the document.)""")
     embed.set_author(name="Werewolf Party Game Rules", url='https://docs.google.com/document/d/1yPUNomeB7Fpw5iXS9J9QOITFU6jWstxIOCnXorfhV3s/edit?usp=sharing', icon_url='https://i.imgur.com/soFqp3g.png')
-    await client.say(embed=embed)
+    await ctx.send(embed=embed)
 
 @client.command(pass_context=True)
 async def rolelist(ctx):
-    await client.say("""__**Roles**__
+    await ctx.send("""__**Roles**__
 ```md
 [+][Alchemist] - Neutral, Chaos, Human, Unique - <w.roles_alchemist>
 [+][Arsonist] - Neutral, Killing, Human, Unique - <w.roles_arsonist>
@@ -91,7 +102,7 @@ async def rolelist(ctx):
 [+][Cultist] - Evil, Counteractive/Support, Human, Unique - <w.roles_cultist>
 [+][Cyberhound] - Evil, Counteractive/Killing, Wolf, Unique, Achievable - <w.roles_cyberhound>
 [+][Dentist] - Evil, Counteractive, Human, Unique - <w.roles_dentist>
-[+][Dire Wolf] - Evil, Killing/Support, Wolf, Unique - <w.roles_direwolf>
+[+][Direwolf] - Evil, Killing/Support, Wolf, Unique - <w.roles_direwolf>
 [+][Doctor] - Good, Killing/Protective, Human - <w.roles_doctor>
 [+][Dodomeki] - Evil, Investigative, Non-Human, Unique, Achievable - <w.roles_dodomeki>
 [+][Drunk] - Neutral, Chaos, Human, Unique - <w.roles_drunk>
@@ -105,7 +116,7 @@ async def rolelist(ctx):
 [+][Heir] - Evil, Counteractive, Human, Unique - <w.roles_heir>
 [+][Herald] - Neutral, Chaos/Killing, Non-Human, Unique, Achievable - <w.roles_herald>
 ```""")
-    await client.say("""```md
+    await ctx.send("""```md
 [+][Hermit] - Neutral, Investigative/Counteractive, Human, Unique - <w.roles_hermit>
 [+][Hooligan] - Evil, Killing/Support, Human - <w.roles_hooligan>
 [+][Hunter] - Good, Killing/Protective, Human - <w.roles_hunter>
@@ -129,7 +140,7 @@ async def rolelist(ctx):
 [+][Politician] - Evil, Killing/Support, Human, Unique - <w.roles_politician>
 [+][Poltergeist] - Evil, Chaos/Investigative, Non-Human - <w.roles_poltergeist>
 ```""")
-    await client.say("""```md
+    await ctx.send("""```md
 [+][Poser] - Good, Support, Human - <w.roles_poser>
 [+][Priest] - Good, Counteractive/Support, Human, Unique - <w.roles_priest>
 [+][Prince] - Good, Support, Human, Unique - <w.roles_prince>
@@ -160,9 +171,35 @@ async def rolelist(ctx):
 ```""")
 
 @client.command(pass_context=True)
+async def register(ctx, *, name: str):
+    channame = "{}-priv".format(name)
+    guild = ctx.message.guild
+    user = ctx.message.author
+    gm_role = discord.utils.get(guild.roles, name="Game Master")
+    bot_role = discord.utils.get(guild.roles, name="Bots")
+    if gm_role in user.roles:
+        await ctx.send("You're a GM! You can't have a priv channel.")
+        return
+    for c in guild.channels:
+        if c.name == channame:
+            await ctx.send("Somebody already has that channel name, sorry!")
+            return
+        if "-priv" in c.name:
+            x = [u for u in guild.members if c.permissions_for(u).read_messages == True]
+            if user in x:
+                await ctx.send("You already have a priv channel!")
+                return
+    perms = discord.PermissionOverwrite(read_messages=True)
+    everyone_perms = discord.PermissionOverwrite(read_messages=False)
+    overwrites = {guild.default_role : everyone_perms, user : perms, gm_role : perms}
+    category = discord.utils.get(guild.categories, name="priv channels")
+    priv_channel = await guild.create_text_channel(channame, overwrites=overwrites, category=category)
+    await ctx.send("Channel {} created successfully.".format(priv_channel.mention))
+
+@client.command(pass_context=True)
 async def randomchoice(ctx, *, message=""):
     if message == "":
-        await client.say("""Usage of command <w.randomchoice>:
+        await ctx.send("""Usage of command <w.randomchoice>:
 ```md
 <w.randomchoice (comma seperated list of options)>
 
@@ -171,13 +208,13 @@ Output: 'C'```""")
     else:
         options = message.split(", ")
         result = random.choice(options)
-        await client.say("**{}**".format(result))
+        await ctx.send("**{}**".format(result))
         return result
 
 @client.command(pass_context=True)
 async def randomrole(ctx, *, message=""):
     if message == "":
-        await client.say("""Usage of command <w.randomrole>:
+        await ctx.send("""Usage of command <w.randomrole>:
 ```md
 <w.randomrole (space seperated list of tags as parameters)>
 
@@ -240,7 +277,7 @@ Output: 'Jailor'```""")
                                 Valid.remove(r)
                                 break
         if Valid == []:
-            await client.say("No roles exist that fit all parameters, sorry. :(")
+            await ctx.send("No roles exist that fit all parameters, sorry. :(")
         else:
             while True:
                 role = random.choice(Valid)
@@ -250,13 +287,13 @@ Output: 'Jailor'```""")
                         if x == 0:
                             continue
                 break
-            await client.say("**{}**".format(role))
+            await ctx.send("**{}**".format(role))
             return role
 
 @client.command(pass_context=True)
 async def listroles(ctx, *, message=""):
     if message == "":
-        await client.say("""Usage of command <w.listroles>:
+        await ctx.send("""Usage of command <w.listroles>:
 ```md
 <w.listroles (space seperated list of tags as parameters)>
 
@@ -283,7 +320,7 @@ Precede tags with 'x-' to exclude roles with them.
 Example: <w.listroles wolf>
 Output: '3 roles found:
  - Cyberhound
- - Dire Wolf
+ - Direwolf
  - Werewolf'```""")
     else:
         conditions = message.split(" ")
@@ -322,18 +359,18 @@ Output: '3 roles found:
                                 Valid.remove(r)
                                 break
         if Valid == []:
-            await client.say("No roles exist that fit all parameters, sorry. :(")
+            await ctx.send("No roles exist that fit all parameters, sorry. :(")
         else:
             display = "{} roles found:\n```".format(len(Valid))
             for r in Valid:
                 display = "{} - {}\n".format(display, r)
             display = "{}```".format(display)
-            await client.say(display)
+            await ctx.send(display)
 
 @client.command(pass_context=True)
 async def score(ctx, *, message=""):
     if message == "":
-        await client.say("""Usage of command <w.score>:
+        await ctx.send("""Usage of command <w.score>:
 ```md
 <w.score (wins:loses)>
 
@@ -344,12 +381,12 @@ Output: '870'```""")
         W = int(message[0])
         L = int(message[1])
         score = round((100+(W+L)*2)*(W-L)*(1+(W+1)/(W+L+1)))
-        await client.say(score)
+        await ctx.send(score)
 
 @client.command(pass_context=True)
 async def flip(ctx, *, message=""):
     if message == "":
-        await client.say("""Usage of command <w.flip>:
+        await ctx.send("""Usage of command <w.flip>:
 ```md
 <w.flip (number of coins to flip)>
 
@@ -371,13 +408,13 @@ Output: 'T, H, H'```""")
                 send=send+"H"
                 hcount=hcount+1
         embed=discord.Embed(title=send)
-        await client.say(embed=embed)
+        await ctx.send(embed=embed)
         return [hcount,tcount]
 
 @client.command(pass_context=True)
 async def roll(ctx, *, message=""):
     if message == "":
-        await client.say("""Usage of command <w.roll>:
+        await ctx.send("""Usage of command <w.roll>:
 ```md
 <w.roll (#d#)>
 
@@ -394,12 +431,19 @@ Output: '19, 8, 14'```""")
             i = str(random.randint(1,sides))
             send = send+i
         embed=discord.Embed(title=send)
-        await client.say(embed=embed)
+        await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def magic8ball(ctx):
+    results = ["It is certain.", "It is decidedly so.", "Without a doubt.", "Yes, definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yep.",
+               "Signs point to yes.", "Reply hazy. Try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.",
+               "Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."]
+    await ctx.send(random.choice(results))
 
 @client.command(pass_context=True)
 async def vote(ctx, *, message="", where="", needed=0):
     if message == "":
-        await client.say("""Usage of command <w.vote>:
+        await ctx.send("""Usage of command <w.vote>:
 ```md
 <w.vote (options to vote between seperated by commas)>
 
@@ -414,13 +458,13 @@ Output: 'React with appropriate emoji to vote:
         global VoteEmojis
         options = message.split(", ")
         if len(options) > 20:
-            await client.say("Too many!")
+            await ctx.send("Too many!")
         else:
             options = sorted(options)
             display=""
             for i in range(1,len(options)+1):
                 display = display+("\n{} --> {}".format(VoteEmojis[i-1],options[i-1]))
-            vote_message = await client.send_message(where,embed=discord.Embed(title="React with appropriate emoji to vote:",description=display))
+            vote_message = await where.send(embed=discord.Embed(title="React with appropriate emoji to vote:",description=display))
             if needed != 0:
                 return
                 # return voted value
@@ -428,7 +472,7 @@ Output: 'React with appropriate emoji to vote:
 @client.command(pass_context=True)
 async def icon(ctx, *, role=""):
     if role == "":
-        await client.say("""Usage of command <w.icon>:
+        await ctx.send("""Usage of command <w.icon>:
 ```md
 <w.icon (role)>
 
@@ -439,14 +483,14 @@ Output: 'https://i.imgur.com/Ih7WkoX.png'```""")
         role = role.replace(" ","")
         try:
             icon = icons[role]
-            await client.say(icon)
+            await ctx.send(icon)
         except KeyError:
-            await client.say("That is not a role.")
+            await ctx.send("That is not a role.")
 
 @client.group(pass_context=True)
 async def generatelist(ctx):
     if ctx.invoked_subcommand is None:
-        await client.say("Available Gamemodes to generate lists for: \n(Give Players and Roles as comma seperated lists)\n```md\nStandard - <w.generatelist standard [players]>\n\
+        await ctx.send("Available Gamemodes to generate lists for: \n(Give Players and Roles as comma seperated lists)\n```md\nStandard - <w.generatelist standard [players]>\n\
 Anonymous Register - <w.generatelist anons [players] : [roles]>\nDuality - <w.generatelist duality [players]>\nMoral Feud - <w.generatelist morals [players]>\n\
 Truth & Claw - <w.generatelist tac [players]>```")
 
@@ -460,7 +504,7 @@ async def standard(*, message: str):
     for r in Evil:
         if r in AchievableRoles:
             Evil.remove(r)
-    Evil.remove("Dire Wolf")
+    Evil.remove("Direwolf")
     Evil.remove("Werewolf")
     Evil.remove("Cultist")
     Neutral=list(NeutralRoles)
@@ -476,11 +520,11 @@ async def standard(*, message: str):
     PlayerList = message.split(", ")
     PlayerList = sorted(PlayerList)
     if len(PlayerList) < 8:
-        await client.say("Not enough players, sorry.")
+        await ctx.send("Not enough players, sorry.")
         return
     else:
         while True:
-            RoleList = ["Dire Wolf", "Seer"]
+            RoleList = ["Direwolf", "Seer"]
             EvilCount = 1
             GoodCount = 1
             x = round(len(PlayerList)/8)
@@ -578,7 +622,7 @@ async def standard(*, message: str):
                 continue
             if len(RoleList) == len(PlayerList):
                 break
-    await client.say(combined)
+    await ctx.send(combined)
 
 @generatelist.command()
 async def anons(*, message: str):
@@ -586,9 +630,9 @@ async def anons(*, message: str):
     PlayerList = message[0]
     RoleList = message[1]
     if len(PlayerList) != len(RoleList):
-        await client.say("Needs to have equal amount of players and roles!")
+        await ctx.send("Needs to have equal amount of players and roles!")
     elif len(PlayerList) < 8:
-        await client.say("Not enough players, sorry.")
+        await ctx.send("Not enough players, sorry.")
     else:
         PlayerList = PlayerList.split(", ")
         RoleList = RoleList.split(", ")
@@ -600,23 +644,23 @@ async def anons(*, message: str):
             combined = combined+string
         finish = "```"
         combined = combined+finish
-        await client.say(combined)
+        await ctx.send(combined)
 
 @generatelist.command()
 async def duality(*, message: str):
     PlayerList = message.split(", ")
     PlayerList = sorted(PlayerList)
     if len(PlayerList) % 2 != 0:
-        await client.say("Needs to be an even number of players!")
+        await ctx.send("Needs to be an even number of players!")
     elif len(PlayerList) < 8:
-        await client.say("Not enough players, sorry.")
+        await ctx.send("Not enough players, sorry.")
     else:
         Invest = list(InvestigativeRoles)
         Kill = list(KillingRoles)
         i = ["Time Lord", "Whisperer", "Mage", "Hacker", "Noir"]
         for r in i:
             Invest.remove(r)
-        k = ["Jester", "Werewolf", "Dire Wolf", "Bard", "Inventor", "Gladiator", "Hooligan", "Politician", "Shinigami", "Hunter", "Backstabber", "Arsonist"]
+        k = ["Jester", "Werewolf", "Direwolf", "Bard", "Inventor", "Gladiator", "Hooligan", "Politician", "Shinigami", "Hunter", "Backstabber", "Arsonist"]
         for r in k:
             Kill.remove(r)
         for r in AchievableRoles:
@@ -640,14 +684,14 @@ async def duality(*, message: str):
             combined = combined+string
         finish = "```"
         combined = combined+finish
-        await client.say(combined)
+        await ctx.send(combined)
 
 @generatelist.command()
 async def morals(*, message: str):
     PlayerList = message.split(", ")
     PlayerList = sorted(PlayerList)
     if len(PlayerList) < 8:
-        await client.say("Not enough players, sorry.")
+        await ctx.send("Not enough players, sorry.")
     else:
         EvilCount = 1
         GoodCount = 1
@@ -676,14 +720,14 @@ async def morals(*, message: str):
             combined = combined+string
         finish = "```"
         combined = combined+finish
-        await client.say(combined)
+        await ctx.send(combined)
 
 @generatelist.command()
 async def tac(*, message: str):
     PlayerList = message.split(", ")
     PlayerList = sorted(PlayerList)
     if len(PlayerList) < 6:
-        await client.say("Not enough players, sorry.")
+        await ctx.send("Not enough players, sorry.")
     else:
         RoleList = []
         for i in range(0,round(len(PlayerList)/10+0.49999)):
@@ -700,7 +744,7 @@ async def tac(*, message: str):
             combined = combined+string
         finish = "```"
         combined = combined+finish
-        await client.say(combined)
+        await ctx.send(combined)
 
 if __name__ == "__main__":
     for extension in startup_extensions:

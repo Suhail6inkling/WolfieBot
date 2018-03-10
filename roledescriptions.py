@@ -28,7 +28,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0x8c8cff)
         embed.set_thumbnail(url=icons["alchemist"])
-        await self.client.send_message(where,"__**Alchemist**__",embed=embed)
+        await where.send("__**Alchemist**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_arsonist(self, ctx, where = ""):
@@ -48,7 +48,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xff9400)
         embed.set_thumbnail(url=icons["arsonist"])
-        await self.client.send_message(where,"__**Arsonist**__",embed=embed)
+        await where.send("__**Arsonist**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_backstabber(self, ctx, where = ""):
@@ -56,7 +56,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*Honour? Dignity? Loyalty? Oh, please, you're a child. I want to live and I'll do it by any means. I'll use you as a tool and the moment you're no longer useful to me, I'll toss you aside and pick another shield. I'll kick you in the balls and you'll smile to my face. I'll use you and abuse you and take every last penny from you until I drive a knife into your neck. And the best part? I will feel **nothing**.*
 **Abilities:**
-- Is told the identity of the Dire Wolf at the start of the game.
+- Is told the identity of the Direwolf at the start of the game.
 - Always appears as a random Good role when targeted with *Investigate*.
 - If any action or ability would cause the Backstabber to gain a Modifier or a Save, unless it is the action *Infect*, the player whose action or ability it was commits Suicide instead.
 - Cannot begin the game with any Modifiers.
@@ -68,7 +68,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["backstabber"])
-        await self.client.send_message(where,"__**Backstabber**__",embed=embed)
+        await where.send("__**Backstabber**__",embed=embed)
 
 
     @commands.command(pass_context=True)
@@ -90,7 +90,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xff0098)
         embed.set_thumbnail(url=icons["bard"])
-        await self.client.send_message(where,"__**Bard**__",embed=embed)
+        await where.send("__**Bard**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_companion(self, ctx, where = ""):
@@ -106,13 +106,13 @@ class RoleDescriptions():
 - Modifier
 - Achievable""",colour=0x204eff)
         embed.set_thumbnail(url=icons["companion"])
-        await self.client.send_message(where,"__**Companion**__",embed=embed)
+        await where.send("__**Companion**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_cultist(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""*As your promulgator, I bid you, say It with me- Brothers! Sisters! The great devotion shall not be swayed, we shall be venerated! We shall see the rise of our one true saviour and live to see the day this world is cured of its sickness!*
+        embed=discord.Embed(description="""*As your promulgator, I bid you, say it with me- Brothers! Sisters! The great devotion shall not be swayed, we shall be venerated! We shall see the rise of our one true saviour and live to see the day this world is cured of its sickness!*
 **Actions:**
 *Convert* - Once per game, can choose one player to convert to Evil. In the event that this player is already Evil, the Cultist may not try again.
 *Sacrifice* - Once per game, at night, can choose two players, one of whom is already dead. The dead player is revived as a random non-Unique Evil role, and the living player commits Suicide.
@@ -131,7 +131,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["cultist"])
-        await self.client.send_message(where,"__**Cultist**__",embed=embed)
+        await where.send("__**Cultist**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_cyberhound(self, ctx, where = ""):
@@ -153,13 +153,14 @@ class RoleDescriptions():
 - Unique
 - Achievable""",colour=0xff5000)
         embed.set_thumbnail(url=icons["cyberhound"])
-        await self.client.send_message(where,"__**Cyberhound**__",embed=embed)
+        await where.send("__**Cyberhound**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_dentist(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""**Actions:**
+        embed=discord.Embed(description="""*A recent study suggests 67.34% of children fear going to the dentist. I wonder why. Why would anyone fear having a cold, metallic scalpel digging around in their mouth? Why would anyone fear whizzing drills and powerful machinery burying into the gums of patients? Why would anyone fear having every tooth forcefully extracted from their bleeding jaws as they sing a symphony of roaring agony? C'mon, buddy, we're not all that bad if you get to know us...*
+**Actions:**
 *Lockjaw* - Every night, select any player. That player may not speak in *#game* or vote in *#voting* the following day. The town is not told about this effect, however the target player is.
 *Laughing Gas* - Once per game, at night, may select any player. If they were targeted with *Lockjaw* the previous night, that player becomes an Evil Jester.
 **Abilities:**
@@ -172,13 +173,13 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["dentist"])
-        await self.client.send_message(where,"__**Dentist**__",embed=embed)
+        await where.send("__**Dentist**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_direwolf(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""*They say that the howl of a Dire Wolf can convince even the most angelic to turn their allegiances. The most feared of all God's creatures - if it's seen you, it's already too late.*
+        embed=discord.Embed(description="""*The Direwolf is a beast, yet it doesn't rely on instinct. The Direwolf is a machine, yet it cannot be upgraded. The Direwolf is impossible, yet it is not fictional. The Direwolf is evil, yet it is not fallible. The Direwolf is godly, yet it is not righteous. The Direwolf is coming. The Direwolf is coming for you.*
 **Actions:**
 *Maul* - Discuss with other Wolves in a private channel who to Strong Attack during the night.
 *Pack Offensive* - Once per game, at night, not before NIGHT 3, instead of using *Maul*, the Wolves may choose to each individually target any player with a Standard Attack.
@@ -194,13 +195,13 @@ class RoleDescriptions():
 - Wolf
 - Unique""",colour=0xff5000)
         embed.set_thumbnail(url=icons["direwolf"])
-        await self.client.send_message(where,"__**Dire Wolf**__",embed=embed)
+        await where.send("__**Direwolf**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_doctor(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""*A believer in pacifism, this once-honourable surgeon has taken to working in the shadows, hunting for inhuman creatures to dissect and examine, while desperately looking after the injured in want of forgiveness for his murderous deeds.*
+        embed=discord.Embed(description="""*I tried, alright? I tried to be all I could be. I followed my oaths, I learned my ways, I did everything that was asked of me. But I needed the money and, well, can you blame me for it? This title is not one I deserve after what I've done and, in any other circumstance, I wouldn't take it. But these people are hurt, dying and constantly screaming for help. These people need a helping hand, a light through the tunnel, a saviour. These people need a doctor.*
 **Actions:**
 *Amputate* - May target one player with an amputation every night. If that player is Good, they lose all Queued Saves. If they are Neutral, they are targeted with a Standard Attack. If they are Evil, they are targeted with a Powerful Attack.
 *Heal* - If they don't use *Amputate*, may give one player a Lunar Strong Save instead.
@@ -211,7 +212,7 @@ class RoleDescriptions():
 - Killing/Protective
 - Human""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["doctor"])
-        await self.client.send_message(where,"__**Doctor**__",embed=embed)
+        await where.send("__**Doctor**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_dodomeki(self, ctx, where = ""):
@@ -231,7 +232,7 @@ class RoleDescriptions():
 - Unique
 - Achievable""",colour=0xff2323)
         embed.set_thumbnail(url=icons["dodomeki"])
-        await self.client.send_message(where,"__**Dodomeki**__",embed=embed)
+        await where.send("__**Dodomeki**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_drunk(self, ctx, where = ""):
@@ -250,7 +251,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xffffff)
         embed.set_thumbnail(url=icons["drunk"])
-        await self.client.send_message(where,"__**Drunk**__",embed=embed)
+        await where.send("__**Drunk**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_fate(self, ctx, where = ""):
@@ -271,7 +272,7 @@ class RoleDescriptions():
 - Non-Human
 - Unique""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["fate"])
-        await self.client.send_message(where,"__**Fate**__",embed=embed)
+        await where.send("__**Fate**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_feral(self, ctx, where = ""):
@@ -284,7 +285,7 @@ class RoleDescriptions():
 **Tags:**
 - Modifier""",colour=0xff5000)
         embed.set_thumbnail(url=icons["feral"])
-        await self.client.send_message(where,"__**Feral**__",embed=embed)
+        await where.send("__**Feral**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_gladiator(self, ctx, where = ""):
@@ -303,7 +304,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["gladiator"])
-        await self.client.send_message(where,"__**Gladiator**__",embed=embed)
+        await where.send("__**Gladiator**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_glazier(self, ctx, where = ""):
@@ -319,7 +320,7 @@ class RoleDescriptions():
 - Counteractive
 - Non-Human""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["glazier"])
-        await self.client.send_message(where,"__**Glazier**__",embed=embed)
+        await where.send("__**Glazier**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_guide(self, ctx, where = ""):
@@ -333,7 +334,7 @@ class RoleDescriptions():
 - Modifier
 - Achievable""",colour=0xffffff)
         embed.set_thumbnail(url=icons["guide"])
-        await self.client.send_message(where,"__**Guide**__",embed=embed)
+        await where.send("__**Guide**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_hacker(self, ctx, where = ""):
@@ -352,7 +353,7 @@ class RoleDescriptions():
 - Unique
 - Achievable.""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["hacker"])
-        await self.client.send_message(where,"__**Hacker**__",embed=embed)
+        await where.send("__**Hacker**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_hangman(self, ctx, where = ""):
@@ -371,7 +372,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xbcbcbc)
         embed.set_thumbnail(url=icons["hangman"])
-        await self.client.send_message(where,"__**Hangman**__",embed=embed)
+        await where.send("__**Hangman**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_heir(self, ctx, where = ""):
@@ -390,7 +391,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["heir"])
-        await self.client.send_message(where,"__**Heir**__",embed=embed)
+        await where.send("__**Heir**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_herald(self, ctx, where = ""):
@@ -410,7 +411,7 @@ class RoleDescriptions():
 - Unique
 - Achievable""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["herald"])
-        await self.client.send_message(where,"__**Herald**__",embed=embed)
+        await where.send("__**Herald**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_hermit(self, ctx, where = ""):
@@ -429,7 +430,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0x00f6ff)
         embed.set_thumbnail(url=icons["hermit"])
-        await self.client.send_message(where,"__**Hermit**__",embed=embed)
+        await where.send("__**Hermit**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_hooligan(self, ctx, where = ""):
@@ -438,7 +439,7 @@ class RoleDescriptions():
         embed=discord.Embed(description="""**Actions:**
 *Threaten* - Every night, may choose one player. For each Attack that targets that player, the Hooligan targets them with another of equal strength. The Hooligan is told how many attacks they targeted the player with, if any.
 **Abilities:**
-- Is told the identity of the Dire Wolf at the start of the game.
+- Is told the identity of the Direwolf at the start of the game.
 - If they are Lynched, even if Saved, on the following night *Maul* is a Powerful Attack rather than a Strong Attack.
 **Objectives:**
 - Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
@@ -447,7 +448,7 @@ class RoleDescriptions():
 - Killing/Support
 - Human""",colour=0xff2323)
         embed.set_thumbnail(url=icons["hooligan"])
-        await self.client.send_message(where,"__**Hooligan**__",embed=embed)
+        await where.send("__**Hooligan**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_hunter(self, ctx, where = ""):
@@ -466,7 +467,7 @@ class RoleDescriptions():
 - Counteractive/Killing
 - Human""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["hunter"])
-        await self.client.send_message(where,"__**Hunter**__",embed=embed)
+        await where.send("__**Hunter**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_inevitable(self, ctx, where = ""):
@@ -486,13 +487,13 @@ class RoleDescriptions():
 - Unique
 - Achievable""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["inevitable"])
-        await self.client.send_message(where,"__**Inevitable**__",embed=embed)
+        await where.send("__**Inevitable**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_inventor(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""*It took years before my work was completed. Months of tinkering with wires, readjusting gears, and connecting tubes had led up to this moment. Now, I just need someone to test it on.*
+        embed=discord.Embed(description="""*Being top of the class is not enough. Having twenty-seven Ph.Ds under your belt is not enough. Having an IQ exceeding double the human possible total is not enough. Being a revolutionary, once-in-a-lifetime genius, academic and philosopher is not enough. Being the most intelligent being in the universe is not enough. To hold true power, you must first be able to demonstrate it.*
 **Actions:**
 *Doomsday Device* - Every night, may choose to activate their doomsday device. This targets all players targeting the Inventor with any action and the Inventor themselves with an Unstoppable Attack. If this Attack results in the deaths of two or more other players, the Inventor is Saved from all Attacks that night including the Attack from the doomsday device.
 **Abilities:**
@@ -509,7 +510,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xff9400)
         embed.set_thumbnail(url=icons["inventor"])
-        await self.client.send_message(where,"__**Inventor**__",embed=embed)
+        await where.send("__**Inventor**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_jailor(self, ctx, where = ""):
@@ -525,7 +526,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["jailor"])
-        await self.client.send_message(where,"__**Jailor**__",embed=embed)
+        await where.send("__**Jailor**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_jester(self, ctx, where = ""):
@@ -543,7 +544,7 @@ class RoleDescriptions():
 - Chaos/Killing
 - Non-Human""",colour=0xff2323)
         embed.set_thumbnail(url=icons["jester"])
-        await self.client.send_message(where,"__**Jester**__",embed=embed)
+        await where.send("__**Jester**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_knight(self, ctx, where = ""):
@@ -560,7 +561,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["knight"])
-        await self.client.send_message(where,"__**Knight**__",embed=embed)
+        await where.send("__**Knight**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_mage(self, ctx, where = ""):
@@ -576,7 +577,7 @@ class RoleDescriptions():
 - Chaos/Investigative
 - Human""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["mage"])
-        await self.client.send_message(where,"__**Mage**__",embed=embed)
+        await where.send("__**Mage**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_maid(self, ctx, where = ""):
@@ -596,7 +597,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xff9bc4)
         embed.set_thumbnail(url=icons["maid"])
-        await self.client.send_message(where,"__**Maid**__",embed=embed)
+        await where.send("__**Maid**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_medium(self, ctx, where = ""):
@@ -609,7 +610,6 @@ class RoleDescriptions():
 - Can speak in the #dead channel while alive and is permitted to repeat anything the dead have said.
 - If targeted with *Investigate*, then their identity is revealed to every Witch in the game.
 - If targeted by *Haunt*, removes the player who targeted them's ability to use *Haunt* and does not commit Suicide.
-- If the Medium votes against a Good role in a Lynching who is then successfully lynched, they commit Suicide the next night.
 **Objectives:**
 - Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
 **Tags:**
@@ -617,7 +617,7 @@ class RoleDescriptions():
 - Support
 - Human""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["medium"])
-        await self.client.send_message(where,"__**Medium**__",embed=embed)
+        await where.send("__**Medium**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_merchant(self, ctx, where = ""):
@@ -644,7 +644,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xe0be00)
         embed.set_thumbnail(url=icons["merchant"])
-        await self.client.send_message(where,"__**Merchant**__",embed=embed)
+        await where.send("__**Merchant**__",embed=embed)
         
     @commands.command(pass_context=True)
     async def roles_minstrel(self, ctx, where = ""):
@@ -659,7 +659,7 @@ class RoleDescriptions():
 - Modifier
 - Achievable""",colour=0xff0098)
         embed.set_thumbnail(url=icons["minstrel"])
-        await self.client.send_message(where,"__**Minstrel**__",embed=embed)
+        await where.send("__**Minstrel**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_morty(self, ctx, where = ""):
@@ -671,7 +671,7 @@ class RoleDescriptions():
 **Tags:**
 - Modifier""",colour=0xfffa00)
         embed.set_thumbnail(url=icons["morty"])
-        await self.client.send_message(where,"__**Morty**__",embed=embed)
+        await where.send("__**Morty**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_multipleagent(self, ctx, where = ""):
@@ -691,7 +691,7 @@ class RoleDescriptions():
 - Chaos/Protective
 - Human""",colour=0x00ff85)
         embed.set_thumbnail(url=icons["multipleagent"])
-        await self.client.send_message(where,"__**Multiple Agent**__",embed=embed)
+        await where.send("__**Multiple Agent**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_noir(self, ctx, where = ""):
@@ -708,7 +708,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["noir"])
-        await self.client.send_message(where,"__**Noir**__",embed=embed)
+        await where.send("__**Noir**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_page(self, ctx, where = ""):
@@ -729,7 +729,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xffffff)
         embed.set_thumbnail(url=icons["page"])
-        await self.client.send_message(where,"__**Page**__",embed=embed)
+        await where.send("__**Page**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_paladin(self, ctx, where = ""):
@@ -747,7 +747,7 @@ class RoleDescriptions():
 - Unique
 - Achievable""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["paladin"])
-        await self.client.send_message(where,"__**Paladin**__",embed=embed)
+        await where.send("__**Paladin**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_philanthropist(self, ctx, where = ""):
@@ -765,7 +765,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xff9bc4)
         embed.set_thumbnail(url=icons["philanthropist"])
-        await self.client.send_message(where,"__**Philanthropist**__",embed=embed)
+        await where.send("__**Philanthropist**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_pixie(self, ctx, where = ""):
@@ -784,7 +784,7 @@ class RoleDescriptions():
 - Counteractive/Investigative
 - Non-Human""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["pixie"])
-        await self.client.send_message(where,"__**Pixie**__",embed=embed)
+        await where.send("__**Pixie**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_politician(self, ctx, where = ""):
@@ -804,7 +804,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["politician"])
-        await self.client.send_message(where,"__**Politician**__",embed=embed)
+        await where.send("__**Politician**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_poltergeist(self, ctx, where = ""):
@@ -822,13 +822,14 @@ class RoleDescriptions():
 - Chaos/Investigative
 - Non-Human""",colour=0xff2323)
         embed.set_thumbnail(url=icons["poltergeist"])
-        await self.client.send_message(where,"__**Poltergeist**__",embed=embed)
+        await where.send("__**Poltergeist**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_poser(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""**Actions:**
+        embed=discord.Embed(description="""*Aw, you kids these days with your Snapchat and your Pokeymans and your John Green books and your insatiable lust to be "aesthetic". Y'see, I'm not like most adults. I'm cool. I'm only 38 and I signed up for a Tumblr account last night. I'm no old-timer. I love playing these Zelda games too - he's the coolest little elf boy. I get you. I'm cool, right? C'mon, tell me how cool I am.*
+**Actions:**
 *Pose* - Every night, chooses another player. One of that players actions is randomly selected and the Poser uses it as if it was their own action. Actions involving Attacks may only be selected if none exist that do not. Any action that is limited-use is freely usable for the purpose of this action. If the action requires a choice to be made by the player using it, such as a target, the Poser is given the minimum information needed when presented with this choice.
 **Objectives:**
 - Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
@@ -837,13 +838,13 @@ class RoleDescriptions():
 - Support
 - Human""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["poser"])
-        await self.client.send_message(where,"__**Poser**__",embed=embed)
+        await where.send("__**Poser**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_priest(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""*As your teacher, I bid you, say It with me- Children of the Lord! The great devotion shall not be swayed, we shall be exalted! We shall see the rise of our one true saviour and live to see the day this world is cured of its sickness!*
+        embed=discord.Embed(description="""*As your teacher, I bid you, say it with me- Children of the Lord! The great devotion shall not be swayed, we shall be exalted! We shall see the rise of our one true saviour and live to see the day this world is cured of its sickness!*
 **Actions:**
 *Convert* - Once per game, can choose one player to convert to Good. In the event that this player is already Good, the Priest may not try again.
 *Sacrifice* - Once per game, at night, can choose two players, one of whom is already dead. The dead player is revived as a random non-Unique Good role, and the living player commits Suicide.
@@ -862,7 +863,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["priest"])
-        await self.client.send_message(where,"__**Priest**__",embed=embed)
+        await where.send("__**Priest**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_prince(self, ctx, where = ""):
@@ -880,7 +881,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["prince"])
-        await self.client.send_message(where,"__**Prince**__",embed=embed)
+        await where.send("__**Prince**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_researcher(self, ctx, where = ""):
@@ -888,7 +889,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*The laptop screen reflected off his lenses as he scanned each and every pixel of the monitor's display. It was now 3:15am but he was not deterred, not even slightly. His right hand's index finger scrolled intensely through the files on his computer. He was going to find it and he was not going to be distracted by whether that pungent aroma was his own sweat or the half-eaten ramen on his desk. Even if it meant he would have to rip apart this entire goddamn town, he was going to find these wolves.*
 **Actions:**
-*Do Research* - At night, can choose a player to observe. The Researcher is told all players that targeted the target player (in the event that the Wolves target them, the Researcher is only told that the Dire Wolf did, however if the Dire Wolf is dead then all Wolves are shown to target them). On the night that the Researcher used this action, they are not affected by any saves.
+*Do Research* - At night, can choose a player to observe. The Researcher is told all players that targeted the target player (in the event that the Wolves target them, the Researcher is only told that the Direwolf did, however if the Direwolf is dead then all Wolves are shown to target them). On the night that the Researcher used this action, they are not affected by any saves.
 **Abilities**
 - Gains a Lunar Standard Save at the start of every night.
 - If they target a player with *Do Research* and every living player other than the Researcher and the target player appear in the results, the Researcher becomes a Hacker.
@@ -900,7 +901,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["researcher"])
-        await self.client.send_message(where,"__**Researcher**__",embed=embed)
+        await where.send("__**Researcher**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_rogue(self, ctx, where = ""):
@@ -919,7 +920,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["rogue"])
-        await self.client.send_message(where,"__**Rogue**__",embed=embed)
+        await where.send("__**Rogue**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_rojinbi(self, ctx, where = ""):
@@ -927,7 +928,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*He was quiet. We barely knew him, just a guy who strolled into the town one day and was found the next day in their home, with a couple of pills in one hand and a bottle of gin in the other. He's dead now, I guess. I just wish we could've known him better. He always carried himself with grace, his walk commanded respect and his posture showed humility. But, behind his eyes, there was always such a fire.*
 **Abilities:**
-- Commits Suicide on NIGHT 1, and appears to be a random Good Human role when dead. They are given the names of three players, randomly chosen; one Good, one Evil and one Neutral (providing there is another Neutral in the game; otherwise only two names are given). At the start of DAY 4, they are resurrected. They gain the role, alignment and modifiers of one of the players whose names they were given. They also gain all the Saves that player has at the moment the Rōjinbi is resurrected. If the player has died before that point, the Rōjinbi is still resurrected, however they gain no Saves.
+- Commits Suicide on NIGHT 1, and appears to be a random Good Human role when dead. They are given the names of three players, randomly chosen; one Good, one Evil and one Neutral (providing there is another Neutral in the game; otherwise only two names are given). At the start of DAY 3, they are resurrected. They gain the role, alignment and modifiers of one of the players whose names they were given. They also gain all the Saves that player has at the moment the Rōjinbi is resurrected. If the player has died before that point, the Rōjinbi is still resurrected, however they gain no Saves. The player is decided using the following method: If the Direwolf is alive, then Evil. Otherwise, if the Seer is alive, then Good. If neither are alive, then Neutral (unless the Rōjinbi did not recieve the name of a Neutral player, in which case Good).
 **Objectives:**
 - None
 **Tags:**
@@ -936,7 +937,7 @@ class RoleDescriptions():
 - Non-Human
 - Unique""",colour=0xffffff)
         embed.set_thumbnail(url=icons["rojinbi"])
-        await self.client.send_message(where,"__**Rōjinbi**__",embed=embed)
+        await where.send("__**Rōjinbi**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_romantic(self, ctx, where = ""):
@@ -957,7 +958,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xbcbcbc)
         embed.set_thumbnail(url=icons["romantic"])
-        await self.client.send_message(where,"__**Romantic**__",embed=embed)
+        await where.send("__**Romantic**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_santa(self, ctx, where = ""):
@@ -975,7 +976,7 @@ class RoleDescriptions():
 - Non-Human
 - Unique""",colour=0xff9bc4)
         embed.set_thumbnail(url=icons["santa"])
-        await self.client.send_message(where,"__**Santa**__",embed=embed)
+        await where.send("__**Santa**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_scarecrow(self, ctx, where = ""):
@@ -995,7 +996,7 @@ class RoleDescriptions():
 - Non-Human
 - Unique""",colour=0xb7ffe8)
         embed.set_thumbnail(url=icons["scarecrow"])
-        await self.client.send_message(where,"__**Scarecrow**__",embed=embed)
+        await where.send("__**Scarecrow**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_seer(self, ctx, where = ""):
@@ -1014,7 +1015,7 @@ class RoleDescriptions():
 - Investigative
 - Human""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["seer"])
-        await self.client.send_message(where,"__**Seer**__",embed=embed)
+        await where.send("__**Seer**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_shifter(self, ctx, where = ""):
@@ -1034,7 +1035,7 @@ class RoleDescriptions():
 - Chaos
 - Non-Human""",colour=0xd1dfa2)
         embed.set_thumbnail(url=icons["shifter"])
-        await self.client.send_message(where,"__**Shifter**__",embed=embed)
+        await where.send("__**Shifter**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_shinigami(self, ctx, where = ""):
@@ -1051,7 +1052,7 @@ class RoleDescriptions():
 - Non-Human
 - Unique""",colour=0x010101)
         embed.set_thumbnail(url=icons["shinigami"])
-        await self.client.send_message(where,"__**Shinigami**__",embed=embed)
+        await where.send("__**Shinigami**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_souleater(self, ctx, where = ""):
@@ -1073,7 +1074,7 @@ class RoleDescriptions():
 - Non-Human
 - Achievable""",colour=0xd1dfa2)
         embed.set_thumbnail(url=icons["souleater"])
-        await self.client.send_message(where,"__**Souleater**__",embed=embed)
+        await where.send("__**Souleater**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_spectre(self, ctx, where = ""):
@@ -1092,7 +1093,7 @@ class RoleDescriptions():
 - Modifier
 - Achievable""",colour=0xb7ffe8)
         embed.set_thumbnail(url=icons["spectre"])
-        await self.client.send_message(where,"__**Spectre**__",embed=embed)
+        await where.send("__**Spectre**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_spider(self, ctx, where = ""):
@@ -1112,7 +1113,7 @@ class RoleDescriptions():
 - Non-Human
 - Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["spider"])
-        await self.client.send_message(where,"__**Spider**__",embed=embed)
+        await where.send("__**Spider**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_spinster(self, ctx, where = ""):
@@ -1133,7 +1134,7 @@ class RoleDescriptions():
 - Unique
 - Achievable""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["spinster"])
-        await self.client.send_message(where,"__**Spinster**__",embed=embed)
+        await where.send("__**Spinster**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_standuser(self, ctx, where = ""):
@@ -1146,14 +1147,14 @@ class RoleDescriptions():
 *Clash* - Once per game, can choose to target any player with a Powerful Attack. Players are only affected by this attack if they have the Stand User modifier. If the chosen player dies as a result of this attack, this player gains another use of *Battle Cry*.
 **Abilities:**
 - If any Stand User exists in a game, at least one other player must also have the Stand User modifier.
-- If uses *Battle Cry* on the same night as any other player uses *Battle Cry*, commits Suicide.
+- If uses *Battle Cry* on the same night as any other player uses *Battle Cry* (and neither action fails), commits Suicide.
 - If targeted with *Clash* by a player who they use *Clash* on during the same night, commits Suicide.
 **Objectives:**
 - Kill another Stand User through *Clash*, or have a player who became a Stand User due to this player's use of *Stand Arrow* complete this objective.
 **Tags:**
 - Modifier""",colour=0x80659a)
         embed.set_thumbnail(url=icons["standuser"])
-        await self.client.send_message(where,"__**Stand User**__",embed=embed)
+        await where.send("__**Stand User**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_sylph(self, ctx, where = ""):
@@ -1173,7 +1174,7 @@ class RoleDescriptions():
 - Non-Human
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["sylph"])
-        await self.client.send_message(where,"__**Sylph**__",embed=embed)
+        await where.send("__**Sylph**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_tardisengineer(self, ctx, where = ""):
@@ -1193,7 +1194,7 @@ class RoleDescriptions():
 - Unique
 - Achievable""",colour=0x204eff)
         embed.set_thumbnail(url=icons["tardisengineer"])
-        await self.client.send_message(where,"__**TARDIS Engineer**__",embed=embed)
+        await where.send("__**TARDIS Engineer**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_thief(self, ctx, where = ""):
@@ -1212,7 +1213,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xe0be00)
         embed.set_thumbnail(url=icons["thief"])
-        await self.client.send_message(where,"__**Thief**__",embed=embed)
+        await where.send("__**Thief**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_timelord(self, ctx, where = ""):
@@ -1232,7 +1233,7 @@ class RoleDescriptions():
 - Investigative/Support
 - Non-Human""",colour=0x204eff)
         embed.set_thumbnail(url=icons["timelord"])
-        await self.client.send_message(where,"__**Time Lord**__",embed=embed)
+        await where.send("__**Time Lord**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_twin(self, ctx, where = ""):
@@ -1249,7 +1250,7 @@ class RoleDescriptions():
 **Tags:**
 - Modifier""",colour=0x9900ff)
         embed.set_thumbnail(url=icons["twin"])
-        await self.client.send_message(where,"__**Twin**__",embed=embed)
+        await where.send("__**Twin**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_understudy(self, ctx, where = ""):
@@ -1268,7 +1269,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0xffffff)
         embed.set_thumbnail(url=icons["understudy"])
-        await self.client.send_message(where,"__**Understudy**__",embed=embed)
+        await where.send("__**Understudy**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_warlock(self, ctx, where = ""):
@@ -1288,7 +1289,7 @@ class RoleDescriptions():
 - Unique
 - Achievable""",colour=0xff2323)
         embed.set_thumbnail(url=icons["warlock"])
-        await self.client.send_message(where,"__**Warlock**__",embed=embed)
+        await where.send("__**Warlock**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_werewolf(self, ctx, where = ""):
@@ -1307,7 +1308,7 @@ class RoleDescriptions():
 - Killing
 - Wolf""",colour=0xff5000)
         embed.set_thumbnail(url=icons["werewolf"])
-        await self.client.send_message(where,"__**Werewolf**__",embed=embed)
+        await where.send("__**Werewolf**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_whisperer(self, ctx, where = ""):
@@ -1326,7 +1327,7 @@ class RoleDescriptions():
 - Human
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["whisperer"])
-        await self.client.send_message(where,"__**Whisperer**__",embed=embed)
+        await where.send("__**Whisperer**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_witch(self, ctx, where = ""):
@@ -1346,7 +1347,7 @@ class RoleDescriptions():
 - Killing/Protective
 - Non-Human""",colour=0xd800ff)
         embed.set_thumbnail(url=icons["witch"])
-        await self.client.send_message(where,"__**Witch**__",embed=embed)
+        await where.send("__**Witch**__",embed=embed)
 
 def setup(client):
     client.add_cog(RoleDescriptions(client))
