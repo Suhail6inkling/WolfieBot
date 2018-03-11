@@ -1,10 +1,5 @@
 from wolfiebot import *
 
-try:
-    from config import *
-except ModuleNotFoundError:
-    pass
-
 role_categories_list = ["Chaos", "Counteractive", "Investigative", "Killing", "Protective", "Support"]
 alignments = ["Good", "Evil", "Neutral"]
 attack_save_strengths = ["Standard", "Strong", "Powerful", "Unstoppable"]

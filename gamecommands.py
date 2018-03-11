@@ -4,11 +4,6 @@ import asyncio
 from wolfiebot import *
 from roles import *
 
-try:
-    from config import *
-except ModuleNotFoundError:
-    pass
-
 # PlayerInfo structure:
 # player : [user, channel ref, role, [modifiers], alignment, alive/dead]
 
@@ -33,6 +28,8 @@ class GameCommands():
     @commands.command(pass_context=True)
     async def endgame(self, ctx):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            global Day
+            Day = False
             player_role = discord.utils.get(ctx.message.guild.roles, name="Player")
             dead_role = discord.utils.get(ctx.message.guild.roles, name="Dead")
             mayor_role = discord.utils.get(ctx.message.guild.roles, name="Mayor")

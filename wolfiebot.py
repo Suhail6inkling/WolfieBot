@@ -4,12 +4,13 @@ from discord.ext import commands
 import asyncio
 import random
 import math
+import os
 from roles import *
 
 try:
-    from config import *
+    from config import TOKEN
 except ModuleNotFoundError:
-    pass
+    TOKEN = os.environ['TOKEN']
 
 Client = discord.Client()
 prefix= "w."
