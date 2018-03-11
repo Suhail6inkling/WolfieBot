@@ -28,7 +28,7 @@ class GameCommands():
     @commands.command(pass_context=True)
     async def endgame(self, ctx):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
-            global Day
+            global Day, DayCount
             Day = False
             player_role = discord.utils.get(ctx.message.guild.roles, name="Player")
             dead_role = discord.utils.get(ctx.message.guild.roles, name="Dead")
@@ -93,10 +93,10 @@ class GameCommands():
                 report == "{}/A Priest is present in this game!".format(report)
             if "Merchant" in [PlayerInfo[p][2] for p in PlayerInfo]:
                 report == "{}/A Merchant is present in this game!".format(report)
-            n = 0
+            DayCount = 0
             while True:
-                n = n+1
-                report = "{}; 900; {}".format(n,report)
+                DayCount = DayCount+1
+                report = "{}; 900; {}".format(DayCount,report)
                 await ctx.invoke(self.client.get_command("daytimer"),message=report)
                 mayor_role = discord.utils.get(ctx.message.guild.roles, name="Mayor")
                 deputy_role = discord.utils.get(ctx.message.guild.roles, name="Deputy")
@@ -118,7 +118,7 @@ class GameCommands():
                         NeedDeputy = True
                         while NeedDeputy == True:
                             await asyncio.sleep(5)
-                if n != 1:
+                if DayCount != 1:
                     await voting_channel.send("LYNCH")
                     lynched = await ctx.invoke(self.client.get_command("playervote"))
                     lynched = [p for p in ctx.message.guild.members if p.nick == lynched][0]
@@ -135,9 +135,11 @@ class GameCommands():
 
     #giveroles command using classes
     """@commands.command(pass_context=True)
-    async def giveroles(self, ctx, *, message: str):
+    async def giveroles(self, ctx, *, message: str, wolvesclass=None):
         global PlayerInfo
         notes_channel = self.client.get_channel(393476547954212874)
+        chan = await ctx.invoke(self.client.get_command("wolves"))
+        wolvesclass = Wolves(chan)
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             message = message.split(", ")
             x = []
@@ -157,11 +159,15 @@ class GameCommands():
                 bot_role = discord.utils.get(ctx.message.guild.roles, name="Bots")
                 chan = discord.utils.get(ctx.message.guild.channels, name="{}-priv".format(m[0]))
                 user = [u for u in ctx.message.guild.members if chan.permissions_for(u).read_messages == True and gm_role not in u.roles and bot_role not in u.roles][0]
+                if m[1] in WolfRoles:
+                    role = roleclasses[m[1]](wolvesclass)
+                else:
+                    role = roleclasses[m[1]]()
                 try:
                     if m[2] != None:
-                        m = Player(user, chan, roleclasses[m[1]], roleclasses[m[2]])
+                        m = Player(user, chan, role, roleclasses[m[2]]())
                     else:
-                        m = Player(user, chan, roleclasses[m[1]])
+                        m = Player(user, chan, role)
                 except KeyError:
                     await ctx.send("There was a problem applying {}'s roles.".format(name))
                     return
@@ -449,6 +455,7 @@ class GameCommands():
             players = ctx.message.mentions
             for p in players:
                 await wolves_channel.set_permissions(p, overwrite=wolf_perms)
+            return wolves_channel
         else:
             await ctx.send("You need to be a GM to use this command!")
 
@@ -460,7 +467,8 @@ class GameCommands():
             twin_perms = discord.PermissionOverwrite(read_messages=True)
             overwrites = {guild.default_role : everyone_perms, discord.utils.get(guild.roles, name="Game Master") : twin_perms, p1 : twin_perms, p2: twin_perms}
             category = discord.utils.get(guild.categories, name="priv channels")
-            await guild.create_text_channel("twins", overwrites=overwrites, category=category)
+            chan = await guild.create_text_channel("twins", overwrites=overwrites, category=category)
+            return chan
         else:
             await ctx.send("You need to be a GM to use this command!")
 
@@ -481,6 +489,7 @@ class GameCommands():
                 await tardis_channel.set_permissions(companion, overwrite=crew_perms)
             else:
                 await tardis_channel.set_permissions(companion, overwrite=None)
+            return tardis_channel
         else:
             await ctx.send("You need to be a GM to use this command!")
 
@@ -500,6 +509,7 @@ class GameCommands():
                 players = p
             for p in players:
                 await coven_channel.set_permissions(p, overwrite=fate_perms)
+            return coven_channel
         else:
             await ctx.send("You need to be a GM to use this command!")
 
@@ -511,7 +521,8 @@ class GameCommands():
             seance_perms = discord.PermissionOverwrite(read_messages=True)
             overwrites = {guild.default_role : everyone_perms, discord.utils.get(guild.roles, name="Game Master") : seance_perms, medium : seance_perms, target : seance_perms}
             category = discord.utils.get(guild.categories, name="priv channels")
-            await guild.create_text_channel("seance", overwrites=overwrites, category=category)
+            chan = await guild.create_text_channel("seance", overwrites=overwrites, category=category)
+            return chan
         else:
             await ctx.send("You need to be a GM to use this command!")
 

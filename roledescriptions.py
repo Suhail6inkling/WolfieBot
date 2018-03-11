@@ -628,7 +628,7 @@ class RoleDescriptions():
 **Abilities:**
 - Cannot change alignment or objective by any means, unless they also change role. If an effect would cause the Merchant to change their alignment or objective without also changing their role, it fails.
 - Has a stock of actions that begins the game empty.
-- All the actions of the first player to die from a Lynching are added to the Merchant's stock.
+- All the actions of any player to die from a Lynching are added to the Merchant's stock.
 - Their presence, but not their identity, is announced at the start of the game.
 - All players other than the Merchant gain the action to once per game, at night, whilst the Merchant is alive, visit the Merchant. This action cannot be used if they do not have any other actions. They are told the contents of the Merchant's stock and must choose one of their actions (which still has uses) to lose in order to gain an action of their choice from the Merchant's stock. This action may not be used on the night on which they trade it away. If one Wolf player trades in *Maul* or *Pack Offensive*, all Wolves lose the action.
 - Any player who visits the Merchant when there are no actions in their stock commits suicide that night, and any player who dies on the same night that they visit the Merchant's has all their actions added to the Merchant's stock.
@@ -636,7 +636,7 @@ class RoleDescriptions():
 - The Merchant is told when any player visits them, their identity and what actions they lost and gained.
 - The Merchant's stock is updated at the start of every day.
 **Objectives:**
-- Have at least five actions in their stock at any time.
+- Have an amount of actions in their stock that is at least the amount of players at the start of the game at any time.
 **Tags:**
 - Neutral
 - Chaos/Support

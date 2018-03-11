@@ -105,6 +105,7 @@ descCommands = {"Alchemist" : "roles_alchemist", "Arsonist" : "roles_arsonist", 
 
 global Day, PlayerInfo
 Day = False
+DayCount = 0
 PlayerInfo = []
 
 @client.event
