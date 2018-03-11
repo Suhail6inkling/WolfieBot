@@ -4,8 +4,12 @@ from discord.ext import commands
 import asyncio
 import random
 import math
-from config import *
 from roles import *
+
+try:
+    from config import *
+except ModuleNotFoundError:
+    pass
 
 Client = discord.Client()
 prefix= "w."

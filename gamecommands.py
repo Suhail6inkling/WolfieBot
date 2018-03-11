@@ -2,8 +2,12 @@ import discord
 from discord.ext import commands
 import asyncio
 from wolfiebot import *
-from config import *
 from roles import *
+
+try:
+    from config import *
+except ModuleNotFoundError:
+    pass
 
 # PlayerInfo structure:
 # player : [user, channel ref, role, [modifiers], alignment, alive/dead]
@@ -131,6 +135,63 @@ class GameCommands():
                 # keep working on this
         else:
             await ctx.send("You need to be a GM to use this command!")
+
+    #giveroles command using classes
+    """@commands.command(pass_context=True)
+    async def giveroles(self, ctx, *, message: str):
+        global PlayerInfo
+        notes_channel = self.client.get_channel(393476547954212874)
+        if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            message = message.split(", ")
+            x = []
+            for m in message:
+                m = m.split(": ")
+                m[0] = m[0].lower()
+                m[0] = m[0].replace(" ","-")
+                name = m[0]
+                if "(" in m[1]:
+                    y = m[1].split(" (")
+                    m[1] = y[0]
+                    modifier = y[1]
+                    m.append(modifier[:-1])
+                else:
+                    m.append(None)
+                gm_role = discord.utils.get(ctx.message.guild.roles, name="Game Master")
+                bot_role = discord.utils.get(ctx.message.guild.roles, name="Bots")
+                chan = discord.utils.get(ctx.message.guild.channels, name="{}-priv".format(m[0]))
+                user = [u for u in ctx.message.guild.members if chan.permissions_for(u).read_messages == True and gm_role not in u.roles and bot_role not in u.roles][0]
+                try:
+                    if m[2] != None:
+                        m = Player(user, chan, roleclasses[m[1]], roleclasses[m[2]])
+                    else:
+                        m = Player(user, chan, roleclasses[m[1]])
+                except KeyError:
+                    await ctx.send("There was a problem applying {}'s roles.".format(name))
+                    return
+                x.append([name,m])
+            PlayerInfo = {p[0] : p[1] for p in x}
+            for player in PlayerInfo:
+                if PlayerInfo[player].alignment == "Good" or PlayerInfo[player].alignment == "Neutral":
+                    a = " {}".format(PlayerInfo[player].alignment)
+                elif PlayerInfo[player].alignment == "Evil":
+                    a = "n {}".format(PlayerInfo[player].alignment)
+                if PlayerInfo[player].modifiers != []:
+                    output = "You are a{} {}{}!".format(a,PlayerInfo[player].role.name,PlayerInfo[player].modifiers[0])
+                else:
+                    output = "You are a{} {}{}!".format(a,PlayerInfo[player].role.name)
+                await PlayerInfo[player][1].send(output)
+                await ctx.invoke(self.client.get_command(descCommands[PlayerInfo[player].role]), where=PlayerInfo[player].privchannel)
+                if PlayerInfo[player].modifiers != []:
+                    await ctx.invoke(self.client.get_command(descCommands[PlayerInfo[player].modifiers[0]]), where=PlayerInfo[player].privchannel)
+            rolereport = ""
+            for p in sorted(list(PlayerInfo)):
+                mod = ""
+                for m in PlayerInfo[p].modifiers:
+                    mod = "{} {}".format(mod,m)
+                rolereport = ("{}{} - {} {}{}\n".format(rolereport,p.title(),PlayerInfo[p].alignment,PlayerInfo[p].role.name,mod))
+            await notes_channel.send(rolereport)
+        else:
+            await ctx.send("You need to be a GM to use this command!")"""
 
     @commands.command(pass_context=True)
     async def giveroles(self, ctx, *, message: str):

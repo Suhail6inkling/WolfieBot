@@ -2,7 +2,11 @@ import discord
 from discord.ext import commands
 import asyncio
 from wolfiebot import *
-from config import *
+
+try:
+    from config import *
+except ModuleNotFoundError:
+    pass
 
 class RoleDescriptions():
     def __init__(self, client):
