@@ -842,6 +842,10 @@ async def tac(*, message: str):
         combined = combined+finish
         await ctx.send(combined)
 
+async def KeepAwake():
+    asyncio.sleep(1500)
+    print("Still awake.")
+
 if __name__ == "__main__":
     for extension in startup_extensions:
         try:
@@ -849,5 +853,6 @@ if __name__ == "__main__":
         except Exception as e:
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
-            
+
+    client.loop.create_task(KeepAwake())
     client.run(TOKEN)
