@@ -590,8 +590,8 @@ async def generatelist(ctx):
 Anonymous Register - <w.generatelist anons [players] : [roles]>\nDuality - <w.generatelist duality [players]>\nMoral Feud - <w.generatelist morals [players]>\n\
 Truth & Claw - <w.generatelist tac [players]>```")
 
-@generatelist.command()
-async def standard(*, message: str):
+@generatelist.command(pass_context=True)
+async def standard(ctx, *, message: str):
     Good=list(GoodRoles)
     for r in Good:
         if r in AchievableRoles:
@@ -720,8 +720,8 @@ async def standard(*, message: str):
                 break
     await ctx.send(combined)
 
-@generatelist.command()
-async def anons(*, message: str):
+@generatelist.command(pass_context=True)
+async def anons(ctx, *, message: str):
     message = message.split(" : ")
     PlayerList = message[0]
     RoleList = message[1]
@@ -742,8 +742,8 @@ async def anons(*, message: str):
         combined = combined+finish
         await ctx.send(combined)
 
-@generatelist.command()
-async def duality(*, message: str):
+@generatelist.command(pass_context=True)
+async def duality(ctx, *, message: str):
     PlayerList = message.split(", ")
     PlayerList = sorted(PlayerList)
     if len(PlayerList) % 2 != 0:
@@ -782,8 +782,8 @@ async def duality(*, message: str):
         combined = combined+finish
         await ctx.send(combined)
 
-@generatelist.command()
-async def morals(*, message: str):
+@generatelist.command(pass_context=True)
+async def morals(ctx, *, message: str):
     PlayerList = message.split(", ")
     PlayerList = sorted(PlayerList)
     if len(PlayerList) < 8:
@@ -818,8 +818,8 @@ async def morals(*, message: str):
         combined = combined+finish
         await ctx.send(combined)
 
-@generatelist.command()
-async def tac(*, message: str):
+@generatelist.command(pass_context=True)
+async def tac(ctx, *, message: str):
     PlayerList = message.split(", ")
     PlayerList = sorted(PlayerList)
     if len(PlayerList) < 6:
