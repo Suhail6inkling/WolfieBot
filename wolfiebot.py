@@ -5,6 +5,7 @@ import asyncio
 import random
 import math
 from config import *
+from roles import *
 
 Client = discord.Client()
 prefix= "w."

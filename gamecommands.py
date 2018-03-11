@@ -3,6 +3,7 @@ from discord.ext import commands
 import asyncio
 from wolfiebot import *
 from config import *
+from roles import *
 
 # PlayerInfo structure:
 # player : [user, channel ref, role, [modifiers], alignment, alive/dead]

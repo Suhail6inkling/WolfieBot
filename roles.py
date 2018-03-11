@@ -1,53 +1,53 @@
-role_types_list = [
-    "chaos", "counteractive", "investigative", "killing", "protective",
-    "support"
-]
-alignments = ["Good", "Evil", "Neutral"]
-attack_save_types = ["Standard", "Strong", "Powerful", "Unstoppable"]
-save_durations = ["active", "lunar", "queued"]
+from wolfiebot import *
+from config import *
 
+role_categories_list = ["chaos", "counteractive", "investigative", "killing", "protective", "support"]
+alignments = ["Good", "Evil", "Neutral"]
+attack_save_strengths = ["Standard", "Strong", "Powerful", "Unstoppable"]
+save_durations = ["active", "lunar", "queued"]
+species_list = ["Human", "Wolf", "Non-Human"]
 
 class Role():
-    """Skeleton code for roles in the game"""
-    tags = []
     isUnique = False
-    isHuman = True
-    alignment = 2  # Default alignment for roles is Neutral
-    role_types = []  # corresponds to role type in role_types_list
+    isAchievable = False
+    alignment = "Neutral"
+    species = "Human"
 
     def __init__(self):
+        self.tags = []
+        self.role_categories = []
+        self.saves = []
         if self.isUnique:
             self.tags.append("Unique")
-        self.tags.append(alignments[self.alignment])
-        if self.isHuman:
-            self.tags.append("Human")
-        for role_type in self.role_types:
-            self.tags.append(role_types_list[role_type])
-
+        if self.isAchievable:
+            self.tags.append("Achievable")
+        self.tags.append(self.alignment)
+        self.tags.append(self.species)
+        for category in self.role_categories:
+            self.tags.append(category)
 
 class Save():
-    """Save class"""
-
-    def __init__(self, save_type, duration):
-        self.save_type = save_type
+    def __init__(self, strength, duration):
+        self.strength = strength
         self.duration = duration
 
+class Attack():
+    def __init__(self, strength, duration):
+        self.strength = strength
 
 class Player():
-    """Player class:
-        Handles saves, attacks, suicids and objectives
-        """
-
-    def init(self, role):
+    def __init__(self, role):
         self.role = role
         self.alignment = role.alignment
         self.objectives = role.objectives
         self.isAlive = True
         self.saves = role.saves
+        self.action_targets = {a : [] for a in role.actions}
 
     def attacked(self, attack):
         for save in self.saves:
-            if save.type >= attack.type:
+            if save.strength >= attack.strength:
+                self.saves.remove(save)
                 return "saved"
         self.isAlive = False
         return "killed"
@@ -62,30 +62,32 @@ class Player():
                 return True
         return False
 
-
 class Seer(Role):
-    """In-game Seer role"""
     name = "Seer"
-    description = """
-    Her silence, well, that's the worst part of it.
-    She doesn't raise her voice, she doesn't cry out,
-    it's just her deathly silence.
-    Her silver pupils scan the room and they'll lock onto you.
-    And she then she just points.
-    There are no words, no anger, no sorrow - only the stare.
-    And as you're being dragged away to the gallows, her apathy is unwavering.
-    No smirks, no grins, just the cold and unfeeling gaze.
-    And then, as the rope is being tightened around your neck,
-    her silence is the last thing you'll ever hear.
-    """
+    actions = {"Investigate" : -1, "Publish" : 1}
     objectives = ["good-standard"]
-    alignment = 0
-    role_types = [2]
+    alignment = "Good"
 
     def __init__(self):
         super().__init__()
+        role_categories = ["investigative"]
 
-    def investigate(self, player):
-        if player.alignment == 1 and not player.isInvestigated:
-            return player.role.__name__, player.alignment, Save(1, 2)
-        return player.role.__name__, player.alignment
+    def investigate(self, target):
+        if target.alignment == "Evil" and target not in self.investigated_list:
+            self.action_targets["Investigate"].append(target)
+            return target.role.__name__, target.alignment, Save(1, 2)
+        self.action_targets["Investigate"].append(target)
+        return target.role.name, target.alignment
+
+class Werewolf(Role):
+    name = "Werewolf"
+    actions = {"Maul" : -1, "Pack Offensive" : 1}
+    objectives = ["evil-standard"]
+    alignment = "Evil"
+
+    def __init__(self):
+        super().__init__()
+        role_categories = ["killing"]
+
+    def maul(self, target):
+        result = target.attacked(Attack(1))
