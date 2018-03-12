@@ -17,8 +17,9 @@ class Save():
         self.special = special
 
     def use(self, user):
-        if self.special == "infect":
-            user.changerole(Werewolf())
+        if type(self.special) is list:
+            if self.special[0] == "infect":
+                user.changerole(Werewolf(self.special[1]))
 
 class Attack():
     def __init__(self, user, strength, special=None):
@@ -115,6 +116,7 @@ class Seer(Role):
     ondaystart_abilities = []
     onnightstart_abilities = []
     ontarget_abilities = []
+    ondeath_abilities = []
 
 class Wolves():
     name = "Wolves"
@@ -183,14 +185,14 @@ class Direwolf(Role):
         if target in self.wolves.members:
             return "fail"
         self.actions["Infect"][0] = self.actions["Infect"][0] - 1
-        target.saves.append(Save(3,1,"infect"))
+        target.saves.append(Save(3,1,["infect",self.wolves]))
         return "success"
 
-    def po_gain_use(self):
+    def po_gain_use(self, user):
         if DayCount == 3 and Day == False:
             self.wolves.n3_gain_use()
 
-    def refresh_actions(self):
+    def refresh_actions(self, user):
         self.actions["Maul"] = self.wolves.actions["Maul"]
         self.actions["Pack Offensive"] = self.wolves.actions["Pack Offensive"]
 
@@ -198,6 +200,7 @@ class Direwolf(Role):
     ondaystart_abilities = [refresh_actions]
     onnightstart_abilities = [po_gain_use]
     ontarget_abilities = []
+    ondeath_abilities = []
 
 class Werewolf(Role):
     name = "Werewolf"
@@ -215,11 +218,11 @@ class Werewolf(Role):
     def packoffensive(self, user, target):
         target.attacked(Attack(user,0))
 
-    def po_gain_use(self):
+    def po_gain_use(self, user):
         if DayCount == 3 and Day == False:
             self.wolves.n3_gain_use()
 
-    def refresh_actions(self):
+    def refresh_actions(self, user):
         self.actions["Maul"] = self.wolves.actions["Maul"]
         self.actions["Pack Offensive"] = self.wolves.actions["Pack Offensive"]
 
@@ -227,3 +230,4 @@ class Werewolf(Role):
     ondaystart_abilities = [refresh_actions]
     onnightstart_abilities = [po_gain_use]
     ontarget_abilities = []
+    ondeath_abilities = []

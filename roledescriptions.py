@@ -435,7 +435,8 @@ class RoleDescriptions():
     async def roles_hooligan(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""**Actions:**
+        embed=discord.Embed(description="""*There are good men. There are heroes, there are angels, there are saints and there are paragons. But there are bad men. Men who'll crack your skull open with knuckledusters if you look at them the wrong way. Men who'll make blood pour from your mouth like the first plague of Egypt. Men who'll gladly take your money and your woman without a second thought, safe in the knowledge that you'll do absolutely fucking nothing about it. And make no mistake, I am a very, very bad man.*
+**Actions:**
 *Threaten* - Every night, may choose one player. For each Attack that targets that player, the Hooligan targets them with another of equal strength. The Hooligan is told how many attacks they targeted the player with, if any.
 **Abilities:**
 - Is told the identity of the Direwolf at the start of the game.
