@@ -560,5 +560,19 @@ class GameCommands():
         else:
             await ctx.send("You need to be a GM to use this command!")
 
+    @commands.command(pass_context=True)
+    async def sonic(self, ctx, roles: str):
+        if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            roles = roles.split(", ")
+            random.shuffle(roles)
+            sonic = []
+            All = [r for r in AllRoles if r not in [r.title() for r in roles]]
+            for i in range(0, round(len(roles)/2)):
+                sonic.append(roles[i])
+            for i in range(0, round((len(roles)-0.5)/2)):
+                sonic.append(random.choice(All))
+            ctx.send(sonic)
+            return sonic
+
 def setup(client):
     client.add_cog(GameCommands(client))
