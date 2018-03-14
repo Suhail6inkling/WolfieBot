@@ -92,6 +92,27 @@ class RoleDescriptions():
         await where.send("__**Bard**__",embed=embed)
 
     @commands.command(pass_context=True)
+    async def roles_clockmaker(self, ctx, where = ""):
+        if where == "":
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Pendulum* - Every night, can choose one player to target with a Standard Attack. If the targeted player dies and is Good, the Clockmaker's clock moves forwards one, if they are Evil, the clock moves backwards one, if they are Neutral, the clock moves forward three.
+**Abilities:**
+- Has a clock which starts set to 8.
+- If their clock strikes 6, they commit Suicide.
+- If their clock strikes 10, they gain a Queued Strong Save. This happens each time the clock strikes 10.
+- If their clock strikes 11, Pendulum is a Powerful Attack rather than a Standard Attack.
+- Cannot change alignment or objective by any means, unless they also change role. If an effect would cause the Clockmaker to change their alignment or objective without also changing their role, it fails.
+**Objectives:**
+- Have their clock strike 12.
+**Tags:**
+- Neutral
+- Killing
+- Human""",colour=0xff9400)
+        embed.set_thumbnail(url=icons["clockmaker"])
+        await where.send("__**Clockmaker**__",embed=embed)
+
+    @commands.command(pass_context=True)
     async def roles_companion(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
@@ -1096,6 +1117,17 @@ class RoleDescriptions():
         await where.send("__**Spectre**__",embed=embed)
 
     @commands.command(pass_context=True)
+    async def roles_speedster(self, ctx, where = ""):
+        if where == "":
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Supercharge* - Three times per game, may choose to make all their actions act as if they were at the start of the night instead of at the end, hence acting before all effects used that night.
+**Tags:**
+- Modifier""",colour=0x80659a)
+        embed.set_thumbnail(url=icons["speedster"])
+        await where.send("__**Speedster**__",embed=embed)
+
+    @commands.command(pass_context=True)
     async def roles_spider(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
@@ -1155,6 +1187,26 @@ class RoleDescriptions():
 - Modifier""",colour=0x80659a)
         embed.set_thumbnail(url=icons["standuser"])
         await where.send("__**Stand User**__",embed=embed)
+
+    @commands.command(pass_context=True)
+    async def roles_survivalist(self, ctx, where = ""):
+        if where == "":
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Bulletproof Vest* - Three times per game, at night, may choose to gain an Active Unstoppable Save.
+*Paranoia* - Once per game, at night, may choose to cause all players targeting the Survivalist to have their action fail and to be instead targeted with a Standard Attack.
+**Abilities:**
+- If any effect would cause them to commit Suicide, it fails.
+- Is told the identity of any other Survivalists in the game.
+- Does not need to be killed to fulfill any other role's objectives.
+**Objectives:**
+- Survive until the end of the game.
+**Tags:**
+- Neutral
+- Counteractive
+- Human""",colour=0x00ff85)
+        embed.set_thumbnail(url=icons["survivalist"])
+        await where.send("__**Survivalist**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_sylph(self, ctx, where = ""):

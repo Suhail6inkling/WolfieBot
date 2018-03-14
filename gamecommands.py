@@ -566,7 +566,7 @@ class GameCommands():
             roles = roles.split(", ")
             random.shuffle(roles)
             sonic = []
-            All = [r for r in AllRoles if r not in [r.title() for r in roles]]
+            All = [r for r in AllRoles if r not in [x.title() for x in roles]]
             for i in range(0, round(len(roles)/2)):
                 sonic.append(roles[i])
             for i in range(0, round((len(roles)-0.5)/2)):
