@@ -169,7 +169,7 @@ async def gm_help(ctx):
 
 <w.lockjaw (@player boolean)> - If boolean true, lockjaws player; if false, unlockjaws player.
 <w.medium (@player boolean)> - If boolean true, gives player perms to see #dead; if false, removes perms.
-<w.sonic (comma-seperated list of all roles in game) - Returns a Sonic result for roles provided.
+<w.sonic (comma-seperated list of all roles in game)> - Returns a Sonic result for roles provided.
 
 <w.endgame> - Ends game, removing all game roles and permissions from all members of guild and deleting all group priv channels.```""")
 
