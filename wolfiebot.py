@@ -619,79 +619,95 @@ async def standard(ctx, *, message: str):
     for r in Mod:
         if r in AchievableModifiers:
             Mod.remove(r)
-    Mod.append("Morty")
-    Mod.append("Twin")
     PlayerList = message.split(", ")
     PlayerList = sorted(PlayerList)
     if len(PlayerList) < 8:
         await ctx.send("Not enough players, sorry.")
         return
     else:
+        GCount = 4
+        ECount = 3
+        NCount = 1
+        PlayerCount = len(PlayerList) - 8
+        skip = False
         while True:
-            RoleList = ["Direwolf", "Seer"]
-            EvilCount = 1
-            GoodCount = 1
-            x = round(len(PlayerList)/8)
-            for i in range(0, x):
+            for i in range(0,PlayerCount):
+                if skip == True:
+                    skip = False
+                    continue
+                x = random.randint(0,1)
+                if x == 0 and i < (PlayerCount - 2):
+                    GCount = GCount + 1
+                    y = random.randint(0,2)
+                    if y != 0:
+                        ECount = ECount + 1
+                        skip = True
+                else:
+                    NCount = NCount + 1
+            if ECount >= round(GCount*2/3):
+                break
+        while True:
+            RoleList = ["Seer", "Direwolf"]
+            w = round(len(PlayerList)/8)
+            for i in range(0,w):
                 RoleList.append("Werewolf")
-                EvilCount = EvilCount+1
-            y = random.randint((round(len(PlayerList)/3)), (round(len(PlayerList)/1.5)))
-            for i in range(0, y):
-                g = random.choice(Good)
-                RoleList.append(g)
-                if g in UniqueRoles:
-                    Good.remove(g)
-                GoodCount = GoodCount+1
-            if "Priest" in RoleList:
-                RoleList.append("Cultist")
-                EvilCount = EvilCount+1
-            for i in range(0, round((GoodCount-EvilCount)/2)):
-                e = random.choice(Evil)
-                RoleList.append(e)
-                if e in UniqueRoles:
-                    Evil.remove(e)
-                EvilCount = EvilCount+1
-            for i in range(0,(len(PlayerList)-len(RoleList))):
-                n = random.choice(Neutral)
-                RoleList.append(n)
-                if n in UniqueRoles:
-                    Neutral.remove(n)
+            Cultist = False
+            Minstrels = 0
+            for i in range(1,GCount):
+                r = random.choice(Good)
+                RoleList.append(r)
+                if r in UniqueRoles:
+                    Good.remove(r)
+                if r == "Priest":
+                    Cultist = True
+            for i in range((1+w),ECount):
+                if Cultist == True:
+                    r = "Cultist"
+                    Cultist = False
+                else:
+                    r = random.choice(Evil)
+                RoleList.append(r)
+                if r in UniqueRoles and r != "Cultist":
+                    Evil.remove(r)
+            for i in range(0,NCount):
+                r = random.choice(Neutral)
+                RoleList.append(r)
+                if r in UniqueRoles:
+                    Neutral.remove(r)
+                if r == "Bard":
+                    Minstrels = 2
+                    Mod.append("Minstrel")
+                    Mod.append("Minstrel")
             ModifierList = []
-            TwinYes = False
-            StandYes = False
-            Minstrels=0
-            TwinCount=1
-            if "Bard" in RoleList:
-                Minstrels=2
-                Mod.append("Minstrel")
-                Mod.append("Minstrel")
-            for i in range(0, (len(PlayerList))):
+            Twins = False
+            TwinCount = 1
+            StandUsers = False
+            SUPresent = False
+            for i in range(0,len(PlayerList)):
                 if Minstrels > 0:
-                    ModifierList.append("Minstrel")
-                    Minstrels=Minstrels-1
-                elif TwinYes == True:
-                    ModifierList.append("Twin {}" .format(TwinCount))
+                    m = "Minstrel"
+                    Minstrels = Minstrels - 1
+                elif Twins:
+                    m = "Twin {}".format(TwinCount)
                     TwinCount = TwinCount+1
-                    TwinYes = False
-                elif StandYes == True:
-                    ModifierList.append("Stand User")
-                    StandYes = False
+                    Twins = False
+                elif StandUsers:
+                    m = "Stand User"
+                    Mod.append("Stand User")
+                    StandUsers = False
                 else:
                     z = random.randint(1,4)
                     if z == 4:
                         m = random.choice(Mod)
-                        if m == "Twin":
-                            ModifierList.append("Twin {}" .format(TwinCount))
-                            TwinYes = True
-                        if m == "Stand User":
-                            if "Stand User" not in ModifierList:
-                                StandYes = True
-                                Mod.append("Stand User")
-                            ModifierList.append("Stand User")
-                        else:
-                            ModifierList.append(m)
                     else:
-                        ModifierList.append("")
+                        m = ""
+                if m == "Twin":
+                    m = "Twin {}".format(TwinCount)
+                    Twins = True
+                elif m == "Stand User" and not SUPresent:
+                    StandUsers = True
+                    SUPresent = True
+                ModifierList.append(m)
             random.shuffle(RoleList)
             random.shuffle(ModifierList)
             combined = "```md\n"
@@ -700,11 +716,7 @@ async def standard(ctx, *, message: str):
                 combined = combined+string
             finish = "```"
             combined = combined+finish
-            if "Minstrel" in combined and "Bard" not in combined:
-                continue
-            if "Backstabber Twin" in combined or "Backstabber Minstrel" in combined or "Backstabber Morty" in combined or "Backstabber Feral" in combined:
-                continue
-            elif "Bard Minstrel" in combined:
+            if "Bard Minstrel" in combined:
                 continue
             elif combined.count("Minstrel") == 1:
                 continue
@@ -712,21 +724,11 @@ async def standard(ctx, *, message: str):
                 continue
             elif combined.count("Twin") % 2 != 0:
                 continue
-            elif "Cultist" in combined and "Priest" not in combined:
+            elif [i for i in ["Backstabber {}".format(m) for m in Modifiers] if i in combined] != []:
                 continue
-            elif "Priest" in combined and "Cultist" not in combined:
-                continue
-            elif "Maid Feral" in combined:
-                continue
-            c = False
-            for r in RoleList:
-                if r in AchievableRoles:
-                    c = True
-            if c == True:
-                continue
-            if len(RoleList) == len(PlayerList):
+            else:
                 break
-    await ctx.send(combined)
+        await ctx.send(combined)
 
 @generatelist.command(pass_context=True)
 async def anons(ctx, *, message: str):
