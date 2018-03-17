@@ -746,9 +746,9 @@ async def standard(ctx, *, message: str):
             if ModifierList[p] != "":
                 if "Twin" in ModifierList[p]:
                     ModifierList[p] = "Twin"
-                giveroles = "{} {}: {} ({}){}".format(giveroles,PlayerList[p].lower(),RoleList[p],ModifierList[p],end)
+                giveroles = "{}{}: {} ({}){}".format(giveroles,PlayerList[p].lower(),RoleList[p],ModifierList[p],end)
             else:
-                giveroles = "{} {}: {}{}".format(giveroles,PlayerList[p].lower(),RoleList[p],end)
+                giveroles = "{}{}: {}{}".format(giveroles,PlayerList[p].lower(),RoleList[p],end)
         combined = "{}`{}`".format(combined,giveroles)
         print(combined)
         await ctx.send(combined)
