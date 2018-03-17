@@ -95,7 +95,8 @@ class RoleDescriptions():
     async def roles_clockmaker(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""**Actions:**
+        embed=discord.Embed(description="""*A thousand rusted, ancient cogs turning around in the belly of the beast. Dwelling inside your head, the infernal noise. Tick tock. Tick tock. Tick tock. With every second that passes, you take one step closer to your own demise.*
+**Actions:**
 *Pendulum* - Every night, can choose one player to target with a Standard Attack. If the targeted player dies and is Good, the Clockmaker's clock moves forwards one, if they are Evil, the clock moves backwards one, if they are Neutral, the clock moves forward three.
 **Abilities:**
 - Has a clock which starts set to 8.
@@ -1192,7 +1193,8 @@ class RoleDescriptions():
     async def roles_survivalist(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""**Actions:**
+        embed=discord.Embed(description="""*A million miles from home, in some castaway village of savages violently fucking and killing anything that moves. Each breath is a battle against the odds, each step is another potential landmine, each confrontation is a test of willpower where only the bravest can survive. But me? I don't just survive. I thrive. I live. And, if you dare cross me, I'll make sure you can't say the same.*
+**Actions:**
 *Bulletproof Vest* - Three times per game, at night, may choose to gain an Active Unstoppable Save.
 *Paranoia* - Once per game, at night, may choose to cause all players targeting the Survivalist to have their action fail and to be instead targeted with a Standard Attack.
 **Abilities:**
@@ -1291,7 +1293,7 @@ class RoleDescriptions():
     async def roles_twin(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""*We're just like each other, you and I - we're so close that we practically know what the other is thinking. If I lost you, that would be like losing a part of myself too.*
+        embed=discord.Embed(description="""*Two souls, eternally bonded. Our veins may pump different blood and our backgrounds may be different, but you will forever be my brother, in health and in sickness, in poverty and in richness, in peace and in war, in life and in death.*
 **Abilities:**
 - This Modifier is always applied to a pair of players.
 - The Twins may speak in a shared channel with one another at any time.
@@ -1308,7 +1310,7 @@ class RoleDescriptions():
     async def roles_understudy(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""*The boy stands over the mutilated corpse. Squinting, he bends down, pokes at the cold flesh. He takes out the strip of paper, staring into the scrawled name with studious eyes. He strips the corpse of its garments, and wraps himself in them. His posture adjusts, his mannerisms alter in the blink of an eye. He walks off into the night.*
+        embed=discord.Embed(description="""*Grief - the very worst of all human emotions. Grief can turn a brave hero into a desperate villain. Grief can throw the strongest man into a deepening spiral of emotional paralysis. Grief can make you throw out all you know - your items, your friends, even the clothes on your back. Grief can change you, make you become something you were never meant to be. Small changes at first - new haircut, new outfit, new speech patterns - until you look in the mirror and see all that you lost. Grief can break a man. Grief can make a man.*
 **Actions:**
 *Imitate* - Once per game, may become the role of a dead player of their choice.
 **Abilities:**
@@ -1366,7 +1368,7 @@ class RoleDescriptions():
     async def roles_whisperer(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""*A phrase on a slip of paper, a faint echo among the trees, a scribble on the tavern wall - the whisperer will get his message across.*
+        embed=discord.Embed(description="""*There is truly nothing as powerful and versatile as words. Three words can stand for love, six can topple a government, fourteen can show hate, a few thousand can give you a career. How many do you reckon it'd take to end a pack of wolves?*
 **Actions:**
 *Whisper* - Every night, chooses one role and write a message to be sent to that role. The Whisperer is told if the role is in the game or not, but if it is not in the game the Whisperer may not use this action again. The message is sent to all players with that role. Modifiers cannot be selected as targets for this action.
 **Abilities**
@@ -1385,7 +1387,7 @@ class RoleDescriptions():
     async def roles_witch(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""*I'm not sure why she joined the town, or what she's capable of, but y'know, she'll do whatever it takes to get what she wants in the end, whether it's saving lives or ending them.*
+        embed=discord.Embed(description="""*A being of neither light nor evil, yet more destructive than both. A seductress who'll turn brother against brother and kill their entire family. A vampire who lusts for blood yet bares no fangs. A sycophant, dedicated not to malice, but to chaos. She lies in wait, her primal instinct to worship her primordial deities and protect the sisterhood - something she'll do at all costs.*
 **Actions:**
 *Poison* - Target one player with a Standard Attack every night.
 *Heal* - May give one player an Active Standard Save every night.
