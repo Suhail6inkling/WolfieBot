@@ -600,6 +600,7 @@ Truth & Claw - <w.generatelist tac [players]>```")
 
 @generatelist.command(pass_context=True)
 async def standard(ctx, *, message: str):
+    print("confirm")
     Good=list(GoodRoles)
     for r in Good:
         if r in AchievableRoles:
@@ -630,13 +631,15 @@ async def standard(ctx, *, message: str):
         NCount = 1
         PlayerCount = len(PlayerList) - 8
         skip = False
+        loopcount = 0
         while True:
+            loopcount = loopcount + 1
             for i in range(0,PlayerCount):
                 if skip == True:
                     skip = False
                     continue
-                x = random.randint(0,1)
-                if x == 0 and i < (PlayerCount - 2):
+                x = random.randint(0,2)
+                if x != 0 and i < (PlayerCount - 2):
                     GCount = GCount + 1
                     y = random.randint(0,2)
                     if y != 0:
@@ -644,8 +647,11 @@ async def standard(ctx, *, message: str):
                         skip = True
                 else:
                     NCount = NCount + 1
-            if ECount >= round(GCount*2/3):
+            if ECount >= round(GCount*2/3) and NCount <= round((GCount+ECount)/2):
                 break
+            elif loopcount == 75:
+                await ctx.send("Error, please try again.")
+                return
         while True:
             RoleList = ["Seer", "Direwolf"]
             w = round(len(PlayerList)/8)
@@ -714,7 +720,7 @@ async def standard(ctx, *, message: str):
             for i in range(0,len(PlayerList)):
                 string = "[+][{}] - {} {}\n" .format(PlayerList[i],RoleList[i],ModifierList[i])
                 combined = combined+string
-            finish = "```"
+            finish = "```\n"
             combined = combined+finish
             if "Bard Minstrel" in combined:
                 continue
@@ -728,6 +734,21 @@ async def standard(ctx, *, message: str):
                 continue
             else:
                 break
+        giveroles = "w.giveroles "
+        print(giveroles)
+        for p in range(0,len(PlayerList)):
+            if p == len(PlayerList)-1:
+                end = ""
+            else:
+                end = ", "
+            if ModifierList[p] != "":
+                if "Twin" in ModifierList[p]:
+                    ModifierList[p] = "Twin"
+                giveroles = "{} {}: {} ({}){}".format(giveroles,PlayerList[p].lower(),RoleList[p],ModifierList[p],end)
+            else:
+                giveroles = "{} {}: {}{}".format(giveroles,PlayerList[p].lower(),RoleList[p],end)
+        combined = "{}`{}`".format(combined,giveroles)
+        print(combined)
         await ctx.send(combined)
 
 @generatelist.command(pass_context=True)
