@@ -22,6 +22,21 @@ class GameCommands():
             for p in players:
                 if "Player" not in [y.name for y in p.roles]:
                     await p.add_roles(player_role)
+                else:
+                    await p.remove_roles(player_role)
+        else:
+            await ctx.send("You need to be a GM to use this command!")
+
+    @commands.command(pass_context=True)
+    async def setnarrator(self, ctx):
+        if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            narrator_role = discord.utils.get(ctx.message.guild.roles, name="Narrator")
+            narrators = ctx.message.mentions
+            for n in narrators:
+                if "Narrator" not in [y.name for y in n.roles]:
+                    await n.add_roles(narrator_role)
+                else:
+                    await n.remove_roles(narrator_role)
         else:
             await ctx.send("You need to be a GM to use this command!")
 
@@ -403,6 +418,21 @@ class GameCommands():
                 await ctx.invoke(self.client.get_command("medium"),user=player,status="f")
             else:
                 await ctx.send("User is either already dead or not in the game.")
+        else:
+            await ctx.send("You need to be a GM to use this command!")
+
+    @commands.command(pass_context=True)
+    async def revive(self, ctx, player: discord.Member):
+        player_role = discord.utils.get(ctx.message.guild.roles, name="Player")
+        dead_role = discord.utils.get(ctx.message.guild.roles, name="Dead")
+        if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            if "Dead" in [y.name for y in player.roles]:
+                await player.add_roles(player_role)
+                await asyncio.sleep(1)
+                await player.remove_roles(dead_role)
+                await asyncio.sleep(1)
+            else:
+                await ctx.send("User is either already alive or not in the game.")
         else:
             await ctx.send("You need to be a GM to use this command!")
 
