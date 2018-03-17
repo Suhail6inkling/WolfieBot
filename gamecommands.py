@@ -157,8 +157,9 @@ class GameCommands():
                     m.append(None)
                 gm_role = discord.utils.get(ctx.message.guild.roles, name="Game Master")
                 bot_role = discord.utils.get(ctx.message.guild.roles, name="Bots")
+                narr_role = discord.utils.get(ctx.message.guild.roles, name="Narrator")
                 chan = discord.utils.get(ctx.message.guild.channels, name="{}-priv".format(m[0]))
-                user = [u for u in ctx.message.guild.members if chan.permissions_for(u).read_messages == True and gm_role not in u.roles and bot_role not in u.roles][0]
+                user = [u for u in ctx.message.guild.members if chan.permissions_for(u).read_messages == True and gm_role not in u.roles and bot_role not in u.roles and narr_role not in u.roles][0]
                 if m[1] in WolfRoles:
                     role = roleclasses[m[1]](wolvesclass)
                 else:
@@ -218,7 +219,8 @@ class GameCommands():
                 m.append(chan)
                 gm_role = discord.utils.get(ctx.message.guild.roles, name="Game Master")
                 bot_role = discord.utils.get(ctx.message.guild.roles, name="Bots")
-                user = [u for u in ctx.message.guild.members if chan.permissions_for(u).read_messages == True and gm_role not in u.roles and bot_role not in u.roles][0]
+                narr_role = discord.utils.get(ctx.message.guild.roles, name="Narrator")
+                user = [u for u in ctx.message.guild.members if chan.permissions_for(u).read_messages == True and gm_role not in u.roles and bot_role not in u.roles and narr_role not in u.roles][0]
                 m.append(user)
                 x.append(m)
             PlayerInfo = {m[0] : [m[4], m[3], m[1], [m[2]]] for m in x}
