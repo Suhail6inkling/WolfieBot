@@ -10,6 +10,9 @@ species_list = ["Human", "Wolf", "Non-Human"]
 class Role():
     pass
 
+class Faction():
+    pass
+
 class Save():
     def __init__(self, strength, duration, special=None):
         self.strength = strength
@@ -118,7 +121,7 @@ class Seer(Role):
     ontarget_abilities = []
     ondeath_abilities = []
 
-class Wolves():
+class Wolves(Faction):
     name = "Wolves"
 
     class role():

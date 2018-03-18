@@ -13,17 +13,19 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*Descended from a line of practitioners and continuing the work of their forefathers: Alchemy, an ancient art used to transmute - not only metals, but life itself.*
 **Actions:**
-*Infect* - If their last action was *Cure* or they have not made any actions yet, at night, chooses a player. If that player is Human, they become an Evil Werewolf.
-*Cure* - If their last action was *Infect* or they have not made any actions yet, at night, chooses a player. If that player is a Wolf, they become a random Human role.
+*Homunculus*- At night, may create a Homunculus. That night, all Direwolves in the game appear to be a random Good Human role when targeted with *Investigate*. This action uses up one of the Alchemist's Potions.
+*Chaos Serum* - At night, may target any player. That player's alignment changes from Good to Evil, or vice versa. If that player is Neutral, it changes to Evil. At the start of the second day after this action is used, the target player's alignment changes back to what it was before this action was used, even if their role or alignment has changed through other means since. This action uses up one of the Alchemist's Potions.
+*Potion of Judas* - At night, may target any player. That player's role changes to a random role of the same alignment. This action uses up one of the Alchemist's Potions.
+*Bewitch* - If targeted by *Maul* or *Pack Offensive*, may choose any player for the action to be redirected towards instead.
 **Abilities:**
-- If targeted by *Maul* during the night, is Saved and redirects *Maul* towards a player of their choice.
+- Has an amount of potions equal to half the amount of players in the game. Only one potion may be used per night.
 - Cannot become a Wolf by any means.
-- Counts as a Wolf for the Objectives of Wolves.
+- Counts as Evil for the objectives of Wolves.
 **Objectives:**
 - Be the last player alive, excluding Wolves.
 **Tags:**
 - Neutral
-- Chaos
+- Chaos/Support
 - Human
 - Unique""",colour=0x8c8cff)
         embed.set_thumbnail(url=icons["alchemist"])
@@ -128,6 +130,20 @@ class RoleDescriptions():
 - Achievable""",colour=0x204eff)
         embed.set_thumbnail(url=icons["companion"])
         await where.send("__**Companion**__",embed=embed)
+
+    @commands.command(pass_context=True)
+    async def roles_conduit(self, ctx, where = ""):
+        if where == "":
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Abilities:**
+- Every night from NIGHT 2 onwards, if any of their actions involve an Attack that attack increases in strength by one level permanently, to a maximum of Unstoppable.
+- At the start of DAY 3 (or the first available day if this modifier is gained after this point), it is announced that a Seer has published the Conduit's identity. Their role will appear to be a random Evil role.
+- May only be applied to players with Human Killing roles.
+- If the player with this modifier is a Companion or a Twin, the other member of this faction also gains this modifier.
+**Tags:** 
+- Modifier""",colour=0x80659a)
+        embed.set_thumbnail(url=icons["conduit"])
+        await where.send("__**Conduit**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_cultist(self, ctx, where = ""):
@@ -309,6 +325,26 @@ class RoleDescriptions():
         await where.send("__**Feral**__",embed=embed)
 
     @commands.command(pass_context=True)
+    async def roles_geneticist(self, ctx, where = ""):
+        if where == "":
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Experiment* - Every night, while not in a Twins chat, can choose any 2 players to become Twins. The Geneticist joins the private channel created for these twins, and leaves it if both twins die.
+**Abilities:**
+- The Twin modifier cannot be applied to the Geneticist.
+- Is told the identity of all players with the Twin modifier at the start of the game, however not which player they are twinned with.
+- Does not need to be killed to fulfill the objective of any player whom they are in a twins private channel with.
+**Objectives:**
+- Survive until the end of the game.
+**Tags:**
+- Neutral
+- Chaos/Support
+- Human
+- Unique""",colour=0x9900ff)
+        embed.set_thumbnail(url=icons["geneticist"])
+        await where.send("__**Geneticist**__",embed=embed)
+
+    @commands.command(pass_context=True)
     async def roles_gladiator(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
@@ -339,7 +375,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Counteractive
-- Non-Human""",colour=0x5dff00)
+- Human""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["glazier"])
         await where.send("__**Glazier**__",embed=embed)
 
@@ -834,7 +870,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*You can find many creatures of the night, but they are all nothing compared to it. With its long, slender fingers controlling every piece on the board, it is the unparalleled monarch of twilight as it swarms the chambers of every man and beast to cross it, lacing the tight noose around our throats in the gallows of our nightmares; our deaths a morsel for it to devour and our souls a trophy for its triumph. You aren't afraid of the dark, are you?*
 **Actions:**
-*Redirect* - Every night, can choose two players; one to redirect and one for the first player to redirect towards. All of the former player's actions that have targets used that night are redirected towards the second player. The first player is not aware of this. The Poltergeist learns the first player’s role and alignment, in the same fashion as a Seer's *Investigate*. All rules referring to *Investigate* also act on *Redirect*, other than those in the Seer's role description. If two Poltergeists choose the same player as the first player, that player's actions fail and hence target nobody.
+*Redirect* - Every night, can choose two players; one to redirect and one for the first player to redirect towards. All of the former player's actions that have targets used that night have their first target changed to the second player. The first player is not aware of this. The Poltergeist learns the first player’s role and alignment, in the same fashion as a Seer's *Investigate*. All rules referring to *Investigate* also act on *Redirect*, other than those in the Seer's role description. If two Poltergeists choose the same player as the first player, that player's actions fail and hence target nobody.
 **Abilties**
 - If two Poltergeists attempt to redirect each other, their actions fail and they both die and gain the Spectre modifier.
 **Objectives:**
@@ -904,6 +940,23 @@ class RoleDescriptions():
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["prince"])
         await where.send("__**Prince**__",embed=embed)
+
+    @commands.command(pass_context=True)
+    async def roles_psychic(self, ctx, where = ""):
+        if where == "":
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Predict* - Every night, may choose any player and guess the name of any action. If the target player has an action of that name, the Psychic gains one use of that action. If the action is limited use, the target player loses a use of the action. If the target player does not have an action of that name, they are told that a Psychic attempted to predict their actions. If a Psychic successfully predicts *Infect*, they become a Cyberhound.
+*Vessel* - Every night, if they do not use *Predict*, the Psychic may choose any player and choose any action that they have gained a use of through *Predict*. The chosen player gains a use of this action and the Psychic loses it.
+**Objectives:**
+- Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
+**Tags:**
+- Evil
+- Chaos/Support
+- Human
+- Unique""",colour=0xff2323)
+        embed.set_thumbnail(url=icons["psychic"])
+        await where.send("__**Psychic**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_researcher(self, ctx, where = ""):
@@ -1067,12 +1120,12 @@ class RoleDescriptions():
 **Actions:**
 *Channel Death* - Targets one player each night. If any of that player's actions or abilities would cause any player to gain a Save that night, the player is instead targeted with an Attack of equal strength. If a player dies from this effect, it is stated that a Shinigami killed them, and the Shinigami gains a Save equal to the strength of the Save the dead player would have received.
 **Objectives:**
-- Be the last player alive, or finish the game with no living players.
+- Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
 **Tags:**
-- Neutral
+- Evil
 - Counteractive/Killing
 - Non-Human
-- Unique""",colour=0x010101)
+- Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["shinigami"])
         await where.send("__**Shinigami**__",embed=embed)
 
@@ -1080,7 +1133,7 @@ class RoleDescriptions():
     async def roles_souleater(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
-        embed=discord.Embed(description="""*Do you want to know where the real hell is hiding? It's inside your head.*
+        embed=discord.Embed(description="""*Wake from your sleep. Free yourself of your skin. Rid yourself of these mortal shackles. Open your eyes. Come to me, my brother, and we shall walk to the promised land together. Today, we escape.*
 **Actions:**
 *Absorb* - Every two nights, can choose one player to absorb the soul of. This player is told that they are soulless. The Souleater can issue instructions anonymously to them to further their goals, threatening death otherwise.
 *Haunt* - At any time, once per day or night, can choose one soulless player to force to commit Suicide. This player can not have had their soul absorbed in the previous or same night.
@@ -1122,7 +1175,8 @@ class RoleDescriptions():
         if where == "":
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Supercharge* - Three times per game, may choose to make all their actions act as if they were at the start of the night instead of at the end, hence acting before all effects used that night.
+*Supercharge* - Three times per game, at night, may choose to make all their actions act as if they were at the start of the night instead of at the end, hence acting before all effects used that night.
+*Godspeed* - Once per game, at night, may choose to cause the following day to last a maximum time of one minute.
 **Tags:**
 - Modifier""",colour=0x80659a)
         embed.set_thumbnail(url=icons["speedster"])
@@ -1170,18 +1224,34 @@ class RoleDescriptions():
         await where.send("__**Spinster**__",embed=embed)
 
     @commands.command(pass_context=True)
+    async def roles_spy(self, ctx, where = ""):
+        if where == "":
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+- Every night, can target any player. The spy is told any Modifiers that player has, and the names of all of the Private Channels that they are in.
+**Objectives:**
+- Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
+**Tags:**
+- Good
+- Investigative
+- Human""",colour=0x5dff00)
+        embed.set_thumbnail(url=icons["spy"])
+        await where.send("__**Spy**__",embed=embed)
+
+    @commands.command(pass_context=True)
     async def roles_standuser(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
         embed=discord.Embed(description="""*Standing over his opponent, the man looks down in contempt at him, a pitiful wreck asking for forgiveness. "Good grief." A shimmering muscular figure materialises, fists laden with gold, hair waving in the cold wind. "There's a reason you lost." In a swift motion, he traces a finger along the rim of his cap. "You pissed me off."*
 **Actions:**
-*Battle Cry* - Once per game, after using any action, may use that action immediately again without expending a use, even if they have no uses remaining.
+*Battle Cry* - Once per game, after using any action, may use that action immediately again without expending a use, even if they have no uses remaining. If an action used using *Battle Cry* would usually use up anything from a limited pool, it does not.
 *Stand Arrow* - Upon death, may choose to flip a coin. On a heads, a player of their choice gains the Stand User modifier.
 *Clash* - Once per game, can choose to target any player with a Powerful Attack. Players are only affected by this attack if they have the Stand User modifier. If the chosen player dies as a result of this attack, this player gains another use of *Battle Cry*.
 **Abilities:**
 - If any Stand User exists in a game, at least one other player must also have the Stand User modifier.
 - If uses *Battle Cry* on the same night as any other player uses *Battle Cry* (and neither action fails), commits Suicide.
 - If targeted with *Clash* by a player who they use *Clash* on during the same night, commits Suicide.
+- If targeted with *Stand Arrow*, gains a Queued Unstoppable Save and a use of *Battle Cry*.
 **Objectives:**
 - Kill another Stand User through *Clash*, or have a player who became a Stand User due to this player's use of *Stand Arrow* complete this objective.
 **Tags:**
@@ -1275,7 +1345,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*Not much is known about him. A quirky stranger with a multicoloured scarf, a massive pair of ears and a bowtie just showed up one day and told me to trust him. I think he's lying... it would explain the quick heartbeat.*
 **Actions:**
-*Invite* - Once per game (regaining a use if the action fails), at night, may choose another player to gain the Companion modifer. This Companion joins the Time Lord’s channel. After the Time Lord regenerates, the Companion loses their Companion modifier. They also lose the modifier if they die or their alignment changes.
+*Invite* - Once per game (regaining a use if the action fails), at night, may choose another player to gain the Companion modifer. This Companion joins the Time Lord’s channel. After the Time Lord regenerates, the Companion loses their Companion modifier. They also lose the modifier if they die or their alignment changes. If a player who already has the Companion modifier is targeted with *Invite*, or a player is targeted with *Invite* by two Time Lords of the same alignment on the same night, they become a TARDIS Engineer. If two Time Lords of different alignments target the same player with *Invite*, both actions fail, however the use of *Invite* is still used up.
 *Sonic* - Once per game, may use their sonic device to retrieve a list of roles. The amount of roles given will be equal to the amount of players and at least half of the list, rounding up, will be present in the game. Which roles are chosen is randomly determined.
 **Abilities:**
 - Starts the game with a Queued Unstoppable Save called a regeneration. When this Save is used, the Time Lord’s alignment changes to Good or Evil, whichever of the two has less living players not including the Time Lord. If they are equal in size, the Time Lord changes to the opposite alignment. The Time Lord gains another use of *Invite*. In addition, the town is told that a Time Lord has regenerated, and their alignment after the regeneration.
@@ -1389,8 +1459,8 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*A being of neither light nor evil, yet more destructive than both. A seductress who'll turn brother against brother and kill their entire family. A vampire who lusts for blood yet bares no fangs. A sycophant, dedicated not to malice, but to chaos. She lies in wait, her primal instinct to worship her primordial deities and protect the sisterhood - something she'll do at all costs.*
 **Actions:**
-*Poison* - Target one player with a Standard Attack every night.
-*Heal* - May give one player an Active Standard Save every night.
+*Poison* - Target one player with a Standard Attack every night. If a player is targeted with *Poison* and *Heal* on the same night by two different players, they become a Witch.
+*Heal* - May give one player an Active Standard Save every night. If a player is targeted with *Poison* and *Heal* on the same night by two different players, they become a Witch.
 **Abilities:**
 - If the Medium is present and they are killed with *Poison*, every Witch becomes Evil and replaces their objective with ‘Have at least one Evil role survive until all Good and Neutral roles have been eliminated.’
 - If the Jester is present and they are killed with *Poison*, every Witch becomes Good and replaces their objective with ‘Have at least one Good role survive until all Evil and Neutral roles have been eliminated.’
