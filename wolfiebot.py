@@ -214,13 +214,13 @@ async def rolelist(ctx):
 [+][Gladiator] - Good, Counteractive/Killing, Human, Unique - <w.roles_gladiator>
 [+][Glazier] - Good, Counteractive, Human - <w.roles_glazier>
 [+][Guide] - Modifier, Achievable - <w.roles_guide>
+```""")
+    await ctx.send("""```md
 [+][Hacker] - Good, Investigative/Support, Human, Unique, Achievable - <w.roles_hacker>
 [+][Hangman] - Neutral, Chaos/Counteractive, Human, Unique - <w.roles_hangman>
 [+][Heir] - Evil, Counteractive, Human, Unique - <w.roles_heir>
 [+][Herald] - Neutral, Chaos/Killing, Non-Human, Unique, Achievable - <w.roles_herald>
 [+][Hermit] - Neutral, Investigative/Counteractive, Human, Unique - <w.roles_hermit>
-```""")
-    await ctx.send("""```md
 [+][Hooligan] - Evil, Killing/Support, Human - <w.roles_hooligan>
 [+][Hunter] - Good, Killing/Protective, Human - <w.roles_hunter>
 [+][Inevitable] - Neutral, Chaos/Killing, Non-Human, Unique, Achievable - <w.roles_inevitable>
@@ -236,6 +236,8 @@ async def rolelist(ctx):
 [+][Morty] - Modifier - <w.roles_morty>
 [+][Multiple Agent] - Neutral, Chaos/Protective, Human - <w.roles_multipleagent>
 [+][Noir] - Good, Investigative/Killing, Human, Unique - <w.roles_noir>
+```""")
+    await ctx.send("""```md
 [+][Page] - Neutral, Support, Human, Unique - <w.roles_page>
 [+][Paladin] - Good, Human, Counteractive/Protective, Unique, Achievable - <w.roles_paladin>
 [+][Philanthropist] - Neutral, Counteractive/Support, Human, Unique - <w.roles_philanthropist>
@@ -244,8 +246,6 @@ async def rolelist(ctx):
 [+][Poltergeist] - Evil, Chaos/Investigative, Non-Human - <w.roles_poltergeist>
 [+][Poser] - Good, Support, Human - <w.roles_poser>
 [+][Priest] - Good, Counteractive/Support, Human, Unique - <w.roles_priest>
-```""")
-    await ctx.send("""```md
 [+][Prince] - Good, Support, Human, Unique - <w.roles_prince>
 [+][Psychic] - Evil, Chaos/Support, Human, Unique - <w.roles_psychic>
 [+][Researcher] - Good, Investigative, Human, Unique - <w.roles_researcher>
@@ -258,6 +258,8 @@ async def rolelist(ctx):
 [+][Shifter] - Neutral, Chaos, Non-Human - <w.roles_shifter>
 [+][Shinigami] - Evil, Counteractive/Killing, Non-Human, Unique - <w.roles_shinigami>
 [+][Souleater] - Neutral, Chaos/Killing, Non-Human, Achievable - <w.roles_souleater>
+```""")
+    await ctx.send("""```md
 [+][Spectre] - Modifier, Achievable - <w.roles_spectre>
 [+][Speedster] - Modifier - <w.roles_speedster>
 [+][Spider] - Evil, Counteractive/Support, Non-Human, Unique - <w.roles_spider>
