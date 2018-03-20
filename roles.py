@@ -1,4 +1,6 @@
 import random
+import asyncio
+import discord
 from wolfiebot import *
 
 role_categories_list = ["Chaos", "Counteractive", "Investigative", "Killing", "Protective", "Support"]
@@ -83,6 +85,7 @@ class Player():
 class Seer(Role):
     name = "Seer"
     alignment = "Good"
+    species = "Human"
     categories = ["Investigative"]
     objectives = ["good-standard"]
     saves = []
@@ -92,7 +95,7 @@ class Seer(Role):
         self.actions = {"Investigate" : [-1,"night",self.investigate], "Publish" : [1,"night",self.publish]}
         self.invest_results = []
 
-    def investigate(self, user, target):
+    async def investigate(self, user, target):
         if self.actions["Investigate"][0] == 0:
             return "expended"
         self.actions["Investigate"][0] = self.actions["Investigate"][0] - 1
@@ -105,7 +108,7 @@ class Seer(Role):
             user.role.invest_results[target] = [target.role.name, target.alignment]
         return [target.role.name, target.alignment]
 
-    def publish(self, user, target):
+    async def publish(self, user, target):
         if self.actions["Publish"] == 0:
             return "expended"
         self.actions["Publish"] = self.actions["Publish"] - 1
@@ -135,22 +138,22 @@ class Wolves(Faction):
         self.actions = {"Maul" : [-1,"night",self.maul], "Pack Offensive" : [0,"night",self.packoffensive]}
         self.members = []
 
-    def addmember(self, player):
+    async def addmember(self, player):
         if player not in self.members:
             self.members.append(player)
 
-    def removemember(self, player):
+    async def removemember(self, player):
         if player in self.members:
             self.members.remove(player)
 
-    def maul(self, user, target):
+    async def maul(self, user, target):
         if self.actions["Maul"][0] == 0:
             return "expended"
         self.actions["Maul"][0] = self.actions["Maul"][0] - 1
         target.attacked(Attack(user,1))
         return "success"
 
-    def packoffensive(self, *targets):
+    async def packoffensive(self, *targets):
         if self.actions["Pack Offensive"][0] == 0:
             return "expended"
         if len(self.members) != len(targets):
@@ -162,7 +165,7 @@ class Wolves(Faction):
             wolf.role.packoffensive(wolf,targets[i])
         return "success"
 
-    def n3_gain_use(self):
+    async def n3_gain_use(self):
         self.actions["Pack Offensive"][0] = 1
 
 class Direwolf(Role):
@@ -179,10 +182,10 @@ class Direwolf(Role):
         self.actions["Infect"] = [-1,"night",self.infect]
         self.wolves = wolves
 
-    def packoffensive(self, user, target):
+    async def packoffensive(self, user, target):
         target.attacked(Attack(user,0))
 
-    def infect(self, user, target):
+    async def infect(self, user, target):
         if self.actions["Infect"][0] == 0:
             return "expended"
         if target in self.wolves.members:
@@ -191,11 +194,11 @@ class Direwolf(Role):
         target.saves.append(Save(3,1,["infect",self.wolves]))
         return "success"
 
-    def po_gain_use(self, user):
+    async def po_gain_use(self, user):
         if DayCount == 3 and Day == False:
             self.wolves.n3_gain_use()
 
-    def refresh_actions(self, user):
+    async def refresh_actions(self, user):
         self.actions["Maul"] = self.wolves.actions["Maul"]
         self.actions["Pack Offensive"] = self.wolves.actions["Pack Offensive"]
 
@@ -218,14 +221,14 @@ class Werewolf(Role):
         self.actions = dict(wolves.actions)
         self.wolves = wolves
 
-    def packoffensive(self, user, target):
+    async def packoffensive(self, user, target):
         target.attacked(Attack(user,0))
 
-    def po_gain_use(self, user):
+    async def po_gain_use(self, user):
         if DayCount == 3 and Day == False:
             self.wolves.n3_gain_use()
 
-    def refresh_actions(self, user):
+    async def refresh_actions(self, user):
         self.actions["Maul"] = self.wolves.actions["Maul"]
         self.actions["Pack Offensive"] = self.wolves.actions["Pack Offensive"]
 

@@ -13,7 +13,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*Descended from a line of practitioners and continuing the work of their forefathers: Alchemy, an ancient art used to transmute - not only metals, but life itself.*
 **Actions:**
-*Homunculus*- At night, may create a Homunculus. That night, all Direwolves in the game appear to be a random Good Human role when targeted with *Investigate*. This action uses up one of the Alchemist's Potions.
+*Homunculus* - At night, may create a Homunculus. That night, all Direwolves in the game appear to be a random Good Human role when targeted with *Investigate*. This action uses up one of the Alchemist's Potions.
 *Chaos Serum* - At night, may target any player. That player's alignment changes from Good to Evil, or vice versa. If that player is Neutral, it changes to Evil. At the start of the second day after this action is used, the target player's alignment changes back to what it was before this action was used, even if their role or alignment has changed through other means since. This action uses up one of the Alchemist's Potions.
 *Potion of Judas* - At night, may target any player. That player's role changes to a random role of the same alignment. This action uses up one of the Alchemist's Potions.
 *Bewitch* - If targeted by *Maul* or *Pack Offensive*, may choose any player for the action to be redirected towards instead.
@@ -329,7 +329,7 @@ class RoleDescriptions():
         if where == "":
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Experiment* - Every night, while not in a Twins chat, can choose any 2 players to become Twins. The Geneticist joins the private channel created for these twins, and leaves it if both twins die.
+*Experiment* - Every night, while not in a Twins chat, can choose any 2 players to become Twins. The Geneticist joins the private channel created for these twins, and leaves it if both twins die. If the twins are required to choose an alignment between them, the Geneticist chooses for them.
 **Abilities:**
 - The Twin modifier cannot be applied to the Geneticist.
 - Is told the identity of all players with the Twin modifier at the start of the game, however not which player they are twinned with.
@@ -964,7 +964,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*The laptop screen reflected off his lenses as he scanned each and every pixel of the monitor's display. It was now 3:15am but he was not deterred, not even slightly. His right hand's index finger scrolled intensely through the files on his computer. He was going to find it and he was not going to be distracted by whether that pungent aroma was his own sweat or the half-eaten ramen on his desk. Even if it meant he would have to rip apart this entire goddamn town, he was going to find these wolves.*
 **Actions:**
-*Do Research* - At night, can choose a player to observe. The Researcher is told all players that targeted the target player (in the event that the Wolves target them, the Researcher is only told that the Direwolf did, however if the Direwolf is dead then all Wolves are shown to target them). On the night that the Researcher used this action, they are not affected by any saves.
+*Research* - At night, can choose a player to observe. The Researcher is told all players that targeted the target player (in the event that the Wolves target them, the Researcher is only told that the Direwolf did, however if the Direwolf is dead then all Wolves are shown to target them). On the night that the Researcher used this action, they are not affected by any saves.
 **Abilities**
 - Gains a Lunar Standard Save at the start of every night.
 - If they target a player with *Do Research* and every living player other than the Researcher and the target player appear in the results, the Researcher becomes a Hacker.
@@ -1064,7 +1064,8 @@ class RoleDescriptions():
 - Gains an Active Unstoppable Save at the start of each day.
 - Does not need to be eliminated to fulfil any Good role's objectives.
 **Objectives:**
-- Become a Spectre or survive until the end of the game.
+- Become a Spectre.
+- Survive until the end of the game.
 **Tags:**
 - Neutral
 - Chaos/Support
@@ -1128,6 +1129,26 @@ class RoleDescriptions():
 - Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["shinigami"])
         await where.send("__**Shinigami**__",embed=embed)
+
+    @commands.command(pass_context=True)
+    async def roles_slasher(self, ctx, where = ""):
+        if where == "":
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Slaughter* - Every night, may choose one player to target with  a strong attack. On the night that the Slasher uses this action, any player who targets the Slasher with an attack will be targeted with a standard attack three nights later.
+*Mask* - Once per game, at night, when not using *Slaughter*, may choose to use their mask. On the following day, if the Slasher is voted to be lynched, the lynch is changed to the second most voted player (randomly chosen in the event of a tie). It is announced that a Politician has used *Rig*.
+*Legacy* - Once per game, only during NIGHT 1, the Slasher chooses a player. In the event of the Slasher's death at any point after this action is used, the chosen player becomes a Slasher.
+**Abilities:**
+- At the start of NIGHT 1, the Slasher gains two uses of *Mask*.
+**Objectives:**
+- Be the last player alive, or finish the game with no living players.
+**Tags:**
+- Neutral
+- Chaos/Killing
+- Non-Human
+- Unique""",colour=0xff9400)
+        embed.set_thumbnail(url=icons["slasher"])
+        await where.send("__**Slasher**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_souleater(self, ctx, where = ""):
@@ -1394,6 +1415,28 @@ class RoleDescriptions():
 - Unique""",colour=0xffffff)
         embed.set_thumbnail(url=icons["understudy"])
         await where.send("__**Understudy**__",embed=embed)
+
+    @commands.command(pass_context=True)
+    async def roles_vampire(self, ctx, where = ""):
+        if where == "":
+            where = ctx.message.channel
+        embed=discord.Embed(description="""*Never sleep again. Never dream again. Make more room for nightmares, like the one you're having right now, where my claws are creating crimson crevaces in your dainty white skin, where my eyes pierce into whatever's left of your soul as your eyes beg the question of "why?", as my fangs explore and explode with delight at the taste of your almost-human blood. You blink and pinch yourself awake but there's one problem: it was never a nightmare in the first place.*
+**Actions:**
+*Fangs* - Every two nights, all Vampires together may target any player. That player loses all of their saves. If that player had no saves, they become a Vampire. If the player targeted had also been targeted with Infect that night, was a Werewolf or had the Feral modifier, they become a Bloodhound rather than a Vampire.
+*Stalk* - Once per game, at night, may choose to learn the identity of a random Wolf. 
+**Abilities:**
+- All Vampires and Bloodhounds in the game may speak in a collective private channel with one another.
+- Whenever any player becomes a Vampire or a Bloodhound, all Vampires other than the that player gain a Queued Standard Save.
+- If targeted by any effect that would cause an alignment change without changing the Vampire's role, commits Suicide.
+**Objectives:**
+- Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
+**Tags:**
+- Evil
+- Support
+- Non-Human
+- Unique""",colour=0x9b0029)
+        embed.set_thumbnail(url=icons["vampire"])
+        await where.send("__**Vampire**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_warlock(self, ctx, where = ""):
