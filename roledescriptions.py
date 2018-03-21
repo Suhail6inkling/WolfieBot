@@ -647,6 +647,27 @@ class RoleDescriptions():
         await where.send("__**Knight**__",embed=embed)
 
     @commands.command(pass_context=True)
+    async def roles_kresnik(self, ctx, where = ""):
+        if where == "":
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Pulse Check* - Once per game, at night, may choose to recieve a list of all Evil Non-Human and Wolf roles currently present in the game. The Kresnik is not told the number of each role present.
+*Transform* - Once every two days, may choose to transform. At the beginning of the next night, the Kresnik's role changes to a random Good role. At the beginning of the following day, the Kresnik changes back to a Kresnik, providing that their role has not been changed by means other than this action since this action was used.
+*Silver Blade* - Every night, may target any player with a Standard Attack. If the target is a Vampire, Cyberhound, Bloodhound, Cultist or Warlock, this Attack is Powerful rather than Standard.
+**Abilities:**
+- If the Kresnik would become a Vampire due to any action, both the Kresnik and the player using the action (randomly chosen in the case of multiple) commit Suicide.
+- The Kresnik is twice as likely to appear in a game where any player is a Vampire.
+**Objectives:**
+- Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
+**Tags:**
+- Good
+- Investigative/Killing
+- Human
+- Unique""",colour=0x5dff00)
+        embed.set_thumbnail(url=icons["kresnik"])
+        await where.send("__**Kresnik**__",embed=embed)
+
+    @commands.command(pass_context=True)
     async def roles_mage(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
