@@ -94,6 +94,31 @@ class RoleDescriptions():
         await where.send("__**Bard**__",embed=embed)
 
     @commands.command(pass_context=True)
+    async def roles_bloodhound(self, ctx, where = ""):
+        if where == "":
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Maul* - Discuss with the other wolves in a private channel who to Strong Attack during the Night
+*Pack Offensive* - Once per game, at night, not before NIGHT 3, instead of using Maul, the Wolves may choose to each individually target any player with a Standard Attack
+*Fangs* - Every two nights, all Vampires together may target any player. That player loses all of their saves. If that player had no saves, they become a Vampire. If the player targeted had also been targeted with Infect that night, was a Werewolf or had the Feral modifier, they become a Bloodhound rather than a Vampire.
+*Unholy Tribute* - Once per game, may select any Wolf or Vampire and any other player. Both chosen players are targeted with an Unstoppable Attack.
+**Abilities:**
+- All Vampires and Bloodhounds in the game may speak in a collective private channel with one another. They may still speak in this channel after death.
+- Whenever any player (other than one who was already a Vampire) becomes a Vampire or a Bloodhound, all Vampires and Bloodhounds other than the that player gain a Queued Standard Save.
+- If targeted by any effect that would cause an alignment change without changing the Vampire's role, commits Suicide.
+- If there are no Vampires alive and no Wolves other than the Bloodhound left alive, the Bloodhound gains a Queued Strong Save.
+**Objectives:**
+- Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
+**Tags:**
+- Evil
+- Killing/Support
+- Wolf
+- Unique
+- Achievable""",colour=0x9b0029)
+        embed.set_thumbnail(url=icons["bloodhound"])
+        await where.send("__**Bloodhound**__",embed=embed)
+
+    @commands.command(pass_context=True)
     async def roles_clockmaker(self, ctx, where = ""):
         if where == "":
             where = ctx.message.channel
@@ -1425,9 +1450,10 @@ class RoleDescriptions():
 *Fangs* - Every two nights, all Vampires together may target any player. That player loses all of their saves. If that player had no saves, they become a Vampire. If the player targeted had also been targeted with Infect that night, was a Werewolf or had the Feral modifier, they become a Bloodhound rather than a Vampire.
 *Stalk* - Once per game, at night, may choose to learn the identity of a random Wolf. 
 **Abilities:**
-- All Vampires and Bloodhounds in the game may speak in a collective private channel with one another.
-- Whenever any player becomes a Vampire or a Bloodhound, all Vampires other than the that player gain a Queued Standard Save.
+- All Vampires and Bloodhounds in the game may speak in a collective private channel with one another. They may still speak in this channel after death.
+- Whenever any player (other than one who was already a Vampire) becomes a Vampire or a Bloodhound, all Vampires and Bloodhounds other than the that player gain a Queued Standard Save.
 - If targeted by any effect that would cause an alignment change without changing the Vampire's role, commits Suicide.
+- If a Vampire is targeted with *Infect*, they become a Bloodhound.
 **Objectives:**
 - Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
 **Tags:**
