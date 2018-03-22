@@ -10,10 +10,26 @@ save_durations = ["Lunar", "Active", "Queued"]
 species_list = ["Human", "Wolf", "Non-Human"]
 
 class Role():
-    pass
+    def __init__(self):
+        self.ongamestart_abilities = []
+        self.ondaystart_abilities = []
+        self.onnightstart_abilities = []
+        self.ontarget_abilities = []
+        self.onattack_abilities = []
+        self.ondeath_abilities = []
 
 class Faction():
     pass
+
+class Action():
+    def __init__(self, name, function, user, *args):
+        self.name = name
+        self.function = function
+        self.user = user
+        self.args = args
+        self.fail = False
+        self.giveinstead = None
+        user.actions[name][0] = user.actions[name][0] - 1
 
 class Save():
     def __init__(self, strength, duration, special=None):
@@ -21,18 +37,20 @@ class Save():
         self.duration = duration
         self.special = special
 
-    def use(self, user):
+    async def use(self, user):
         if type(self.special) is list:
             if self.special[0] == "infect":
                 user.changerole(Werewolf(self.special[1]))
 
 class Attack():
-    def __init__(self, user, strength, special=None):
+    def __init__(self, user, target, strength, special=None):
         self.user = user
+        self.target = target
         self.strength = strength
         self.special = special
+        self.saved = False
 
-    def use(self, user, target):
+    async def use(self, user, target):
         return
 
 class Player():
@@ -43,12 +61,15 @@ class Player():
         self.alignment = role.alignment
         self.species = role.species
         self.objectives = role.objectives
-        self.modifiers = list(modifiers)
+        self.modifiers = modifiers
+        self.actions = role.actions
+        for m in modifiers:
+            self.actions.update(m.actions)
         self.isAlive = True
         self.saves = role.saves
         self.tags = role.tags
-        if self.species == "Wolf":
-            role.wolves.addmember(self)
+        if hasattr(self.role,"faction"):
+            self.role.faction.addmember(self)
 
     def changerole(self, role):
         oldrole = self.role
@@ -57,22 +78,25 @@ class Player():
         self.species = role.species
         self.objectives = role.objectives
         self.tags = role.tags
-        if self.species == "Wolf":
-            role.wolves.addmember(self)
-        elif oldrole.species == "Wolf":
-            oldrole.wolves.removemember(self)
+        for a in oldroles.actions:
+            self.actions[a] = None
+        if hasattr(self.role,"faction"):
+            self.role.faction.addmember(self)
+        if hasattr(oldrole,"faction"):
+            oldrole.faction.addmember(self)
     
-    def attacked(self, attack):
+    async def attacked(self, attack):
         for save in self.saves:
             if save.strength >= attack.strength:
                 self.saves.remove(save)
-                save.use(self)
+                attack.saved = True
+                await save.use(self)
                 return "saved"
-        attack.use(attack.user,self)
+        await attack.use(attack.user,self)
         self.isAlive = False
         return ["killed",attack.user.role.name]
 
-    def suicide(self):
+    async def suicide(self):
         self.isAlive = False
         return "suicided"
 
@@ -92,13 +116,11 @@ class Seer(Role):
     tags = {"Good", "Investigative", "Human"}
 
     def __init__(self):
-        self.actions = {"Investigate" : [-1,"night",self.investigate], "Publish" : [1,"night",self.publish]}
+        super().__init__()
+        self.actions = {"Investigate" : [-1,"night",Seer.investigate], "Publish" : [1,"night",Seer.publish]}
         self.invest_results = []
 
     async def investigate(self, user, target):
-        if self.actions["Investigate"][0] == 0:
-            return "expended"
-        self.actions["Investigate"][0] = self.actions["Investigate"][0] - 1
         if hasattr(user.role,"invest_results"):
             if target.alignment == "Evil" and target not in user.role.invest_results and user.role.name == "Seer":
                 user.role.invest_results[target] = [target.role.name, target.alignment]
@@ -109,20 +131,59 @@ class Seer(Role):
         return [target.role.name, target.alignment]
 
     async def publish(self, user, target):
-        if self.actions["Publish"] == 0:
-            return "expended"
-        self.actions["Publish"] = self.actions["Publish"] - 1
         if not hasattr(user.role,"invest_results"):
             return "fail"
         if target not in user.role.invest_results:
             return "fail"
         return user.role.invest_results[target]
 
-    ongamestart_abilities = []
-    ondaystart_abilities = []
-    onnightstart_abilities = []
-    ontarget_abilities = []
-    ondeath_abilities = []
+class Jailor(Role):
+    name = "Jailor"
+    alignment = "Good"
+    species = "Human"
+    categories = ["Counteractive","Protective"]
+    objectives = ["good-standard"]
+    saves = []
+    tags = {"Good", "Counteractive", "Protective", "Human", "Unique"}
+
+    def __init__(self):
+        super().__init__()
+        self.actions = {"Jail" : [-1,"night",Jailor.jail]}
+
+    async def jail(self, user, target):
+        global Actions, Attacks
+        for a in [a for a in Actions if a.user == target]:
+            a.fail = True
+        for a in [a for a in Attacks if a.target == target]:
+            if a.strength < 2:
+                a.saved = True
+            else:
+                a.target = user
+
+class Hunter(Role):
+    name = "Hunter"
+    alignment = "Good"
+    species = "Human"
+    categories = ["Killing","Protective"]
+    objectives = ["good-standard"]
+    saves = [Save(1,2)]
+    tags = {"Good", "Killing", "Protective", "Human"}
+
+    def __init__(self):
+        super().__init__()
+        self.actions = {"Shoot" : [-1,"attack",Hunter.shoot], "Martyr" : [1,"night",Hunter.martyr]}
+
+    async def shoot(self, user, target):
+        if target.species in ["Non-Human", "Wolf"]:
+            target.attacked(Attack(user,2))
+        else:
+            target.attacked(Attack(user,0))
+        return None
+
+    async def martyr(self, user):
+        global Attacks
+        for a in Attacks:
+            a.target = user
 
 class Wolves(Faction):
     name = "Wolves"
@@ -134,8 +195,8 @@ class Wolves(Faction):
         categories = ["Killing"]
 
     def __init__(self, chan):
-        self.channel = chan
-        self.actions = {"Maul" : [-1,"night",self.maul], "Pack Offensive" : [0,"night",self.packoffensive]}
+        self.privchannel = chan
+        self.actions = {"Maul" : [-1,"night",Wolves.maul], "Pack Offensive" : [0,"night",Wolves.packoffensive]}
         self.members = []
 
     async def addmember(self, player):
@@ -147,23 +208,17 @@ class Wolves(Faction):
             self.members.remove(player)
 
     async def maul(self, user, target):
-        if self.actions["Maul"][0] == 0:
-            return "expended"
-        self.actions["Maul"][0] = self.actions["Maul"][0] - 1
         target.attacked(Attack(user,1))
-        return "success"
+        return None
 
     async def packoffensive(self, *targets):
-        if self.actions["Pack Offensive"][0] == 0:
-            return "expended"
         if len(self.members) != len(targets):
             return "tryagain"
-        self.actions["Pack Offensive"][0] = self.actions["Pack Offensive"][0] - 1
         random.shuffle(targets)
         for i in range(0,len(self.members)):
             wolf = self.members[i]
             wolf.role.packoffensive(wolf,targets[i])
-        return "success"
+        return None
 
     async def n3_gain_use(self):
         self.actions["Pack Offensive"][0] = 1
@@ -178,35 +233,29 @@ class Direwolf(Role):
     tags = {"Evil", "Killing", "Support", "Wolf", "Unique"}
 
     def __init__(self, wolves):
+        super().__init__()
         self.actions = dict(wolves.actions)
-        self.actions["Infect"] = [-1,"night",self.infect]
-        self.wolves = wolves
+        self.actions["Infect"] = [-1,"night",Direwolf.infect]
+        self.faction = wolves
+        self.ondaystart_abilities = [self.refresh_actions]
+        self.onnightstart_abilities = [self.po_gain_use]
 
     async def packoffensive(self, user, target):
         target.attacked(Attack(user,0))
 
     async def infect(self, user, target):
-        if self.actions["Infect"][0] == 0:
-            return "expended"
-        if target in self.wolves.members:
-            return "fail"
-        self.actions["Infect"][0] = self.actions["Infect"][0] - 1
-        target.saves.append(Save(3,1,["infect",self.wolves]))
-        return "success"
+        if target in self.faction.members:
+            return "Fail"
+        target.saves.append(Save(3,1,["infect",self.faction]))
+        return None
 
     async def po_gain_use(self, user):
         if DayCount == 3 and Day == False:
-            self.wolves.n3_gain_use()
+            self.faction.n3_gain_use()
 
     async def refresh_actions(self, user):
-        self.actions["Maul"] = self.wolves.actions["Maul"]
-        self.actions["Pack Offensive"] = self.wolves.actions["Pack Offensive"]
-
-    ongamestart_abilities = []
-    ondaystart_abilities = [refresh_actions]
-    onnightstart_abilities = [po_gain_use]
-    ontarget_abilities = []
-    ondeath_abilities = []
+        user.actions["Maul"] = self.faction.actions["Maul"]
+        user.actions["Pack Offensive"] = self.faction.actions["Pack Offensive"]
 
 class Werewolf(Role):
     name = "Werewolf"
@@ -218,22 +267,19 @@ class Werewolf(Role):
     tags = {"Evil", "Killing", "Wolf"}
 
     def __init__(self, wolves):
+        super().__init__()
         self.actions = dict(wolves.actions)
-        self.wolves = wolves
+        self.faction = wolves
+        self.ondaystart_abilities = [self.refresh_actions]
+        self.onnightstart_abilities = [self.po_gain_use]
 
     async def packoffensive(self, user, target):
         target.attacked(Attack(user,0))
 
     async def po_gain_use(self, user):
         if DayCount == 3 and Day == False:
-            self.wolves.n3_gain_use()
+            self.faction.n3_gain_use()
 
     async def refresh_actions(self, user):
-        self.actions["Maul"] = self.wolves.actions["Maul"]
-        self.actions["Pack Offensive"] = self.wolves.actions["Pack Offensive"]
-
-    ongamestart_abilities = []
-    ondaystart_abilities = [refresh_actions]
-    onnightstart_abilities = [po_gain_use]
-    ontarget_abilities = []
-    ondeath_abilities = []
+        user.actions["Maul"] = self.faction.actions["Maul"]
+        user.actions["Pack Offensive"] = self.faction.actions["Pack Offensive"]

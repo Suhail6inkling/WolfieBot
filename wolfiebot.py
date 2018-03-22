@@ -114,10 +114,12 @@ descCommands = {"Alchemist" : "roles_alchemist", "Arsonist" : "roles_arsonist", 
                 "Conduit" : "roles_conduit", "Feral" : "roles_feral", "Guide" : "roles_guide", "Minstrel" : "roles_minstrel", "Morty" : "roles_morty", "Spectre" : "roles_spectre",
                 "Speedster" : "roles_speedster", "Stand User" : "roles_standuser", "Twin" : "roles_twin"}
 
-global Day, PlayerInfo
+global Day, PlayerInfo, Actions, Attacks
 Day = False
 DayCount = 0
 PlayerInfo = []
+Actions = []
+Attacks = []
 
 @client.event
 async def on_ready():
