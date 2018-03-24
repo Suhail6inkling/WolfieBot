@@ -147,6 +147,7 @@ class RoleDescriptions():
         embed=discord.Embed(description="""*When I saw the gleam in this child's eye, I knew I had to welcome them onboard. But I have to be careful, I can't let them go like the others... banished to another dimension... forced to forget... ripped apart by time itself... but not them. Never them.*
 **Abilities:**
 - See Time Lord (‘*w.roles_timelord*’).
+- If targeted with *Invite*, becomes a TARDIS Engineer.
 **Objectives:**
 - Identical to their Time Lord.
 **Tags:**
@@ -1314,7 +1315,7 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-- Every night, can target any player. The spy is told any Modifiers that player has, and the names of all of the Private Channels that they are in.
+*Infiltrate* - Every night, can target any player. The spy is told any Modifiers that player has, and the names of all of the Private Channels that they are in.
 **Objectives:**
 - Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
 **Tags:**
