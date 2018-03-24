@@ -162,7 +162,6 @@ async def help(ctx):
 async def gm_help(ctx):
     await ctx.send("""```md
 <w.setplayers (mentions)> - Sets all users mentioned as Player. If any mentioned are already Player, removes role.
-<w.setnarrator (mentions)> - Sets all users mentioned as Narrator. If any mentioned are already Narrator, removes role.
 <w.giveroles (player: role [(modifier)], etc)> - Gives players listed the applied role.
 <w.gamestatus> - Returns all players in the current game with information about them. 
 

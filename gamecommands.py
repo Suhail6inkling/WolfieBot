@@ -28,19 +28,6 @@ class GameCommands():
             await ctx.send("You need to be a GM to use this command!")
 
     @commands.command(pass_context=True)
-    async def setnarrator(self, ctx):
-        if "Game Master" in [y.name for y in ctx.message.author.roles]:
-            narrator_role = discord.utils.get(ctx.message.guild.roles, name="Narrator")
-            narrators = ctx.message.mentions
-            for n in narrators:
-                if "Narrator" not in [y.name for y in n.roles]:
-                    await n.add_roles(narrator_role)
-                else:
-                    await n.remove_roles(narrator_role)
-        else:
-            await ctx.send("You need to be a GM to use this command!")
-
-    @commands.command(pass_context=True)
     async def endgame(self, ctx):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             global Day, DayCount
