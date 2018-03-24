@@ -1015,7 +1015,7 @@ class RoleDescriptions():
 *Research* - At night, can choose a player to observe. The Researcher is told all players that targeted the target player (in the event that the Wolves target them, the Researcher is only told that the Direwolf did, however if the Direwolf is dead then all Wolves are shown to target them). On the night that the Researcher used this action, they are not affected by any saves.
 **Abilities**
 - Gains a Lunar Standard Save at the start of every night.
-- If they target a player with *Do Research* and every living player other than the Researcher and the target player appear in the results, the Researcher becomes a Hacker.
+- If they target a player with *Research* and every living player other than the Researcher and the target player appear in the results, the Researcher becomes a Hacker.
 **Objectives:**
 - Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
 **Tags:**

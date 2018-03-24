@@ -518,7 +518,7 @@ Output: 'Hacker:
                        "Cultist" : "- Become Evil as a Priest.\n- Have any Priest become a Cultist as a Priest.",
                        "Cyberhound" : "- Be targeted with *Infect* as an Inventor.\n- Successfully predit *Infect* as a Psychic.\n- (Random) Be a Drunk.",
                        "Dodomeki" : "- Become Evil as a Thief or a Rogue.\n- (Random) Be a Drunk.",
-                       "Hacker" : "- Be targeted with *Investigate* as an Inventor.\n- Target a player with *Do Research* and have every living player other than yourself and the target player appear in the results.\n- (Random) Be a Drunk.",
+                       "Hacker" : "- Be targeted with *Investigate* as an Inventor.\n- Target a player with *Research* and have every living player other than yourself and the target player appear in the results.\n- (Random) Be a Drunk.",
                        "Herald" : "- Be targeted with *Create Herald*.",
                        "Inevitable" : "- Be targeted with *Create Inevitable* as an Evil player.",
                        "Inventor" : "- Lose the Companion modifer as a TARDIS Engineer.",
@@ -540,6 +540,7 @@ Output: 'Hacker:
                        "Minstrel" : "- (Random) Be in a game with a Bard.",
                        "Spectre" : "- Die as an Arsonist.\n- Die as a Sylph.\n- Be killed by Wolves as a Spider.\n- Die before NIGHT 3 as a Drunk.\n- Die during the same night or the day after being targeted with *Curse*.\n- Redirect a Poltergeist who is redirecting you as a Poltergeist.\n- Have your Twin gain the Spectre modifier as a Twin.\n- Die by any means other than Suicide or Lynching as a Whisperer.",
                        "Stand User" : "- Be targeted with *Stand Arrow*.",
+                       "Werewolf" : "- Use a save gained through *Infect*.",
                        "Witch" : "- Be targeted with *Poison* and *Heal* on the same night by different players."}
             try:
                 await ctx.send("{}:\n{}".format(role,methods[role]))
@@ -817,7 +818,6 @@ async def standard(ctx, *, message: str):
             else:
                 break
         giveroles = "w.giveroles "
-        print(giveroles)
         for p in range(0,len(PlayerList)):
             if p == len(PlayerList)-1:
                 end = ""
@@ -830,7 +830,6 @@ async def standard(ctx, *, message: str):
             else:
                 giveroles = "{}{}: {}{}".format(giveroles,PlayerList[p].lower(),RoleList[p],end)
         combined = "{}`{}`".format(combined,giveroles)
-        print(combined)
         await ctx.send(combined)
 
 @generatelist.command(pass_context=True)
