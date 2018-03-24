@@ -690,7 +690,7 @@ class RoleDescriptions():
         embed=discord.Embed(description="""*When I came to this place, I thought it'd be the start of a new life for me. I came to assist my fellow man and offer my services to get by. But now? It's a city of pain, hatred and suffering; brother turning on brother to fight an enemy that has as much of a right to exist as the rest of us do. Well, I've had enough of this. I'm going to lift up my voice so that they'll put down their guns and we can all make it a better town for our children.*
 **Abilities:**
 - Cannot change alignment or objective by any means, unless they also change role. If an effect would cause the Maid to change their alignment or objective without also changing their role, it fails.
-- If killed, all players who have a condition that would allow them to become an Achievable role in their abilities automatically have that condition fulfilled. In the event that they have multiple, one is randomly chosen.
+- If killed, all players who have a condition that would allow them to become an Achievable role in their abilities automatically have that condition count as being fulfilled. In the event that they have multiple, one is randomly chosen.
 - Gains a Lunar Strong Save at the start of every night.
 - Does not need to be eliminated to fulfill any player's objectives.
 **Objectives:**
@@ -783,11 +783,13 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*My watch is a nice piece of jewellery. Always loved it. The silver rim reminds me of the scope I used to kill our last mayor. I got paid quite well for that. Second-best assignment I've had since taking down a terrorist threat. I used the money to buy this watch. It wasn't much - my watch is just cheap garbage. Always hated it.*
 **Actions:**
-*Loyalty* - Every night, chooses a player. Gains the objectives and alignment of that player until the start of the next night. Can’t choose the same player on consecutive nights.
+*Loyalty* - Every night, must choose a player (choosing a random player if offline). Gains the objectives and alignment of that player until the start of the next night. May not choose a player whom they have already chosen.
 *Heal* - May give one player an Active Standard Save every night. This Save only takes effect if the target is of the same alignment as the Multiple Agent.
 **Abilities:**
 - If they die, they keep their assumed objective and alignment.
 - When investigated, they appear as a random non-unique role of the alignment of the player investigating them.
+- If they target Good players three nights in a row with *Loyalty*, they become Spy.
+- If they target Evil players three nights in a row with *Loyalty*, they become Psychic.
 **Objectives:**
 - None
 **Tags:**
