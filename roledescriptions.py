@@ -8,8 +8,8 @@ class RoleDescriptions():
         self.client = client
 
     @commands.command(pass_context=True)
-    async def roles_alchemist(self, ctx, where = ""):
-        if where == "":
+    async def roles_alchemist(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Descended from a line of practitioners and continuing the work of their forefathers: Alchemy, an ancient art used to transmute - not only metals, but life itself.*
 **Actions:**
@@ -32,8 +32,8 @@ class RoleDescriptions():
         await where.send("__**Alchemist**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_arsonist(self, ctx, where = ""):
-        if where == "":
+    async def roles_arsonist(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*A box of matches. A stick of wood. A can of oil. A switch of a lighter. A smirk of victory. A city of flames.*
 **Actions:**
@@ -52,8 +52,8 @@ class RoleDescriptions():
         await where.send("__**Arsonist**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_backstabber(self, ctx, where = ""):
-        if where == "":
+    async def roles_backstabber(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Honour? Dignity? Loyalty? Oh, please, you're a child. I want to live and I'll do it by any means. I'll use you as a tool and the moment you're no longer useful to me, I'll toss you aside and pick another shield. I'll kick you in the balls and you'll smile to my face. I'll use you and abuse you and take every last penny from you until I drive a knife into your neck. And the best part? I will feel **nothing**.*
 **Abilities:**
@@ -73,8 +73,8 @@ class RoleDescriptions():
 
 
     @commands.command(pass_context=True)
-    async def roles_bard(self, ctx, where = ""):
-        if where == "":
+    async def roles_bard(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*The composer in the concerto of life. Corralling crescendos to be measured and beat, listening to the symphonies of screams, tuned to perfection and ensembled in harmony.*
 **Actions:**
@@ -94,8 +94,8 @@ class RoleDescriptions():
         await where.send("__**Bard**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_bloodhound(self, ctx, where = ""):
-        if where == "":
+    async def roles_bloodhound(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Maul* - Discuss with the other wolves in a private channel who to Strong Attack during the Night
@@ -119,8 +119,8 @@ class RoleDescriptions():
         await where.send("__**Bloodhound**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_clockmaker(self, ctx, where = ""):
-        if where == "":
+    async def roles_clockmaker(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*A thousand rusted, ancient cogs turning around in the belly of the beast. Dwelling inside your head, the infernal noise. Tick tock. Tick tock. Tick tock. With every second that passes, you take one step closer to your own demise.*
 **Actions:**
@@ -141,8 +141,8 @@ class RoleDescriptions():
         await where.send("__**Clockmaker**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_companion(self, ctx, where = ""):
-        if where == "":
+    async def roles_companion(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*When I saw the gleam in this child's eye, I knew I had to welcome them onboard. But I have to be careful, I can't let them go like the others... banished to another dimension... forced to forget... ripped apart by time itself... but not them. Never them.*
 **Abilities:**
@@ -157,8 +157,8 @@ class RoleDescriptions():
         await where.send("__**Companion**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_conduit(self, ctx, where = ""):
-        if where == "":
+    async def roles_conduit(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Abilities:**
 - Every night from NIGHT 2 onwards, if any of their actions involve an Attack that attack increases in strength by one level permanently, to a maximum of Unstoppable.
@@ -171,8 +171,8 @@ class RoleDescriptions():
         await where.send("__**Conduit**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_cultist(self, ctx, where = ""):
-        if where == "":
+    async def roles_cultist(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*As your promulgator, I bid you, say it with me- Brothers! Sisters! The great devotion shall not be swayed, we shall be venerated! We shall see the rise of our one true saviour and live to see the day this world is cured of its sickness!*
 **Actions:**
@@ -196,8 +196,8 @@ class RoleDescriptions():
         await where.send("__**Cultist**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_cyberhound(self, ctx, where = ""):
-        if where == "":
+    async def roles_cyberhound(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Maul* - Discuss with other Wolves in a private channel who to Strong Attack during the night.
@@ -218,8 +218,8 @@ class RoleDescriptions():
         await where.send("__**Cyberhound**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_dentist(self, ctx, where = ""):
-        if where == "":
+    async def roles_dentist(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*A recent study suggests 67.34% of children fear going to the dentist. I wonder why. Why would anyone fear having a cold, metallic scalpel digging around in their mouth? Why would anyone fear whizzing drills and powerful machinery burying into the gums of patients? Why would anyone fear having every tooth forcefully extracted from their bleeding jaws as they sing a symphony of roaring agony? C'mon, buddy, we're not all that bad if you get to know us...*
 **Actions:**
@@ -238,8 +238,8 @@ class RoleDescriptions():
         await where.send("__**Dentist**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_direwolf(self, ctx, where = ""):
-        if where == "":
+    async def roles_direwolf(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*The Direwolf is a beast, yet it doesn't rely on instinct. The Direwolf is a machine, yet it cannot be upgraded. The Direwolf is impossible, yet it is not fictional. The Direwolf is evil, yet it is not fallible. The Direwolf is godly, yet it is not righteous. The Direwolf is coming. The Direwolf is coming for you.*
 **Actions:**
@@ -260,8 +260,8 @@ class RoleDescriptions():
         await where.send("__**Direwolf**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_doctor(self, ctx, where = ""):
-        if where == "":
+    async def roles_doctor(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*I tried, alright? I tried to be all I could be. I followed my oaths, I learned my ways, I did everything that was asked of me. But I needed the money and, well, can you blame me for it? This title is not one I deserve after what I've done and, in any other circumstance, I wouldn't take it. But these people are hurt, dying and constantly screaming for help. These people need a helping hand, a light through the tunnel, a saviour. These people need a doctor.*
 **Actions:**
@@ -277,8 +277,8 @@ class RoleDescriptions():
         await where.send("__**Doctor**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_dodomeki(self, ctx, where = ""):
-        if where == "":
+    async def roles_dodomeki(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*She seemed to have come out of nowhere, frequenting the temple upon the hill. The unusually long sleeves of her robe were strange, and the frail hands which somehow emerged from the ends never failed to unnerve whoever noticed them. But none knew that under the light of the moon, the robe would come off. Hundreds of eyes, wrapped round thickly veined forearms, would open into the windows of the soul.*
 **Actions:**
@@ -297,8 +297,8 @@ class RoleDescriptions():
         await where.send("__**Dodomeki**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_drunk(self, ctx, where = ""):
-        if where == "":
+    async def roles_drunk(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Ugghhhh... Dang, what happened last night? Where am I? Who am I? Ah, I'm sure it'll come to me eventually...*
 **Abilities:**
@@ -316,8 +316,8 @@ class RoleDescriptions():
         await where.send("__**Drunk**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_fate(self, ctx, where = ""):
-        if where == "":
+    async def roles_fate(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Create Spinster* - Every even night, may choose one player. If that player is Good, they become the Spinster and join a private channel with the Fate. After this succeeds, the action may not be used again.
@@ -337,8 +337,8 @@ class RoleDescriptions():
         await where.send("__**Fate**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_feral(self, ctx, where = ""):
-        if where == "":
+    async def roles_feral(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Abilities:**
 - Starts the game with a Queued Strong Save.
@@ -350,8 +350,8 @@ class RoleDescriptions():
         await where.send("__**Feral**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_geneticist(self, ctx, where = ""):
-        if where == "":
+    async def roles_geneticist(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Experiment* - Every night, while not in a Twins chat, can choose any 2 players to become Twins. The Geneticist joins the private channel created for these twins, and leaves it if both twins die. If the twins are required to choose an alignment between them, the Geneticist chooses for them.
@@ -370,8 +370,8 @@ class RoleDescriptions():
         await where.send("__**Geneticist**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_gladiator(self, ctx, where = ""):
-        if where == "":
+    async def roles_gladiator(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*The clang of steel, the smell of blood and the inescapable roar of the masses. Two enter, one makes it out alive. Only the people can save you now.*
 **Actions:**
@@ -389,8 +389,8 @@ class RoleDescriptions():
         await where.send("__**Gladiator**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_glazier(self, ctx, where = ""):
-        if where == "":
+    async def roles_glazier(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*It was his finest creation yet. A delicate coat of glass fixed on the finest layer of silver, a bronze, ornately-carved frame wrapping itself around the smoothed edge, and of course, just a pinch of infused magic.*
 **Actions:**
@@ -405,8 +405,8 @@ class RoleDescriptions():
         await where.send("__**Glazier**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_guide(self, ctx, where = ""):
-        if where == "":
+    async def roles_guide(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*We'd met under some... unusual circumstances, but it's my duty to teach the page my ways - after all, I'm the only one of my kind around here.*
 **Abilities:**
@@ -419,8 +419,8 @@ class RoleDescriptions():
         await where.send("__**Guide**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_hacker(self, ctx, where = ""):
-        if where == "":
+    async def roles_hacker(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*That's the problem with today's society. Everything's **digital**. Any idiot with a computer and a bit of luck is able to steal thousands from your wallet, without ever having to nab a single coin. I mean, seriously, could you imagine that? Some virgin in his mother's basement could - oh, I don't know - deprogram a direwolf, steal precious intel on his cohorts, tell the entire city every last secret they have in their paws... all with a laptop and a few clicks of a mouse.*
 **Actions:**
@@ -438,8 +438,8 @@ class RoleDescriptions():
         await where.send("__**Hacker**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_hangman(self, ctx, where = ""):
-        if where == "":
+    async def roles_hangman(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Behind the black veil, nobody truly knows what twisted thoughts are swimming through the dark void of his psyche. All we know is that the poor soul who incurred his wrath better start running.*
 **Abilities:**
@@ -457,8 +457,8 @@ class RoleDescriptions():
         await where.send("__**Hangman**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_heir(self, ctx, where = ""):
-        if where == "":
+    async def roles_heir(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Abilities:**
 - Begins the game with a randomly selected Good player as their Loved One.
@@ -476,8 +476,8 @@ class RoleDescriptions():
         await where.send("__**Heir**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_herald(self, ctx, where = ""):
-        if where == "":
+    async def roles_herald(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Ruin* - Must choose a player to target with an Unstoppable Attack every night. If the Herald does not choose a player, then a player is randomly chosen. If a player is randomly chosen, then that player may not be the Spinster, the Fate or the Inevitable. The Herald is told which player was randomly chosen.
@@ -496,8 +496,8 @@ class RoleDescriptions():
         await where.send("__**Herald**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_hermit(self, ctx, where = ""):
-        if where == "":
+    async def roles_hermit(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*I remember a young man. The young man left his home in the slums of New Marais. The young man climbed mountains, saved villages, walked through warzones and saw foreign lands. The young man lived a life of passion and adventure. That young man is not me. I have his name, I have his eyes but I do not share his fire. One day, the young man died and I walked away in his place, with a goal not to travel but to find a final resting place, lay down and complete the journey. It appears I have only one destination left.*
 **Actions:**
@@ -515,8 +515,8 @@ class RoleDescriptions():
         await where.send("__**Hermit**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_hooligan(self, ctx, where = ""):
-        if where == "":
+    async def roles_hooligan(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*There are good men. There are heroes, there are angels, there are saints and there are paragons. But there are bad men. Men who'll crack your skull open with knuckledusters if you look at them the wrong way. Men who'll make blood pour from your mouth like the first plague of Egypt. Men who'll gladly take your money and your woman without a second thought, safe in the knowledge that you'll do absolutely fucking nothing about it. And make no mistake, I am a very, very bad man.*
 **Actions:**
@@ -534,8 +534,8 @@ class RoleDescriptions():
         await where.send("__**Hooligan**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_hunter(self, ctx, where = ""):
-        if where == "":
+    async def roles_hunter(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*With a hare roasting over an open flame and a bullet in the chamber, his eyes scan every trunk, every leaf, every passing grain of dirt. Another wolf infestation? These mutts should know that these are* his *woods. And if they want to take it from him? They'll have to rip his throat out first.*
 **Actions:**
@@ -553,8 +553,8 @@ class RoleDescriptions():
         await where.send("__**Hunter**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_inevitable(self, ctx, where = ""):
-        if where == "":
+    async def roles_inevitable(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Create Herald* - If the Spinster, the Fate and the Inevitable are all alive or Spectres, they may, once per game, on any night, choose a player to become the Herald. The Fate chooses the night on which the Herald will die. The Inevitable must be alive on this night in order to kill the Herald, and chooses the role that the Herald will appear to have been killed by and the role the Herald will appear as once dead. The Herald dies as if they had committed suicide. If the Herald is resurrected, they become the latter role. This still takes effect if the Herald is not the original player chosen by the Spinster, Fate and Inevitable.
@@ -573,8 +573,8 @@ class RoleDescriptions():
         await where.send("__**Inevitable**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_inventor(self, ctx, where = ""):
-        if where == "":
+    async def roles_inventor(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Being top of the class is not enough. Having twenty-seven Ph.Ds under your belt is not enough. Having an IQ exceeding double the human possible total is not enough. Being a revolutionary, once-in-a-lifetime genius, academic and philosopher is not enough. Being the most intelligent being in the universe is not enough. To hold true power, you must first be able to demonstrate it.*
 **Actions:**
@@ -596,8 +596,8 @@ class RoleDescriptions():
         await where.send("__**Inventor**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_jailor(self, ctx, where = ""):
-        if where == "":
+    async def roles_jailor(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Jail* - May jail one player every night. None of that player's actions that night take effect, and the player does not count as targeting anybody, and no actions that target that player take effect (if an action has multiple targets including the jailed player, it still affects the other players providing it does not need to affect the jailed player to do so). If the jailed player is targeted with a Powerful or stronger Attack, the Jailor is targeted instead. The jailed player still commits Suicide if an action would cause them to.
@@ -612,8 +612,8 @@ class RoleDescriptions():
         await where.send("__**Jailor**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_jester(self, ctx, where = ""):
-        if where == "":
+    async def roles_jester(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Introduce a little anarchy, upset the established order, and everything becomes chaos. I’m an agent of chaos, and you know the thing about chaos? It’s fair.*
 **Actions:**
@@ -630,8 +630,8 @@ class RoleDescriptions():
         await where.send("__**Jester**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_knight(self, ctx, where = ""):
-        if where == "":
+    async def roles_knight(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*From the day I was knighted, I've followed my vows. To stand up for the common folk and to be their shield against danger. I promised that I would seek out evil and destroy it in whatever form it may be. Even now, in these dark and troubled times, I will not falter or back down. I will be a beacon of hope for the hopeless and the downtrodden, and for all creatures of the night - beware my blade.*
 **Actions:**
@@ -647,8 +647,8 @@ class RoleDescriptions():
         await where.send("__**Knight**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_kresnik(self, ctx, where = ""):
-        if where == "":
+    async def roles_kresnik(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Pulse Check* - Once per game, at night, may choose to recieve a list of all Evil Non-Human and Wolf roles currently present in the game. The Kresnik is not told the number of each role present.
@@ -668,8 +668,8 @@ class RoleDescriptions():
         await where.send("__**Kresnik**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_mage(self, ctx, where = ""):
-        if where == "":
+    async def roles_mage(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Upon the peak of the village's mountain, there is always an old man practising the cryptic arts. Those daring enough to climb the mountain will always be greeted with a soothing cup of tea and a few surprising tricks.  Rumour has it that every few thousand years, when the cosmic order is in balance, he may descend back to the people he has watched over for eras. Unfortunately, the world he has returned to is now one of war and anarchy. It appears he may have to utilise his magic once more to rid the village of this evil...*
 **Actions:**
@@ -684,8 +684,8 @@ class RoleDescriptions():
         await where.send("__**Mage**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_maid(self, ctx, where = ""):
-        if where == "":
+    async def roles_maid(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*When I came to this place, I thought it'd be the start of a new life for me. I came to assist my fellow man and offer my services to get by. But now? It's a city of pain, hatred and suffering; brother turning on brother to fight an enemy that has as much of a right to exist as the rest of us do. Well, I've had enough of this. I'm going to lift up my voice so that they'll put down their guns and we can all make it a better town for our children.*
 **Abilities:**
@@ -704,8 +704,8 @@ class RoleDescriptions():
         await where.send("__**Maid**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_medium(self, ctx, where = ""):
-        if where == "":
+    async def roles_medium(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*The corpses pile up as a lone tear rolls down her cheek. They try dragging her away from her precious graveyard. "Your friends are buried," they say, "it's time to move on." It's not true - she's sure of it. She may be alone, but she can still hear their voices.*
 **Actions:**
@@ -724,8 +724,8 @@ class RoleDescriptions():
         await where.send("__**Medium**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_merchant(self, ctx, where = ""):
-        if where == "":
+    async def roles_merchant(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Discount* - Once per game, may take any action from their stock and gain access to it for the rest of the game. They may also use the gained action during the day/night that they used this action.
@@ -751,8 +751,8 @@ class RoleDescriptions():
         await where.send("__**Merchant**__",embed=embed)
         
     @commands.command(pass_context=True)
-    async def roles_minstrel(self, ctx, where = ""):
-        if where == "":
+    async def roles_minstrel(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Fingers eloquently dancing to the command of his master, the Minstrel plays a melody of despair. Whether it's the arsonist filling his canister of oil or the medium crying out to her imaginary friends, one thing's for certain - somebody's going to die tonight.*
 **Abilities:**
@@ -766,8 +766,8 @@ class RoleDescriptions():
         await where.send("__**Minstrel**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_morty(self, ctx, where = ""):
-        if where == "":
+    async def roles_morty(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*O-o-oh, jeez, Rick, y-y-you threw me into a portal and now I'm... I'm in a town with wolves and... and... oh, Rick, I'm looking around this place and I'm starting to w-work up some anxiety about this whole thing.*
 **Abilities:**
@@ -778,8 +778,8 @@ class RoleDescriptions():
         await where.send("__**Morty**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_multipleagent(self, ctx, where = ""):
-        if where == "":
+    async def roles_multipleagent(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*My watch is a nice piece of jewellery. Always loved it. The silver rim reminds me of the scope I used to kill our last mayor. I got paid quite well for that. Second-best assignment I've had since taking down a terrorist threat. I used the money to buy this watch. It wasn't much - my watch is just cheap garbage. Always hated it.*
 **Actions:**
@@ -798,8 +798,8 @@ class RoleDescriptions():
         await where.send("__**Multiple Agent**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_noir(self, ctx, where = ""):
-        if where == "":
+    async def roles_noir(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Just another case. It's not the same when it's your seventeenth year on the job, countless partners dead and countless criminals caught. Alls I know is I'm gonna do what I always do. I'm gonna catch every one of these lowlife fucks and make them pay. After all, it's just another case.*
 **Actions:**
@@ -815,8 +815,8 @@ class RoleDescriptions():
         await where.send("__**Noir**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_page(self, ctx, where = ""):
-        if where == "":
+    async def roles_page(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Imitate* - At night, can flip a coin. On a heads, they may use one of the Guide's actions of their choice, providing it can be used at that time. For actions with limited uses, they count their uses of an action seperately from the Guide.
@@ -836,8 +836,8 @@ class RoleDescriptions():
         await where.send("__**Page**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_paladin(self, ctx, where = ""):
-        if where == "":
+    async def roles_paladin(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*There once was a man who rode on horseback into our town, warning of a darkness that could never be quenched. He wore a glimmering ivory suit of armour and spoke with a voice that has seen an infinite number of years and lived to tell of them dozens of times over. His helmet's visor is able to be seen through but no man has ever had the hubris to believe themselves worthy of such an experience. It is said that those who gaze directly at his unmasked countenance will see the very eyes of the Lord staring back at them.*
 **Actions:**
@@ -854,8 +854,8 @@ class RoleDescriptions():
         await where.send("__**Paladin**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_philanthropist(self, ctx, where = ""):
-        if where == "":
+    async def roles_philanthropist(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Abilities:**
 - At the start of every night, is told the identity of a random Human player.
@@ -872,8 +872,8 @@ class RoleDescriptions():
         await where.send("__**Philanthropist**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_pixie(self, ctx, where = ""):
-        if where == "":
+    async def roles_pixie(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Often found pestering those sleeping in the day. This talkative spirit flitters between the people, jumping from one choice to the next and deciding things out of pure luck. Maybe that’s how they ended up here, in this luckless town.*
 **Actions:**
@@ -891,8 +891,8 @@ class RoleDescriptions():
         await where.send("__**Pixie**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_politician(self, ctx, where = ""):
-        if where == "":
+    async def roles_politician(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*“Our great democracies still tend to think that a stupid man is more likely to be honest than a clever man, and our politicians take advantage of this prejudice by pretending to be even more stupid than nature made them.” - Bertrand Russell*
 **Actions:**
@@ -911,8 +911,8 @@ class RoleDescriptions():
         await where.send("__**Politician**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_poltergeist(self, ctx, where = ""):
-        if where == "":
+    async def roles_poltergeist(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*You can find many creatures of the night, but they are all nothing compared to it. With its long, slender fingers controlling every piece on the board, it is the unparalleled monarch of twilight as it swarms the chambers of every man and beast to cross it, lacing the tight noose around our throats in the gallows of our nightmares; our deaths a morsel for it to devour and our souls a trophy for its triumph. You aren't afraid of the dark, are you?*
 **Actions:**
@@ -929,8 +929,8 @@ class RoleDescriptions():
         await where.send("__**Poltergeist**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_poser(self, ctx, where = ""):
-        if where == "":
+    async def roles_poser(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Aw, you kids these days with your Snapchat and your Pokeymans and your John Green books and your insatiable lust to be "aesthetic". Y'see, I'm not like most adults. I'm cool. I'm only 38 and I signed up for a Tumblr account last night. I'm no old-timer. I love playing these Zelda games too - he's the coolest little elf boy. I get you. I'm cool, right? C'mon, tell me how cool I am.*
 **Actions:**
@@ -945,8 +945,8 @@ class RoleDescriptions():
         await where.send("__**Poser**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_priest(self, ctx, where = ""):
-        if where == "":
+    async def roles_priest(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*As your teacher, I bid you, say it with me- Children of the Lord! The great devotion shall not be swayed, we shall be exalted! We shall see the rise of our one true saviour and live to see the day this world is cured of its sickness!*
 **Actions:**
@@ -970,8 +970,8 @@ class RoleDescriptions():
         await where.send("__**Priest**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_prince(self, ctx, where = ""):
-        if where == "":
+    async def roles_prince(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Praise* - Every night, may target any player. Any limited-use actions that player may have are put in the state they were in at the beginning of the game.
@@ -988,8 +988,8 @@ class RoleDescriptions():
         await where.send("__**Prince**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_psychic(self, ctx, where = ""):
-        if where == "":
+    async def roles_psychic(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Predict* - Every night, may choose any player and guess the name of any action. If the target player has an action of that name, the Psychic gains one use of that action. If the action is limited use, the target player loses a use of the action. If the target player does not have an action of that name, they are told that a Psychic attempted to predict their actions. If a Psychic successfully predicts *Infect*, they become a Cyberhound.
@@ -1005,8 +1005,8 @@ class RoleDescriptions():
         await where.send("__**Psychic**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_researcher(self, ctx, where = ""):
-        if where == "":
+    async def roles_researcher(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*The laptop screen reflected off his lenses as he scanned each and every pixel of the monitor's display. It was now 3:15am but he was not deterred, not even slightly. His right hand's index finger scrolled intensely through the files on his computer. He was going to find it and he was not going to be distracted by whether that pungent aroma was his own sweat or the half-eaten ramen on his desk. Even if it meant he would have to rip apart this entire goddamn town, he was going to find these wolves.*
 **Actions:**
@@ -1025,8 +1025,8 @@ class RoleDescriptions():
         await where.send("__**Researcher**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_rogue(self, ctx, where = ""):
-        if where == "":
+    async def roles_rogue(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*The fire in her eyes could warm the cool winter breeze. Finally, she had returned back to her own cut of paradise - where the pockets ran deep and the toys came out to play. Except this time, there was something different. An invading force had the people subdued and fearful. Paranoia caused everyone to lock their doors and hide their wallets. Somebody had taken her village. Somebody was going to pay.*
 **Actions:**
@@ -1044,8 +1044,8 @@ class RoleDescriptions():
         await where.send("__**Rogue**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_rojinbi(self, ctx, where = ""):
-        if where == "":
+    async def roles_rojinbi(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*He was quiet. We barely knew him, just a guy who strolled into the town one day and was found the next day in their home, with a couple of pills in one hand and a bottle of gin in the other. He's dead now, I guess. I just wish we could've known him better. He always carried himself with grace, his walk commanded respect and his posture showed humility. But, behind his eyes, there was always such a fire.*
 **Abilities:**
@@ -1061,8 +1061,8 @@ class RoleDescriptions():
         await where.send("__**Rōjinbi**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_romantic(self, ctx, where = ""):
-        if where == "":
+    async def roles_romantic(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*You try to treat your beloved well, of course, but all the clichés in the world won't be able to save them from the mayor's vote, a wolf's claws, or the blade of a knight. It's time to take action now, or else your love might die forever, your burning passion sent up in flames.*
 **Actions:**
@@ -1082,8 +1082,8 @@ class RoleDescriptions():
         await where.send("__**Romantic**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_santa(self, ctx, where = ""):
-        if where == "":
+    async def roles_santa(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Gift* - Every night, can give any player other than themselves a present. They recieve the present the next night. If during the day between these nights, the targeted player votes against a player of their own alignment in the Lynching, they are told that they have recieved a lump of coal. For that night, they gain the ability to target any player with a Powerful Attack. Santa is immune to this Attack. Otherwise, the player is told that they have recieved a candy cane, and that player and Santa both recieve a Queued Standard Save.
@@ -1100,8 +1100,8 @@ class RoleDescriptions():
         await where.send("__**Santa**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_scarecrow(self, ctx, where = ""):
-        if where == "":
+    async def roles_scarecrow(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*There's something dark in this town. I can feel it in my bones, and it's everywhere. Even in my fields, something's different. Every time I wake at morning, something's changed, something's not how it was the night before. It gives me the creeps. At least I've my scarecrows watching over me.*
 **Actions:**
@@ -1121,12 +1121,12 @@ class RoleDescriptions():
         await where.send("__**Scarecrow**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_seer(self, ctx, where = ""):
-        if where == "":
+    async def roles_seer(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Her silence, well, that's the worst part of it. She doesn't raise her voice, she doesn't cry out, it's just her deathly silence. Her silver pupils scan the room and they'll lock onto you. And she then she just points. There are no words, no anger, no sorrow - only the stare. And as you're being dragged away to the gallows, her apathy is unwavering. No smirks, no grins, just the cold and unfeeling gaze. And then, as the rope is being tightened around your neck, her silence is the last thing you'll ever hear.*
 **Actions:**
-*Investigate* - Every night, choose one player to investigate. You then learn that player’s role and alignment, but not any Modifiers.
+*Investigate* - Every night, may choose one player to investigate, and is told that player’s role and alignment, but not any Modifiers.
 *Publish* - Once per game, at night, the Seer can choose to anonymously announce the results of a previous investigation publicly to all players at the start of the next day.
 **Abilities:**
 - Whenever they get a result of Evil on a player whom they have not previously targeted with *Investigate*, they gain a Queued Strong Save.
@@ -1140,8 +1140,25 @@ class RoleDescriptions():
         await where.send("__**Seer**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_shifter(self, ctx, where = ""):
-        if where == "":
+    async def roles_sharpshooter(self, ctx, where = None):
+        if where == None:
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Scope* - Every night, may choose one player to investigate, and is told that player’s role and alignment, but not any Modifiers. All rules referring to Investigate also act on Scope, other than those in the Seer's role description.
+*Snipe* - Once per night, can target any player they have already targeted with Scope with a Powerful Attack. If the player's role is different to the result given when they were targeted with Scope, this action fails. Cannot be used in the same night as Investigate. Cannot target the same player twice in a row. 
+**Objectives:**
+- Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
+**Tags:**
+- Good
+- Investigative/Killing
+- Human
+- Unique""",colour=0x5dff00)
+        embed.set_thumbnail(url=icons["sharpshooter"])
+        await where.send("__**Sharpshooter**__",embed=embed)
+
+    @commands.command(pass_context=True)
+    async def roles_shifter(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*A dark presence darts around the townsfolk. Its flickering form gradually corrupts and dissolves the body's soul as it passes through - who knows what chaotic influence brought it into existance, or what force could ever take it out.*
 **Actions:**
@@ -1160,8 +1177,8 @@ class RoleDescriptions():
         await where.send("__**Shifter**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_shinigami(self, ctx, where = ""):
-        if where == "":
+    async def roles_shinigami(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Naïve children. You're all so petulant, so mortal. Don't you realise that you don't want to play this game with me? You can't run from me, you can't hide from me, you can't defeat me yet you seem so insistent on trying. You think this is your game but I haven't had my turn. You think you hold all the cards until you realise you've got nothing but a Dead Man's Hand.*
 **Actions:**
@@ -1177,8 +1194,8 @@ class RoleDescriptions():
         await where.send("__**Shinigami**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_slasher(self, ctx, where = ""):
-        if where == "":
+    async def roles_slasher(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Slaughter* - Every night, may choose one player to target with  a strong attack. On the night that the Slasher uses this action, any player who targets the Slasher with an attack will be targeted with a standard attack three nights later.
@@ -1197,8 +1214,8 @@ class RoleDescriptions():
         await where.send("__**Slasher**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_souleater(self, ctx, where = ""):
-        if where == "":
+    async def roles_souleater(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Wake from your sleep. Free yourself of your skin. Rid yourself of these mortal shackles. Open your eyes. Come to me, my brother, and we shall walk to the promised land together. Today, we escape.*
 **Actions:**
@@ -1219,8 +1236,8 @@ class RoleDescriptions():
         await where.send("__**Souleater**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_spectre(self, ctx, where = ""):
-        if where == "":
+    async def roles_spectre(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Whether your heart is full of gold or ice, whether your lungs are full of nitrogen or ectoplasm, whether your hand holds a stick or a sceptre, there are four words that shall forever echo in the hearts of men, gods and beasts. Four words that cross the divine border and unite kings and pawns. A mantra that can resist shimmering fangs and slashing blades: **I Will Not Die**.*
 **Abilities:**
@@ -1238,8 +1255,8 @@ class RoleDescriptions():
         await where.send("__**Spectre**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_speedster(self, ctx, where = ""):
-        if where == "":
+    async def roles_speedster(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Supercharge* - Three times per game, at night, may choose to make all their actions act as if they were at the start of the night instead of at the end, hence acting before all effects used that night.
@@ -1250,8 +1267,8 @@ class RoleDescriptions():
         await where.send("__**Speedster**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_spider(self, ctx, where = ""):
-        if where == "":
+    async def roles_spider(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*The web of pain and sin it weaves will often go unnoticed. Whilst we're busy fighting wolves, gods and demons, it makes its way into our consciences, threading its little fears in there. It'll lace its hands around the bodies of the dead, breathing wicked life into these cold lungs like the cruel seductress it truly is, the dark mother of all of us... I mean, them. Oh, shit, I wasn't meant to say that, was I? You won't tell anybody, will you? Nah, she'll make sure you don't.*
 **Actions:**
@@ -1270,8 +1287,8 @@ class RoleDescriptions():
         await where.send("__**Spider**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_spinster(self, ctx, where = ""):
-        if where == "":
+    async def roles_spinster(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Create Herald* - If the Spinster, the Fate and the Inevitable are all alive or Spectres, they may, once per game, on any night, choose a player to become the Herald. The Spinster writes a message for the Herald, which the Herald will receive upon becoming the Herald (any player that changes into the Herald also receives this message).
@@ -1291,8 +1308,8 @@ class RoleDescriptions():
         await where.send("__**Spinster**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_spy(self, ctx, where = ""):
-        if where == "":
+    async def roles_spy(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 - Every night, can target any player. The spy is told any Modifiers that player has, and the names of all of the Private Channels that they are in.
@@ -1306,8 +1323,8 @@ class RoleDescriptions():
         await where.send("__**Spy**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_standuser(self, ctx, where = ""):
-        if where == "":
+    async def roles_standuser(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Standing over his opponent, the man looks down in contempt at him, a pitiful wreck asking for forgiveness. "Good grief." A shimmering muscular figure materialises, fists laden with gold, hair waving in the cold wind. "There's a reason you lost." In a swift motion, he traces a finger along the rim of his cap. "You pissed me off."*
 **Actions:**
@@ -1327,8 +1344,8 @@ class RoleDescriptions():
         await where.send("__**Stand User**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_survivalist(self, ctx, where = ""):
-        if where == "":
+    async def roles_survivalist(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*A million miles from home, in some castaway village of savages violently fucking and killing anything that moves. Each breath is a battle against the odds, each step is another potential landmine, each confrontation is a test of willpower where only the bravest can survive. But me? I don't just survive. I thrive. I live. And, if you dare cross me, I'll make sure you can't say the same.*
 **Actions:**
@@ -1348,8 +1365,8 @@ class RoleDescriptions():
         await where.send("__**Survivalist**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_sylph(self, ctx, where = ""):
-        if where == "":
+    async def roles_sylph(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Death is an inevitability - the end of all things. In time, all shall bow before it. There is no man, beast or god who can resist the seductive allure of the reaper's scythe and there is nothing to ever come back from it. We must all concede inevitably - we have no say in if we die, but we do have a say in how. Whether in a blaze of glory or a wave of the blood of our enemies, we must all accept that there's no magical guardian out there to save us from it. Such a fantasy would be... ridiculous.*
 **Actions:**
@@ -1368,8 +1385,8 @@ class RoleDescriptions():
         await where.send("__**Sylph**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_tardisengineer(self, ctx, where = ""):
-        if where == "":
+    async def roles_tardisengineer(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Sure, it works the ship like a charm, but that aberration never stops groaning in its robotic tone. I hate to think about what remains of the young man's consciousness. A jumble of wires, mechanics and Cyberman parts - I really wonder what kind of drugs I was on when I decided to make this thing. I also really wonder if the TARDIS saved their planet of origin so I can get some more.*
 **Actions:**
@@ -1388,8 +1405,8 @@ class RoleDescriptions():
         await where.send("__**TARDIS Engineer**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_thief(self, ctx, where = ""):
-        if where == "":
+    async def roles_thief(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*She knows this place. She knows the drunk who couldn't protect his wallet if his life depended on it. She knows the old lady who leaves her window open so God can watch over her better. She knows the kid who forgets to lock the door whenever he goes to school. Easy pickings.*
 **Actions:**
@@ -1407,8 +1424,8 @@ class RoleDescriptions():
         await where.send("__**Thief**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_timelord(self, ctx, where = ""):
-        if where == "":
+    async def roles_timelord(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Not much is known about him. A quirky stranger with a multicoloured scarf, a massive pair of ears and a bowtie just showed up one day and told me to trust him. I think he's lying... it would explain the quick heartbeat.*
 **Actions:**
@@ -1427,8 +1444,8 @@ class RoleDescriptions():
         await where.send("__**Time Lord**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_twin(self, ctx, where = ""):
-        if where == "":
+    async def roles_twin(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Two souls, eternally bonded. Our veins may pump different blood and our backgrounds may be different, but you will forever be my brother, in health and in sickness, in poverty and in richness, in peace and in war, in life and in death.*
 **Abilities:**
@@ -1444,8 +1461,8 @@ class RoleDescriptions():
         await where.send("__**Twin**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_understudy(self, ctx, where = ""):
-        if where == "":
+    async def roles_understudy(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Grief - the very worst of all human emotions. Grief can turn a brave hero into a desperate villain. Grief can throw the strongest man into a deepening spiral of emotional paralysis. Grief can make you throw out all you know - your items, your friends, even the clothes on your back. Grief can change you, make you become something you were never meant to be. Small changes at first - new haircut, new outfit, new speech patterns - until you look in the mirror and see all that you lost. Grief can break a man. Grief can make a man.*
 **Actions:**
@@ -1463,8 +1480,8 @@ class RoleDescriptions():
         await where.send("__**Understudy**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_vampire(self, ctx, where = ""):
-        if where == "":
+    async def roles_vampire(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Never sleep again. Never dream again. Make more room for nightmares, like the one you're having right now, where my claws are creating crimson crevaces in your dainty white skin, where my eyes pierce into whatever's left of your soul as your eyes beg the question of "why?", as my fangs explore and explode with delight at the taste of your almost-human blood. You blink and pinch yourself awake but there's one problem: it was never a nightmare in the first place.*
 **Actions:**
@@ -1486,8 +1503,8 @@ class RoleDescriptions():
         await where.send("__**Vampire**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_warlock(self, ctx, where = ""):
-        if where == "":
+    async def roles_warlock(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*The inky black fingers of the warlock are always wrapped firmly around his sceptre, his instrument of destruction. His muscular arms, both densely tattooed with sigils and spells written in an ancient script, had long, grey veins running up towards and around his neck, strangling him like a cobra. The village has never heard him speak, merely mutter incantations under his breath. There's an aura of fear about him, nobody speaks directly to him - there is no man foolhardy or brave enough. Some say he sold his soul to the devil eons ago. Few disagree.*
 **Actions:**
@@ -1506,8 +1523,8 @@ class RoleDescriptions():
         await where.send("__**Warlock**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_werewolf(self, ctx, where = ""):
-        if where == "":
+    async def roles_werewolf(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*You think you can tell us what to do? You think you have any power over us? We are an army. We are a brotherhood. You humans can't stand a chance against us. We run this town now, bitch.*
 **Actions:** 
@@ -1525,8 +1542,8 @@ class RoleDescriptions():
         await where.send("__**Werewolf**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_whisperer(self, ctx, where = ""):
-        if where == "":
+    async def roles_whisperer(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*There is truly nothing as powerful and versatile as words. Three words can stand for love, six can topple a government, fourteen can show hate, a few thousand can give you a career. How many do you reckon it'd take to end a pack of wolves?*
 **Actions:**
@@ -1544,8 +1561,8 @@ class RoleDescriptions():
         await where.send("__**Whisperer**__",embed=embed)
 
     @commands.command(pass_context=True)
-    async def roles_witch(self, ctx, where = ""):
-        if where == "":
+    async def roles_witch(self, ctx, where = None):
+        if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*A being of neither light nor evil, yet more destructive than both. A seductress who'll turn brother against brother and kill their entire family. A vampire who lusts for blood yet bares no fangs. A sycophant, dedicated not to malice, but to chaos. She lies in wait, her primal instinct to worship her primordial deities and protect the sisterhood - something she'll do at all costs.*
 **Actions:**

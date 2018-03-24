@@ -58,16 +58,9 @@ class GameCommands():
                 await user.remove_roles(mayor_role)
             for user in [m for m in guild.members if deputy_role in m.roles]:
                 await user.remove_roles(deputy_role)
+            gamechans = ["wolves", "coven", "twins", "tardis", "seance", "guide", "vampires"]
             for c in [c for c in guild.channels]:
-                if c.name == "wolves":
-                    await c.delete()
-                elif c.name == "coven":
-                    await c.delete()
-                elif c.name == "twins":
-                    await c.delete()
-                elif c.name == "tardis":
-                    await c.delete()
-                elif c.name == "seance":
+                if c.name in gamechans:
                     await c.delete()
             game_channel = self.client.get_channel(392995027909083137)
             voting_channel = self.client.get_channel(393470084217176075)

@@ -18,6 +18,10 @@ class Role():
         self.onattack_abilities = []
         self.ondeath_abilities = []
 
+class Modifier(Role):
+    def __init__(self):
+        super().__init__()
+
 class Faction():
     pass
 
