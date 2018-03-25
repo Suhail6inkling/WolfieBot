@@ -495,6 +495,19 @@ Output: '3 roles found:
             await ctx.send(display)
 
 @client.command(pass_context=True)
+async def roles(ctx, *, role: str):
+    role = role.title()
+    te = False
+    if role == "Tardis Engineer":
+        role = "TARDIS Engineer"
+        te = True
+    if role == "Rojinbi":
+        role = "Rōjinbi"
+    print(role)
+    if role in AllRoles or role in Modifiers or te:
+        await ctx.invoke(client.get_command(descCommands[role]))
+
+@client.command(pass_context=True)
 async def achieve(ctx, *, role=""):
     if role == "":
         await ctx.send("""Usage of command <w.achieve>:
@@ -512,6 +525,8 @@ Output: 'Hacker:
         if role == "Tardis Engineer":
             role = "TARDIS Engineer"
             te = True
+        if role == "Rojinbi":
+            role = "Rōjinbi"
         if role in AllRoles or role in Modifiers or te:
             methods = {"Bloodhound" : "- Be targeted with *Fangs* as a Wolf or a player with the Feral modifier.\n- Be targeted with both *Fangs* and *Infect*.\n- (Random) Be a Drunk.",
                        "Cultist" : "- Become Evil as a Priest.\n- Have any Priest become a Cultist as a Priest.",
