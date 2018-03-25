@@ -190,8 +190,8 @@ async def gm_help(ctx):
 async def gamerules(ctx):
     embed=discord.Embed(description="""This link details the rules for playing Werewolf.
 If you have any questions or suggestions for improvement on the rules, contact Army with them. They'll be happy to help!
-(If on mobile, press on the icon to access the document.)""")
-    embed.set_author(name="Werewolf Party Game Rules", url='https://docs.google.com/document/d/1yPUNomeB7Fpw5iXS9J9QOITFU6jWstxIOCnXorfhV3s/edit?usp=sharing', icon_url='https://i.imgur.com/soFqp3g.png')
+(If that doesn't work, here's the link: https://bit.ly/werewolf-gamerules)""")
+    embed.set_author(name="Werewolf Party Game Rules", url='https://bit.ly/werewolf-gamerules', icon_url='https://i.imgur.com/soFqp3g.png')
     await ctx.send(embed=embed)
 
 @client.command(pass_context=True)
