@@ -24,33 +24,33 @@ notes_channel = client.get_channel(393476547954212874)
 dead_channel = client.get_channel(392995124423950344)
 
 AllRoles = ["Alchemist", "Arsonist", "Backstabber", "Bard", "Bloodhound", "Clockmaker", "Cultist", "Cyberhound", "Dentist", "Direwolf", "Doctor", "Dodomeki", "Drunk", "Fate", "Geneticist",
-            "Gladiator", "Glazier", "Hacker", "Hangman", "Heir", "Herald", "Hermit", "Hooligan", "Hunter", "Inevitable", "Inventor", "Jailor", "Jester", "Knight", "Kresnik", "Mage", "Maid", "Medium",
+            "Gladiator", "Glazier", "Hacker", "Hangman", "Heir", "Herald", "Hermit", "Hitman", "Hooligan", "Hunter", "Inevitable", "Inventor", "Jailor", "Jester", "Knight", "Kresnik", "Mage", "Maid", "Medium",
             "Merchant", "Multiple Agent", "Noir", "Page", "Paladin", "Philanthropist", "Pixie", "Politician", "Poltergeist", "Poser", "Priest", "Prince", "Psychic", "Researcher", "Rogue",
-            "Rōjinbi", "Romantic", "Santa", "Scarecrow", "Seer", "Sharpshooter", "Shifter", "Shinigami", "Slasher", "Souleater", "Spider", "Spinster", "Spy", "Survivalist", "Sylph", "Evil TARDIS Engineer",
+            "Rōjinbi", "Romantic", "Santa", "Scarecrow", "Seer", "Sentinel", "Sharpshooter", "Shifter", "Shinigami", "Slasher", "Souleater", "Spider", "Spinster", "Spy", "Survivalist", "Sylph", "Evil TARDIS Engineer",
             "Good TARDIS Engineer", "Thief", "Time Lord", "Understudy", "Vampire", "Warlock", "Werewolf", "Whisperer", "Witch"]
 
 GoodRoles = ["Doctor", "Gladiator", "Glazier", "Hacker", "Hunter", "Jailor", "Knight", "Kresnik", "Mage", "Medium", "Noir", "Paladin", "Pixie", "Poser", "Priest", "Prince", "Researcher",
              "Rogue", "Seer", "Sharpshooter", "Spy", "Sylph", "Good TARDIS Engineer", "Time Lord", "Whisperer"]
 EvilRoles = ["Backstabber", "Bloodhound", "Cultist", "Cyberhound", "Dentist", "Direwolf", "Dodomeki", "Heir", "Hooligan", "Jester", "Politician", "Poltergeist", "Psychic", "Shinigami", "Spider",
              "Evil TARDIS Engineer", "Vampire", "Warlock", "Werewolf"]
-NeutralRoles = ["Alchemist", "Arsonist", "Bard", "Clockmaker", "Drunk", "Fate", "Geneticist", "Hangman", "Herald", "Hermit", "Inevitable", "Inventor", "Maid", "Merchant", "Multiple Agent", "Page",
-                "Philanthropist", "Rōjinbi","Romantic", "Santa", "Scarecrow", "Shifter", "Slasher", "Souleater", "Spinster", "Survivalist", "Thief", "Understudy", "Witch"]
+NeutralRoles = ["Alchemist", "Arsonist", "Bard", "Clockmaker", "Drunk", "Fate", "Geneticist", "Hangman", "Herald", "Hermit", "Hitman", "Inevitable", "Inventor", "Maid", "Merchant", "Multiple Agent", "Page",
+                "Philanthropist", "Rōjinbi","Romantic", "Santa", "Scarecrow", "Sentinel", "Shifter", "Slasher", "Souleater", "Spinster", "Survivalist", "Thief", "Understudy", "Witch"]
 
 ChaosRoles = ["Alchemist", "Bard", "Drunk", "Fate", "Geneticist", "Hangman", "Herald", "Inevitable", "Inventor", "Jester", "Mage", "Merchant", "Multiple Agent", "Poltergeist", "Psychic", "Rōjinbi",
               "Scarecrow", "Shifter", "Slasher", "Souleater", "Spinster", "Thief", "Understudy", "Warlock"]
 CounteractiveRoles = ["Cultist", "Cyberhound", "Backstabber", "Dentist", "Glazier", "Gladiator", "Hangman", "Heir", "Hermit", "Jailor", "Paladin", "Philanthropist", "Pixie", "Priest",
                       "Rogue", "Shinigami", "Spider", "Survivalist", "Thief"]
 InvestigativeRoles = ["Dodomeki", "Hacker", "Hermit", "Kresnik", "Mage", "Noir", "Pixie", "Poltergeist", "Researcher", "Seer", "Sharpshooter", "Spinster", "Spy", "Time Lord", "Whisperer"]
-KillingRoles = ["Arsonist", "Backstabber", "Bard", "Bloodhound", "Clockmaker", "Cyberhound", "Direwolf", "Doctor", "Gladiator", "Herald", "Hooligan", "Hunter", "Inevitable", "Inventor",
+KillingRoles = ["Arsonist", "Backstabber", "Bard", "Bloodhound", "Clockmaker", "Cyberhound", "Direwolf", "Doctor", "Gladiator", "Herald", "Hitman", "Hooligan", "Hunter", "Inevitable", "Inventor",
                 "Jester", "Knight", "Kresnik", "Noir", "Politician", "Sharpshooter", "Shinigami", "Slasher", "Souleater", "Warlock", "Werewolf", "Witch"]
-ProtectiveRoles = ["Doctor", "Hunter", "Jailor", "Multiple Agent", "Paladin", "Rogue", "Romantic", "Witch"]
+ProtectiveRoles = ["Doctor", "Hunter", "Jailor", "Multiple Agent", "Paladin", "Rogue", "Romantic", "Sentinel", "Witch"]
 SupportRoles = ["Bloodhound", "Cultist", "Direwolf", "Geneticist", "Hacker", "Hooligan", "Knight", "Maid", "Medium", "Merchant", "Page", "Philanthropist", "Politician", "Poser", "Priest",
                 "Prince", "Psychic", "Santa", "Scarecrow", "Spider", "Sylph", "Evil TARDIS Engineer", "Good TARDIS Engineer", "Time Lord", "Understudy", "Vampire", "Whisperer"]
 
 HumanRoles = ["Alchemist", "Arsonist", "Backstabber", "Bard", "Clockmaker", "Cultist", "Dentist", "Doctor", "Drunk", "Geneticist", "Gladiator", "Glazier", "Hacker", "Hangman", "Heir", "Hermit",
-              "Hooligan", "Hunter", "Inventor", "Jailor", "Knight", "Kresnik", "Mage", "Maid", "Medium", "Merchant", "Multiple Agent", "Noir", "Page", "Paladin", "Philanthropist", "Politician", "Poser",
+              "Hitman", "Hooligan", "Hunter", "Inventor", "Jailor", "Knight", "Kresnik", "Mage", "Maid", "Medium", "Merchant", "Multiple Agent", "Noir", "Page", "Paladin", "Philanthropist", "Politician", "Poser",
               "Priest", "Prince", "Psychic", "Researcher", "Rogue", "Romantic", "Seer", "Sharpshooter", "Spy", "Survivalist", "Evil TARDIS Engineer", "Good TARDIS Engineer", "Thief", "Understudy", "Warlock", "Whisperer"]
-NonHumanRoles = ["Dodomeki", "Fate", "Herald", "Inevitable", "Jester", "Pixie", "Poltergeist", "Rōjinbi", "Santa", "Scarecrow", "Shifter", "Shinigami", "Slasher", "Souleater", "Spider",
+NonHumanRoles = ["Dodomeki", "Fate", "Herald", "Inevitable", "Jester", "Pixie", "Poltergeist", "Rōjinbi", "Santa", "Scarecrow", "Sentinel", "Shifter", "Shinigami", "Slasher", "Souleater", "Spider",
                  "Spinster", "Sylph", "Time Lord", "Vampire", "Witch"]
 WolfRoles = ["Bloodhound", "Cyberhound", "Direwolf", "Werewolf"]
 
@@ -80,7 +80,8 @@ icons = {"alchemist" : "https://i.imgur.com/CkcPTXj.png", "arsonist" : "https://
          "glazier" : "https://i.imgur.com/n7N7dOI.png",
          "guide" : "https://i.imgur.com/6C59lhY.png", "hacker" : "https://i.imgur.com/IT4TDsx.png", "hangman" : "https://i.imgur.com/nIlRgYj.png", "heir" : "https://i.imgur.com/xSQdjo7.png",
          "herald" : "https://i.imgur.com/42kAlx1.png",
-         "hermit" : "https://i.imgur.com/WaMFV6G.png", "hooligan" : "https://i.imgur.com/RgofblX.png", "hunter" : "https://i.imgur.com/91EYf4h.png", "inevitable" : "https://i.imgur.com/PlzPjU7.png",
+         "hermit" : "https://i.imgur.com/WaMFV6G.png", "hitman" : PLACEHOLDERICON, "hooligan" : "https://i.imgur.com/RgofblX.png", "hunter" : "https://i.imgur.com/91EYf4h.png",
+         "inevitable" : "https://i.imgur.com/PlzPjU7.png",
          "inventor" : "https://i.imgur.com/uyVCtUE.png", "jailor" : "https://i.imgur.com/w1lT9VF.png", "jester" : "https://i.imgur.com/fHcSdG1.png", "knight" : "https://i.imgur.com/80i6sbg.png",
          "kresnik" : "https://i.imgur.com/l5qO6ik.png",
          "mage" : "https://i.imgur.com/Shp4BCk.png", "maid" : "https://i.imgur.com/j3ls0Bq.png", "medium" : "https://i.imgur.com/LyVnqOB.png", "merchant" : "https://i.imgur.com/94e1SoH.png",
@@ -90,7 +91,7 @@ icons = {"alchemist" : "https://i.imgur.com/CkcPTXj.png", "arsonist" : "https://
          "prince" : "https://i.imgur.com/WlHqAWN.png", "psychic" : "https://i.imgur.com/ij227Zp.png", "researcher" : "https://i.imgur.com/EKYuHHB.png", "rogue" : "https://i.imgur.com/Mv4kPmv.png",
          "rojinbi" : "https://i.imgur.com/l5FG3fd.png",
          "romantic" : "https://i.imgur.com/uyGYo8v.png", "santa" : "https://i.imgur.com/4BbwtSM.png", "scarecrow" : "https://i.imgur.com/AussjT7.png", "seer" : "https://i.imgur.com/ZBw7bqy.png",
-         "sharpshooter" : "https://i.imgur.com/Hi8LZXq.png",
+         "sentinel" : PLACEHOLDERICON, "sharpshooter" : "https://i.imgur.com/Hi8LZXq.png",
          "shifter" : "https://i.imgur.com/srEm6NB.png", "shinigami" : "https://i.imgur.com/g3lHNHK.png", "slasher" : "https://i.imgur.com/V2Z0g2x.png", "souleater" : "https://i.imgur.com/9Yx69aM.png",
          "spectre" : "https://i.imgur.com/CLtiWTl.png", "speedster" : "https://i.imgur.com/2NdRPVX.png",
          "spider" : "https://i.imgur.com/V5Ovqe9.png", "spinster" : "https://i.imgur.com/VKdzrRc.png", "spy" : "https://i.imgur.com/HBr0JPO.png", "standuser" : "https://i.imgur.com/ANrLfnT.png",
@@ -103,12 +104,14 @@ descCommands = {"Alchemist" : "roles_alchemist", "Arsonist" : "roles_arsonist", 
                 "Clockmaker" : "roles_clockmaker", "Cultist" : "roles_cultist", "Cyberhound" : "roles_cyberhound", "Dentist" : "roles_dentist", "Direwolf" : "roles_direwolf",
                 "Doctor" : "roles_doctor", "Dodomeki" : "roles_dodomeki", "Drunk" : "roles_drunk", "Fate" : "roles_fate", "Geneticist" : "roles_geneticist", "Gladiator" : "roles_gladiator",
                 "Glazier" : "roles_glazier", "Hacker" : "roles_hacker", "Hangman" : "roles_hangman", "Heir" : "roles_heir", "Herald" : "roles_herald", "Hermit" : "roles_hermit",
+                "Hitman" : "roles_hitman",
                 "Hooligan" : "roles_hooligan", "Hunter" : "roles_hunter", "Inevitable" : "roles_inevitable", "Inventor" : "roles_inventor", "Jailor" : "roles_jailor",
                 "Jester" : "roles_jester", "Knight" : "roles_knight", "Kresnik" : "roles_kresnik", "Mage" : "roles_mage", "Maid" : "roles_maid", "Medium" : "roles_medium", "Merchant" : "roles_merchant",
                 "Multiple Agent" : "roles_multipleagent", "Noir" : "roles_noir", "Page" : "roles_page", "Paladin" : "roles_paladin", "Philanthropist" : "roles_philanthropist",
                 "Pixie" : "roles_pixie", "Politician" : "roles_politician", "Poltergeist" : "roles_poltergeist", "Poser" : "roles_poser", "Priest" : "roles_priest",
                 "Prince" : "roles_prince", "Psychic" : "roles_psychic", "Researcher" : "roles_researcher", "Rogue" : "roles_rogue", "Rōjinbi" : "roles_rojinbi",
-                "Romantic" : "roles_romantic", "Santa" : "roles_santa", "Scarecrow" : "roles_scarecrow", "Seer" : "roles_seer", "Sharpshooter" : "roles_sharpshooter", "Shifter" : "roles_shifter",
+                "Romantic" : "roles_romantic", "Santa" : "roles_santa", "Scarecrow" : "roles_scarecrow", "Seer" : "roles_seer", "Sentinel" : "roles_sentinel",
+                "Sharpshooter" : "roles_sharpshooter", "Shifter" : "roles_shifter",
                 "Shinigami" : "roles_shinigami", "Slasher" : "roles_slasher", "Souleater" : "roles_souleater", "Spider" : "roles_spider", "Spinster" : "roles_spinster", "Spy" : "roles_spy",
                 "Sylph" : "roles_sylph", "TARDIS Engineer" : "roles_tardisengineer", "Thief" : "roles_thief", "Time Lord" : "roles_timelord", "Understudy" : "roles_understudy", "Vampire" : "roles_vampire",
                 "Warlock" : "roles_warlock", "Werewolf" : "roles_werewolf", "Whisperer" : "roles_whisperer", "Witch" : "roles_witch", "Companion" : "roles_companion",
@@ -226,6 +229,7 @@ async def rolelist(ctx):
 [+][Heir] - Evil, Counteractive, Human, Unique - <w.roles_heir>
 [+][Herald] - Neutral, Chaos/Killing, Non-Human, Unique, Achievable - <w.roles_herald>
 [+][Hermit] - Neutral, Investigative/Counteractive, Human, Unique - <w.roles_hermit>
+[+][Hitman] - Neutral, Killing, Human - <w.roles_hitman>
 [+][Hooligan] - Evil, Killing/Support, Human - <w.roles_hooligan>
 [+][Hunter] - Good, Killing/Protective, Human - <w.roles_hunter>
 [+][Inevitable] - Neutral, Chaos/Killing, Non-Human, Unique, Achievable - <w.roles_inevitable>
@@ -261,6 +265,7 @@ async def rolelist(ctx):
 [+][Santa] - Neutral, Support, Non-Human, Unique - <w.roles_santa>
 [+][Scarecrow] - Neutral, Chaos/Support, Non-Human, Unique - <w.roles_scarecrow>
 [+][Seer] - Good, Investigative, Human - <w.roles_seer>
+[+][Sentinel] - Neutral, Protective, Non-Human - <w.roles_sentinel>
 [+][Shifter] - Neutral, Chaos, Non-Human - <w.roles_shifter>
 [+][Shinigami] - Evil, Counteractive/Killing, Non-Human, Unique - <w.roles_shinigami>
 [+][Slasher] - Neutral, Chaos/Killing, Non-Human, Unique - <w.roles_slasher>

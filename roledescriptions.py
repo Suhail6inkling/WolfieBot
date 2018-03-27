@@ -516,6 +516,27 @@ class RoleDescriptions():
         await where.send("__**Hermit**__",embed=embed)
 
     @commands.command(pass_context=True)
+    async def roles_hitman(self, ctx, where = None):
+        if where == None:
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Terminate* - Every night, may target any player with a Standard Attack.
+*Neutralise* - Three times per game, while not using *Terminate*, may choose a player. That player loses all their Standard and Strong saves.
+**Abilities:** 
+- At the start of NIGHT 1, a random player, other than the Hitman, becomes the Hitman's Client. The Hitman is told this player's identity and the Client is told that they have become such.
+- The Client, during that night, chooses a role. They must choose again if this role is not present in the game. The Hitman is informed of the Client's choice. All players with the role chosen by the Client become Targets.
+- If all Targets die by means other than an attack from the Hitman, or the Client is killed, a new Client is chosen and new Targets are set during the following night. 
+- After a Target is killed by the Hitman, the Hitman gains a Strong save, and a new Client is chosen who chooses a new role 
+**Objectives:**
+- Kill an amount of Targets by the end of the game equal to a quarter of the amount of players, rounding down. 
+**Tags:**
+- Neutral
+- Killing
+- Human""",colour=0xbcbcbc)
+        embed.set_thumbnail(url=icons["hitman"])
+        await where.send("__**Hitman**__",embed=embed)
+
+    @commands.command(pass_context=True)
     async def roles_hooligan(self, ctx, where = None):
         if where == None:
             where = ctx.message.channel
@@ -616,7 +637,7 @@ class RoleDescriptions():
     async def roles_jester(self, ctx, where = None):
         if where == None:
             where = ctx.message.channel
-        embed=discord.Embed(description="""*Introduce a little anarchy, upset the established order, and everything becomes chaos. I’m an agent of chaos, and you know the thing about chaos? It’s fair.*
+        embed=discord.Embed(description="""*Look at the King, ladies and gentlemen! Look how silly he is with his crown and sceptre! Wouldn't it be funny if I threw this pie at his face? Wouldn't that be embarrassing? Wouldn't it be kooky if I tied his laces together or put a whoopee cushion under his chair? Wouldn't that be wacky? Hey, wouldn't it be fun if I slit his whore of a wife's fucking throat? Wouldn't it be nutty if I sacrificed all of his subjects to the voices in my own deranged fucking head? How about if I tortured him psychologically? If I made him my bitch?! If I fucked him in the head until the only way out was the blade of knife? Wouldn't that be fun?!*
 **Actions:**
 *Haunt* - After dying from being Lynched, every night, the Jester chooses one player who voted against them in the Lynching to haunt. This player commits suicide on that night.
 **Abilities:**
@@ -977,7 +998,7 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Praise* - Every night, may target any player. Any limited-use actions that player may have are put in the state they were in at the beginning of the game.
+*Praise* - Every night, may target any player other than themselves, who they have not already used this action on. Any limited-use actions that player may have are put in the state they were in at the beginning of the game.
 **Abilities:**
 - If killed by any means other than Suicide, the day after their death is skipped, meaning that there are two nights taken consecutively.
 **Objectives:**
@@ -1141,6 +1162,27 @@ class RoleDescriptions():
 - Human""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["seer"])
         await where.send("__**Seer**__",embed=embed)
+
+    @commands.command(pass_context=True)
+    async def roles_sentinel(self, ctx, where = None):
+        if where == None:
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Shield* - Every night, may choose a Player. That night, all Attacks targeting the Player instead target the Guard.
+*Parry* - Once per game, at night, when not using Thrust, can choose to give themselves a Lunar Powerful Save. If the Save takes effect, they gain a Queued Powerful Save.
+*Thrust* - Once per game, at night, when not using Parry, can choose to give themselves a Lunar Powerful Save. If the Save takes effect, they target the player targeting them with a Strong Attack.
+**Abilities:**
+- Starts the game with three Queued Powerful Saves.
+- Is told whenever they gain or lose a save, and what type it is.
+- If an effect would cause them to lose all their saves, they instead lose only one.
+**Objectives:**
+- Successfully use up three Saves through using Shield.
+**Tags:**
+- Neutral
+- Protective
+- Non-Human""",colour=0x00f6ff)
+        embed.set_thumbnail(url=icons["sentinel"])
+        await where.send("__**Sentinel**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_sharpshooter(self, ctx, where = None):
