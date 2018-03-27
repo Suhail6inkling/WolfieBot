@@ -1358,6 +1358,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Infiltrate* - Every night, can target any player. The spy is told any Modifiers that player has, and the names of all of the Private Channels that they are in.
+*Espionage* - Once per game, at night, may choose to recieve the amount of Good, Neutral and Evil players currently alive. A random one of the numbers given will differ from the actual value by one.
 **Objectives:**
 - Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
 **Tags:**
