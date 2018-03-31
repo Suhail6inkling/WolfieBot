@@ -203,7 +203,7 @@ class RoleDescriptions():
         embed=discord.Embed(description="""**Actions:**
 *Maul* - Discuss with other Wolves in a private channel who to Strong Attack during the night.
 *Pack Offensive* - Once per game, at night, not before NIGHT 3, instead of using *Maul*, the Wolves may choose to each individually target any player with a Standard Attack.
-*Deceive* - Every night, chooses two players and chooses a Non-Unique role for each player. If either player dies during that night or the following day and their role has not been changed since, they appear to be the role chosen for them and the Cyberhound is told their actual role. If a player the Cyberhound has chosen during that night is targeted with *Shift*, the player using the action becomes the role chosen by the Cyberhound rather than the player’s actual role. They still gain any modifiers the player had.
+*Glitch* - Every night, chooses two players and chooses a Non-Unique role for each player. If either player dies during that night or the following day and their role has not been changed since, they appear to be the role chosen for them and the Cyberhound is told their actual role. If a player the Cyberhound has chosen during that night is targeted with *Shift*, the player using the action becomes the role chosen by the Cyberhound rather than the player’s actual role. They still gain any modifiers the player had.
 **Abilities:**
 - On death, the real roles of all the dead players that *Deceive* took effect on are revealed.
 - May still speak in the Wolf channel when dead.
@@ -1358,7 +1358,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Infiltrate* - Every night, can target any player. The spy is told any Modifiers that player has, and the names of all of the Private Channels that they are in.
-*Espionage* - Once per game, at night, may choose to recieve the amount of Good, Neutral and Evil players currently alive. A random one of the numbers given will differ from the actual value by one.
+*Surveillance* - Once per game, at night, may choose to recieve the amount of Good, Neutral and Evil players currently alive. A random one of the numbers given will differ from the actual value by one.
 **Objectives:**
 - Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
 **Tags:**
@@ -1459,6 +1459,7 @@ class RoleDescriptions():
 *Steal* - Once every 3 nights, can choose any player. One of that player's actions is randomly chosen. The Thief gains access to that action for the rest of the game, and that player may not use that action for the rest of the game. Both the target player and the Thief are told this. If the Thief targets the Merchant with this ability, they take a random action from the Merchant's stock.
 **Abilities:**
 - If they become Evil, they become a Dodomeki.
+- Upon death, all actions taken using *Steal* are returned to the players they were stolen from, even if those players' roles have changed since the action was stolen.
 **Objectives:**
 - Be the last player alive, or finish the game with no living players.
 **Tags:**
