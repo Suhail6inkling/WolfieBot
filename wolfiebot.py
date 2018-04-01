@@ -67,7 +67,13 @@ AchievableModifiers = ["Companion", "Guide", "Minstrel", "Spectre"]
 VoteEmojis = [":regional_indicator_a:", ":regional_indicator_b:", ":regional_indicator_c:", ":regional_indicator_d:", ":regional_indicator_e:", ":regional_indicator_f:",
               ":regional_indicator_g:", ":regional_indicator_h:", ":regional_indicator_i:", ":regional_indicator_j:", ":regional_indicator_k:", ":regional_indicator_l:",
               ":regional_indicator_m:", ":regional_indicator_n:", ":regional_indicator_o:", ":regional_indicator_p:", ":regional_indicator_q:", ":regional_indicator_r:",
-              ":regional_indicator_s:", ":regional_indicator_t:"]
+              ":regional_indicator_s:", ":regional_indicator_t:", ":regional_indicator_u:", ":regional_indicator_v:", ":regional_indicator_w:", ":regional_indicator_x:",
+              ":regional_indicator_y:", ":regional_indicator_z:"]
+
+UVoteEmojis = [b'\xf0\x9f\x87\xa6', b'\xf0\x9f\x87\xa7', b'\xf0\x9f\x87\xa8', b'\xf0\x9f\x87\xa9', b'\xf0\x9f\x87\xaa', b'\xf0\x9f\x87\xab', b'\xf0\x9f\x87\xac', b'\xf0\x9f\x87\xad',
+               b'\xf0\x9f\x87\xae', b'\xf0\x9f\x87\xaf', b'\xf0\x9f\x87\xb0', b'\xf0\x9f\x87\xb1', b'\xf0\x9f\x87\xb2', b'\xf0\x9f\x87\xb3', b'\xf0\x9f\x87\xb4', b'\xf0\x9f\x87\xb5',
+               b'\xf0\x9f\x87\xb6', b'\xf0\x9f\x87\xb7', b'\xf0\x9f\x87\xb8', b'\xf0\x9f\x87\xb9', b'\xf0\x9f\x87\xba', b'\xf0\x9f\x87\xbb', b'\xf0\x9f\x87\xbc', b'\xf0\x9f\x87\xbd',
+               b'\xf0\x9f\x87\xbe', b'\xf0\x9f\x87\xbf']
 
 PLACEHOLDERICON = "https://via.placeholder.com/256x256"
 
@@ -152,6 +158,7 @@ async def help(ctx):
 
 <w.generatelist> - Shows commands to generate rolelists.
 <w.vote (options to vote between seperated by commas)> - Displays a list of specified options to vote on.
+<w.advancedvote (options to vote between seperated by commas; time; needed)> - w.vote, but better.
 
 <w.randomchoice (comma seperated list of options)> - Randomly chooses from given options.
 <w.randomrole (space seperated list of tags as parameters)> - Randomly gives a role that has all the tags provided.
@@ -169,7 +176,7 @@ async def gm_help(ctx):
 <w.gamestatus> - Returns all players in the current game with information about them. 
 
 <w.daytimer (n; seconds; announcements)> - Sets a timer for the day, unlocks #game at start, locks #game when it ends. Seperate lines in announcements with /.
-<w.playervote> - Creates a vote in #voting for the players.
+<w.playervote ([time])> - Creates a vote in #voting for the players. Time is 900 seconds if not given.
 <w.night> - Ends day.
 
 <w.mayor (@player)> - Sets given player as Mayor.
@@ -508,7 +515,6 @@ async def roles(ctx, *, role: str):
         te = True
     if role == "Rojinbi":
         role = "Rōjinbi"
-    print(role)
     if role in AllRoles or role in Modifiers or te:
         await ctx.invoke(client.get_command(descCommands[role]))
 
@@ -642,7 +648,7 @@ async def magic8ball(ctx):
     await ctx.send(random.choice(results))
 
 @client.command(pass_context=True)
-async def vote(ctx, *, message="", where="", needed=0):
+async def vote(ctx, *, message="", where="", needed=0, time=0):
     if message == "":
         await ctx.send("""Usage of command <w.vote>:
 ```md
@@ -663,12 +669,95 @@ Output: 'React with appropriate emoji to vote:
         else:
             options = sorted(options)
             display=""
-            for i in range(1,len(options)+1):
-                display = display+("\n{} --> {}".format(VoteEmojis[i-1],options[i-1]))
+            for i in range(0,len(options)):
+                display = display+("\n{} --> {}".format(VoteEmojis[i],options[i]))
             vote_message = await where.send(embed=discord.Embed(title="React with appropriate emoji to vote:",description=display))
-            if needed != 0:
-                return
-                # return voted value
+            if needed != 0 and time != 0:
+                wintimer = 0
+                for i in range(0,time):                
+                    vote_message = await where.get_message(vote_message.id)
+                    await vote_message.edit(embed=discord.Embed(title="React with appropriate emoji to vote: [{}]".format(time-i),description=display))
+                    await asyncio.sleep(1)
+                    if i % 5 == 0:
+                        votes = {VoteEmojis[i] : [0, options[i]] for i in range(0,len(options))}
+                        reacts = vote_message.reactions
+                        for r in reacts:
+                            for i in range(0,len(options)):
+                                if r.emoji.encode('utf-8') == UVoteEmojis[i]:
+                                    votes[VoteEmojis[i]][0] = r.count
+                        top = []
+                        for v in votes:
+                            if votes[v][0] == max([votes[i][0] for i in votes]) and votes[v][0] >= needed:
+                                top.append(votes[v])
+                        if top != []:
+                            if wintimer == 6:
+                                await vote_message.edit(embed=discord.Embed(title="React with appropriate emoji to vote:",description=display))
+                                if len(top) == 1:
+                                    await where.send("**{}** has been voted!".format(top[0][1]))
+                                    return top[0]
+                                else:
+                                    for w in top:
+                                        if w == top[0]:
+                                            l = "**{}**".format(w[1])
+                                        elif w != top[len(top)-1]:
+                                            l = "{}, **{}**".format(l,w[1])
+                                        else:
+                                            l = "{} and **{}** have been voted!".format(l,w[1])
+                                    await where.send(l)
+                                    # solve tie
+                                    return
+                            else:
+                                wintimer = wintimer + 1
+                        else:
+                            wintimer = 0
+                vote_message = await where.get_message(vote_message.id)
+                await vote_message.edit(embed=discord.Embed(title="React with appropriate emoji to vote:",description=display))
+                votes = {VoteEmojis[i] : [0, options[i]] for i in range(0,len(options))}
+                reacts = vote_message.reactions
+                for r in reacts:
+                    for i in range(0,len(options)):
+                        if r.emoji.encode('utf-8') == UVoteEmojis[i]:
+                            votes[VoteEmojis[i]][0] = r.count
+                top = []
+                for v in votes:
+                    if votes[v][0] == max([votes[i][0] for i in votes]):
+                        top.append(votes[v])
+                if len(top) == 1:
+                    await where.send("**{}** has been voted!".format(top[0][1]))
+                    return top[0]
+                else:
+                    for w in top:
+                        if w == top[0]:
+                            l = "**{}**".format(w[1])
+                        elif w != top[len(top)-1]:
+                            l = "{}, **{}**".format(l,w[1])
+                        else:
+                            l = "{} and **{}** have been voted!".format(l,w[1])
+                    await where.send(l)
+                    # solve tie
+                    return
+
+@client.command(pass_context=True)
+async def advancedvote(ctx, *, message="", where=""):
+    if message == "":
+        await ctx.send("""Usage of command <w.advancedvote>:
+```md
+<w.advancedvote (options to vote between seperated by commas; time; needed)>
+
+Example: <w.vote 1, 2, 3; 60; 3>
+Output: 'React with appropriate emoji to vote:
+:A: --> 1
+:B: --> 2
+:C: --> 3'
+The vote will last 60 seconds (or until any option gets 3 votes) and will then return the result.```""")
+    else:
+        if where == "":
+            where = ctx.message.channel
+        message = message.split("; ")
+        time = int(message[1])
+        needed = int(message[2])
+        message = message[0]
+        await ctx.invoke(client.get_command("vote"),message=message,time=time,needed=needed)
 
 @client.command(pass_context=True)
 async def icon(ctx, *, role=""):
@@ -974,7 +1063,7 @@ async def tac(ctx, *, message: str):
         await ctx.send(combined)
 
 async def KeepAwake():
-    asyncio.sleep(1500)
+    await asyncio.sleep(1500)
     print("Still awake.")
 
 if __name__ == "__main__":

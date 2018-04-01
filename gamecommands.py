@@ -89,9 +89,10 @@ class GameCommands():
             if "Merchant" in [PlayerInfo[p][2] for p in PlayerInfo]:
                 report == "{}/A Merchant is present in this game!".format(report)
             DayCount = 0
+            time = 900
             while True:
                 DayCount = DayCount+1
-                report = "{}; 900; {}".format(DayCount,report)
+                report = "{}; {}; {}".format(DayCount,time,report)
                 await ctx.invoke(self.client.get_command("daytimer"),message=report)
                 mayor_role = discord.utils.get(ctx.message.guild.roles, name="Mayor")
                 deputy_role = discord.utils.get(ctx.message.guild.roles, name="Deputy")
@@ -106,7 +107,7 @@ class GameCommands():
                             await asyncio.sleep(5)
                     else:
                         await voting_channel.send("MAYORAL ELECTION")
-                        mayor = await ctx.invoke(self.client.get_command("playervote"))
+                        mayor = await ctx.invoke(self.client.get_command("playervote"),s=time)
                         elected = [p for p in ctx.message.guild.members if p.nick == mayor][0]
                         await elected.add_roles(mayor_role)
                         await game_channel.send("{} has been elected as Mayor! Choose your deputy with *w.choosedeputy @player*.".format(elected.mention))
@@ -115,7 +116,7 @@ class GameCommands():
                             await asyncio.sleep(5)
                 if DayCount != 1:
                     await voting_channel.send("LYNCH")
-                    lynched = await ctx.invoke(self.client.get_command("playervote"))
+                    lynched = await ctx.invoke(self.client.get_command("playervote"),s=time)
                     lynched = [p for p in ctx.message.guild.members if p.nick == lynched][0]
                     if True: # if not saved
                         await ctx.invoke(self.client.get_command("kill"),player=lynched.mention)
@@ -332,7 +333,7 @@ class GameCommands():
             await ctx.send("You need to be a GM to use this command!")
 
     @commands.command(pass_context=True)
-    async def playervote(self, ctx):
+    async def playervote(self, ctx, s=900):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             voting_channel = self.client.get_channel(393470084217176075)
             options = ""
@@ -346,8 +347,8 @@ class GameCommands():
                     options = p
                 else:
                     options = "{}, {}".format(options,p)
-            n = len([p.nick for p in ctx.message.guild.members if role in p.roles])/2+1
-            voted = await ctx.invoke(self.client.get_command("vote"),message=options,where=voting_channel,needed=n)
+            n = round(len([p.nick for p in ctx.message.guild.members if role in p.roles])/2)
+            voted = await ctx.invoke(self.client.get_command("vote"),message=options,where=voting_channel,needed=n,time=s)
             return voted
         else:
             await ctx.send("You need to be a GM to use this command!")
