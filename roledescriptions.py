@@ -600,7 +600,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*Being top of the class is not enough. Having twenty-seven Ph.Ds under your belt is not enough. Having an IQ exceeding double the human possible total is not enough. Being a revolutionary, once-in-a-lifetime genius, academic and philosopher is not enough. Being the most intelligent being in the universe is not enough. To hold true power, you must first be able to demonstrate it.*
 **Actions:**
-*Doomsday Device* - Every night, may choose to activate their doomsday device. This targets all players targeting the Inventor with any action and the Inventor themselves with an Unstoppable Attack. If this Attack results in the deaths of two or more other players, the Inventor is Saved from all Attacks that night including the Attack from the doomsday device.
+*Doomsday Device* - Every night, may choose to activate their doomsday device. This targets all players targeting the Inventor with any action and the Inventor themselves with an Unstoppable Attack. If this Attack results in the deaths of two or more other players, the Inventor is Saved from all Attacks that night including the Attack from the doomsday device. On the night that *Doomsday Device* is used, the Inventor may not change role or alignment, though may gain or lose modifiers.
 **Abilities:**
 - If targeted with *Invite*, becomes a Tardis Engineer.
 - If targeted with *Infect*, becomes a Cyberhound.
