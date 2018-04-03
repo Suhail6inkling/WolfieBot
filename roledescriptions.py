@@ -1264,14 +1264,16 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*Wake from your sleep. Free yourself of your skin. Rid yourself of these mortal shackles. Open your eyes. Come to me, my brother, and we shall walk to the promised land together. Today, we escape.*
 **Actions:**
-*Absorb* - Every two nights, can choose one player to absorb the soul of. This player is told that they are soulless. The Souleater can issue instructions anonymously to them to further their goals, threatening death otherwise.
-*Haunt* - At any time, once per day or night, can choose one soulless player to force to commit Suicide. This player can not have had their soul absorbed in the previous or same night.
+*Absorb* - Every two nights, can choose one player to gain the Soulless modifier.
+*Evocation* - At any time, may choose any Soulless player and write a message which is given to them anonymously.
+*Consume* - At any time, once per day or night, can choose one Soulless player to force to commit Suicide. This player can not have gained the Soulless modifier in the previous or same night.
 **Abilities:**
-- If a Seer investigates a Souleater, the Seer immediately becomes soulless. This does not use up the Souleater’s chance to absorb a soul.
 - Gains a Lunar Standard Save at the start of every night.
-- If a Souleater's soul is absorbed by any means, all the players they have absorbed the souls of regain their souls, however the Souleater does not become soulless.
+- If targeted with *Investigate*, the player who targeted them gains the Soulless modifier.
+- If Souleater gains the Soulless modifier by any means, all players including the Souleater lose the modifier.
+- Becomes a Spectre if killed by a Soulless player.
 **Objectives:**
-- Be the last player alive.
+- Be the last player alive, or finish the game with no living players.
 **Tags:**
 - Neutral
 - Chaos/Killing
@@ -1279,6 +1281,18 @@ class RoleDescriptions():
 - Achievable""",colour=0xd1dfa2)
         embed.set_thumbnail(url=icons["souleater"])
         await where.send("__**Souleater**__",embed=embed)
+
+    @commands.command(pass_context=True)
+    async def roles_soulless(self, ctx, where = None):
+        if where == None:
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Abilities:**
+- See Souleater ('*w.roles_souleater*').
+**Tags:**
+- Modifier
+- Achievable""",colour=0xd1dfa2)
+        embed.set_thumbnail(url=icons["soulless"])
+        await where.send("__**Soulless**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_spectre(self, ctx, where = None):
