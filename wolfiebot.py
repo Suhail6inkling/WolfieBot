@@ -26,40 +26,47 @@ dead_channel = client.get_channel(392995124423950344)
 AllRoles = ["Alchemist", "Arsonist", "Backstabber", "Bard", "Bloodhound", "Clockmaker", "Cultist", "Cyberhound", "Dentist", "Direwolf", "Doctor", "Dodomeki", "Drunk", "Fate", "Geneticist",
             "Gladiator", "Glazier", "Hacker", "Hangman", "Heir", "Herald", "Hermit", "Hitman", "Hooligan", "Hunter", "Inevitable", "Inventor", "Jailor", "Jester", "Knight", "Kresnik", "Mage", "Maid", "Medium",
             "Merchant", "Multiple Agent", "Noir", "Page", "Paladin", "Philanthropist", "Pixie", "Politician", "Poltergeist", "Poser", "Priest", "Prince", "Psychic", "Researcher", "Rogue",
-            "Rōjinbi", "Romantic", "Santa", "Scarecrow", "Seer", "Sentinel", "Sharpshooter", "Shifter", "Shinigami", "Slasher", "Souleater", "Spider", "Spinster", "Spy", "Survivalist", "Sylph", "Evil TARDIS Engineer",
-            "Good TARDIS Engineer", "Thief", "Time Lord", "Understudy", "Vampire", "Warlock", "Werewolf", "Whisperer", "Witch"]
+            "Rōjinbi", "Romantic", "Santa", "Scarecrow", "Seer", "Sentinel", "Sharpshooter", "Shifter", "Shinigami", "Slasher", "Souleater", "Spider", "Spinster", "Spy", "Survivalist", "Sylph",
+            "TARDIS Engineer", "Thief", "Time Lord", "Understudy", "Vampire", "Warlock", "Werewolf", "Whisperer", "Witch"]
 
-GoodRoles = ["Doctor", "Gladiator", "Glazier", "Hacker", "Hunter", "Jailor", "Knight", "Kresnik", "Mage", "Medium", "Noir", "Paladin", "Pixie", "Poser", "Priest", "Prince", "Researcher",
-             "Rogue", "Seer", "Sharpshooter", "Spy", "Sylph", "Good TARDIS Engineer", "Time Lord", "Whisperer"]
-EvilRoles = ["Backstabber", "Bloodhound", "Cultist", "Cyberhound", "Dentist", "Direwolf", "Dodomeki", "Heir", "Hooligan", "Jester", "Politician", "Poltergeist", "Psychic", "Shinigami", "Spider",
-             "Evil TARDIS Engineer", "Vampire", "Warlock", "Werewolf"]
-NeutralRoles = ["Alchemist", "Arsonist", "Bard", "Clockmaker", "Drunk", "Fate", "Geneticist", "Hangman", "Herald", "Hermit", "Hitman", "Inevitable", "Inventor", "Maid", "Merchant", "Multiple Agent", "Page",
-                "Philanthropist", "Rōjinbi","Romantic", "Santa", "Scarecrow", "Sentinel", "Shifter", "Slasher", "Souleater", "Spinster", "Survivalist", "Thief", "Understudy", "Witch"]
+Alignments = {"Alchemist" : "N", "Arsonist" : "N", "Backstabber" : "E", "Bard" : "N", "Bloodhound" : "E", "Clockmaker" : "N", "Cultist" : "E", "Cyberhound" : "E", "Dentist" : "E",
+              "Direwolf" : "E", "Doctor" : "G", "Dodomeki" : "E", "Drunk" : "N", "Fate" : "N", "Geneticist" : "N", "Gladiator" : "G", "Glazier" : "G", "Hacker" : "G", "Hangman" : "N",
+              "Heir" : "E", "Herald" : "N", "Hermit" : "N", "Hitman" : "N", "Hooligan" : "E", "Hunter" : "G", "Inevitable" : "N", "Inventor" : "N", "Jailor" : "G", "Jester" : "E",
+              "Knight" : "G", "Kresnik" : "G", "Mage" : "G", "Maid" : "N", "Medium" : "G", "Merchant" : "N", "Multiple Agent" : "N", "Noir" : "G", "Page" : "N", "Paladin" : "G",
+              "Philanthropist" : "N", "Pixie" : "G", "Politician" : "E", "Poltergeist" : "E", "Poser" : "G", "Priest" : "G", "Prince" : "G", "Psychic" : "E", "Researcher" : "G",
+              "Rogue" : "G", "Rōjinbi" : "N", "Romantic" : "N", "Santa" : "N", "Scarecrow" : "N", "Seer" : "G", "Sentinel" : "N", "Sharpshooter" : "G", "Shifter" : "N",
+              "Shinigami" : "E", "Slasher" : "N", "Souleater" : "N", "Spider" : "E", "Spinster" : "N", "Spy" : "G", "Survivalist" : "N", "Sylph" : "G", "TARDIS Engineer" : "G",
+              "Thief" : "N", "Time Lord" : "G", "Understudy" : "N", "Vampire" : "E", "Warlock" : "E", "Werewolf" : "E", "Whisperer" : "G", "Witch" : "N"}
 
-ChaosRoles = ["Alchemist", "Bard", "Drunk", "Fate", "Geneticist", "Hangman", "Herald", "Inevitable", "Inventor", "Jester", "Mage", "Merchant", "Multiple Agent", "Poltergeist", "Psychic", "Rōjinbi",
-              "Scarecrow", "Shifter", "Slasher", "Souleater", "Spinster", "Thief", "Understudy", "Warlock"]
-CounteractiveRoles = ["Cultist", "Cyberhound", "Backstabber", "Dentist", "Glazier", "Gladiator", "Hangman", "Heir", "Hermit", "Jailor", "Paladin", "Philanthropist", "Pixie", "Priest",
-                      "Rogue", "Shinigami", "Spider", "Survivalist", "Thief"]
-InvestigativeRoles = ["Dodomeki", "Hacker", "Hermit", "Kresnik", "Mage", "Noir", "Pixie", "Poltergeist", "Researcher", "Seer", "Sharpshooter", "Spinster", "Spy", "Time Lord", "Whisperer"]
-KillingRoles = ["Arsonist", "Backstabber", "Bard", "Bloodhound", "Clockmaker", "Cyberhound", "Direwolf", "Doctor", "Gladiator", "Herald", "Hitman", "Hooligan", "Hunter", "Inevitable", "Inventor",
-                "Jester", "Knight", "Kresnik", "Noir", "Politician", "Sharpshooter", "Shinigami", "Slasher", "Souleater", "Warlock", "Werewolf", "Witch"]
-ProtectiveRoles = ["Doctor", "Hunter", "Jailor", "Multiple Agent", "Paladin", "Rogue", "Romantic", "Sentinel", "Witch"]
-SupportRoles = ["Bloodhound", "Cultist", "Direwolf", "Geneticist", "Hacker", "Hooligan", "Knight", "Maid", "Medium", "Merchant", "Page", "Philanthropist", "Politician", "Poser", "Priest",
-                "Prince", "Psychic", "Santa", "Scarecrow", "Spider", "Sylph", "Evil TARDIS Engineer", "Good TARDIS Engineer", "Time Lord", "Understudy", "Vampire", "Whisperer"]
+Categories = {"Alchemist" : ["Ch"], "Arsonist" : ["Ch", "K"], "Backstabber" : ["Co", "K"], "Bard" : ["Ch", "K"], "Bloodhound" : ["K", "S"], "Clockmaker" : ["K"], "Cultist" : ["Co", "S"],
+              "Cyberhound" : ["Co", "K"], "Dentist" : ["Co"], "Direwolf" : ["K", "S"], "Doctor" : ["K", "P"], "Dodomeki" : ["I"], "Drunk" : ["Ch"], "Fate" : ["Ch"],
+              "Geneticist" : ["Ch", "S"], "Gladiator" : ["Co", "K"], "Glazier" : ["Co"], "Hacker" : ["I", "S"], "Hangman" : ["Ch", "Co"], "Heir" : ["Co"], "Herald" : ["Ch", "K"],
+              "Hermit" : ["Co", "I"], "Hitman" : ["K"], "Hooligan" : ["K", "S"], "Hunter" : ["K", "P"], "Inevitable" : ["Ch", "K"], "Inventor" : ["Ch", "K"], "Jailor" : ["Co", "P"],
+              "Jester" : ["Ch", "K"], "Knight" : ["K", "S"], "Kresnik" : ["I", "K"], "Mage" : ["Ch", "I"], "Maid" : ["S"], "Medium" : ["S"], "Merchant" : ["Ch", "S"],
+              "Multiple Agent" : ["Ch", "P"], "Noir" : ["I", "K"], "Page" : ["S"], "Paladin" : ["Co", "P"], "Philanthropist" : ["Co", "S"], "Pixie" : ["Co", "I"], "Politician" : ["K", "S"],
+              "Poltergeist" : ["Ch", "I"], "Poser" : ["S"], "Priest" : ["Co", "S"], "Prince" : ["S"], "Psychic" : ["Ch", "S"], "Researcher" : ["I"], "Rogue" : ["Co", "P"],
+              "Rōjinbi" : ["Ch"], "Romantic" : ["P"], "Santa" : ["S"], "Scarecrow" : ["Ch", "S"], "Seer" : ["I"], "Sentinel" : ["P"], "Sharpshooter" : ["I", "K"], "Shifter" : ["Ch"],
+              "Shinigami" : ["Co", "K"], "Slasher" : ["Ch", "K"], "Souleater" : ["Ch", "K"], "Spider" : ["Co", "S"], "Spinster" : ["Ch", "I"], "Spy" : ["I"], "Survivalist" : ["Co"],
+              "Sylph" : ["S"], "TARDIS Engineer" : ["Co", "S"], "Thief" : ["Ch", "Co"], "Time Lord" : ["I", "S"], "Understudy" : ["Ch", "S"], "Vampire" : ["S"], "Warlock" : ["Ch", "K"],
+              "Werewolf" : ["K"], "Whisperer" : ["I", "S"], "Witch" : ["K", "P"]}
 
-HumanRoles = ["Alchemist", "Arsonist", "Backstabber", "Bard", "Clockmaker", "Cultist", "Dentist", "Doctor", "Drunk", "Geneticist", "Gladiator", "Glazier", "Hacker", "Hangman", "Heir", "Hermit",
-              "Hitman", "Hooligan", "Hunter", "Inventor", "Jailor", "Knight", "Kresnik", "Mage", "Maid", "Medium", "Merchant", "Multiple Agent", "Noir", "Page", "Paladin", "Philanthropist", "Politician", "Poser",
-              "Priest", "Prince", "Psychic", "Researcher", "Rogue", "Romantic", "Seer", "Sharpshooter", "Spy", "Survivalist", "Evil TARDIS Engineer", "Good TARDIS Engineer", "Thief", "Understudy", "Warlock", "Whisperer"]
-NonHumanRoles = ["Dodomeki", "Fate", "Herald", "Inevitable", "Jester", "Pixie", "Poltergeist", "Rōjinbi", "Santa", "Scarecrow", "Sentinel", "Shifter", "Shinigami", "Slasher", "Souleater", "Spider",
-                 "Spinster", "Sylph", "Time Lord", "Vampire", "Witch"]
-WolfRoles = ["Bloodhound", "Cyberhound", "Direwolf", "Werewolf"]
+Species = {"Alchemist" : "Adept", "Arsonist" : "Human", "Backstabber" : "Human", "Bard" : "Human", "Bloodhound" : "Wolf", "Clockmaker" : "Human", "Cultist" : "Human", "Cyberhound" : "Wolf",
+           "Dentist" : "Human", "Direwolf" : "Wolf", "Doctor" : "Human", "Dodomeki" : "Unearthly", "Drunk" : "Human", "Fate" : "Unearthly", "Geneticist" : "Human", "Gladiator" : "Human",
+           "Glazier" : "Human", "Hacker" : "Human", "Hangman" : "Human", "Heir" : "Human", "Herald" : "Adept", "Hermit" : "Human", "Hitman" : "Human", "Hooligan" : "Human",
+           "Hunter" : "Human", "Inevitable" : "Unearthly", "Inventor" : "Human", "Jailor" : "Human", "Jester" : "Ethereal", "Knight" : "Human", "Kresnik" : "Adept", "Mage" : "Adept",
+           "Maid" : "Human", "Medium" : "Adept", "Merchant" : "Human", "Multiple Agent" : "Human", "Noir" : "Human", "Page" : "Human", "Paladin" : "Adept", "Philanthropist" : "Human",
+           "Pixie" : "Unearthly", "Politician" : "Human", "Poltergeist" : "Ethereal", "Poser" : "Human", "Priest" : "Human", "Prince" : "Human", "Psychic" : "Adept", "Researcher" : "Human",
+           "Rogue" : "Human", "Rōjinbi" : "Ethereal", "Romantic" : "Human", "Santa" : "Unearthly", "Scarecrow" : "Ethereal", "Seer" : "Adept", "Sentinel" : "Unearthly",
+           "Sharpshooter" : "Human", "Shifter" : "Ethereal", "Shinigami" : "Unearthly", "Slasher" : "Ethereal", "Souleater" : "Ethereal", "Spider" : "Unearthly", "Spinster" : "Unearthly",
+           "Spy" : "Human", "Survivalist" : "Human", "Sylph" : "Ethereal", "TARDIS Engineer" : "Human", "Thief" : "Human", "Time Lord" : "Unearthly", "Understudy" : "Human",
+           "Vampire" : "Unearthly", "Warlock" : "Adept", "Werewolf" : "Wolf", "Whisperer" : "Adept", "Witch" : "Unearthly"}
 
 UniqueRoles = ["Alchemist", "Arsonist", "Backstabber", "Bard", "Bloodhound", "Cultist", "Cyberhound", "Dentist", "Direwolf", "Dodomeki", "Drunk", "Fate", "Geneticist", "Gladiator",
                "Hangman", "Heir", "Hermit", "Inevitable", "Inventor", "Jailor", "Knight", "Kresnik", "Maid", "Merchant", "Noir", "Page", "Paladin", "Philanthropist", "Politician", "Priest", "Prince",
-               "Psychic", "Researcher", "Rogue", "Rōjinbi", "Romantic", "Santa", "Scarecrow", "Sharpshooter", "Shinigami", "Slasher", "Spider", "Spinster", "Sylph", "Evil TARDIS Engineer",
-               "Good TARDIS Engineer", "Thief", "Understudy", "Vampire", "Warlock", "Whisperer"]
+               "Psychic", "Researcher", "Rogue", "Rōjinbi", "Romantic", "Santa", "Scarecrow", "Sharpshooter", "Shinigami", "Slasher", "Spider", "Spinster", "Sylph", "TARDIS Engineer",
+               "Thief", "Understudy", "Vampire", "Warlock", "Whisperer"]
 
-AchievableRoles = ["Bloodhound", "Cyberhound", "Dodomeki", "Hacker", "Herald", "Inevitable", "Paladin", "Souleater", "Spinster", "Evil TARDIS Engineer", "Good TARDIS Engineer", "Warlock"]
+AchievableRoles = ["Bloodhound", "Cyberhound", "Dodomeki", "Hacker", "Herald", "Inevitable", "Paladin", "Souleater", "Spinster", "TARDIS Engineer", "Warlock"]
 
 Modifiers = ["Companion", "Conduit", "Feral", "Guide", "Minstrel", "Morty", "Soulless", "Spectre", "Speedster", "Stand User", "Twin"]
 AchievableModifiers = ["Companion", "Guide", "Minstrel", "Soulless", "Spectre"]
@@ -289,7 +296,7 @@ async def rolelist(ctx):
 [+][Stand User] - Modifier - <w.roles_standuser>
 [+][Survivalist] - Neutral, Counteractive, Human - <w.roles_survivalist>
 [+][Sylph] - Good, Support, Non-Human, Unique - <w.roles_sylph>
-[+][TARDIS Engineer] - Good/Evil, Support, Human, Unique, Achievable - <w.roles_tardisengineer>
+[+][TARDIS Engineer] - Good, Counteractive/Support, Human, Unique, Achievable - <w.roles_tardisengineer>
 [+][Thief] - Neutral, Chaos/Counteractive, Human, Unique - <w.roles_thief>
 [+][Time Lord] - Good, Investigative/Support, Non-Human - <w.roles_timelord>
 [+][Twin] - Modifier - <w.roles_twin>
@@ -364,7 +371,9 @@ Tags:
 > Evil
 > Neutral
 > Human
-> Non-Human
+> Adept
+> Ethereal
+> Unearthly
 > Wolf
 > Chaos
 > Counteractive
@@ -400,21 +409,29 @@ Output: 'Jailor'```""")
         else:
             All = list(AllRoles)
             Valid = list(All)
-            ref = {"good" : GoodRoles, "evil" : EvilRoles, "neutral" : NeutralRoles, "chaos" : ChaosRoles, "counteractive" : CounteractiveRoles, "investigative" : InvestigativeRoles,
-                   "killing" : KillingRoles, "protective" : ProtectiveRoles, "support" : SupportRoles, "human" : HumanRoles, "nonhuman" : NonHumanRoles, "non-human" : NonHumanRoles,
-                   "wolf" : WolfRoles, "unique" : UniqueRoles, "achievable" : AchievableRoles}
-            xref = {"x-good" : GoodRoles, "x-evil" : EvilRoles, "x-neutral" : NeutralRoles, "x-chaos" : ChaosRoles, "x-counteractive" : CounteractiveRoles,
-                    "x-investigative" : InvestigativeRoles, "x-killing" : KillingRoles, "x-protective" : ProtectiveRoles, "x-support" : SupportRoles, "x-human" : HumanRoles,
-                    "x-nonhuman" : NonHumanRoles, "x-non-human" : NonHumanRoles, "x-wolf" : WolfRoles, "x-unique" : UniqueRoles, "x-achievable" : AchievableRoles}
+            ref = {"good" : [r for r in AllRoles if Alignments[r] == "G"], "evil" : [r for r in AllRoles if Alignments[r] == "E"],
+                   "neutral" : [r for r in AllRoles if Alignments[r] == "N"],
+                   "chaos" : [r for r in AllRoles if "Ch" in Categories[r]], "counteractive" : [r for r in AllRoles if "Co" in Categories[r]],
+                   "investigative" : [r for r in AllRoles if "I" in Categories[r]], "killing" : [r for r in AllRoles if "K" in Categories[r]],
+                   "protective" : [r for r in AllRoles if "P" in Categories[r]], "support" : [r for r in AllRoles if "S" in Categories[r]],
+                   "human" : [r for r in AllRoles if "Human" == Species[r]], "adept" : [r for r in AllRoles if "Adept" == Species[r]],
+                   "ethereal" : [r for r in AllRoles if "Ethereal" == Species[r]], "unearthly" : [r for r in AllRoles if "Unearthly" == Species[r]],
+                   "wolf" : [r for r in AllRoles if "Wolf" == Species[r]],
+                   "unique" : [r for r in AllRoles if r in UniqueRoles], "achievable" : [r for r in AllRoles if r in AchievableRoles],
+                   "x-good" : [r for r in AllRoles if Alignments[r] != "G"], "x-evil" : [r for r in AllRoles if Alignments[r] != "E"],
+                   "x-neutral" : [r for r in AllRoles if Alignments[r] != "N"],
+                   "x-chaos" : [r for r in AllRoles if "Ch" not in Categories[r]], "x-counteractive" : [r for r in AllRoles if "Co" not in Categories[r]],
+                   "x-investigative" : [r for r in AllRoles if "I" not in Categories[r]], "x-killing" : [r for r in AllRoles if "K" not in Categories[r]],
+                   "x-protective" : [r for r in AllRoles if "P" not in Categories[r]], "x-support" : [r for r in AllRoles if "S" not in Categories[r]],
+                   "x-human" : [r for r in AllRoles if "Human" != Species[r]], "x-adept" : [r for r in AllRoles if "Adept" != Species[r]],
+                   "x-ethereal" : [r for r in AllRoles if "Ethereal" != Species[r]], "x-unearthly" : [r for r in AllRoles if "Unearthly" != Species[r]],
+                   "x-wolf" : [r for r in AllRoles if "Wolf" != Species[r]],
+                   "x-unique" : [r for r in AllRoles if r not in UniqueRoles], "x-achievable" : [r for r in AllRoles if r not in AchievableRoles]}
             if message.lower() != "all":
                 for r in All:
                     for c in conditions:
                         if c in ref:
                             if r not in ref[c]:
-                                Valid.remove(r)
-                                break
-                        elif c in xref:
-                            if r in xref[c]:
                                 Valid.remove(r)
                                 break
         if Valid == []:
@@ -443,7 +460,9 @@ Tags:
 > Evil
 > Neutral
 > Human
-> Non-Human
+> Adept
+> Ethereal
+> Unearthly
 > Wolf
 > Chaos
 > Counteractive
@@ -482,21 +501,29 @@ Output: '3 roles found:
         else:
             All = list(AllRoles)
             Valid = list(All)
-            ref = {"good" : GoodRoles, "evil" : EvilRoles, "neutral" : NeutralRoles, "chaos" : ChaosRoles, "counteractive" : CounteractiveRoles, "investigative" : InvestigativeRoles,
-                   "killing" : KillingRoles, "protective" : ProtectiveRoles, "support" : SupportRoles, "human" : HumanRoles, "nonhuman" : NonHumanRoles, "non-human" : NonHumanRoles,
-                   "wolf" : WolfRoles, "unique" : UniqueRoles, "achievable" : AchievableRoles}
-            xref = {"x-good" : GoodRoles, "x-evil" : EvilRoles, "x-neutral" : NeutralRoles, "x-chaos" : ChaosRoles, "x-counteractive" : CounteractiveRoles,
-                    "x-investigative" : InvestigativeRoles, "x-killing" : KillingRoles, "x-protective" : ProtectiveRoles, "x-support" : SupportRoles, "x-human" : HumanRoles,
-                    "x-nonhuman" : NonHumanRoles, "x-non-human" : NonHumanRoles, "x-wolf" : WolfRoles, "x-unique" : UniqueRoles, "x-achievable" : AchievableRoles}
+            ref = {"good" : [r for r in AllRoles if Alignments[r] == "G"], "evil" : [r for r in AllRoles if Alignments[r] == "E"],
+                   "neutral" : [r for r in AllRoles if Alignments[r] == "N"],
+                   "chaos" : [r for r in AllRoles if "Ch" in Categories[r]], "counteractive" : [r for r in AllRoles if "Co" in Categories[r]],
+                   "investigative" : [r for r in AllRoles if "I" in Categories[r]], "killing" : [r for r in AllRoles if "K" in Categories[r]],
+                   "protective" : [r for r in AllRoles if "P" in Categories[r]], "support" : [r for r in AllRoles if "S" in Categories[r]],
+                   "human" : [r for r in AllRoles if "Human" == Species[r]], "adept" : [r for r in AllRoles if "Adept" == Species[r]],
+                   "ethereal" : [r for r in AllRoles if "Ethereal" == Species[r]], "unearthly" : [r for r in AllRoles if "Unearthly" == Species[r]],
+                   "wolf" : [r for r in AllRoles if "Wolf" == Species[r]],
+                   "unique" : [r for r in AllRoles if r in UniqueRoles], "achievable" : [r for r in AllRoles if r in AchievableRoles],
+                   "x-good" : [r for r in AllRoles if Alignments[r] != "G"], "x-evil" : [r for r in AllRoles if Alignments[r] != "E"],
+                   "x-neutral" : [r for r in AllRoles if Alignments[r] != "N"],
+                   "x-chaos" : [r for r in AllRoles if "Ch" not in Categories[r]], "x-counteractive" : [r for r in AllRoles if "Co" not in Categories[r]],
+                   "x-investigative" : [r for r in AllRoles if "I" not in Categories[r]], "x-killing" : [r for r in AllRoles if "K" not in Categories[r]],
+                   "x-protective" : [r for r in AllRoles if "P" not in Categories[r]], "x-support" : [r for r in AllRoles if "S" not in Categories[r]],
+                   "x-human" : [r for r in AllRoles if "Human" != Species[r]], "x-adept" : [r for r in AllRoles if "Adept" != Species[r]],
+                   "x-ethereal" : [r for r in AllRoles if "Ethereal" != Species[r]], "x-unearthly" : [r for r in AllRoles if "Unearthly" != Species[r]],
+                   "x-wolf" : [r for r in AllRoles if "Wolf" != Species[r]],
+                   "x-unique" : [r for r in AllRoles if r not in UniqueRoles], "x-achievable" : [r for r in AllRoles if r not in AchievableRoles]}
             if message.lower() != "all":
                 for r in All:
                     for c in conditions:
                         if c in ref:
                             if r not in ref[c]:
-                                Valid.remove(r)
-                                break
-                        elif c in xref:
-                            if r in xref[c]:
                                 Valid.remove(r)
                                 break
         if Valid == []:
@@ -788,21 +815,18 @@ Truth & Claw - <w.generatelist tac [players]>```")
 
 @generatelist.command(pass_context=True)
 async def standard(ctx, *, message: str):
-    Evil=list(EvilRoles)
+    Evil=[r for r in AllRoles if Alignments[r] == "E" if r not in AchievableRoles]
     for r in Evil:
         if r in AchievableRoles:
             Evil.remove(r)
     Evil.remove("Direwolf")
     Evil.remove("Werewolf")
-    Good=list(GoodRoles)
+    Good=[r for r in AllRoles if Alignments[r] == "G" if r not in AchievableRoles]
     for r in Good:
         if r in AchievableRoles:
             Good.remove(r)
     Good.remove("Priest")
-    Neutral=list(NeutralRoles)
-    for r in Neutral:
-        if r in AchievableRoles:
-            Neutral.remove(r)
+    Neutral=[r for r in AllRoles if Alignments[r] == "N" if r not in AchievableRoles]
     Mod=list(Modifiers)
     for r in Mod:
         if r in AchievableModifiers:
@@ -923,7 +947,7 @@ async def standard(ctx, *, message: str):
                 continue
             elif [i for i in ["Backstabber {}".format(m) for m in Modifiers] if i in combined] != []:
                 continue
-            elif [i for i in ["{} Conduit".format(a) for a in AllRoles if a not in [r for r in AllRoles if r in HumanRoles and r in KillingRoles]] if i in combined] != []:
+            elif [i for i in ["{} Conduit".format(a) for a in AllRoles if a not in [r for r in AllRoles if Species[r] == "Human" and "K" in Categories[r]]] if i in combined] != []:
                 continue
             else:
                 break

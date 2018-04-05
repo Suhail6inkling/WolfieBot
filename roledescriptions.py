@@ -26,7 +26,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos/Support
-- Human
+- Adept
 - Unique""",colour=0x8c8cff)
         embed.set_thumbnail(url=icons["alchemist"])
         await where.send("__**Alchemist**__",embed=embed)
@@ -203,7 +203,7 @@ class RoleDescriptions():
         embed=discord.Embed(description="""**Actions:**
 *Maul* - Discuss with other Wolves in a private channel who to Strong Attack during the night.
 *Pack Offensive* - Once per game, at night, not before NIGHT 3, instead of using *Maul*, the Wolves may choose to each individually target any player with a Standard Attack.
-*Glitch* - Every night, chooses two players and chooses a Non-Unique role for each player. If either player dies during that night or the following day and their role has not been changed since, they appear to be the role chosen for them and the Cyberhound is told their actual role. If a player the Cyberhound has chosen during that night is targeted with *Shift*, the player using the action becomes the role chosen by the Cyberhound rather than the player’s actual role. They still gain any modifiers the player had.
+*Glitch* - Every night, chooses two players and chooses a non-Unique role for each player. If either player dies during that night or the following day and their role has not been changed since, they appear to be the role chosen for them and the Cyberhound is told their actual role. If a player the Cyberhound has chosen during that night is targeted with *Shift*, the player using the action becomes the role chosen by the Cyberhound rather than the player’s actual role. They still gain any modifiers the player had.
 **Abilities:**
 - On death, the real roles of all the dead players that *Deceive* took effect on are revealed.
 - May still speak in the Wolf channel when dead.
@@ -246,7 +246,7 @@ class RoleDescriptions():
 **Actions:**
 *Maul* - Discuss with other Wolves in a private channel who to Strong Attack during the night.
 *Pack Offensive* - Once per game, at night, not before NIGHT 3, instead of using *Maul*, the Wolves may choose to each individually target any player with a Standard Attack.
-*Infect* - Each night, choose a non-Wolf player. That player gains an Active Unstoppable Save. This Save is always bypassed by *Maul* and *Pack Offensive*. If this Save is used before the start of the next night, that player becomes an Evil Werewolf. Until the start of the next night, the chosen player appears to be an Evil Werewolf when targeted with *Investigate*.
+*Infect* - Each night, choose a non-Wolf player. That player gains an Active Unstoppable Save. This Save is always bypassed by *Maul* and *Pack Offensive*. If this Save is used before the start of the next night, that player becomes an Evil Werewolf, or an Evil Bloodhound if they were a Vampire. Until the start of the next night, the chosen player appears to be an Evil Werewolf when targeted with *Investigate*.
 **Abilities:**
 - May still speak in the Wolf channel when dead.
 - Leads the Wolves - while alive, always makes the final choice on the target of *Maul*.
@@ -291,7 +291,7 @@ class RoleDescriptions():
 **Tags:**
 - Evil
 - Investigative
-- Non-Human
+- Unearthly
 - Unique
 - Achievable""",colour=0xff2323)
         embed.set_thumbnail(url=icons["dodomeki"])
@@ -332,7 +332,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos
-- Non-Human
+- Unearthly
 - Unique""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["fate"])
         await where.send("__**Fate**__",embed=embed)
@@ -426,7 +426,7 @@ class RoleDescriptions():
         embed=discord.Embed(description="""*That's the problem with today's society. Everything's **digital**. Any idiot with a computer and a bit of luck is able to steal thousands from your wallet, without ever having to nab a single coin. I mean, seriously, could you imagine that? Some virgin in his mother's basement could - oh, I don't know - deprogram a direwolf, steal precious intel on his cohorts, tell the entire city every last secret they have in their paws... all with a laptop and a few clicks of a mouse.*
 **Actions:**
 *Hack* - Every night, may choose another player and flip a coin until they get tails. The Hacker is told that player’s alignment, and for every heads, the target of one of their previous actions, starting from their latest action. If an action has multiple targets, the Hacker is told all targets. The Hacker is not told when these actions were used, just the order in which they were leading up to the present.
-*Deprogram* - Once per game, may choose one player. If that player has changed Role, Alignment or Modifiers since the start of the game, they become what they were at the beginning of the game.
+*Deprogram* - Once per game, may choose one player. If that player has changed role, alignment or modifiers since the start of the game, they become what they were at the beginning of the game.
 **Objectives:**
 - Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
 **Tags:**
@@ -490,7 +490,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos/Killing
-- Non-Human
+- Adept
 - Unique
 - Achievable""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["herald"])
@@ -561,7 +561,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*With a hare roasting over an open flame and a bullet in the chamber, his eyes scan every trunk, every leaf, every passing grain of dirt. Another wolf infestation? These mutts should know that these are* his *woods. And if they want to take it from him? They'll have to rip his throat out first.*
 **Actions:**
-*Shoot* - If attacked or lynched, is given the opportunity to target any player with a Standard Attack. This Attack is instead Powerful if the target is a Non-Human or Wolf. This still takes effect if they are Saved.
+*Shoot* - If attacked or lynched, is given the opportunity to target any player with a Standard Attack. This Attack is instead Powerful if the target is a non-Human. This still takes effect if they are Saved.
 *Martyr* - Once per game, at Night, can choose to make all actions that Attack target them instead of the chosen target.
 **Abilities:**
 - Starts the game with a Queued Strong Save.
@@ -588,7 +588,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos/Killing
-- Non-Human
+- Unearthly
 - Unique
 - Achievable""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["inevitable"])
@@ -637,7 +637,7 @@ class RoleDescriptions():
     async def roles_jester(self, ctx, where = None):
         if where == None:
             where = ctx.message.channel
-        embed=discord.Embed(description="""*Look at the King, ladies and gentlemen! Look how silly he is with his crown and sceptre! Wouldn't it be funny if I threw this pie at his face? Wouldn't that be embarrassing? Wouldn't it be kooky if I tied his laces together or put a whoopee cushion under his chair? Wouldn't that be wacky? Hey, wouldn't it be fun if I slit his whore of a wife's fucking throat? Wouldn't it be nutty if I sacrificed all of his subjects to the voices in my own deranged fucking head? How about if I tortured him psychologically? If I made him my bitch?! If I fucked him in the head until the only way out was the blade of knife? Wouldn't that be fun?!*
+        embed=discord.Embed(description="""*Look at the King, ladies and gentlemen! Look how silly he is with his crown and sceptre! Wouldn't it be funny if I threw this pie at his face? Wouldn't that be embarrassing? Wouldn't it be kooky if I tied his laces together or put a whoopee cushion under his chair? Wouldn't that be wacky? Hey, wouldn't it be fun if I slit his whore of a wife's fucking throat? Wouldn't it be nutty if I sacrificed all of his subjects to the voices in my own deranged fucking head? How about if I tortured him psychologically? If I made him my bitch?! If I fucked him in the head until the only way out was the blade of a knife? Wouldn't that be fun?!*
 **Actions:**
 *Haunt* - After dying from being Lynched, every night, the Jester chooses one player who voted against them in the Lynching to haunt. This player commits suicide on that night.
 **Abilities:**
@@ -647,7 +647,7 @@ class RoleDescriptions():
 **Tags:**
 - Evil
 - Chaos/Killing
-- Non-Human""",colour=0xff2323)
+- Ethereal""",colour=0xff2323)
         embed.set_thumbnail(url=icons["jester"])
         await where.send("__**Jester**__",embed=embed)
 
@@ -673,7 +673,7 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Pulse Check* - Once per game, at night, may choose to recieve a list of all Evil Non-Human and Wolf roles currently present in the game. The Kresnik is not told the number of each role present.
+*Pulse Check* - Once per game, at night, may choose to recieve a list of all Evil non-Human roles currently present in the game. The Kresnik is not told the number of each role present.
 *Transform* - Once every two days, may choose to transform. At the beginning of the next night, the Kresnik's role changes to a random Good role. At the beginning of the following day, the Kresnik changes back to a Kresnik, providing that their role has not been changed by means other than this action since this action was used.
 *Silver Blade* - Every night, may target any player with a Standard Attack. If the target is a Vampire, Cyberhound, Bloodhound, Cultist or Warlock, this Attack is Powerful rather than Standard.
 **Abilities:**
@@ -684,7 +684,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Investigative/Killing
-- Human
+- Adept
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["kresnik"])
         await where.send("__**Kresnik**__",embed=embed)
@@ -701,7 +701,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Chaos/Investigative
-- Human""",colour=0x5dff00)
+- Adept""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["mage"])
         await where.send("__**Mage**__",embed=embed)
 
@@ -741,7 +741,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Support
-- Human""",colour=0x5dff00)
+- Adept""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["medium"])
         await where.send("__**Medium**__",embed=embed)
 
@@ -871,7 +871,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Counteractive/Protective
-- Human
+- Adept
 - Unique
 - Achievable""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["paladin"])
@@ -883,10 +883,10 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""**Abilities:**
 - At the start of every night, is told the identity of a random Human player.
-- If they vote against a Non-Human or Wolf in a Lynching, the Attack against that player from the Lynching is Strong rather than Standard.
-- Gains a Lunar Strong Save at the start of every night. This Save only affects Attacks from Non-Humans and Wolves.
+- If they vote against a non-Human in a Lynching, the Attack against that player from the Lynching is Strong rather than Standard.
+- Gains a Lunar Strong Save at the start of every night. This Save only affects Attacks from non-Humans.
 **Objectives:**
-- Survive until all Wolves and Non-Humans have been eliminated.
+- Survive until all non-Humans have been eliminated.
 **Tags:**
 - Neutral
 - Counteractive/Support
@@ -910,7 +910,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Counteractive/Investigative
-- Non-Human""",colour=0x5dff00)
+- Unearthly""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["pixie"])
         await where.send("__**Pixie**__",embed=embed)
 
@@ -948,7 +948,7 @@ class RoleDescriptions():
 **Tags:**
 - Evil
 - Chaos/Investigative
-- Non-Human""",colour=0xff2323)
+- Ethereal""",colour=0xff2323)
         embed.set_thumbnail(url=icons["poltergeist"])
         await where.send("__**Poltergeist**__",embed=embed)
 
@@ -1023,7 +1023,7 @@ class RoleDescriptions():
 **Tags:**
 - Evil
 - Chaos/Support
-- Human
+- Adept
 - Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["psychic"])
         await where.send("__**Psychic**__",embed=embed)
@@ -1079,7 +1079,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos
-- Non-Human
+- Ethereal
 - Unique""",colour=0xffffff)
         embed.set_thumbnail(url=icons["rojinbi"])
         await where.send("__**Rōjinbi**__",embed=embed)
@@ -1118,7 +1118,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Support
-- Non-Human
+- Unearthly
 - Unique""",colour=0xff9bc4)
         embed.set_thumbnail(url=icons["santa"])
         await where.send("__**Santa**__",embed=embed)
@@ -1139,7 +1139,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos/Support
-- Non-Human
+- Ethereal
 - Unique""",colour=0xb7ffe8)
         embed.set_thumbnail(url=icons["scarecrow"])
         await where.send("__**Scarecrow**__",embed=embed)
@@ -1159,7 +1159,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Investigative
-- Human""",colour=0x5dff00)
+- Adept""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["seer"])
         await where.send("__**Seer**__",embed=embed)
 
@@ -1168,7 +1168,7 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Shield* - Every night, may choose a Player. That night, all Attacks targeting the Player instead target the Guard.
+*Shield* - Every night, may choose a Player. That night, all Attacks targeting the Player instead target the Sentinel.
 *Parry* - Once per game, at night, when not using Thrust, can choose to give themselves a Lunar Powerful Save. If the Save takes effect, they gain a Queued Powerful Save.
 *Thrust* - Once per game, at night, when not using Parry, can choose to give themselves a Lunar Powerful Save. If the Save takes effect, they target the player targeting them with a Strong Attack.
 **Abilities:**
@@ -1180,7 +1180,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Protective
-- Non-Human""",colour=0x00f6ff)
+- Unearthly""",colour=0x00f6ff)
         embed.set_thumbnail(url=icons["sentinel"])
         await where.send("__**Sentinel**__",embed=embed)
 
@@ -1217,7 +1217,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos
-- Non-Human""",colour=0xd1dfa2)
+- Ethereal""",colour=0xd1dfa2)
         embed.set_thumbnail(url=icons["shifter"])
         await where.send("__**Shifter**__",embed=embed)
 
@@ -1233,7 +1233,7 @@ class RoleDescriptions():
 **Tags:**
 - Evil
 - Counteractive/Killing
-- Non-Human
+- Unearthly
 - Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["shinigami"])
         await where.send("__**Shinigami**__",embed=embed)
@@ -1253,7 +1253,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos/Killing
-- Non-Human
+- Ethereal
 - Unique""",colour=0xff9400)
         embed.set_thumbnail(url=icons["slasher"])
         await where.send("__**Slasher**__",embed=embed)
@@ -1277,7 +1277,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos/Killing
-- Non-Human
+- Ethereal
 - Achievable""",colour=0xd1dfa2)
         embed.set_thumbnail(url=icons["souleater"])
         await where.send("__**Souleater**__",embed=embed)
@@ -1340,7 +1340,7 @@ class RoleDescriptions():
 **Tags:**
 - Evil
 - Counteractive/Support
-- Non-Human
+- Unearthly
 - Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["spider"])
         await where.send("__**Spider**__",embed=embed)
@@ -1360,7 +1360,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos/Investigative
-- Non-Human
+- Unearthly
 - Unique
 - Achievable""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["spinster"])
@@ -1439,7 +1439,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Support
-- Non-Human
+- Ethereal
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["sylph"])
         await where.send("__**Sylph**__",embed=embed)
@@ -1454,10 +1454,10 @@ class RoleDescriptions():
 **Abilities:**
 - If they lose the Companion modifier, they become an Inventor, however they keep the alignment and objective they had as a TARDIS Engineer.
 **Objectives:**
-- Identical to their Time Lord.
+- Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
 **Tags:**
-- Identical Alignment to their Time Lord.
-- Support
+- Good
+- Counteractive/Support
 - Human
 - Unique
 - Achievable""",colour=0x204eff)
@@ -1500,7 +1500,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Investigative/Support
-- Non-Human""",colour=0x204eff)
+- Unearthly""",colour=0x204eff)
         embed.set_thumbnail(url=icons["timelord"])
         await where.send("__**Time Lord**__",embed=embed)
 
@@ -1550,15 +1550,14 @@ class RoleDescriptions():
 *Stalk* - Once per game, at night, may choose to learn the identity of a random Wolf. 
 **Abilities:**
 - All Vampires and Bloodhounds in the game may speak in a collective private channel with one another. They may still speak in this channel after death.
-- Whenever any player (other than one who was already a Vampire) becomes a Vampire or a Bloodhound, all Vampires and Bloodhounds other than the that player gain a Queued Standard Save.
+- Whenever any player (other than one who was already a Vampire) becomes a Vampire or a Bloodhound, all Vampires and Bloodhounds other than that player gain a Queued Standard Save.
 - If targeted by any effect that would cause an alignment change without changing the Vampire's role, commits Suicide.
-- If a Vampire is targeted with *Infect*, they become a Bloodhound.
 **Objectives:**
 - Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
 **Tags:**
 - Evil
 - Support
-- Non-Human
+- Unearthly
 - Unique""",colour=0x9b0029)
         embed.set_thumbnail(url=icons["vampire"])
         await where.send("__**Vampire**__",embed=embed)
@@ -1577,7 +1576,7 @@ class RoleDescriptions():
 **Tags:**
 - Evil
 - Chaos/Killing
-- Human
+- Adept
 - Unique
 - Achievable""",colour=0xff2323)
         embed.set_thumbnail(url=icons["warlock"])
@@ -1616,7 +1615,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Investigative/Support
-- Human
+- Adept
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["whisperer"])
         await where.send("__**Whisperer**__",embed=embed)
@@ -1637,7 +1636,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Killing/Protective
-- Non-Human""",colour=0xd800ff)
+- Unearthly""",colour=0xd800ff)
         embed.set_thumbnail(url=icons["witch"])
         await where.send("__**Witch**__",embed=embed)
 

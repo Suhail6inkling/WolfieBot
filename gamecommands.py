@@ -226,11 +226,11 @@ class GameCommands():
                     modifier = False
                 else:
                     modifier = True
-                if PlayerInfo[player][2] in GoodRoles:
+                if PlayerInfo[player][2] in [r for r in AllRoles if Alignments[r] == "G"]:
                     alignment = "Good"
-                elif PlayerInfo[player][2] in EvilRoles:
+                elif PlayerInfo[player][2] in [r for r in AllRoles if Alignments[r] == "E"]:
                     alignment = "Evil"
-                elif PlayerInfo[player][2] in NeutralRoles:
+                elif PlayerInfo[player][2] in [r for r in AllRoles if Alignments[r] == "N"]:
                     alignment = "Neutral"
                 else:
                     await ctx.send("{} is not a role!".format(PlayerInfo[player][2]))
