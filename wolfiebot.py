@@ -50,16 +50,16 @@ Categories = {"Alchemist" : ["Ch"], "Arsonist" : ["Ch", "K"], "Backstabber" : ["
               "Sylph" : ["S"], "TARDIS Engineer" : ["Co", "S"], "Thief" : ["Ch", "Co"], "Time Lord" : ["I", "S"], "Understudy" : ["Ch", "S"], "Vampire" : ["S"], "Warlock" : ["Ch", "K"],
               "Werewolf" : ["K"], "Whisperer" : ["I", "S"], "Witch" : ["K", "P"]}
 
-Species = {"Alchemist" : "Adept", "Arsonist" : "Human", "Backstabber" : "Human", "Bard" : "Human", "Bloodhound" : "Wolf", "Clockmaker" : "Human", "Cultist" : "Human", "Cyberhound" : "Wolf",
+Species = {"Alchemist" : "Arcane", "Arsonist" : "Human", "Backstabber" : "Human", "Bard" : "Human", "Bloodhound" : "Wolf", "Clockmaker" : "Human", "Cultist" : "Human", "Cyberhound" : "Wolf",
            "Dentist" : "Human", "Direwolf" : "Wolf", "Doctor" : "Human", "Dodomeki" : "Unearthly", "Drunk" : "Human", "Fate" : "Unearthly", "Geneticist" : "Human", "Gladiator" : "Human",
-           "Glazier" : "Human", "Hacker" : "Human", "Hangman" : "Human", "Heir" : "Human", "Herald" : "Adept", "Hermit" : "Human", "Hitman" : "Human", "Hooligan" : "Human",
-           "Hunter" : "Human", "Inevitable" : "Unearthly", "Inventor" : "Human", "Jailor" : "Human", "Jester" : "Ethereal", "Knight" : "Human", "Kresnik" : "Adept", "Mage" : "Adept",
-           "Maid" : "Human", "Medium" : "Adept", "Merchant" : "Human", "Multiple Agent" : "Human", "Noir" : "Human", "Page" : "Human", "Paladin" : "Adept", "Philanthropist" : "Human",
-           "Pixie" : "Unearthly", "Politician" : "Human", "Poltergeist" : "Ethereal", "Poser" : "Human", "Priest" : "Human", "Prince" : "Human", "Psychic" : "Adept", "Researcher" : "Human",
-           "Rogue" : "Human", "Rōjinbi" : "Ethereal", "Romantic" : "Human", "Santa" : "Unearthly", "Scarecrow" : "Ethereal", "Seer" : "Adept", "Sentinel" : "Unearthly",
-           "Sharpshooter" : "Human", "Shifter" : "Ethereal", "Shinigami" : "Unearthly", "Slasher" : "Ethereal", "Souleater" : "Ethereal", "Spider" : "Unearthly", "Spinster" : "Unearthly",
+           "Glazier" : "Human", "Hacker" : "Human", "Hangman" : "Human", "Heir" : "Human", "Herald" : "Arcane", "Hermit" : "Human", "Hitman" : "Human", "Hooligan" : "Human",
+           "Hunter" : "Human", "Inevitable" : "Unearthly", "Inventor" : "Human", "Jailor" : "Human", "Jester" : "Ethereal", "Knight" : "Human", "Kresnik" : "Arcane", "Mage" : "Arcane",
+           "Maid" : "Human", "Medium" : "Arcane", "Merchant" : "Human", "Multiple Agent" : "Human", "Noir" : "Human", "Page" : "Human", "Paladin" : "Arcane", "Philanthropist" : "Human",
+           "Pixie" : "Unearthly", "Politician" : "Human", "Poltergeist" : "Ethereal", "Poser" : "Human", "Priest" : "Human", "Prince" : "Human", "Psychic" : "Arcane", "Researcher" : "Human",
+           "Rogue" : "Human", "Rōjinbi" : "Ethereal", "Romantic" : "Human", "Santa" : "Unearthly", "Scarecrow" : "Ethereal", "Seer" : "Arcane", "Sentinel" : "Unearthly",
+           "Sharpshooter" : "Human", "Shifter" : "Ethereal", "Shinigami" : "Unearthly", "Slasher" : "Unearthly", "Souleater" : "Ethereal", "Spider" : "Unearthly", "Spinster" : "Unearthly",
            "Spy" : "Human", "Survivalist" : "Human", "Sylph" : "Ethereal", "TARDIS Engineer" : "Human", "Thief" : "Human", "Time Lord" : "Unearthly", "Understudy" : "Human",
-           "Vampire" : "Unearthly", "Warlock" : "Adept", "Werewolf" : "Wolf", "Whisperer" : "Adept", "Witch" : "Unearthly"}
+           "Vampire" : "Unearthly", "Warlock" : "Arcane", "Werewolf" : "Wolf", "Whisperer" : "Arcane", "Witch" : "Unearthly"}
 
 UniqueRoles = ["Alchemist", "Arsonist", "Backstabber", "Bard", "Bloodhound", "Cultist", "Cyberhound", "Dentist", "Direwolf", "Dodomeki", "Drunk", "Fate", "Geneticist", "Gladiator",
                "Hangman", "Heir", "Hermit", "Inevitable", "Inventor", "Jailor", "Knight", "Kresnik", "Maid", "Merchant", "Noir", "Page", "Paladin", "Philanthropist", "Politician", "Priest", "Prince",
@@ -371,7 +371,7 @@ Tags:
 > Evil
 > Neutral
 > Human
-> Adept
+> Arcane
 > Ethereal
 > Unearthly
 > Wolf
@@ -414,7 +414,7 @@ Output: 'Jailor'```""")
                    "chaos" : [r for r in AllRoles if "Ch" in Categories[r]], "counteractive" : [r for r in AllRoles if "Co" in Categories[r]],
                    "investigative" : [r for r in AllRoles if "I" in Categories[r]], "killing" : [r for r in AllRoles if "K" in Categories[r]],
                    "protective" : [r for r in AllRoles if "P" in Categories[r]], "support" : [r for r in AllRoles if "S" in Categories[r]],
-                   "human" : [r for r in AllRoles if "Human" == Species[r]], "adept" : [r for r in AllRoles if "Adept" == Species[r]],
+                   "human" : [r for r in AllRoles if "Human" == Species[r]], "arcane" : [r for r in AllRoles if "Arcane" == Species[r]],
                    "ethereal" : [r for r in AllRoles if "Ethereal" == Species[r]], "unearthly" : [r for r in AllRoles if "Unearthly" == Species[r]],
                    "wolf" : [r for r in AllRoles if "Wolf" == Species[r]],
                    "unique" : [r for r in AllRoles if r in UniqueRoles], "achievable" : [r for r in AllRoles if r in AchievableRoles],
@@ -423,7 +423,7 @@ Output: 'Jailor'```""")
                    "x-chaos" : [r for r in AllRoles if "Ch" not in Categories[r]], "x-counteractive" : [r for r in AllRoles if "Co" not in Categories[r]],
                    "x-investigative" : [r for r in AllRoles if "I" not in Categories[r]], "x-killing" : [r for r in AllRoles if "K" not in Categories[r]],
                    "x-protective" : [r for r in AllRoles if "P" not in Categories[r]], "x-support" : [r for r in AllRoles if "S" not in Categories[r]],
-                   "x-human" : [r for r in AllRoles if "Human" != Species[r]], "x-adept" : [r for r in AllRoles if "Adept" != Species[r]],
+                   "x-human" : [r for r in AllRoles if "Human" != Species[r]], "x-arcane" : [r for r in AllRoles if "Arcane" != Species[r]],
                    "x-ethereal" : [r for r in AllRoles if "Ethereal" != Species[r]], "x-unearthly" : [r for r in AllRoles if "Unearthly" != Species[r]],
                    "x-wolf" : [r for r in AllRoles if "Wolf" != Species[r]],
                    "x-unique" : [r for r in AllRoles if r not in UniqueRoles], "x-achievable" : [r for r in AllRoles if r not in AchievableRoles]}
@@ -460,7 +460,7 @@ Tags:
 > Evil
 > Neutral
 > Human
-> Adept
+> Arcane
 > Ethereal
 > Unearthly
 > Wolf
@@ -506,7 +506,7 @@ Output: '3 roles found:
                    "chaos" : [r for r in AllRoles if "Ch" in Categories[r]], "counteractive" : [r for r in AllRoles if "Co" in Categories[r]],
                    "investigative" : [r for r in AllRoles if "I" in Categories[r]], "killing" : [r for r in AllRoles if "K" in Categories[r]],
                    "protective" : [r for r in AllRoles if "P" in Categories[r]], "support" : [r for r in AllRoles if "S" in Categories[r]],
-                   "human" : [r for r in AllRoles if "Human" == Species[r]], "adept" : [r for r in AllRoles if "Adept" == Species[r]],
+                   "human" : [r for r in AllRoles if "Human" == Species[r]], "arcane" : [r for r in AllRoles if "Arcane" == Species[r]],
                    "ethereal" : [r for r in AllRoles if "Ethereal" == Species[r]], "unearthly" : [r for r in AllRoles if "Unearthly" == Species[r]],
                    "wolf" : [r for r in AllRoles if "Wolf" == Species[r]],
                    "unique" : [r for r in AllRoles if r in UniqueRoles], "achievable" : [r for r in AllRoles if r in AchievableRoles],
@@ -515,7 +515,7 @@ Output: '3 roles found:
                    "x-chaos" : [r for r in AllRoles if "Ch" not in Categories[r]], "x-counteractive" : [r for r in AllRoles if "Co" not in Categories[r]],
                    "x-investigative" : [r for r in AllRoles if "I" not in Categories[r]], "x-killing" : [r for r in AllRoles if "K" not in Categories[r]],
                    "x-protective" : [r for r in AllRoles if "P" not in Categories[r]], "x-support" : [r for r in AllRoles if "S" not in Categories[r]],
-                   "x-human" : [r for r in AllRoles if "Human" != Species[r]], "x-adept" : [r for r in AllRoles if "Adept" != Species[r]],
+                   "x-human" : [r for r in AllRoles if "Human" != Species[r]], "x-arcane" : [r for r in AllRoles if "Arcane" != Species[r]],
                    "x-ethereal" : [r for r in AllRoles if "Ethereal" != Species[r]], "x-unearthly" : [r for r in AllRoles if "Unearthly" != Species[r]],
                    "x-wolf" : [r for r in AllRoles if "Wolf" != Species[r]],
                    "x-unique" : [r for r in AllRoles if r not in UniqueRoles], "x-achievable" : [r for r in AllRoles if r not in AchievableRoles]}
@@ -827,10 +827,7 @@ async def standard(ctx, *, message: str):
             Good.remove(r)
     Good.remove("Priest")
     Neutral=[r for r in AllRoles if Alignments[r] == "N" if r not in AchievableRoles]
-    Mod=list(Modifiers)
-    for r in Mod:
-        if r in AchievableModifiers:
-            Mod.remove(r)
+    Mod=[m for m in Modifiers if m not in AchievableModifiers]
     PlayerList = message.split(", ")
     PlayerList = sorted(PlayerList)
     if len(PlayerList) < 8:

@@ -7,7 +7,7 @@ role_categories_list = ["Chaos", "Counteractive", "Investigative", "Killing", "P
 alignments = ["Good", "Evil", "Neutral"]
 attack_save_strengths = ["Standard", "Strong", "Powerful", "Unstoppable"]
 save_durations = ["Lunar", "Active", "Queued"]
-species_list = ["Human", "Adept", "Ethereal", "Unearthly", "Wolf"]
+species_list = ["Human", "Arcane", "Ethereal", "Unearthly", "Wolf"]
 
 class Role():
     def __init__(self):
@@ -113,7 +113,7 @@ class Player():
 class Seer(Role):
     name = "Seer"
     alignment = "Good"
-    species = "Adept"
+    species = "Arcane"
     categories = ["Investigative"]
     objectives = ["good-standard"]
     saves = []

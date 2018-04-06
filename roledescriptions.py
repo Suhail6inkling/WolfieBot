@@ -26,7 +26,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos/Support
-- Adept
+- Arcane
 - Unique""",colour=0x8c8cff)
         embed.set_thumbnail(url=icons["alchemist"])
         await where.send("__**Alchemist**__",embed=embed)
@@ -321,8 +321,8 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Create Spinster* - Every even night, may choose one player. If that player is Good, they become the Spinster and join a private channel with the Fate. After this succeeds, the action may not be used again.
-*Create Inevitable* - After turning a player into the Spinster, every even night, may choose one player. If that player is Evil, they become the Inevitable and join a private channel with the Fate and Spinster.
+*Create Spinster* - Every night, may choose one player. If that player is Good, they become the Spinster and join a private channel with the Fate. After this succeeds, the action may not be used again.
+*Create Inevitable* - After turning a player into the Spinster, every night, may choose one player. If that player is Evil, they become the Inevitable and join a private channel with the Fate and Spinster.
 *Create Herald* - If the Spinster, the Fate and the Inevitable are all alive or Spectres, they may, once per game, on any night, choose a player to become the Herald. The Fate chooses the night for the Herald to live until. If the Herald lives longer than that, the Spinster, Fate and Inevitable all die. The Inevitable may only kill the Herald on the night chosen.
 **Abilities:**
 - While the Spinster and Inevitable are alive, gains a Lunar Powerful Save at the start of each night.
@@ -490,7 +490,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos/Killing
-- Adept
+- Arcane
 - Unique
 - Achievable""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["herald"])
@@ -684,7 +684,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Investigative/Killing
-- Adept
+- Arcane
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["kresnik"])
         await where.send("__**Kresnik**__",embed=embed)
@@ -701,7 +701,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Chaos/Investigative
-- Adept""",colour=0x5dff00)
+- Arcane""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["mage"])
         await where.send("__**Mage**__",embed=embed)
 
@@ -741,7 +741,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Support
-- Adept""",colour=0x5dff00)
+- Arcane""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["medium"])
         await where.send("__**Medium**__",embed=embed)
 
@@ -871,7 +871,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Counteractive/Protective
-- Adept
+- Arcane
 - Unique
 - Achievable""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["paladin"])
@@ -1023,7 +1023,7 @@ class RoleDescriptions():
 **Tags:**
 - Evil
 - Chaos/Support
-- Adept
+- Arcane
 - Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["psychic"])
         await where.send("__**Psychic**__",embed=embed)
@@ -1159,7 +1159,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Investigative
-- Adept""",colour=0x5dff00)
+- Arcane""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["seer"])
         await where.send("__**Seer**__",embed=embed)
 
@@ -1253,7 +1253,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos/Killing
-- Ethereal
+- Unearthly
 - Unique""",colour=0xff9400)
         embed.set_thumbnail(url=icons["slasher"])
         await where.send("__**Slasher**__",embed=embed)
@@ -1576,7 +1576,7 @@ class RoleDescriptions():
 **Tags:**
 - Evil
 - Chaos/Killing
-- Adept
+- Arcane
 - Unique
 - Achievable""",colour=0xff2323)
         embed.set_thumbnail(url=icons["warlock"])
@@ -1615,7 +1615,7 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Investigative/Support
-- Adept
+- Arcane
 - Unique""",colour=0x5dff00)
         embed.set_thumbnail(url=icons["whisperer"])
         await where.send("__**Whisperer**__",embed=embed)
