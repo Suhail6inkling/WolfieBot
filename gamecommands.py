@@ -540,7 +540,7 @@ class GameCommands():
             await ctx.send("You need to be a GM to use this command!")
 
     @commands.command(pass_context=True)
-    async def lockjaw(self, ctx, user: discord.Member, status: str):
+    async def lockjaw(self, ctx, user: discord.Member, status="t"):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             game_channel = self.client.get_channel(392995027909083137)
             voting_channel = self.client.get_channel(393470084217176075)
@@ -560,7 +560,7 @@ class GameCommands():
             await ctx.send("You need to be a GM to use this command!")
 
     @commands.command(pass_context=True)
-    async def medium(self, ctx, user: discord.Member, status: str):
+    async def medium(self, ctx, user: discord.Member, status="t"):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             dead_channel = self.client.get_channel(392995124423950344)
             status = status.lower()
