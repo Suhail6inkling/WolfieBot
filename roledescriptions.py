@@ -663,6 +663,7 @@ class RoleDescriptions():
 *Haunt* - After dying from being Lynched, every night, the Jester chooses one player who voted against them in the Lynching to haunt. This player commits suicide on that night.
 **Abilities:**
 - If targeted with *Investigate*, then their identity is revealed to every Witch in the game.
+- If killed by a Lynching, gains the Spectre modifier.
 **Objectives:**
 - Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
 **Tags:**
