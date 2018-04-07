@@ -32,6 +32,27 @@ class RoleDescriptions():
         await where.send("__**Alchemist**__",embed=embed)
 
     @commands.command(pass_context=True)
+    async def roles_anarchist(self, ctx, where = None):
+        if where == None:
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Strategically-Implemented Self-Murder* - Once per game, at night, commits Suicide.
+*Spanner* - Once per night, target any player. Any actions that player makes that night automatically fail. 
+*Persuade* - Twice per game, at night, while not using *Molotov*, select two other players. The two switch roles and alignments until the end of the following night. Cannot target the same player twice with this action. 
+*Molotov* - Once every two nights, target any player with a Strong Attack. Cannot be used on the same night as *Strategically-Implemented Self-Murder*.
+**Abilities:**
+- If killed by a Lynching, becomes a Spectre.
+**Objectives:**
+- Finish the game with no living players. If the last player alive is the Anarchist, this objective fails. 
+**Tags:**
+- Neutral
+- Chaos/Killing
+- Human
+- Unique""",colour=0xff9400)
+        embed.set_thumbnail(url=icons["anarchist"])
+        await where.send("__**Anarchist**__",embed=embed)
+
+    @commands.command(pass_context=True)
     async def roles_arsonist(self, ctx, where = None):
         if where == None:
             where = ctx.message.channel
@@ -203,9 +224,9 @@ class RoleDescriptions():
         embed=discord.Embed(description="""**Actions:**
 *Maul* - Discuss with other Wolves in a private channel who to Strong Attack during the night.
 *Pack Offensive* - Once per game, at night, not before NIGHT 3, instead of using *Maul*, the Wolves may choose to each individually target any player with a Standard Attack.
-*Glitch* - Every night, chooses two players and chooses a non-Unique role for each player. If either player dies during that night or the following day and their role has not been changed since, they appear to be the role chosen for them and the Cyberhound is told their actual role. If a player the Cyberhound has chosen during that night is targeted with *Shift*, the player using the action becomes the role chosen by the Cyberhound rather than the player’s actual role. They still gain any modifiers the player had.
+*Dox* - Every night, chooses two players and chooses a non-Unique role for each player. If either player dies during that night or the following day and their role has not been changed since, they appear to be the role chosen for them and the Cyberhound is told their actual role. If a player the Cyberhound has chosen during that night is targeted with *Shift*, the player using the action becomes the role chosen by the Cyberhound rather than the player’s actual role. They still gain any modifiers the player had.
 **Abilities:**
-- On death, the real roles of all the dead players that *Deceive* took effect on are revealed.
+- On death, the real roles of all the dead players that *Dox* took effect on are revealed.
 - May still speak in the Wolf channel when dead.
 **Objectives:**
 - Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
