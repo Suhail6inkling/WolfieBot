@@ -39,14 +39,14 @@ Alignments = {"Alchemist" : "N", "Anarchist" : "N", "Arsonist" : "N", "Backstabb
               "Thief" : "N", "Time Lord" : "G", "Understudy" : "N", "Vampire" : "E", "Warlock" : "E", "Werewolf" : "E", "Whisperer" : "G", "Witch" : "N"}
 
 Categories = {"Alchemist" : ["Ch"], "Anarchist" : ["Ch, K"], "Arsonist" : ["Ch", "K"], "Backstabber" : ["Co", "K"], "Bard" : ["Ch", "K"], "Bloodhound" : ["K", "S"], "Clockmaker" : ["K"], "Cultist" : ["Co", "S"],
-              "Cyberhound" : ["Co", "K"], "Dentist" : ["Co"], "Direwolf" : ["K", "S"], "Doctor" : ["K", "P"], "Dodomeki" : ["I"], "Drunk" : ["Ch"], "Fate" : ["Ch"],
+              "Cyberhound" : ["Co", "K"], "Dentist" : ["Co"], "Direwolf" : ["K", "S"], "Doctor" : ["K", "P"], "Dodomeki" : ["I"], "Drunk" : ["Ch"], "Fate" : ["Ch", "S"],
               "Geneticist" : ["Ch", "S"], "Gladiator" : ["Co", "K"], "Glazier" : ["Co"], "Hacker" : ["I", "S"], "Hangman" : ["Ch", "Co"], "Heir" : ["Co"], "Herald" : ["Ch", "K"],
-              "Hermit" : ["Co", "I"], "Hitman" : ["K"], "Hooligan" : ["K", "S"], "Hunter" : ["K", "P"], "Inevitable" : ["Ch", "K"], "Inventor" : ["Ch", "K"], "Jailor" : ["Co", "P"],
+              "Hermit" : ["Co", "I"], "Hitman" : ["K"], "Hooligan" : ["K", "S"], "Hunter" : ["K", "P"], "Inevitable" : ["K"], "Inventor" : ["Ch", "K"], "Jailor" : ["Co", "P"],
               "Jester" : ["Ch", "K"], "Knight" : ["K", "S"], "Kresnik" : ["I", "K"], "Mage" : ["Ch", "I"], "Maid" : ["S"], "Medium" : ["S"], "Merchant" : ["Ch", "S"],
               "Multiple Agent" : ["Ch", "P"], "Noir" : ["I", "K"], "Page" : ["S"], "Paladin" : ["Co", "P"], "Philanthropist" : ["Co", "S"], "Pixie" : ["Co", "I"], "Politician" : ["K", "S"],
               "Poltergeist" : ["Ch", "I"], "Poser" : ["S"], "Priest" : ["Co", "S"], "Prince" : ["S"], "Psychic" : ["Ch", "S"], "Researcher" : ["I"], "Rogue" : ["Co", "P"],
               "Rōjinbi" : ["Ch"], "Romantic" : ["P"], "Santa" : ["S"], "Scarecrow" : ["Ch", "S"], "Seer" : ["I"], "Sentinel" : ["P"], "Sharpshooter" : ["I", "K"], "Shifter" : ["Ch"],
-              "Shinigami" : ["Co", "K"], "Slasher" : ["Ch", "K"], "Souleater" : ["Ch", "K"], "Spider" : ["Co", "S"], "Spinster" : ["Ch", "I"], "Spy" : ["I"], "Survivalist" : ["Co"],
+              "Shinigami" : ["Co", "K"], "Slasher" : ["Ch", "K"], "Souleater" : ["Ch", "K"], "Spider" : ["Co", "S"], "Spinster" : ["S"], "Spy" : ["I"], "Survivalist" : ["Co"],
               "Sylph" : ["S"], "TARDIS Engineer" : ["Co", "S"], "Thief" : ["Ch", "Co"], "Time Lord" : ["I", "S"], "Understudy" : ["Ch", "S"], "Vampire" : ["S"], "Warlock" : ["Ch", "K"],
               "Werewolf" : ["K"], "Whisperer" : ["I", "S"], "Witch" : ["K", "P"]}
 
@@ -231,7 +231,7 @@ async def rolelist(ctx):
 [+][Doctor] - Good, Killing/Protective, Human - <w.roles_doctor>
 [+][Dodomeki] - Evil, Investigative, Non-Human, Unique, Achievable - <w.roles_dodomeki>
 [+][Drunk] - Neutral, Chaos, Human, Unique - <w.roles_drunk>
-[+][Fate] - Neutral, Chaos, Non-Human, Unique - <w.roles_fate>
+[+][Fate] - Neutral, Chaos/Support, Non-Human, Unique - <w.roles_fate>
 [+][Feral] - Modifier - <w.roles_feral>
 [+][Geneticist] - Neutral, Chaos/Support, Human, Unique - <w.roles_geneticist>
 [+][Gladiator] - Good, Counteractive/Killing, Human, Unique - <w.roles_gladiator>
@@ -247,7 +247,7 @@ async def rolelist(ctx):
 [+][Hitman] - Neutral, Killing, Human - <w.roles_hitman>
 [+][Hooligan] - Evil, Killing/Support, Human - <w.roles_hooligan>
 [+][Hunter] - Good, Killing/Protective, Human - <w.roles_hunter>
-[+][Inevitable] - Neutral, Chaos/Killing, Non-Human, Unique, Achievable - <w.roles_inevitable>
+[+][Inevitable] - Neutral, Killing, Non-Human, Unique, Achievable - <w.roles_inevitable>
 [+][Inventor] - Neutral, Chaos/Killing, Human, Unique - <w.roles_inventor>
 [+][Jailor] - Good, Counteractive/Protective, Human, Unique - <w.roles_jailor>
 [+][Jester] - Evil, Chaos/Killing, Non-Human - <w.roles_jester>
@@ -291,7 +291,7 @@ async def rolelist(ctx):
 [+][Spectre] - Modifier, Achievable - <w.roles_spectre>
 [+][Speedster] - Modifier - <w.roles_speedster>
 [+][Spider] - Evil, Counteractive/Support, Non-Human, Unique - <w.roles_spider>
-[+][Spinster] - Neutral, Chaos/Investigative, Non-Human, Unique, Achievable - <w.roles_spinster>
+[+][Spinster] - Neutral, Support, Non-Human, Unique, Achievable - <w.roles_spinster>
 [+][Spy] - Good, Investigative, Human - <w.roles_spy>
 [+][Stand User] - Modifier - <w.roles_standuser>
 [+][Survivalist] - Neutral, Counteractive, Human - <w.roles_survivalist>

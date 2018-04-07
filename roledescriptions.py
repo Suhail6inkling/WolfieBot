@@ -344,7 +344,7 @@ class RoleDescriptions():
         embed=discord.Embed(description="""**Actions:**
 *Create Spinster* - Every night, may choose one player. If that player is Good, they become the Spinster and join a private channel with the Fate. After this succeeds, the action may not be used again.
 *Create Inevitable* - After turning a player into the Spinster, every night, may choose one player. If that player is Evil, they become the Inevitable and join a private channel with the Fate and Spinster.
-*Create Herald* - If the Spinster, the Fate and the Inevitable are all alive or Spectres, they may, once per game, on any night, choose a player to become the Herald. The Fate chooses the night for the Herald to live until. If the Herald lives longer than that, the Spinster, Fate and Inevitable all die. The Inevitable may only kill the Herald on the night chosen.
+*Measure Lifespan* - Once per game, after the Spinster uses *Spin Destiny*, the Fate must choose which night (after the current night) that the Herald must die upon. If the Herald is alive at the start of the day after this night, the Spinster, Fate and Inevitable will all commit Suicide.
 **Abilities:**
 - While the Spinster and Inevitable are alive, gains a Lunar Powerful Save at the start of each night.
 - Counts as a Witch for Objectives purposes.
@@ -352,7 +352,7 @@ class RoleDescriptions():
 - Change a player into the Herald and have at least one Witch survive until all other roles have been eliminated.
 **Tags:**
 - Neutral
-- Chaos
+- Chaos/Support
 - Unearthly
 - Unique""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["fate"])
@@ -600,7 +600,7 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Create Herald* - If the Spinster, the Fate and the Inevitable are all alive or Spectres, they may, once per game, on any night, choose a player to become the Herald. The Fate chooses the night on which the Herald will die. The Inevitable must be alive on this night in order to kill the Herald, and chooses the role that the Herald will appear to have been killed by and the role the Herald will appear as once dead. The Herald dies as if they had committed suicide. If the Herald is resurrected, they become the latter role. This still takes effect if the Herald is not the original player chosen by the Spinster, Fate and Inevitable.
+*Catalyse Doom* - Once per game, on the night that the Fate chose using *Measure Lifespan*, the Inevitable may target any player, causing them to Commit Suicide.
 **Abilities:**
 - While the Spinster and Fate are alive, gains a Lunar Powerful Save at the start of each night.
 - Counts as a Witch for Objectives purposes.
@@ -608,7 +608,7 @@ class RoleDescriptions():
 - Change a player into the Herald and have at least one Witch survive until all other roles have been eliminated.
 **Tags:**
 - Neutral
-- Chaos/Killing
+- Killing
 - Unearthly
 - Unique
 - Achievable""",colour=0xe897ff)
@@ -1196,6 +1196,7 @@ class RoleDescriptions():
 - Starts the game with three Queued Powerful Saves.
 - Is told whenever they gain or lose a save, and what type it is.
 - If an effect would cause them to lose all their saves, they instead lose only one.
+- On death, if the Sentinel still possesses any Saves, each of those Saves is given to a random player.
 **Objectives:**
 - Successfully use up three Saves through using Shield.
 **Tags:**
@@ -1371,16 +1372,15 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Create Herald* - If the Spinster, the Fate and the Inevitable are all alive or Spectres, they may, once per game, on any night, choose a player to become the Herald. The Spinster writes a message for the Herald, which the Herald will receive upon becoming the Herald (any player that changes into the Herald also receives this message).
+*Spin Destiny* - Once per game, if the Spinster, Fate and Inevitable are all alive or Spectres, may choose any dead player to resurrect. This player becomes a Herald.
 **Abilities:**
 - While the Fate and Inevitable are alive, gains a Lunar Powerful Save at the start of each night.
 - Counts as a Witch for Objectives purposes.
-- Upon becoming the Spinster, is told the list of all roles currently in the game. This does not inform the Spinster of how many of each role there are.
 **Objectives:**
 - Change a player into the Herald and have at least one Witch survive until all other roles have been eliminated.
 **Tags:**
 - Neutral
-- Chaos/Investigative
+- Support
 - Unearthly
 - Unique
 - Achievable""",colour=0xe897ff)
@@ -1409,14 +1409,14 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*Standing over his opponent, the man looks down in contempt at him, a pitiful wreck asking for forgiveness. "Good grief." A shimmering muscular figure materialises, fists laden with gold, hair waving in the cold wind. "There's a reason you lost." In a swift motion, he traces a finger along the rim of his cap. "You pissed me off."*
 **Actions:**
-*Battle Cry* - Once per game, after using any action, may use that action immediately again without expending a use, even if they have no uses remaining. If an action used using *Battle Cry* would usually use up anything from a limited pool, it does not.
+*Battle Cry* - Once per game, after using any action, may use that action immediately again without expending a use, even if they have no uses remaining. If an action used using *Battle Cry* would usually use up anything from a limited pool, it does not. If this action is used on an action used by a faction, if each member of the faction were to do something individually from the action only the Stand User gains an additional use of this.
 *Stand Arrow* - Upon death, may choose to flip a coin. On a heads, a player of their choice gains the Stand User modifier.
 *Clash* - Once per game, can choose to target any player with a Powerful Attack. Players are only affected by this attack if they have the Stand User modifier. If the chosen player dies as a result of this attack, this player gains another use of *Battle Cry*.
 **Abilities:**
 - If any Stand User exists in a game, at least one other player must also have the Stand User modifier.
 - If uses *Battle Cry* on the same night as any other player uses *Battle Cry* (and neither action fails), commits Suicide.
 - If targeted with *Clash* by a player who they use *Clash* on during the same night, commits Suicide.
-- If targeted with *Stand Arrow*, gains a Queued Unstoppable Save and a use of *Battle Cry*.
+- If targeted with *Stand Arrow*, gains a Queued Unstoppable Save, a use of *Clash* and a use of *Battle Cry*.
 **Objectives:**
 - Kill another Stand User through *Clash*, or have a player who became a Stand User due to this player's use of *Stand Arrow* complete this objective.
 **Tags:**
