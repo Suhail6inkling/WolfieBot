@@ -245,7 +245,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*A recent study suggests 67.34% of children fear going to the dentist. I wonder why. Why would anyone fear having a cold, metallic scalpel digging around in their mouth? Why would anyone fear whizzing drills and powerful machinery burying into the gums of patients? Why would anyone fear having every tooth forcefully extracted from their bleeding jaws as they sing a symphony of roaring agony? C'mon, buddy, we're not all that bad if you get to know us...*
 **Actions:**
-*Lockjaw* - Every night, select any player. That player may not speak in *#game* or vote in *#voting* the following day. The town is not told about this effect, however the target player is.
+*Lockjaw* - Every night, select any player. That player may not speak in *#game* or vote in *#voting* the following day. The town is not told about this effect, however the target player is. If the target player is Lynched, it is announced that they were lockjawed.
 *Laughing Gas* - Once per game, at night, may select any player. If they were targeted with *Lockjaw* the previous night, that player becomes an Evil Jester.
 **Abilities:**
 - Is not affected by *Haunt*.
