@@ -583,7 +583,7 @@ class RoleDescriptions():
         embed=discord.Embed(description="""*With a hare roasting over an open flame and a bullet in the chamber, his eyes scan every trunk, every leaf, every passing grain of dirt. Another wolf infestation? These mutts should know that these are* his *woods. And if they want to take it from him? They'll have to rip his throat out first.*
 **Actions:**
 *Shoot* - If attacked or lynched, is given the opportunity to target any player with a Standard Attack. This Attack is instead Powerful if the target is a non-Human. This still takes effect if they are Saved.
-*Martyr* - Once per game, at Night, can choose to make all actions that Attack target them instead of the chosen target.
+*Martyr* - Once per game, at Night, can choose to make all actions that Attack target them instead of the chosen target. Attacks from *Shoot* are unnaffected by this action.
 **Abilities:**
 - Starts the game with a Queued Strong Save.
 **Objectives:**
