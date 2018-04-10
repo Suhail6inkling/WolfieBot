@@ -117,7 +117,7 @@ class Seer(Role):
     categories = ["Investigative"]
     objectives = ["good-standard"]
     saves = []
-    tags = {"Good", "Investigative", "Adept"}
+    tags = {"Good", "Investigative", "Arcane"}
 
     def __init__(self):
         super().__init__()
@@ -130,7 +130,6 @@ class Seer(Role):
                 user.role.invest_results[target] = [target.role.name, target.alignment]
                 user.saves.append(Save(1,2))
                 return [target.role.name, target.alignment]
-        if hasattr(user.role,"invest_targets"):
             user.role.invest_results[target] = [target.role.name, target.alignment]
         return [target.role.name, target.alignment]
 

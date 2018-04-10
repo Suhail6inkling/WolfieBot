@@ -1173,7 +1173,7 @@ class RoleDescriptions():
         embed=discord.Embed(description="""*Her silence, well, that's the worst part of it. She doesn't raise her voice, she doesn't cry out, it's just her deathly silence. Her silver pupils scan the room and they'll lock onto you. And she then she just points. There are no words, no anger, no sorrow - only the stare. And as you're being dragged away to the gallows, her apathy is unwavering. No smirks, no grins, just the cold and unfeeling gaze. And then, as the rope is being tightened around your neck, her silence is the last thing you'll ever hear.*
 **Actions:**
 *Investigate* - Every night, may choose one player to investigate, and is told that player’s role and alignment, but not any Modifiers.
-*Publish* - Once per game, at night, the Seer can choose to anonymously announce the results of a previous investigation publicly to all players at the start of the next day.
+*Publish* - Once per game, at night, or upon recieving the results of *Investigate*, the Seer can choose to anonymously announce the results of a previous investigation publicly to all players at the start of the next day.
 **Abilities:**
 - Whenever they get a result of Evil on a player whom they have not previously targeted with *Investigate*, they gain a Queued Strong Save.
 **Objectives:**
@@ -1250,7 +1250,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*Naïve children. You're all so petulant, so mortal. Don't you realise that you don't want to play this game with me? You can't run from me, you can't hide from me, you can't defeat me yet you seem so insistent on trying. You think this is your game but I haven't had my turn. You think you hold all the cards until you realise you've got nothing but a Dead Man's Hand.*
 **Actions:**
-*Channel Death* - Targets one player each night. If any of that player's actions or abilities would cause any player to gain a Save that night, the player is instead targeted with an Attack of equal strength. If a player dies from this effect, it is stated that a Shinigami killed them, and the Shinigami gains a Save equal to the strength of the Save the dead player would have received.
+*Channel Death* - Targets one player each night. If any of that player's actions or abilities would cause any player to gain a Save that night, the player who would gain the save is instead targeted with an Attack of equal strength. If a player dies from this effect, it is stated that a Shinigami killed them, and the Shinigami gains the Save the dead player would have received.
 **Objectives:**
 - Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
 **Tags:**
