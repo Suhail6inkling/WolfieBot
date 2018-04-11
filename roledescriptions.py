@@ -1492,10 +1492,10 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*She knows this place. She knows the drunk who couldn't protect his wallet if his life depended on it. She knows the old lady who leaves her window open so God can watch over her better. She knows the kid who forgets to lock the door whenever he goes to school. Easy pickings.*
 **Actions:**
-*Steal* - Once every 3 nights, can choose any player. One of that player's actions is randomly chosen. The Thief gains access to that action for the rest of the game, and that player may not use that action for the rest of the game. Both the target player and the Thief are told this. If the Thief targets the Merchant with this ability, they take a random action from the Merchant's stock.
+*Steal* - Once every 3 nights, can choose any player. If that player is Good or Evil, one of their actions is randomly chosen. The Thief gains access to that action for the rest of the game, and that player may not use that action for the rest of the game. Both the target player and the Thief are told this. There is no effect if the target of this action is Neutral.
 **Abilities:**
 - If they become Evil, they become a Dodomeki.
-- Upon death, all actions taken using *Steal* are returned to the players they were stolen from, even if those players' roles have changed since the action was stolen.
+- Upon death or changing role, all actions taken using *Steal* are returned to the players they were stolen from, even if those players' roles have changed since the action was stolen.
 **Objectives:**
 - Be the last player alive, or finish the game with no living players.
 **Tags:**
