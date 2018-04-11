@@ -355,6 +355,30 @@ class RoleDescriptions():
         await where.send("__**Drunk**__",embed=embed)
 
     @commands.command(pass_context=True)
+    async def roles_emissary(self, ctx, where = None):
+        if where == None:
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Relinquish* - At night, may commit suicide. The Harbinger gains a Queued Powerful Save. 
+*Venerate* - Twice per game, at night, may give the Harbinger either a Queued Standard Save or an Active Powerful save. 
+**Abilities:**
+- Learns the identity of the Harbinger upon becoming an Emissary.
+- Cannot change role, objective or alignment by any means.
+- If killed by any means other than *Relinquish*, the Harbinger gains an Active Standard Save.
+- If twinned whilst becoming an Emissary, the Twin also becomes an Emissary. If twinned with the Harbinger, this does not apply. 
+- This role cannot be achieved by the effect of Drunk, unless there is a Harbinger present. 
+- Does not need to be eliminated for the Harbinger's objective to be fulfilled.
+**Objectives:**
+- Have the Harbinger complete their objective.
+**Tags:**
+- Neutral
+- Protective/Support
+- Human
+- Achievable""",colour=0xd1dfa2)
+        embed.set_thumbnail(url=icons["emissary"])
+        await where.send("__**Emissary**__",embed=embed)
+
+    @commands.command(pass_context=True)
     async def roles_fate(self, ctx, where = None):
         if where == None:
             where = ctx.message.channel
@@ -444,6 +468,26 @@ class RoleDescriptions():
         await where.send("__**Glazier**__",embed=embed)
 
     @commands.command(pass_context=True)
+    async def roles_glitch(self, ctx, where = None):
+        if where == None:
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Temporal Accelerator* - Once per game, at night, the day after this action is used is skipped, meaning that there are two nights taken consecutively. 
+*Virus* - Every night, may select a player. Until that player's death, any action that player makes has a randomised target other than the Glitch. This action cannot be used until that player is dead. 
+**Abilities:**
+- If an even number of actions target the Glitch in any given night, the players performing said actions now each target a random other player targeting the Glitch.
+- All saves the Glitch receives become Active, regardless of their previous state.
+**Objectives:**
+- Be the last player alive or finish the game with no living players.
+**Tags:**
+- Neutral
+- Chaos
+- Ethereal
+- Unique""",colour=0xd1dfa2)
+        embed.set_thumbnail(url=icons["glitch"])
+        await where.send("__**Glitch**__",embed=embed)
+
+    @commands.command(pass_context=True)
     async def roles_guide(self, ctx, where = None):
         if where == None:
             where = ctx.message.channel
@@ -494,6 +538,33 @@ class RoleDescriptions():
 - Unique""",colour=0xbcbcbc)
         embed.set_thumbnail(url=icons["hangman"])
         await where.send("__**Hangman**__",embed=embed)
+
+    @commands.command(pass_context=True)
+    async def roles_harbinger(self, ctx, where = None):
+        if where == None:
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*War* - Every night, may select two players. Those players target each other with an attack equal to the strength of the last save they received. If a selected player doesn't have a save, they use a Standard Attack. 
+*Famine* - Every night, may choose to make all actions that would give a player a save the night this action is used automatically fail. 
+*Pestilence* - Every night, may select a player. Any player that player targets with an action and any player who targets that player with an action is targeted with a Standard Attack. The Harbinger is immune to any attacks that would occur as a result of this. 
+*Death* - Every night, may choose to make a random player be targeted with an Unstoppable Attack. If there are more Good roles than Evil roles, this player is a randomly selected Good player. If there are more Evil roles than Good roles, this player is a randomly selected Evil player. 
+*End of Days* - All players commit suicide. This action can only be used if *War*, *Famine*, *Pestilence* and *Death* have been used at any point in this game. If any player is alive at the start of the day after this action is used, they become an Emissary. 
+**Abilities:**
+- Cannot use more than one action per night.
+- The Harbinger's presence is announced at the start of the game. 
+- If targeted with *Investigate*, the player who targeted them cannot speak the during following day. If they have any uses of *Publish*, they lose them.
+- If any effect would cause their alignment to change, the effect fails and the player whose role caused the effect becomes an Emissary. 
+- Cannot have any Modifiers applied to them at the start of a game. 
+- If revived, by any means, they may use *End of Days* as if all conditions had been fulfilled.
+**Objectives:**
+- Finish the game with no living players.
+**Tags:**
+- Neutral
+- Unearthly
+- Chaos/Killing
+- Unique""",colour=0xd1dfa2)
+        embed.set_thumbnail(url=icons["harbinger"])
+        await where.send("__**Harbinger**__",embed=embed)
 
     @commands.command(pass_context=True)
     async def roles_heir(self, ctx, where = None):
