@@ -1212,7 +1212,7 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Scope* - Every night, may choose one player to investigate, and is told that player’s role and alignment, but not any Modifiers. All rules referring to Investigate also act on Scope, other than those in the Seer's role description.
+*Scope* - Every night, may choose one player to investigate, and is told that player’s role and alignment, but not any Modifiers. All rules referring to *Investigate* also act on *Scope*, other than those in the Seer's role description.
 *Snipe* - Once per night, can target any player they have already targeted with Scope with a Powerful Attack. If the player's role is different to the result given when they were targeted with Scope, this action fails. Cannot be used in the same night as Investigate. Cannot target the same player twice in a row. 
 **Objectives:**
 - Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
@@ -1538,6 +1538,7 @@ class RoleDescriptions():
 - If one Twin dies by any means, the other commits Suicide the next night (this counts as taking an action).
 - If one Twin is resurrected, the other is also resurrected.
 - If one Twin gains the Spectre modifier, so does the other.
+- This Modifier may not be applied to a Priest or a Cultist.
 **Tags:**
 - Modifier""",colour=0x9900ff)
         embed.set_thumbnail(url=icons["twin"])

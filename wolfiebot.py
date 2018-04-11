@@ -942,6 +942,8 @@ async def standard(ctx, *, message: str):
                 continue
             elif combined.count("Twin") % 2 != 0:
                 continue
+            elif "Cultist Twin" in combined or "Priest Twin" in combined:
+                continue
             elif [i for i in ["Backstabber {}".format(m) for m in Modifiers] if i in combined] != []:
                 continue
             elif [i for i in ["{} Conduit".format(a) for a in AllRoles if a not in [r for r in AllRoles if Species[r] == "Human" and "K" in Categories[r]]] if i in combined] != []:

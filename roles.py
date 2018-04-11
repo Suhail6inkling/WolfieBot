@@ -122,7 +122,7 @@ class Seer(Role):
     def __init__(self):
         super().__init__()
         self.actions = {"Investigate" : [-1,"night",Seer.investigate], "Publish" : [1,"night",Seer.publish]}
-        self.invest_results = []
+        self.invest_results = {}
 
     async def investigate(self, user, target):
         if hasattr(user.role,"invest_results"):
