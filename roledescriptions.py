@@ -115,6 +115,23 @@ class RoleDescriptions():
         await where.send("__**Bard**__",embed=embed)
 
     @commands.command(pass_context=True)
+    async def roles_baykok(self, ctx, where = None):
+        if where == None:
+            where = ctx.message.channel
+        embed=discord.Embed(description="""**Actions:**
+*Spectral Arrows* - Every night, may choose any player, and two roles. The player is targeted with a Standard Attack. If that player's role is Killing, they are targeted with a Powerful Attack instead. If that player is Support, the attack fails. If the player dies from this action and Baykok was the only player to target them with an Attack, they appear to have been the first role chosen and been killed by the second role chosen.
+*Harvest* - Twice per game, at night, may choose any player. If that player has any limited-use actions, they lose all uses of them.
+**Objectives:**
+- Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
+**Tags:**
+- Evil
+- Counteractive/Killing
+- Ethereal
+- Unique""",colour=0xff2323)
+        embed.set_thumbnail(url=icons["baykok"])
+        await where.send("__**Baykok**__",embed=embed)
+
+    @commands.command(pass_context=True)
     async def roles_bloodhound(self, ctx, where = None):
         if where == None:
             where = ctx.message.channel
@@ -1492,7 +1509,7 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*She knows this place. She knows the drunk who couldn't protect his wallet if his life depended on it. She knows the old lady who leaves her window open so God can watch over her better. She knows the kid who forgets to lock the door whenever he goes to school. Easy pickings.*
 **Actions:**
-*Steal* - Once every 3 nights, can choose any player. If that player is Good or Evil, one of their actions is randomly chosen. The Thief gains access to that action for the rest of the game, and that player may not use that action for the rest of the game. Both the target player and the Thief are told this. There is no effect if the target of this action is Neutral.
+*Steal* - Once every 3 nights, can choose any player. If that player is Good or Evil, one of their actions is randomly chosen. The Thief gains access to that action for the rest of the game, and that player may not use that action for the rest of the game. Both the target player and the Thief are told this. There is no effect if the target of this action is Neutral. If the target was Neutral, the Thief may try again on the following night.
 **Abilities:**
 - If they become Evil, they become a Dodomeki.
 - Upon death or changing role, all actions taken using *Steal* are returned to the players they were stolen from, even if those players' roles have changed since the action was stolen.

@@ -23,13 +23,13 @@ voting_channel = client.get_channel(393470084217176075)
 notes_channel = client.get_channel(393476547954212874)
 dead_channel = client.get_channel(392995124423950344)
 
-AllRoles = ["Alchemist", "Anarchist", "Arsonist", "Backstabber", "Bard", "Bloodhound", "Clockmaker", "Cultist", "Cyberhound", "Dentist", "Direwolf", "Doctor", "Dodomeki", "Drunk", "Fate", "Geneticist",
+AllRoles = ["Alchemist", "Anarchist", "Arsonist", "Backstabber", "Bard", "Baykok", "Bloodhound", "Clockmaker", "Cultist", "Cyberhound", "Dentist", "Direwolf", "Doctor", "Dodomeki", "Drunk", "Fate", "Geneticist",
             "Gladiator", "Glazier", "Hacker", "Hangman", "Heir", "Herald", "Hermit", "Hitman", "Hooligan", "Hunter", "Inevitable", "Inventor", "Jailor", "Jester", "Knight", "Kresnik", "Mage", "Maid", "Medium",
             "Merchant", "Multiple Agent", "Noir", "Page", "Paladin", "Philanthropist", "Pixie", "Politician", "Poltergeist", "Poser", "Priest", "Prince", "Psychic", "Researcher", "Rogue",
             "Rōjinbi", "Romantic", "Santa", "Scarecrow", "Seer", "Sentinel", "Sharpshooter", "Shifter", "Shinigami", "Slasher", "Souleater", "Spider", "Spinster", "Spy", "Survivalist", "Sylph",
             "TARDIS Engineer", "Thief", "Time Lord", "Understudy", "Vampire", "Warlock", "Werewolf", "Whisperer", "Witch"]
 
-Alignments = {"Alchemist" : "N", "Anarchist" : "N", "Arsonist" : "N", "Backstabber" : "E", "Bard" : "N", "Bloodhound" : "E", "Clockmaker" : "N", "Cultist" : "E", "Cyberhound" : "E", "Dentist" : "E",
+Alignments = {"Alchemist" : "N", "Anarchist" : "N", "Arsonist" : "N", "Backstabber" : "E", "Bard" : "N", "Baykok" : "E", "Bloodhound" : "E", "Clockmaker" : "N", "Cultist" : "E", "Cyberhound" : "E", "Dentist" : "E",
               "Direwolf" : "E", "Doctor" : "G", "Dodomeki" : "E", "Drunk" : "N", "Fate" : "N", "Geneticist" : "N", "Gladiator" : "G", "Glazier" : "G", "Hacker" : "G", "Hangman" : "N",
               "Heir" : "E", "Herald" : "N", "Hermit" : "N", "Hitman" : "N", "Hooligan" : "E", "Hunter" : "G", "Inevitable" : "N", "Inventor" : "N", "Jailor" : "G", "Jester" : "E",
               "Knight" : "G", "Kresnik" : "G", "Mage" : "G", "Maid" : "N", "Medium" : "G", "Merchant" : "N", "Multiple Agent" : "N", "Noir" : "G", "Page" : "N", "Paladin" : "G",
@@ -38,7 +38,7 @@ Alignments = {"Alchemist" : "N", "Anarchist" : "N", "Arsonist" : "N", "Backstabb
               "Shinigami" : "E", "Slasher" : "N", "Souleater" : "N", "Spider" : "E", "Spinster" : "N", "Spy" : "G", "Survivalist" : "N", "Sylph" : "G", "TARDIS Engineer" : "G",
               "Thief" : "N", "Time Lord" : "G", "Understudy" : "N", "Vampire" : "E", "Warlock" : "E", "Werewolf" : "E", "Whisperer" : "G", "Witch" : "N"}
 
-Categories = {"Alchemist" : ["Ch"], "Anarchist" : ["Ch, K"], "Arsonist" : ["Ch", "K"], "Backstabber" : ["Co", "K"], "Bard" : ["Ch", "K"], "Bloodhound" : ["K", "S"], "Clockmaker" : ["K"], "Cultist" : ["Co", "S"],
+Categories = {"Alchemist" : ["Ch"], "Anarchist" : ["Ch, K"], "Arsonist" : ["Ch", "K"], "Backstabber" : ["Co", "K"], "Bard" : ["Ch", "K"], "Baykok" : ["Co", "K"], "Bloodhound" : ["K", "S"], "Clockmaker" : ["K"], "Cultist" : ["Co", "S"],
               "Cyberhound" : ["Co", "K"], "Dentist" : ["Co"], "Direwolf" : ["K", "S"], "Doctor" : ["K", "P"], "Dodomeki" : ["I"], "Drunk" : ["Ch"], "Fate" : ["Ch", "S"],
               "Geneticist" : ["Ch", "S"], "Gladiator" : ["Co", "K"], "Glazier" : ["Co"], "Hacker" : ["I", "S"], "Hangman" : ["Ch", "Co"], "Heir" : ["Co"], "Herald" : ["Ch", "K"],
               "Hermit" : ["Co", "I"], "Hitman" : ["K"], "Hooligan" : ["K", "S"], "Hunter" : ["K", "P"], "Inevitable" : ["K"], "Inventor" : ["Ch", "K"], "Jailor" : ["Co", "P"],
@@ -50,7 +50,7 @@ Categories = {"Alchemist" : ["Ch"], "Anarchist" : ["Ch, K"], "Arsonist" : ["Ch",
               "Sylph" : ["S"], "TARDIS Engineer" : ["Co", "S"], "Thief" : ["Ch", "Co"], "Time Lord" : ["I", "S"], "Understudy" : ["Ch", "S"], "Vampire" : ["S"], "Warlock" : ["Ch", "K"],
               "Werewolf" : ["K"], "Whisperer" : ["I", "S"], "Witch" : ["K", "P"]}
 
-Species = {"Alchemist" : "Arcane", "Anarchist" : "Human", "Arsonist" : "Human", "Backstabber" : "Human", "Bard" : "Human", "Bloodhound" : "Wolf", "Clockmaker" : "Human", "Cultist" : "Human", "Cyberhound" : "Wolf",
+Species = {"Alchemist" : "Arcane", "Anarchist" : "Human", "Arsonist" : "Human", "Backstabber" : "Human", "Bard" : "Human", "Baykok" : "Ethereal", "Bloodhound" : "Wolf", "Clockmaker" : "Human", "Cultist" : "Human", "Cyberhound" : "Wolf",
            "Dentist" : "Human", "Direwolf" : "Wolf", "Doctor" : "Human", "Dodomeki" : "Unearthly", "Drunk" : "Human", "Fate" : "Unearthly", "Geneticist" : "Human", "Gladiator" : "Human",
            "Glazier" : "Human", "Hacker" : "Human", "Hangman" : "Human", "Heir" : "Human", "Herald" : "Arcane", "Hermit" : "Human", "Hitman" : "Human", "Hooligan" : "Human",
            "Hunter" : "Human", "Inevitable" : "Unearthly", "Inventor" : "Human", "Jailor" : "Human", "Jester" : "Ethereal", "Knight" : "Human", "Kresnik" : "Arcane", "Mage" : "Arcane",
@@ -61,7 +61,7 @@ Species = {"Alchemist" : "Arcane", "Anarchist" : "Human", "Arsonist" : "Human", 
            "Spy" : "Human", "Survivalist" : "Human", "Sylph" : "Ethereal", "TARDIS Engineer" : "Human", "Thief" : "Human", "Time Lord" : "Unearthly", "Understudy" : "Human",
            "Vampire" : "Unearthly", "Warlock" : "Arcane", "Werewolf" : "Wolf", "Whisperer" : "Arcane", "Witch" : "Unearthly"}
 
-UniqueRoles = ["Alchemist", "Anarchist", "Arsonist", "Backstabber", "Bard", "Bloodhound", "Cultist", "Cyberhound", "Dentist", "Direwolf", "Dodomeki", "Drunk", "Fate", "Geneticist", "Gladiator",
+UniqueRoles = ["Alchemist", "Anarchist", "Arsonist", "Backstabber", "Bard", "Baykok", "Bloodhound", "Cultist", "Cyberhound", "Dentist", "Direwolf", "Dodomeki", "Drunk", "Fate", "Geneticist", "Gladiator",
                "Hangman", "Heir", "Hermit", "Inevitable", "Inventor", "Jailor", "Knight", "Kresnik", "Maid", "Merchant", "Noir", "Page", "Paladin", "Philanthropist", "Politician", "Priest", "Prince",
                "Psychic", "Researcher", "Rogue", "Rōjinbi", "Romantic", "Santa", "Scarecrow", "Sharpshooter", "Shinigami", "Slasher", "Spider", "Spinster", "Sylph", "TARDIS Engineer",
                "Thief", "Understudy", "Vampire", "Warlock", "Whisperer"]
@@ -85,7 +85,8 @@ UVoteEmojis = [b'\xf0\x9f\x87\xa6', b'\xf0\x9f\x87\xa7', b'\xf0\x9f\x87\xa8', b'
 PLACEHOLDERICON = "https://via.placeholder.com/256x256"
 
 icons = {"alchemist" : "https://i.imgur.com/CkcPTXj.png", "anarchist" : PLACEHOLDERICON, "arsonist" : "https://i.imgur.com/eACFT2J.png",
-         "backstabber" : "https://i.imgur.com/IKAq9Xj.png", "bard" : "https://i.imgur.com/4vqgI1l.png", "bloodhound" : "https://i.imgur.com/Ln1TEDm.png", "clockmaker" : "https://i.imgur.com/9sRU1wY.png",
+         "backstabber" : "https://i.imgur.com/IKAq9Xj.png", "bard" : "https://i.imgur.com/4vqgI1l.png", "baykok" : PLACEHOLDERICON,
+         "bloodhound" : "https://i.imgur.com/Ln1TEDm.png", "clockmaker" : "https://i.imgur.com/9sRU1wY.png",
          "companion" : "https://i.imgur.com/jdN1QwN.png", "conduit" : "https://i.imgur.com/Qapubfn.png", "cultist" : "https://i.imgur.com/f6b61vM.png", "cyberhound" : "https://i.imgur.com/EzCRujB.png",
          "dentist" : "https://i.imgur.com/HBu6XXy.png",
          "direwolf" : "https://i.imgur.com/1ZLzSrI.png", "doctor" : "https://i.imgur.com/d7nawSg.png", "dodomeki" : "https://i.imgur.com/niarSn0.png", "drunk" : "https://i.imgur.com/fx1zfEP.png",
@@ -113,7 +114,8 @@ icons = {"alchemist" : "https://i.imgur.com/CkcPTXj.png", "anarchist" : PLACEHOL
          "understudy" : "https://i.imgur.com/xtL1C6F.png", "vampire" : "https://i.imgur.com/QvxToyj.png", "warlock" : "https://i.imgur.com/1pWGWgF.png", "werewolf" : "https://i.imgur.com/SeJ1Fv1.png",
          "whisperer" : "https://i.imgur.com/l8c7un3.png", "witch" : "https://i.imgur.com/uzkYewk.png"}
 
-descCommands = {"Alchemist" : "roles_alchemist", "Anarchist" : "roles_anarchist", "Arsonist" : "roles_arsonist", "Backstabber" : "roles_backstabber", "Bard" : "roles_bard", "Bloodhound" : "roles_bloodhound",
+descCommands = {"Alchemist" : "roles_alchemist", "Anarchist" : "roles_anarchist", "Arsonist" : "roles_arsonist", "Backstabber" : "roles_backstabber", "Bard" : "roles_bard",
+                "Baykok" : "roles_baykok", "Bloodhound" : "roles_bloodhound",
                 "Clockmaker" : "roles_clockmaker", "Cultist" : "roles_cultist", "Cyberhound" : "roles_cyberhound", "Dentist" : "roles_dentist", "Direwolf" : "roles_direwolf",
                 "Doctor" : "roles_doctor", "Dodomeki" : "roles_dodomeki", "Drunk" : "roles_drunk", "Fate" : "roles_fate", "Geneticist" : "roles_geneticist", "Gladiator" : "roles_gladiator",
                 "Glazier" : "roles_glazier", "Hacker" : "roles_hacker", "Hangman" : "roles_hangman", "Heir" : "roles_heir", "Herald" : "roles_herald", "Hermit" : "roles_hermit",
