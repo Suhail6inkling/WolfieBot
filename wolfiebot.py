@@ -201,6 +201,7 @@ async def gm_help(ctx):
 <w.twin (@twin1 @twin2)> - Creates #twins channel for specified players.
 <w.tardis (@timelord @companion)> - Creates/fetches #tardis channel for timelord, if companion is not companion gives them permissions, otherwise removes permissions.
 <w.coven (mentions)> - Creates #coven if it does not exist, and gives mentioned players permissions for it.
+<w.vampires (mentions)> - Creates #wolves if it does not exist, and gives mentioned players permissions for it.
 <w.seance (@medium @target)> - Creates a seance between medium and target; this is removed at the start of a day.
 
 <w.lockjaw (@player boolean)> - If boolean true, lockjaws player; if false, unlockjaws player.

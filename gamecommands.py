@@ -540,6 +540,24 @@ class GameCommands():
             await ctx.send("You need to be a GM to use this command!")
 
     @commands.command(pass_context=True)
+    async def vampires(self, ctx):
+        if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            guild = ctx.message.guild
+            vampire_perms = discord.PermissionOverwrite(read_messages=True)
+            vampires_channel = discord.utils.get(guild.channels,name="vampires")
+            if vampires_channel == None:
+                everyone_perms = discord.PermissionOverwrite(read_messages=False)
+                overwrites = {guild.default_role : everyone_perms, discord.utils.get(guild.roles, name="Game Master") : vampire_perms}
+                category = discord.utils.get(guild.categories, name="priv channels")
+                vampires_channel = await guild.create_text_channel("vampires", overwrites=overwrites, category=category)
+            players = ctx.message.mentions
+            for p in players:
+                await vampires_channel.set_permissions(p, overwrite=vampire_perms)
+            return vampires_channel
+        else:
+            await ctx.send("You need to be a GM to use this command!")
+
+    @commands.command(pass_context=True)
     async def lockjaw(self, ctx, user: discord.Member, status="t"):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             game_channel = self.client.get_channel(392995027909083137)
