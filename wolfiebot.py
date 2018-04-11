@@ -157,6 +157,9 @@ async def help(ctx):
 <w.help> - Shows this message.
 <w.gm_help> - Shows commands available for GMs only.
 <w.gamerules> - Provides a link to the rules for playing the game.
+<w.scoreboard> - Provides a link to the scoreboard and tracker.
+<w.roleguide> - Provides a link to the role creation guide.
+<w.library> - Provides a list of document links.
 
 <w.register (name)> - Creates a private channel for command user using name provided.
 <w.rolelist> - Provides a list of roles in the game, plus commands to see more information.
@@ -211,6 +214,26 @@ If you have any questions or suggestions for improvement on the rules, contact A
 (If that doesn't work, here's the link: https://bit.ly/werewolf-gamerules)""")
     embed.set_author(name="Werewolf Party Game Rules", url='https://bit.ly/werewolf-gamerules', icon_url='https://i.imgur.com/soFqp3g.png')
     await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def scoreboard(ctx):
+    embed=discord.Embed(description="""This spreadsheet includes the scoreboards and a game tracker.
+(If that doesn't work, here's the link: https://bit.ly/werewolf-scoreboard)""")
+    embed.set_author(name="Werewolf Scoreboard/Tracker", url='https://bit.ly/werewolf-scoreboard', icon_url='https://i.imgur.com/soFqp3g.png')
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def roleguide(ctx):
+    embed=discord.Embed(description="""This link details design principles for creating and suggesting roles.
+(If that doesn't work, here's the link: https://bit.ly/werewolf-roleguide)""")
+    embed.set_author(name="Army's Guide to Role Creation", url='https://bit.ly/werewolf-roleguide', icon_url='https://i.imgur.com/soFqp3g.png')
+    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def library(ctx):
+    await ctx.send(embed=(discord.Embed(description="""- Game Rules: https://bit.ly/werewolf-gamerules
+- Scoreboard/Tracker: https://bit.ly/werewolf-scoreboard
+- Role Creation Guide: https://bit.ly/werewolf-roleguide""")))
 
 @client.command(pass_context=True)
 async def rolelist(ctx):
