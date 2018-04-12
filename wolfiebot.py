@@ -725,7 +725,10 @@ Output: 'React with appropriate emoji to vote:
         if where == "":
                 where = ctx.message.channel
         global VoteEmojis
-        options = message.split(", ")
+        if type(message) == list:
+            options = message
+        else:
+            options = message.split(", ")
         if len(options) > 20:
             await ctx.send("Too many!")
         else:

@@ -341,14 +341,8 @@ class GameCommands():
             players = [p.nick for p in ctx.message.guild.members if role in p.roles and p.nick != None]
             for name in [p.name for p in ctx.message.guild.members if role in p.roles and p.nick == None]:
                 players.append(name)
-            players = sorted(players)
-            for p in players:
-                if p == players[0]:
-                    options = p
-                else:
-                    options = "{}, {}".format(options,p)
             n = round(len([p.nick for p in ctx.message.guild.members if role in p.roles])/2)
-            voted = await ctx.invoke(self.client.get_command("vote"),message=options,where=voting_channel,needed=n,time=s)
+            voted = await ctx.invoke(self.client.get_command("vote"),message=players,where=voting_channel,needed=n,time=s)
             return voted
         else:
             await ctx.send("You need to be a GM to use this command!")
