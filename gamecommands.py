@@ -31,19 +31,43 @@ class GameCommands():
             await ctx.send("You need to be a GM to use this command!")
 
     @commands.command(pass_context=True)
-    async def setprivs(self, ctx, message):
+    async def setprivs(self, ctx, *, message):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
-            players = message.split(", ")
+            if ", " in message:
+                players = message.split(", ")
+            else:
+                players = [message]
+            guild = ctx.message.guild
             privchannels = discord.utils.get(guild.categories, name="priv channels")
             everyone_perms = discord.PermissionOverwrite(read_messages=False)
             priv_perms = discord.PermissionOverwrite(read_messages=True)
+            gm_role = discord.utils.get(guild.roles, name="Game Master")
+            bot_role = discord.utils.get(guild.roles, name="Bots")
             for p in players:
                 p = p.split(": ")
                 p[0] = discord.utils.get(guild.members, mention=p[0])
                 overwrites = {guild.default_role : everyone_perms, discord.utils.get(guild.roles, name="Game Master") : priv_perms, p[0] : priv_perms}
-                category = discord.utils.get(guild.categories, name="priv channels")
-                channame = "{}-priv".format(p[1])
-                chan = await guild.create_text_channel(channame, overwrites=overwrites, category=privchannels)
+                channame = "{}-priv".format(p[1].lower())
+                if gm_role in p[0].roles:
+                    await ctx.send("{} is a GM.".format(p[0].mention))
+                    continue
+                elif bot_role in p[0].roles:
+                    await ctx.send("{} is a bot.".format(p[0].mention))
+                    continue
+                makepriv = True
+                for c in privchannels.channels:
+                    if c.name == channame:
+                        await ctx.send("The channel name `{}` is taken.".format(channame))
+                        makepriv = False
+                        break
+                    if "-priv" in c.name:
+                        x = [u for u in guild.members if c.permissions_for(u).read_messages == True]
+                        if p[0] in x:
+                            await ctx.send("{} already has a priv channel.".format(p[0].mention))
+                            makepriv = False
+                            break
+                if makepriv:
+                    chan = await guild.create_text_channel(channame, overwrites=overwrites, category=privchannels)
         else:
             await ctx.send("You need to be a GM to use this command!")
 
@@ -70,7 +94,7 @@ class GameCommands():
             for user in [m for m in guild.members if spectator_role in m.roles]:
                 await user.remove_roles(spectator_role)
             for c in [c for c in privchannels.channels]:
-                await c.delete
+                await c.delete()
             game_channel = self.client.get_channel(392995027909083137)
             voting_channel = self.client.get_channel(393470084217176075)
             perms = discord.PermissionOverwrite()

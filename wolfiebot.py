@@ -165,12 +165,12 @@ async def help(ctx):
 <w.roleguide> - Provides a link to the role creation guide.
 <w.library> - Provides a list of document links.
 
-<w.register (name)> - Creates a private channel for command user using name provided.
 <w.rolelist> - Provides a list of roles in the game, plus commands to see more information.
 <w.listroles (space seperated list of tags as parameters)> - Lists all roles that have all the tags provided.
 <w.achieve (role)> - Lists nonstandard ways of gaining given role.
 <w.icon (role)> - Displays icon for given role.
 
+<w.register (name)> - Create a private channel for yourself.
 <w.generatelist> - Shows commands to generate rolelists.
 <w.vote (options to vote between seperated by commas)> - Displays a list of specified options to vote on.
 <w.advancedvote (options to vote between seperated by commas; time; needed)> - w.vote, but better.
@@ -187,6 +187,7 @@ async def help(ctx):
 async def gm_help(ctx):
     await ctx.send("""```md
 <w.setplayers (mentions)> - Sets all users mentioned as Player. If any mentioned are already Player, removes role.
+<w.setprivs (@player: name, etc)> - Creates priv channels for all players using name as start of channel name.
 <w.giveroles (player: role [(modifier)], etc)> - Gives players listed the applied role.
 <w.gamestatus> - Returns all players in the current game with information about them. 
 
@@ -210,7 +211,7 @@ async def gm_help(ctx):
 <w.medium (@player boolean)> - If boolean true, gives player perms to see #dead; if false, removes perms.
 <w.sonic (comma-seperated list of all roles in game)> - Returns a Sonic result for roles provided.
 
-<w.endgame> - Ends game, removing all game roles and permissions from all members of guild and deleting all group priv channels.```""")
+<w.endgame> - Ends game, removing all game roles and permissions from all members of guild and deleting all priv channels.```""")
 
 @client.command(pass_context=True)
 async def gamerules(ctx):
