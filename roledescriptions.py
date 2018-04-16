@@ -902,8 +902,11 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*O-o-oh, jeez, Rick, y-y-you threw me into a portal and now I'm... I'm in a town with wolves and... and... oh, Rick, I'm looking around this place and I'm starting to w-work up some anxiety about this whole thing.*
+**Actions:**
+*Brainwave* - If the player this Modifier is attached to is not a member of a faction, once per game, at night, they may choose any role and alignment to appear as if targeted with *Investigate*.
 **Abilities:**
 - If the player this Modifier is attached to is a member of a faction other than Good and Evil, the other members of their faction appear as a random Good Human role (generated seperately each time) when targeted with *Investigate* rather than their actual role. The Morty, however, appears as their actual role when investigated.
+- If this player votes in an election or a lynching during the day, their actions may not be used during the following night.
 **Tags:**
 - Modifier""",colour=0xfffa00)
         embed.set_thumbnail(url=icons["morty"])
@@ -1429,7 +1432,7 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Supercharge* - Three times per game, at night, may choose to make all their actions act as if they were at the start of the night instead of at the end, hence acting before all effects used that night.
+*Supercharge* - Twice per game, at night, may choose to make all their actions act as if they were at the start of the night instead of at the end, hence acting before all effects used that night.
 *Godspeed* - Once per game, at night, may choose to cause the following day to last a maximum time of one minute.
 **Tags:**
 - Modifier""",colour=0x80659a)
@@ -1622,7 +1625,8 @@ class RoleDescriptions():
 **Abilities:**
 - This Modifier is always applied to a pair of players.
 - The Twins may speak in a shared channel with one another at any time.
-- At the start of the game, choose together the alignment and objectives of one of them to be applied to the other. If one’s alignment and objectives change, the other’s change too to be the same. If one's objectives change to 'be the last player alive', then it instead becomes 'have yourself and your Twin be the last players alive'.
+- Upon becoming Twins, choose together the alignment and objectives of one of them to be applied to the other. If one’s alignment and objectives change, the other’s change too to be the same. If one's objectives change to 'be the last player alive', then it instead becomes 'have yourself and your Twin be the last players alive'.
+- If one Twin is in the winning players, the other Twin is also.
 - If one Twin dies by any means, the other commits Suicide the next night (this counts as taking an action).
 - If one Twin is resurrected, the other is also resurrected.
 - If one Twin gains the Spectre modifier, so does the other.

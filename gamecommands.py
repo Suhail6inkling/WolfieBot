@@ -22,8 +22,28 @@ class GameCommands():
             for p in players:
                 if "Player" not in [y.name for y in p.roles]:
                     await p.add_roles(player_role)
+                    if "Spectator" in [y.name for y in p.roles]:
+                        spectator_role = discord.utils.get(ctx.message.guild.roles, name="Spectator")
+                        await p.remove_roles(spectator_role)
                 else:
                     await p.remove_roles(player_role)
+        else:
+            await ctx.send("You need to be a GM to use this command!")
+
+    @commands.command(pass_context=True)
+    async def setprivs(self, ctx, message):
+        if "Game Master" in [y.name for y in ctx.message.author.roles]:
+            players = message.split(", ")
+            privchannels = discord.utils.get(guild.categories, name="priv channels")
+            everyone_perms = discord.PermissionOverwrite(read_messages=False)
+            priv_perms = discord.PermissionOverwrite(read_messages=True)
+            for p in players:
+                p = p.split(": ")
+                p[0] = discord.utils.get(guild.members, mention=p[0])
+                overwrites = {guild.default_role : everyone_perms, discord.utils.get(guild.roles, name="Game Master") : priv_perms, p[0] : priv_perms}
+                category = discord.utils.get(guild.categories, name="priv channels")
+                channame = "{}-priv".format(p[1])
+                chan = await guild.create_text_channel(channame, overwrites=overwrites, category=privchannels)
         else:
             await ctx.send("You need to be a GM to use this command!")
 
@@ -32,11 +52,13 @@ class GameCommands():
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             global Day, DayCount
             Day = False
-            player_role = discord.utils.get(ctx.message.guild.roles, name="Player")
-            dead_role = discord.utils.get(ctx.message.guild.roles, name="Dead")
-            mayor_role = discord.utils.get(ctx.message.guild.roles, name="Mayor")
-            deputy_role = discord.utils.get(ctx.message.guild.roles, name="Deputy")
             guild = ctx.message.guild
+            player_role = discord.utils.get(guild.roles, name="Player")
+            dead_role = discord.utils.get(guild.roles, name="Dead")
+            mayor_role = discord.utils.get(guild.roles, name="Mayor")
+            deputy_role = discord.utils.get(guild.roles, name="Deputy")
+            spectator_role = discord.utils.get(guild.roles, name="Spectator")
+            privchannels = discord.utils.get(guild.categories, name="priv channels")
             for user in [m for m in guild.members if player_role in m.roles]:
                 await user.remove_roles(player_role)
             for user in [m for m in guild.members if dead_role in m.roles]:
@@ -45,10 +67,10 @@ class GameCommands():
                 await user.remove_roles(mayor_role)
             for user in [m for m in guild.members if deputy_role in m.roles]:
                 await user.remove_roles(deputy_role)
-            gamechans = ["wolves", "coven", "twins", "tardis", "seance", "guide", "vampires"]
-            for c in [c for c in guild.channels]:
-                if c.name in gamechans:
-                    await c.delete()
+            for user in [m for m in guild.members if spectator_role in m.roles]:
+                await user.remove_roles(spectator_role)
+            for c in [c for c in privchannels.channels]:
+                await c.delete
             game_channel = self.client.get_channel(392995027909083137)
             voting_channel = self.client.get_channel(393470084217176075)
             perms = discord.PermissionOverwrite()
