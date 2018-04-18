@@ -1288,7 +1288,6 @@ class RoleDescriptions():
 - Starts the game with three Queued Powerful Saves.
 - Is told whenever they gain or lose a save, and what type it is.
 - If an effect would cause them to lose all their saves, they instead lose only one.
-- On death, if the Sentinel still possesses any Saves, each of those Saves is given to a random player.
 **Objectives:**
 - Successfully use up three Saves through using Shield.
 **Tags:**
@@ -1587,6 +1586,7 @@ class RoleDescriptions():
 **Abilities:**
 - If they become Evil, they become a Dodomeki.
 - Upon death or changing role, all actions taken using *Steal* are returned to the players they were stolen from, even if those players' roles have changed since the action was stolen.
+- When using *Visit Merchant*, the Thief does not lose an action.
 **Objectives:**
 - Be the last player alive, or finish the game with no living players.
 **Tags:**
