@@ -197,8 +197,8 @@ async def gm_help(ctx):
 
 <w.mayor (@player)> - Sets given player as Mayor.
 <w.deputy (@player)> - Sets given player as Deputy.
-<w.kill (@player)> - Kills the given player.
-<w.revive (@player)> - Revives the given player.```""")
+<w.kill (mentions)> - Kills the mentioned players.
+<w.revive (mentions)> - Revives the mentioned players.```""")
     await ctx.send("""```md
 <w.wolves (mentions)> - Creates #wolves if it does not exist, and gives mentioned players permissions for it.
 <w.twin (@twin1 @twin2)> - Creates #twins channel for specified players.

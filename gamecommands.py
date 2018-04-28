@@ -418,27 +418,32 @@ class GameCommands():
             await ctx.send("You need to be a GM to use this command!")
 
     @commands.command(pass_context=True)
-    async def kill(self, ctx, player: discord.Member):
+    async def kill(self, ctx):
         player_role = discord.utils.get(ctx.message.guild.roles, name="Player")
         dead_role = discord.utils.get(ctx.message.guild.roles, name="Dead")
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
-            if "Player" in [y.name for y in player.roles]:
-                await player.add_roles(dead_role)
-                await asyncio.sleep(1)
-                await player.remove_roles(player_role)
-                if "Mayor" in [y.name for y in player.roles]:
+            mentions = ctx.message.mentions
+            for player in mentions:
+                if "Player" in [y.name for y in player.roles]:
+                    await player.add_roles(dead_role)
                     await asyncio.sleep(1)
-                    mayor_role = discord.utils.get(ctx.message.guild.roles, name="Mayor")
-                    await player.remove_roles(mayor_role)
-                if "Deputy" in [y.name for y in player.roles]:
+                    await player.remove_roles(player_role)
+                    if "Mayor" in [y.name for y in player.roles]:
+                        await asyncio.sleep(1)
+                        mayor_role = discord.utils.get(ctx.message.guild.roles, name="Mayor")
+                        await player.remove_roles(mayor_role)
+                    if "Deputy" in [y.name for y in player.roles]:
+                        await asyncio.sleep(1)
+                        deputy_role = discord.utils.get(ctx.message.guild.roles, name="Deputy")
+                        await player.remove_roles(deputy_role)
                     await asyncio.sleep(1)
-                    deputy_role = discord.utils.get(ctx.message.guild.roles, name="Deputy")
-                    await player.remove_roles(deputy_role)
-                await asyncio.sleep(1)
-                await ctx.invoke(self.client.get_command("lockjaw"),user=player,status="f")
-                await ctx.invoke(self.client.get_command("medium"),user=player,status="f")
-            else:
-                await ctx.send("User is either already dead or not in the game.")
+                    await ctx.invoke(self.client.get_command("lockjaw"),user=player,status="f")
+                    await ctx.invoke(self.client.get_command("medium"),user=player,status="f")
+                else:
+                    name = player.nick
+                    if name == None:
+                        name = player.name
+                    await ctx.send("**{}** is either already dead or not in the game.".format(name))
         else:
             await ctx.send("You need to be a GM to use this command!")
 
@@ -447,13 +452,18 @@ class GameCommands():
         player_role = discord.utils.get(ctx.message.guild.roles, name="Player")
         dead_role = discord.utils.get(ctx.message.guild.roles, name="Dead")
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
-            if "Dead" in [y.name for y in player.roles]:
-                await player.add_roles(player_role)
-                await asyncio.sleep(1)
-                await player.remove_roles(dead_role)
-                await asyncio.sleep(1)
-            else:
-                await ctx.send("User is either already alive or not in the game.")
+            mentions = ctx.message.mentions
+            for player in mentions:
+                if "Dead" in [y.name for y in player.roles]:
+                    await player.add_roles(player_role)
+                    await asyncio.sleep(1)
+                    await player.remove_roles(dead_role)
+                    await asyncio.sleep(1)
+                else:
+                    name = player.nick
+                    if name == None:
+                        name = player.name
+                    await ctx.send("**{}** is either already alive or not in the game.".format(name))
         else:
             await ctx.send("You need to be a GM to use this command!")
 
