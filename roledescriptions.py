@@ -1445,7 +1445,7 @@ class RoleDescriptions():
         embed=discord.Embed(description="""*The web of pain and sin it weaves will often go unnoticed. Whilst we're busy fighting wolves, gods and demons, it makes its way into our consciences, threading its little fears in there. It'll lace its hands around the bodies of the dead, breathing wicked life into these cold lungs like the cruel seductress it truly is, the dark mother of all of us... I mean, them. Oh, shit, I wasn't meant to say that, was I? You won't tell anybody, will you? Nah, she'll make sure you don't.*
 **Actions:**
 *Thread* - Once per game, at night, can use their Thread and choose any dead player. The #dead chat is given the chance to vote collectively on which dead player is to be revived, and the player chosen by the Spider gains an extra vote, and wins all ties. The player revived as a result of this action gains a Queued Powerful Save.
-*Web* - Three times per game, can choose to activate their Web. All players who target them that night have all their actions fail until the end of the following night.
+*Web* - This action has three charges. At night, can choose to activate their Web and choose an amount of charges to use. This action may not be used once all charges are depleted. All players who target them that night have all their actions fail that night, and for an amount of subsequent nights equal to one less than the amount of charges used.
 **Abilties**
 - If killed by Wolves, becomes a Spectre.
 **Objectives:**
