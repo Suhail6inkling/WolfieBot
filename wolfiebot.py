@@ -130,7 +130,7 @@ descCommands = {"Alchemist" : "roles_alchemist", "Anarchist" : "roles_anarchist"
                 "Romantic" : "roles_romantic", "Santa" : "roles_santa", "Scarecrow" : "roles_scarecrow", "Seer" : "roles_seer", "Sentinel" : "roles_sentinel",
                 "Sharpshooter" : "roles_sharpshooter", "Shifter" : "roles_shifter",
                 "Shinigami" : "roles_shinigami", "Slasher" : "roles_slasher", "Souleater" : "roles_souleater", "Soulless" : "roles_soulless", "Spider" : "roles_spider",
-                "Spinster" : "roles_spinster", "Spy" : "roles_spy",
+                "Spinster" : "roles_spinster", "Spy" : "roles_spy", "Survivalist" : "roles_survivalist",
                 "Sylph" : "roles_sylph", "TARDIS Engineer" : "roles_tardisengineer", "Thief" : "roles_thief", "Time Lord" : "roles_timelord", "Understudy" : "roles_understudy", "Vampire" : "roles_vampire",
                 "Warlock" : "roles_warlock", "Werewolf" : "roles_werewolf", "Whisperer" : "roles_whisperer", "Witch" : "roles_witch", "Companion" : "roles_companion",
                 "Conduit" : "roles_conduit", "Feral" : "roles_feral", "Guide" : "roles_guide", "Minstrel" : "roles_minstrel", "Morty" : "roles_morty", "Spectre" : "roles_spectre",

@@ -121,7 +121,7 @@ class GameCommands():
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             game_channel = self.client.get_channel(392995027909083137)
             voting_channel = self.client.get_channel(393470084217176075)
-            notes_channel = self.client.get_channel(393476547954212874)
+            notes_channel = self.client.get_channel(454007847835926532)
             dead_channel = self.client.get_channel(392995124423950344)
             player_role = discord.utils.get(ctx.message.guild.roles, name="Player")
             message = message.split("; ")
@@ -179,7 +179,7 @@ class GameCommands():
     """@commands.command(pass_context=True)
     async def giveroles(self, ctx, *, message: str, wolvesclass=None):
         global PlayerInfo
-        notes_channel = self.client.get_channel(393476547954212874)
+        notes_channel = self.client.get_channel(454007847835926532)
         chan = await ctx.invoke(self.client.get_command("wolves"))
         wolvesclass = Wolves(chan)
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
@@ -242,7 +242,7 @@ class GameCommands():
     @commands.command(pass_context=True)
     async def giveroles(self, ctx, *, message: str):
         global PlayerInfo
-        notes_channel = self.client.get_channel(393476547954212874)
+        notes_channel = self.client.get_channel(454007847835926532)
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             message = message.split(", ")
             x = []
