@@ -5,6 +5,8 @@ import asyncio
 import random
 import math
 import os
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials as SAC
 from roles import *
 
 try:
@@ -376,6 +378,45 @@ async def register(ctx, *, name: str):
         await ctx.send("Channel {} created successfully.".format(priv_channel.mention))
     else:
         await ctx.send("There was an error creating the channel.")
+
+@client.command(pass_context=True)
+async def stats(ctx, user: discord.Member=None):
+    if user == None:
+        user = ctx.message.author
+    await ctx.trigger_typing()
+    info = await GetStats(user.id)
+    if info == "Error":
+        await ctx.send("There is no information for that user!")
+    else:
+        if info["ACHIEVEMENTS"] == "":
+            info["ACHIEVEMENTS"] = "None :("
+        colour = user.colour
+        if colour == discord.Colour.default():
+            colour = discord.Embed.Empty
+        embed=discord.Embed(description=""":white_small_square: __**All Time**__
+        - Wins: **{}**     - Losses: **{}**
+        - Score: **{}**    - Rank: **{}**
+        
+:white_small_square: __**Monthly**__
+        - Wins: **{}**     - Losses: **{}**
+        - Score: **{}**    - Rank: **{}**
+
+:white_small_square: __**Games Played**__
+        - Overall: **{}**  - Rank: **{}**
+
+:white_small_square: __**Achievements**__
+        {}
+
+:white_small_square: __**Miscellaneous**__
+        - Winstreak (Best): **{}**
+        - Lossstreak (Worst): **{}**
+        - Kills: **{}**""".format(info["WINS"],info["LOSSES"],info["SCORE"],info["AT RANK"],info["M WINS"],info["M LOSSES"],info["M SCORE"],info["M RANK"],info["GAMES PLAYED"],info["GP RANK"],
+                     info["ACHIEVEMENTS"],info["WIN STREAK"],info["LOSS STREAK"],info["KILLS"]),colour=colour)
+        embed.set_thumbnail(url=user.avatar_url)
+        name = user.nick
+        if name == None:
+            name = user.name
+        await ctx.send("Stats for **{}**:".format(name),embed=embed)
 
 @client.command(pass_context=True)
 async def randomchoice(ctx, *, message=""):
@@ -1124,9 +1165,18 @@ async def tac(ctx, *, message: str):
         combined = combined+finish
         await ctx.send(combined)
 
-async def KeepAwake():
-    await asyncio.sleep(1500)
-    print("Still awake.")
+async def GetStats(ID):
+        scope = ['https://spreadsheets.google.com/feeds',
+                 'https://www.googleapis.com/auth/drive']
+        creds = SAC.from_json_keyfile_name("google api.json", scope)
+        gclient = gspread.authorize(creds)
+        sheet = gclient.open_by_key("1TrCrVmpjocMevw5iEj8L0xNQywwRQ5iWoa28gnJrkMQ").worksheet("Summary")
+        records = sheet.get_all_records()
+        info = [d for d in records if d["USERID"] == ID or d["ALT USERID"] == ID]
+        if info == []:
+            return "Error"
+        else:
+            return info[0]
 
 if __name__ == "__main__":
     for extension in startup_extensions:
@@ -1136,5 +1186,4 @@ if __name__ == "__main__":
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
 
-    client.loop.create_task(KeepAwake())
     client.run(TOKEN)

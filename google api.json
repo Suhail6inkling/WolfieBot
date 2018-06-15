@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "werewolf-scoreboard",
+  "private_key_id": "e329cb26456e917416d26c4ef31209aeae7aa6d4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDV1pGCa40crqes\nllmAWLzcPYwmHjOLmMvAFfQ1t17bIlSzj4BnO3MmswrGfajpXUgGsjptfCKBE/Ov\nnlXNNBHzHnui+gFwitphjMhTf1ewvIbUu9TZGPOuxn2zZu7Px/ehkF0tVu7dsk8E\nnbyRASs3XN7OIwlhLlcIVWxzLtnCm9YmPBCRkeVQ92/DzB9oA/hRUzT0Zs9RGEBL\nyzRTPoj6p9BonVLuLT3HFZWZ9LsopmlKoP4LnjyFmGRcgaOXqToCJZ7ad+735QXi\n1W/e4IPPh08nB8oVWcbI3zuHyFgBm88nn3FobvR9s79Tkt9q18l3xnksz5kUKpk2\n9ZHgTrbtAgMBAAECggEAArb2ofE7mWGeP1KpUDfQLfuaC+HWRa9q5sVglE3/pkiJ\nSr5HowfeLl+Xg22U92F3yJ36n+kzhu/56ADalgBTOgLpDuidnBAnNZXT9TtooZXD\nIHBCA3+NmGpsrhpgbcLcIfDzPeAcqDPbTPOzsSOSqOFE8tj/BXzRHgn3ln7BxPav\njslkLJYHwG41jMC+a7DYjBZfpo+4wi12VD66IBi/hx2o0Ul8uJea+eB1SMtGK+2B\nimUY4Aa/IWTNuUcnxN721jqRIgKFSj7++SYiVdoS1sQpCru63QqX67QDK7qJ/wAs\nR1GjLboHPVOviLriyIN+rQBxFAouz30jOEA8vU1QAQKBgQD1TAkUwNys21mXriBA\n76Gbe4SRGKt55/nNqnxFm5XsjGyVPVI5EcEidbjWGfbgeL2TGm4wkHpdMml0def7\nZyyFq1VKMn9gomJmFEviFpQRnkcIF3ey2ZlYRdekgQMbUHcHfUIZRR7tVU1phj3X\nmkEAINGhjJGCutT19nM1vjbPcQKBgQDfKyNNqxtFPaDtU7wfkTmsjEsHQ088Nfle\naZlHsdn1FntAapWPYAOfyOvGf9HdZO6J6TukhRpJIL36VlRpaX4Gbv9L3QAn8brd\nTPdAP46x7xjztXqtJmFdziCNQo1SXz7ZDXenGlNsR3/qmOUuJ0XOHCap8HhJhuOS\n0yNJMrFZPQKBgAxnZeYown/zL5qd8X+XHoLwQgncR3+InXcq8dHLRk+J4kvBqBC+\ntxd5AHnDIlrDgEKaCYxnIejojbCX7b0mwHeZ7FwuJYbLb1JeIGA0aBRj/o+IMENZ\nAYoXLgphg7iz3vEAAoGonyG9OIbnhOUMJdFN14vlwc3siKxPZBAJqFfhAoGAZSVB\nB+egIX6wHEBSSCBi+mBPdQg9tjVkQzUrIoJqHZnF3Mkx5dyHZ/kBW2L9NBGVx22s\n+YDWDATJ9dcAxRHp63KNRM3yTyhRIBHNEhJ8UwrhzTsYUbfOc1yEBmH+eTHv4yIm\nc9cLrkytnh8T6BommibKI0V4zyJSrG4DVR6joKUCgYEAgLCL/xgLP4Q9lS7cu7ng\nJqb6UBXUgOnFyrXPzg6xt0WDSRxTO4NvgKvANhNyUy4EhMd+pKlRsYg5jehNu7JB\n008pZBYIQluvuWLLQK28BY2JWDEh0RjOGxyIJIsLUedEnTslviFQMmbsUAEbIMpm\nCUzAFuQlm1hk5tg8ItigDAw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "armymutt22@werewolf-scoreboard.iam.gserviceaccount.com",
+  "client_id": "102881911760391795067",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/armymutt22%40werewolf-scoreboard.iam.gserviceaccount.com"
+}
