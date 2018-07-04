@@ -77,10 +77,11 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*Honour? Dignity? Loyalty? Oh, please, you're a child. I want to live and I'll do it by any means. I'll use you as a tool and the moment you're no longer useful to me, I'll toss you aside and pick another shield. I'll kick you in the balls and you'll smile to my face. I'll use you and abuse you and take every last penny from you until I drive a knife into your neck. And the best part? I will feel **nothing**.*
+**Actions:**
+*Betray* - Every night, may choose a player. If that player does not have the same alignment as the Backstabber, and has targeted the Backstabber with any action before the night this action is used, they are targeted with a Powerful Attack. If they die from this attack, it is announced that they committed Suicide.
 **Abilities:**
-- Is told the identity of the Direwolf at the start of the game.
 - Always appears as a random Good role when targeted with *Investigate*.
-- If any action or ability would cause the Backstabber to gain a Modifier or a Save, unless it is the action *Infect*, the player whose action or ability it was commits Suicide instead.
+- If any action or ability would cause the Backstabber to gain a Modifier or a Save, unless it is the action *Infect*, the player whose action or ability it was is targeted with an attack of Strength one level greater than the Save that would have been given, or Powerful if the Backstabber would have gained a Modifier. If they die from this attack, it is announced that they committed Suicide.
 - Cannot begin the game with any Modifiers.
 **Objectives:**
 - Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
@@ -120,8 +121,8 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Spectral Arrows* - Every night, may choose any player, and two roles. The player is targeted with a Standard Attack. If that player's role is Killing, they are targeted with a Powerful Attack instead. If that player is Support, the attack fails. If the player dies from this action and Baykok was the only player to target them with an Attack, they appear to have been the first role chosen and been killed by the second role chosen.
-*Harvest* - Twice per game, at night, may choose any player. If that player has any limited-use actions, they lose all uses of them.
+*Spectral Arrows* - Every night, may choose any player, and a role. The player is targeted with a Standard Attack. If that player's role is Killing, they are targeted with a Powerful Attack instead. If that player is Support, the attack fails. If the player dies from this action and Baykok was the only player to target them with an Attack, they appear to have been killed by the role chosen by the Baykok.
+*Harvest* - Once per game, at night, may choose any player. If that player has any limited-use actions, they lose all uses of them.
 **Objectives:**
 - Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
 **Tags:**
@@ -326,9 +327,12 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*She seemed to have come out of nowhere, frequenting the temple upon the hill. The unusually long sleeves of her robe were strange, and the frail hands which somehow emerged from the ends never failed to unnerve whoever noticed them. But none knew that under the light of the moon, the robe would come off. Hundreds of eyes, wrapped round thickly veined forearms, would open into the windows of the soul.*
 **Actions:**
-*Many Eyes* - Once per game, at night, can choose to use their Many Eyes. They are told every players' targets for all their actions that night.
+*Eyes On You* - Every other night, may choose a player. The Dodomeki learns the names of all of the actions that player used that night.
+*Inescapable Gaze* - Once per game, at night, can choose to be told every players' targets for all their actions that night.
+*All-Seeing* - Once per game, at night, may choose to be told the list of roles that were present at the beginning of the game, excluding Neutral roles.
 **Abilities:**
 - Is told all players who targeted them during the night at the end of the night.
+- May only use one action per night.
 **Objectives:**
 - Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
 **Tags:**
@@ -500,7 +504,7 @@ class RoleDescriptions():
         embed=discord.Embed(description="""*We'd met under some... unusual circumstances, but it's my duty to teach the page my ways - after all, I'm the only one of my kind around here.*
 **Abilities:**
 - See Page ('*w.roles_page*').
-- Can only be applied to a Unique role.
+- Can only be applied to a Neutral role.
 **Tags:**
 - Faction: *School*
 - Modifier
@@ -578,16 +582,18 @@ class RoleDescriptions():
     async def roles_heir(self, ctx, where = None):
         if where == None:
             where = ctx.message.channel
-        embed=discord.Embed(description="""**Abilities:**
-- Begins the game with a randomly selected Good player as their Loved One.
-- If their Loved One dies, the Heir gains all the saves that their Loved One had at the point of their death.
-- If their Loved One dies by any means other than Lynching or Suicide, the Heir gains all the actions for which their Loved One had uses remaining as one-use actions.
-- If their Loved One dies, another living Good player is randomly selected to be their new Loved One.
+        embed=discord.Embed(description="""**Actions:**
+*Heritage* - During NIGHT 1, must choose a player to be their Loved One. This action may be used whenever the Heir does not have a Loved One. The Heir is told their Loved One's role.
+*Contact* - Every night, may send a message to their Loved One. Their Loved One is told that this is a Whisper.
+*Disown* - Once per game, may cause their current Loved One to lose that status.
+*Smother* - Starts the game with no uses of this action. At night, may choose a player to target with a Standard Attack.
+**Abilities:**
+- If their Loved One dies, the Heir gains a Queued Save for each Attack their Loved One has dealt with any of their actions or abilities since becoming their Loved One, of equal strength to those attacks and in the same order, and on the next night gains an amount of uses of *Smother* equal to the amount of Saves that have been given by any of the Loved One's actions or abilities since they became a Loved One.
 **Objectives:**
 - Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
 **Tags:**
 - Evil
-- Counteractive
+- Killing
 - Human
 - Unique""",colour=0xff2323)
         embed.set_thumbnail(url=icons["heir"])
@@ -660,6 +666,8 @@ class RoleDescriptions():
         embed=discord.Embed(description="""*There are good men. There are heroes, there are angels, there are saints and there are paragons. But there are bad men. Men who'll crack your skull open with knuckledusters if you look at them the wrong way. Men who'll make blood pour from your mouth like the first plague of Egypt. Men who'll gladly take your money and your woman without a second thought, safe in the knowledge that you'll do absolutely fucking nothing about it. And make no mistake, I am a very, very bad man.*
 **Actions:**
 *Threaten* - Every night, may choose one player. For each Attack that targets that player, the Hooligan targets them with another of equal strength. The Hooligan is told how many attacks they targeted the player with, if any.
+*Bully* - Every other night, may choose a player. This player cannot be the same player targeted by *Threaten*. All of this player’s Active and Lunar saves are removed.
+*Etch* - Once per game, may have two real words or players’ names sent to the Wolves chat. The Wolves are told that this is from a Hooligan. The Hooligan is told if no Wolves are alive.
 **Abilities:**
 - Is told the identity of the Direwolf at the start of the game.
 - If they are Lynched, even if Saved, on the following night *Maul* is a Powerful Attack rather than a Strong Attack.
@@ -828,16 +836,19 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""*When I came to this place, I thought it'd be the start of a new life for me. I came to assist my fellow man and offer my services to get by. But now? It's a city of pain, hatred and suffering; brother turning on brother to fight an enemy that has as much of a right to exist as the rest of us do. Well, I've had enough of this. I'm going to lift up my voice so that they'll put down their guns and we can all make it a better town for our children.*
+**Actions:**
+*Scrub* - Once per game, at night, may choose a player. If that player gains any saves during that night, they are targeted with two Standard attacks.
+*Tidy Up* - Once per game, at night, may choose a player. If that player is targeted with any attack that night, regardless of if that attack is saved against, they commit Suicide.
+*Spring Cleaning* - Once per game, at night, the following night, the player given the secondmost amount of votes in the Lynch the previous day commits Suicide (the Maid can choose which player in the event of any relevant ties).
 **Abilities:**
 - Cannot change alignment or objective by any means, unless they also change role. If an effect would cause the Maid to change their alignment or objective without also changing their role, it fails.
 - If killed, all players who have a condition that would allow them to become an Achievable role in their abilities automatically have that condition count as being fulfilled. In the event that they have multiple, one is randomly chosen.
-- Gains a Lunar Strong Save at the start of every night.
 - Does not need to be eliminated to fulfill any player's objectives.
 **Objectives:**
 - Have every player alive at the start of DAY 4 (not including themselves) be in the Winning Players. Any player who commits Suicide after the start of DAY 4 does not count to this. If the game ends before DAY 4, the Maid loses.
 **Tags:**
 - Neutral
-- Chaos/Support
+- Chaos/Killing
 - Human
 - Unique""",colour=0xff9bc4)
         embed.set_thumbnail(url=icons["maid"])
@@ -868,7 +879,8 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Discount* - Once per game, may take any action from their stock and gain access to it for the rest of the game. They may also use the gained action during the day/night that they used this action.
+*Discount* - Every night, may take any action from their stock and gain access to it for the rest of the game. They may also use the gained action during the day/night that they used this action. This action is however removed from their stock.
+*Advertise* - Every night, may choose any action in their stock. At the start of the following day, providing this action is still present in the Merchant's stock, it is announced that this action is in the Merchant's stock.
 *Check* - At any time, may check the contents of their stock.
 **Abilities:**
 - Cannot change alignment or objective by any means, unless they also change role. If an effect would cause the Merchant to change their alignment or objective without also changing their role, it fails.
@@ -927,13 +939,13 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*My watch is a nice piece of jewellery. Always loved it. The silver rim reminds me of the scope I used to kill our last mayor. I got paid quite well for that. Second-best assignment I've had since taking down a terrorist threat. I used the money to buy this watch. It wasn't much - my watch is just cheap garbage. Always hated it.*
 **Actions:**
-*Loyalty* - Every night, must choose a player (choosing a random player if offline). Gains the objectives and alignment of that player until the start of the next night. May not choose a player whom they have already chosen.
-*Heal* - May give one player an Active Standard Save every night. This Save only takes effect if the target is of the same alignment as the Multiple Agent.
+*Loyalty* - Every night, while there are two or more other players of their alignment alive (unless the Multiple Agent is Neutral), must choose a player (choosing a random player if offline). Gains the objectives and alignment of that player until the start of the next night. May not choose a player whom they have already chosen.
+*Heal* - May give one player an Active Standard Save every night. This Save only takes effect if the target is of the same alignment as the Multiple Agent. If there are two or less other players of their alignment alive, this Save is Powerful rather than Standard.
 **Abilities:**
 - If they die, they keep their assumed objective and alignment.
 - When investigated, they appear as a random non-unique role of the alignment of the player investigating them.
-- If they target Good players three nights in a row with *Loyalty*, they become Spy.
-- If they target Evil players three nights in a row with *Loyalty*, they become Psychic.
+- If they target Good players three nights in a row with *Loyalty*, they become a Spy.
+- If they target Evil players three nights in a row with *Loyalty*, they become a Backstabber.
 **Objectives:**
 - None
 **Tags:**
@@ -968,8 +980,8 @@ class RoleDescriptions():
 *Imitate* - At night, can flip a coin. On a heads, they may use one of the Guide's actions of their choice, providing it can be used at that time. For actions with limited uses, they count their uses of an action seperately from the Guide.
 **Abilities:**
 - Talks to the Guide in a private channel.
-- If the Page is in the game, a random player with a Unique role gains the Guide modifier.
-- Does not need to be eliminated to fulfil any roles' objectives.
+- If the Page is in the game, a random other player with a Neutral role gains the Guide modifier.
+- Does not need to be eliminated to fulfil any Neutral role's objectives.
 - On the Guide's death, they gain the Guide's role.
 **Objectives:**
 - Identical to the Guide.
@@ -988,8 +1000,10 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*There once was a man who rode on horseback into our town, warning of a darkness that could never be quenched. He wore a glimmering ivory suit of armour and spoke with a voice that has seen an infinite number of years and lived to tell of them dozens of times over. His helmet's visor is able to be seen through but no man has ever had the hubris to believe themselves worthy of such an experience. It is said that those who gaze directly at his unmasked countenance will see the very eyes of the Lord staring back at them.*
 **Actions:**
-*Enlist* - Every night, may choose one player to force to guard another player of their choice. The former player may not make any actions that night and any Attacks targeting the second player instead target the former. If any effect would cause the second player to commit Suicide, the former player instead commits Suicide.
+*Enlist* - Twice per game, may choose one player to force to guard another player of their choice. The latter player may not be the Paladin. The former player may not make any actions that night and any Attacks targeting the second player instead target the former. If any effect would cause the second player to commit Suicide, the former player instead commits Suicide.
+*Bless* - Once per game, may target a different player. All of this player's actions that rules for *Investigate* apply to may be used twice that night, targeting different players.
 **Objectives:**
+- If an Attack is targeted towards an Evil role due to *Enlist*, the Paladin gains another use of *Enlist*. Only one use of *Enlist* may be gained by this method per night.
 - Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
 **Tags:**
 - Good
@@ -1004,12 +1018,15 @@ class RoleDescriptions():
     async def roles_philanthropist(self, ctx, where = None):
         if where == None:
             where = ctx.message.channel
-        embed=discord.Embed(description="""**Abilities:**
+        embed=discord.Embed(description="""**Actions:**
+*Purify* - Once per game, at night, may choose a player. That player become a random Human role with the identical alignment to their previous role.
+*Defend* - Once per game, at night, may cause all attacks targeting Human players to be weakened by one level (and to fail if they are Standard) for the duration of the night.
+**Abilities:**
 - At the start of every night, is told the identity of a random Human player.
 - If they vote against a non-Human in a Lynching, the Attack against that player from the Lynching is Strong rather than Standard.
 - Gains a Lunar Strong Save at the start of every night. This Save only affects Attacks from non-Humans.
 **Objectives:**
-- Survive until all non-Humans have been eliminated.
+- Have the game end with all living players as Human.
 **Tags:**
 - Neutral
 - Counteractive/Support
@@ -1177,8 +1194,10 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*The fire in her eyes could warm the cool winter breeze. Finally, she had returned back to her own cut of paradise - where the pockets ran deep and the toys came out to play. Except this time, there was something different. An invading force had the people subdued and fearful. Paranoia caused everyone to lock their doors and hide their wallets. Somebody had taken her village. Somebody was going to pay.*
 **Actions:**
-*Steal* - Every night, may choose two players. All of the first player's Saves are removed and given to the second player.
+*Steal* - Every night, may choose two players. All of the first player's Saves are removed and given to the second player. For each Save the first player had, the Rogue gains an identical Save.
+*Donate* - Every night, may be told all the saves they have, and choose one Save to give to a player of their choice. This Save is removed from the Rogue.
 **Abilities:**
+- All Attacks targeting the Rogue are increased in strength by two levels to a maximum of Unstoppable.
 - If they become Evil, they become a Dodomeki.
 **Objectives:**
 - Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
@@ -1234,11 +1253,11 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
 *Gift* - Every night, can give any player other than themselves a present. They recieve the present the next night. If during the day between these nights, the targeted player votes against a player of their own alignment in the Lynching, they are told that they have recieved a lump of coal. For that night, they gain the ability to target any player with a Powerful Attack. Santa is immune to this Attack. Otherwise, the player is told that they have recieved a candy cane, and that player and Santa both recieve a Queued Standard Save.
+*Premium* - Every other night, may use *Gift* twice rather than once, however may not use *Gift* on the following night.
 **Abilities:**
 - If any effect would cause them to commit Suicide, they can choose to instead be targeted with a Powerful Attack.
 **Objectives:**
-- Have given all living players a present at point of Santa's death, or have given all living players a present at the end of the game if Santa is still alive. Players have to have recieved the present before this point.
-**Tags:**
+- Have all other living players have received a present at the point of your death, or all other living players have received a present at the end of the game if you are still alive.**Tags:**
 - Neutral
 - Support
 - Unearthly
@@ -1312,8 +1331,8 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Scope* - Every night, may choose one player to investigate, and is told that player’s role and alignment, but not any Modifiers. All rules referring to *Investigate* also act on *Scope*, other than those in the Seer's role description.
-*Snipe* - Once per night, can target any player they have already targeted with Scope with a Powerful Attack. If the player's role is different to the result given when they were targeted with Scope, this action fails. Cannot be used in the same night as Investigate. Cannot target the same player twice in a row. 
+*Scope* - Every night, may choose one player to scope, and is told that player’s role and alignment, but not any Modifiers. The Save that player gained most recently is removed. All rules referring to *Investigate* also act on *Scope*, other than those in the Seer's role description.
+*Snipe* - Once per night, can choose any player and guess their role. If they guess the player's role correctly, that player is targeted with a Strong Attack. If the chosen player survives this attack, they lose their weakest save. Cannot be used in the same night as Scope. Cannot target the same player twice in a row. This action's target cannot be changed from the Sharpshooter's original choice by any other effect.
 **Objectives:**
 - Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
 **Tags:**
@@ -1441,8 +1460,8 @@ class RoleDescriptions():
         if where == None:
             where = ctx.message.channel
         embed=discord.Embed(description="""**Actions:**
-*Supercharge* - Twice per game, at night, may choose to make all their actions act as if they were at the start of the night instead of at the end, hence acting before all effects used that night.
-*Godspeed* - Once per game, at night, may choose to cause the following day to last a maximum time of one minute.
+*Supercharge* - Twice per game, at night, may choose to make all their actions act as if they were at the start of the night instead of at the end, hence acting before all effects used that night. This cannot be used on two consecutive nights. The day after this action is used, the Speedster cannot speak or vote.
+*Godspeed* - Once per game, at night, may choose to cause the following day to last a maximum time of five minutes, or three minutes if the gamemode is Quickfire. The day after this action is used, the Speedster cannot speak or vote.
 **Tags:**
 - Modifier""",colour=0x80659a)
         embed.set_thumbnail(url=icons["speedster"])
@@ -1696,9 +1715,10 @@ class RoleDescriptions():
             where = ctx.message.channel
         embed=discord.Embed(description="""*The inky black fingers of the warlock are always wrapped firmly around his sceptre, his instrument of destruction. His muscular arms, both densely tattooed with sigils and spells written in an ancient script, had long, grey veins running up towards and around his neck, strangling him like a cobra. The village has never heard him speak, merely mutter incantations under his breath. There's an aura of fear about him, nobody speaks directly to him - there is no man foolhardy or brave enough. Some say he sold his soul to the devil eons ago. Few disagree.*
 **Actions:**
-*Damn* - Once per game, at night, may choose a player to damn. The damned player and all players targeting them (if targeted by Wolves a random Wolf is chosen) apart from the Warlock are targeted with a Powerful Attack. If the damned player is a Unique role they are not targeted.
+*Damn* - Twice per game, at night, may choose a player to damn. The damned player and all players targeting them (if targeted by Wolves a random Wolf is chosen) apart from the Warlock are targeted with a Powerful Attack.
+*Hell's Gate* - Once per game, may target one player. All actions that player makes on the night this action is used fails if they specifically target a Priest, Paladin, Cultist or Warlock.
 **Abilities:**
-- For each Good Unique role they kill using *Damn*, the Warlock gains another use of *Damn*.
+- For each Good Investigative role they kill using *Damn*, the Warlock gains another use of *Damn*. Only one use of *Damn* may be gained by this method per night.
 **Objectives:**
 - Have at least one Evil role survive until all Good and Neutral roles have been eliminated.
 **Tags:**

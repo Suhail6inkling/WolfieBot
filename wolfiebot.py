@@ -43,9 +43,9 @@ Alignments = {"Alchemist" : "N", "Anarchist" : "N", "Arsonist" : "N", "Backstabb
 
 Categories = {"Alchemist" : ["Ch"], "Anarchist" : ["Ch, K"], "Arsonist" : ["Ch", "K"], "Backstabber" : ["Co", "K"], "Bard" : ["Ch", "K"], "Baykok" : ["Co", "K"], "Bloodhound" : ["K", "S"], "Clockmaker" : ["K"], "Cultist" : ["Co", "S"],
               "Cyberhound" : ["Co", "K"], "Dentist" : ["Co"], "Direwolf" : ["K", "S"], "Doctor" : ["K", "P"], "Dodomeki" : ["I"], "Drunk" : ["Ch"], "Emissary" : ["P", "S"], "Fate" : ["Ch", "S"],
-              "Geneticist" : ["Ch", "S"], "Gladiator" : ["Co", "K"], "Glazier" : ["Co"], "Glitch" : ["Ch"], "Hacker" : ["I", "S"], "Hangman" : ["Ch", "Co"], "Harbinger" : ["Ch", "K"], "Heir" : ["Co"], "Herald" : ["Ch", "K"],
+              "Geneticist" : ["Ch", "S"], "Gladiator" : ["Co", "K"], "Glazier" : ["Co"], "Glitch" : ["Ch"], "Hacker" : ["I", "S"], "Hangman" : ["Ch", "Co"], "Harbinger" : ["Ch", "K"], "Heir" : ["K"], "Herald" : ["Ch", "K"],
               "Hermit" : ["Co", "I"], "Hitman" : ["K"], "Hooligan" : ["K", "S"], "Hunter" : ["K", "P"], "Inevitable" : ["K"], "Inventor" : ["Ch", "K"], "Jailor" : ["Co", "P"],
-              "Jester" : ["Ch", "K"], "Knight" : ["K", "S"], "Kresnik" : ["I", "K"], "Mage" : ["Ch", "I"], "Maid" : ["Ch", "S"], "Medium" : ["S"], "Merchant" : ["Ch", "S"],
+              "Jester" : ["Ch", "K"], "Knight" : ["K", "S"], "Kresnik" : ["I", "K"], "Mage" : ["Ch", "I"], "Maid" : ["Ch", "K"], "Medium" : ["S"], "Merchant" : ["Ch", "S"],
               "Multiple Agent" : ["Ch", "P"], "Noir" : ["I", "K"], "Page" : ["S"], "Paladin" : ["Co", "P"], "Philanthropist" : ["Co", "S"], "Pixie" : ["Co", "I"], "Politician" : ["K", "S"],
               "Poltergeist" : ["Ch", "I"], "Poser" : ["S"], "Priest" : ["Co", "S"], "Prince" : ["S"], "Psychic" : ["Ch", "S"], "Researcher" : ["I"], "Rogue" : ["Co", "P"],
               "Rōjinbi" : ["Ch"], "Romantic" : ["P"], "Santa" : ["S"], "Scarecrow" : ["Ch", "S"], "Seer" : ["I"], "Sentinel" : ["P"], "Sharpshooter" : ["I", "K"], "Shifter" : ["Ch"],
@@ -289,7 +289,7 @@ async def rolelist(ctx):
 [+][Hacker] - Good, Investigative/Support, Human, Unique, Achievable - <w.roles_hacker>
 [+][Hangman] - Neutral, Chaos/Counteractive, Human, Unique - <w.roles_hangman>
 [+][Harbinger] - Neutral, Chaos/Killing, Unearthly, Unique - <w.roles_harbinger>
-[+][Heir] - Evil, Counteractive, Human, Unique - <w.roles_heir>
+[+][Heir] - Evil, Killing, Human, Unique - <w.roles_heir>
 [+][Herald] - Neutral, Chaos/Killing, Arcane, Unique, Achievable - <w.roles_herald>
 [+][Hermit] - Neutral, Investigative/Counteractive, Human, Unique - <w.roles_hermit>
 [+][Hitman] - Neutral, Killing, Human - <w.roles_hitman>
@@ -302,7 +302,7 @@ async def rolelist(ctx):
 [+][Knight] - Good, Killing/Support, Human, Unique - <w.roles_knight>
 [+][Kresnik] - Good, Investigative/Killing, Arcane, Unique - <w.roles_kresnik>
 [+][Mage] - Good, Chaos/Investigative, Arcane - <w.roles_mage>
-[+][Maid] - Neutral, Support, Human, Unique - <w.roles_maid>
+[+][Maid] - Neutral, Chaos/Killing, Human, Unique - <w.roles_maid>
 [+][Medium] - Good, Support, Arcane - <w.roles_medium>
 [+][Merchant] - Neutral, Chaos/Support, Human, Unique - <w.roles_merchant>
 [+][Minstrel] - Modifier, Achievable - <w.roles_minstrel>
