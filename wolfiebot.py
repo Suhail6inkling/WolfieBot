@@ -64,6 +64,17 @@ Species = {"Alchemist" : "Arcane", "Anarchist" : "Human", "Arsonist" : "Human", 
            "Spy" : "Human", "Survivalist" : "Human", "Sylph" : "Ethereal", "TARDIS Engineer" : "Human", "Thief" : "Human", "Time Lord" : "Unearthly", "Understudy" : "Human",
            "Vampire" : "Unearthly", "Warlock" : "Arcane", "Werewolf" : "Wolf", "Whisperer" : "Arcane", "Witch" : "Unearthly"}
 
+Factions = {"Alchemist" : [], "Anarchist" : [], "Arsonist" : [], "Backstabber" : [], "Bard" : ["Troupe"], "Baykok" : [], "Bloodhound" : ["Vampiric", "Wolves"], "Clockmaker" : [],
+            "Cultist" : [], "Cyberhound" : ["Wolves"], "Dentist" : [], "Direwolf" : ["Wolves"], "Doctor" : [], "Dodomeki" : [], "Drunk" : [], "Emissary" : ["Prophets"],
+            "Fate" : ["Coven", "Witches"], "Geneticist" : [], "Gladiator" : [], "Glazier" : [], "Glitch" : [], "Hacker" : [], "Hangman" : [], "Harbinger" : ["Prophets"],
+            "Heir" : [], "Herald" : [], "Hermit" : [], "Hitman" : [], "Hooligan" : [], "Hunter" : [], "Inevitable" : ["Coven", "Witches"], "Inventor" : [], "Jailor" : [], "Jester" : [],
+            "Knight" : [], "Kresnik" : [], "Mage" : [], "Maid" : [], "Medium" : [], "Merchant" : [], "Multiple Agent" : [], "Noir" : [], "Page" : ["School"], "Paladin" : [],
+            "Philanthropist" : [], "Pixie" : [], "Politician" : [], "Poltergeist" : [], "Poser" : [], "Priest" : [], "Prince" : [], "Psychic" : [], "Researcher" : [], "Rogue" : [],
+            "Rōjinbi" : [], "Romantic" : [], "Santa" : [], "Scarecrow" : [], "Seer" : [], "Sentinel" : [], "Sharpshooter" : [], "Shifter" : [], "Shinigami" : [], "Slasher" : [],
+            "Souleater" : [], "Spider" : [], "Spinster" : ["Coven", "Witches"], "Spy" : [], "Survivalist" : [], "Sylph" : [], "TARDIS Engineer" : ["Tardis"], "Thief" : [], "Time Lord" : ["Tardis"],
+            "Understudy" : [], "Vampire" : ["Vampiric"], "Warlock" : [], "Werewolf" : ["Wolves"], "Whisperer" : [], "Witch" : ["Witches"], "Companion" : ["Tardis"], "Conduit" : [],
+            "Feral" : [], "Guide" : ["School"], "Minstrel" : ["Troupe"], "Morty" : [], "Soulless" : [], "Spectre" : [], "Speedster" : [], "Stand User" : [], "Twin" : []}
+
 UniqueRoles = ["Alchemist", "Anarchist", "Arsonist", "Backstabber", "Bard", "Baykok", "Bloodhound", "Cultist", "Cyberhound", "Dentist", "Direwolf", "Dodomeki", "Drunk", "Fate", "Geneticist", "Gladiator",
                "Glitch", "Hangman", "Harbinger", "Heir", "Hermit", "Inevitable", "Inventor", "Jailor", "Knight", "Kresnik", "Maid", "Merchant", "Noir", "Page", "Paladin", "Philanthropist", "Politician", "Priest", "Prince",
                "Psychic", "Researcher", "Rogue", "Rōjinbi", "Romantic", "Santa", "Scarecrow", "Sharpshooter", "Shinigami", "Slasher", "Spider", "Spinster", "Sylph", "TARDIS Engineer",
@@ -347,6 +358,19 @@ async def rolelist(ctx):
 ```""")
 
 @client.command(pass_context=True)
+async def factionlist(ctx):
+    await ctx.send("""__**Factions**__
+```md
+[+][Coven] - <w.listroles coven>
+[+][Prophets] - <w.listroles prophets>
+[+][School] - <w.listroles school>
+[+][Troupe] - <w.listroles troupe>
+[+][Vampiric] - <w.listroles vampiric>
+[+][Witches] - <w.listroles witches>
+[+][Wolves] - <w.listroles wolves>
+```""")
+
+@client.command(pass_context=True)
 async def register(ctx, *, name: str):
     try:
         name.encode(encoding='utf-8').decode('ascii')
@@ -460,10 +484,14 @@ Tags:
 > Support
 > Unique
 > Achievable
+> [Factions]*
 
-Include 'all' in parameters to discard parameters and allow all roles.
-Include 'modifier' in parameters to include and limit selection to modifiers.
+*Factions can be viewed with <w.factionlist>.
+Include 'all' in parameters to discard parameters and allow all roles and modifiers.
+Include 'modifier' in parameters to limit selection to modifiers.
+Include 'x-modifier' in parameters to exclude modifiers.
 Precede tags with 'x-' to exclude roles with them.
+Precede categories with 'o-' to exclude roles with two categories.
 
 Example: <w.randomrole good>
 Output: 'Jailor'```""")
@@ -471,46 +499,49 @@ Output: 'Jailor'```""")
         conditions = message.split(" ")
         for c in conditions:
             c = c.lower()
-        if "modifier" in conditions:
-            All = list(Modifiers)
-            Valid = list(All)
+        All = list(AllRoles + Modifiers)
+        Valid = list(All)
+        ref = {"good" : [r for r in AllRoles if Alignments[r] == "G"], "evil" : [r for r in AllRoles if Alignments[r] == "E"],
+               "neutral" : [r for r in AllRoles if Alignments[r] == "N"],
+               "chaos" : [r for r in AllRoles if "Ch" in Categories[r]], "counteractive" : [r for r in AllRoles if "Co" in Categories[r]],
+               "investigative" : [r for r in AllRoles if "I" in Categories[r]], "killing" : [r for r in AllRoles if "K" in Categories[r]],
+               "protective" : [r for r in AllRoles if "P" in Categories[r]], "support" : [r for r in AllRoles if "S" in Categories[r]],
+               "human" : [r for r in AllRoles if "Human" == Species[r]], "arcane" : [r for r in AllRoles if "Arcane" == Species[r]],
+               "ethereal" : [r for r in AllRoles if "Ethereal" == Species[r]], "unearthly" : [r for r in AllRoles if "Unearthly" == Species[r]],
+               "wolf" : [r for r in AllRoles if "Wolf" == Species[r]],
+               "unique" : [r for r in AllRoles if r in UniqueRoles], "achievable" : [r for r in All if r in AchievableRoles + AchievableModifiers],
+               "modifier" : Modifiers, "x-modifier" : AllRoles,
+               "coven" : [r for r in All if "Coven" in Factions[r]], "prophets" : [r for r in All if "Prophets" in Factions[r]],
+               "school" : [r for r in All if "School" in Factions[r]], "troupe" : [r for r in All if "Troupe" in Factions[r]],
+               "vampiric" : [r for r in All if "Vampiric" in Factions[r]], "witches" : [r for r in All if "Witches" in Factions[r]],
+               "wolves" : [r for r in All if "Wolves" in Factions[r]],
+               "x-good" : [r for r in AllRoles if Alignments[r] != "G"], "x-evil" : [r for r in AllRoles if Alignments[r] != "E"],
+               "x-neutral" : [r for r in AllRoles if Alignments[r] != "N"],
+               "x-chaos" : [r for r in AllRoles if "Ch" not in Categories[r]], "x-counteractive" : [r for r in AllRoles if "Co" not in Categories[r]],
+               "x-investigative" : [r for r in AllRoles if "I" not in Categories[r]], "x-killing" : [r for r in AllRoles if "K" not in Categories[r]],
+               "x-protective" : [r for r in AllRoles if "P" not in Categories[r]], "x-support" : [r for r in AllRoles if "S" not in Categories[r]],
+               "x-human" : [r for r in AllRoles if "Human" != Species[r]], "x-arcane" : [r for r in AllRoles if "Arcane" != Species[r]],
+               "x-ethereal" : [r for r in AllRoles if "Ethereal" != Species[r]], "x-unearthly" : [r for r in AllRoles if "Unearthly" != Species[r]],
+               "x-wolf" : [r for r in AllRoles if "Wolf" != Species[r]],
+               "x-unique" : [r for r in AllRoles if r not in UniqueRoles], "x-achievable" : [r for r in All if r not in AchievableRoles + AchievableModifiers],
+               "x-coven" : [r for r in All if "Coven" not in Factions[r]], "x-prophets" : [r for r in All if "Prophets" not in Factions[r]],
+               "x-school" : [r for r in All if "School" not in Factions[r]], "x-troupe" : [r for r in All if "Troupe" not in Factions[r]],
+               "x-vampiric" : [r for r in All if "Vampiric" not in Factions[r]], "x-witches" : [r for r in All if "Witches" not in Factions[r]],
+               "x-wolves" : [r for r in All if "Wolves" not in Factions[r]],
+               "o-chaos" : [r for r in AllRoles if ["Ch"] == Categories[r]], "o-counteractive" : [r for r in AllRoles if ["Co"] == Categories[r]],
+               "o-investigative" : [r for r in AllRoles if ["I"] == Categories[r]], "o-killing" : [r for r in AllRoles if ["K"] == Categories[r]],
+               "o-protective" : [r for r in AllRoles if ["P"] == Categories[r]], "o-support" : [r for r in AllRoles if ["S"] == Categories[r]],
+               "o-coven" : [r for r in All if ["Coven"] == Factions[r]], "o-prophets" : [r for r in All if ["Prophets"] == Factions[r]],
+               "o-school" : [r for r in All if ["School"] == Factions[r]], "o-troupe" : [r for r in All if ["Troupe"] == Factions[r]],
+               "o-vampiric" : [r for r in All if ["Vampiric"] == Factions[r]], "o-witches" : [r for r in All if ["Witches"] == Factions[r]],
+               "o-wolves" : [r for r in All if ["Wolves"] == Factions[r]]}
+        if message.lower() != "all":
             for r in All:
-                if "achievable" in conditions:
-                    if r not in AchievableModifiers:
-                        Valid.remove(r)
-                    continue
-                if "x-achievable" in conditions:
-                    if r in AchievableModifiers:
-                        Valid.remove(r)
-                    continue
-        else:
-            All = list(AllRoles)
-            Valid = list(All)
-            ref = {"good" : [r for r in AllRoles if Alignments[r] == "G"], "evil" : [r for r in AllRoles if Alignments[r] == "E"],
-                   "neutral" : [r for r in AllRoles if Alignments[r] == "N"],
-                   "chaos" : [r for r in AllRoles if "Ch" in Categories[r]], "counteractive" : [r for r in AllRoles if "Co" in Categories[r]],
-                   "investigative" : [r for r in AllRoles if "I" in Categories[r]], "killing" : [r for r in AllRoles if "K" in Categories[r]],
-                   "protective" : [r for r in AllRoles if "P" in Categories[r]], "support" : [r for r in AllRoles if "S" in Categories[r]],
-                   "human" : [r for r in AllRoles if "Human" == Species[r]], "arcane" : [r for r in AllRoles if "Arcane" == Species[r]],
-                   "ethereal" : [r for r in AllRoles if "Ethereal" == Species[r]], "unearthly" : [r for r in AllRoles if "Unearthly" == Species[r]],
-                   "wolf" : [r for r in AllRoles if "Wolf" == Species[r]],
-                   "unique" : [r for r in AllRoles if r in UniqueRoles], "achievable" : [r for r in AllRoles if r in AchievableRoles],
-                   "x-good" : [r for r in AllRoles if Alignments[r] != "G"], "x-evil" : [r for r in AllRoles if Alignments[r] != "E"],
-                   "x-neutral" : [r for r in AllRoles if Alignments[r] != "N"],
-                   "x-chaos" : [r for r in AllRoles if "Ch" not in Categories[r]], "x-counteractive" : [r for r in AllRoles if "Co" not in Categories[r]],
-                   "x-investigative" : [r for r in AllRoles if "I" not in Categories[r]], "x-killing" : [r for r in AllRoles if "K" not in Categories[r]],
-                   "x-protective" : [r for r in AllRoles if "P" not in Categories[r]], "x-support" : [r for r in AllRoles if "S" not in Categories[r]],
-                   "x-human" : [r for r in AllRoles if "Human" != Species[r]], "x-arcane" : [r for r in AllRoles if "Arcane" != Species[r]],
-                   "x-ethereal" : [r for r in AllRoles if "Ethereal" != Species[r]], "x-unearthly" : [r for r in AllRoles if "Unearthly" != Species[r]],
-                   "x-wolf" : [r for r in AllRoles if "Wolf" != Species[r]],
-                   "x-unique" : [r for r in AllRoles if r not in UniqueRoles], "x-achievable" : [r for r in AllRoles if r not in AchievableRoles]}
-            if message.lower() != "all":
-                for r in All:
-                    for c in conditions:
-                        if c in ref:
-                            if r not in ref[c]:
-                                Valid.remove(r)
-                                break
+                for c in conditions:
+                    if c in ref:
+                        if r not in ref[c]:
+                            Valid.remove(r)
+                            break
         if Valid == []:
             await ctx.send("No roles exist that fit all parameters, sorry. :(")
         else:
@@ -549,9 +580,12 @@ Tags:
 > Support
 > Unique
 > Achievable
+> [Factions]*
 
-Include 'all' in parameters to discard parameters and allow all roles.
-Include 'modifier' in parameters to include and limit selection to modifiers.
+*Factions can be viewed with <w.factionlist>.
+Include 'all' in parameters to discard parameters and allow all roles and modifiers.
+Include 'modifier' in parameters to limit selection to modifiers.
+Include 'x-modifier' in parameters to exclude modifiers.
 Precede tags with 'x-' to exclude roles with them.
 Precede categories with 'o-' to exclude roles with two categories.
 
@@ -564,49 +598,49 @@ Output: '3 roles found:
         conditions = message.split(" ")
         for c in conditions:
             c = c.lower()
-        if "modifier" in conditions:
-            All = list(Modifiers)
-            Valid = list(All)
+        All = list(AllRoles + Modifiers)
+        Valid = list(All)
+        ref = {"good" : [r for r in AllRoles if Alignments[r] == "G"], "evil" : [r for r in AllRoles if Alignments[r] == "E"],
+               "neutral" : [r for r in AllRoles if Alignments[r] == "N"],
+               "chaos" : [r for r in AllRoles if "Ch" in Categories[r]], "counteractive" : [r for r in AllRoles if "Co" in Categories[r]],
+               "investigative" : [r for r in AllRoles if "I" in Categories[r]], "killing" : [r for r in AllRoles if "K" in Categories[r]],
+               "protective" : [r for r in AllRoles if "P" in Categories[r]], "support" : [r for r in AllRoles if "S" in Categories[r]],
+               "human" : [r for r in AllRoles if "Human" == Species[r]], "arcane" : [r for r in AllRoles if "Arcane" == Species[r]],
+               "ethereal" : [r for r in AllRoles if "Ethereal" == Species[r]], "unearthly" : [r for r in AllRoles if "Unearthly" == Species[r]],
+               "wolf" : [r for r in AllRoles if "Wolf" == Species[r]],
+               "unique" : [r for r in AllRoles if r in UniqueRoles], "achievable" : [r for r in All if r in AchievableRoles + AchievableModifiers],
+               "modifier" : Modifiers, "x-modifier" : AllRoles,
+               "coven" : [r for r in All if "Coven" in Factions[r]], "prophets" : [r for r in All if "Prophets" in Factions[r]],
+               "school" : [r for r in All if "School" in Factions[r]], "troupe" : [r for r in All if "Troupe" in Factions[r]],
+               "vampiric" : [r for r in All if "Vampiric" in Factions[r]], "witches" : [r for r in All if "Witches" in Factions[r]],
+               "wolves" : [r for r in All if "Wolves" in Factions[r]],
+               "x-good" : [r for r in AllRoles if Alignments[r] != "G"], "x-evil" : [r for r in AllRoles if Alignments[r] != "E"],
+               "x-neutral" : [r for r in AllRoles if Alignments[r] != "N"],
+               "x-chaos" : [r for r in AllRoles if "Ch" not in Categories[r]], "x-counteractive" : [r for r in AllRoles if "Co" not in Categories[r]],
+               "x-investigative" : [r for r in AllRoles if "I" not in Categories[r]], "x-killing" : [r for r in AllRoles if "K" not in Categories[r]],
+               "x-protective" : [r for r in AllRoles if "P" not in Categories[r]], "x-support" : [r for r in AllRoles if "S" not in Categories[r]],
+               "x-human" : [r for r in AllRoles if "Human" != Species[r]], "x-arcane" : [r for r in AllRoles if "Arcane" != Species[r]],
+               "x-ethereal" : [r for r in AllRoles if "Ethereal" != Species[r]], "x-unearthly" : [r for r in AllRoles if "Unearthly" != Species[r]],
+               "x-wolf" : [r for r in AllRoles if "Wolf" != Species[r]],
+               "x-unique" : [r for r in AllRoles if r not in UniqueRoles], "x-achievable" : [r for r in All if r not in AchievableRoles + AchievableModifiers],
+               "x-coven" : [r for r in All if "Coven" not in Factions[r]], "x-prophets" : [r for r in All if "Prophets" not in Factions[r]],
+               "x-school" : [r for r in All if "School" not in Factions[r]], "x-troupe" : [r for r in All if "Troupe" not in Factions[r]],
+               "x-vampiric" : [r for r in All if "Vampiric" not in Factions[r]], "x-witches" : [r for r in All if "Witches" not in Factions[r]],
+               "x-wolves" : [r for r in All if "Wolves" not in Factions[r]],
+               "o-chaos" : [r for r in AllRoles if ["Ch"] == Categories[r]], "o-counteractive" : [r for r in AllRoles if ["Co"] == Categories[r]],
+               "o-investigative" : [r for r in AllRoles if ["I"] == Categories[r]], "o-killing" : [r for r in AllRoles if ["K"] == Categories[r]],
+               "o-protective" : [r for r in AllRoles if ["P"] == Categories[r]], "o-support" : [r for r in AllRoles if ["S"] == Categories[r]],
+               "o-coven" : [r for r in All if ["Coven"] == Factions[r]], "o-prophets" : [r for r in All if ["Prophets"] == Factions[r]],
+               "o-school" : [r for r in All if ["School"] == Factions[r]], "o-troupe" : [r for r in All if ["Troupe"] == Factions[r]],
+               "o-vampiric" : [r for r in All if ["Vampiric"] == Factions[r]], "o-witches" : [r for r in All if ["Witches"] == Factions[r]],
+               "o-wolves" : [r for r in All if ["Wolves"] == Factions[r]]}
+        if message.lower() != "all":
             for r in All:
-                if "achievable" in conditions:
-                    if r not in AchievableModifiers:
-                        Valid.remove(r)
-                    continue
-                if "x-achievable" in conditions:
-                    if r in AchievableModifiers:
-                        Valid.remove(r)
-                    continue
-        else:
-            All = list(AllRoles)
-            Valid = list(All)
-            ref = {"good" : [r for r in AllRoles if Alignments[r] == "G"], "evil" : [r for r in AllRoles if Alignments[r] == "E"],
-                   "neutral" : [r for r in AllRoles if Alignments[r] == "N"],
-                   "chaos" : [r for r in AllRoles if "Ch" in Categories[r]], "counteractive" : [r for r in AllRoles if "Co" in Categories[r]],
-                   "investigative" : [r for r in AllRoles if "I" in Categories[r]], "killing" : [r for r in AllRoles if "K" in Categories[r]],
-                   "protective" : [r for r in AllRoles if "P" in Categories[r]], "support" : [r for r in AllRoles if "S" in Categories[r]],
-                   "human" : [r for r in AllRoles if "Human" == Species[r]], "arcane" : [r for r in AllRoles if "Arcane" == Species[r]],
-                   "ethereal" : [r for r in AllRoles if "Ethereal" == Species[r]], "unearthly" : [r for r in AllRoles if "Unearthly" == Species[r]],
-                   "wolf" : [r for r in AllRoles if "Wolf" == Species[r]],
-                   "unique" : [r for r in AllRoles if r in UniqueRoles], "achievable" : [r for r in AllRoles if r in AchievableRoles],
-                   "x-good" : [r for r in AllRoles if Alignments[r] != "G"], "x-evil" : [r for r in AllRoles if Alignments[r] != "E"],
-                   "x-neutral" : [r for r in AllRoles if Alignments[r] != "N"],
-                   "x-chaos" : [r for r in AllRoles if "Ch" not in Categories[r]], "x-counteractive" : [r for r in AllRoles if "Co" not in Categories[r]],
-                   "x-investigative" : [r for r in AllRoles if "I" not in Categories[r]], "x-killing" : [r for r in AllRoles if "K" not in Categories[r]],
-                   "x-protective" : [r for r in AllRoles if "P" not in Categories[r]], "x-support" : [r for r in AllRoles if "S" not in Categories[r]],
-                   "x-human" : [r for r in AllRoles if "Human" != Species[r]], "x-arcane" : [r for r in AllRoles if "Arcane" != Species[r]],
-                   "x-ethereal" : [r for r in AllRoles if "Ethereal" != Species[r]], "x-unearthly" : [r for r in AllRoles if "Unearthly" != Species[r]],
-                   "x-wolf" : [r for r in AllRoles if "Wolf" != Species[r]],
-                   "x-unique" : [r for r in AllRoles if r not in UniqueRoles], "x-achievable" : [r for r in AllRoles if r not in AchievableRoles],
-                   "o-chaos" : [r for r in AllRoles if ["Ch"] == Categories[r]], "o-counteractive" : [r for r in AllRoles if ["Co"] == Categories[r]],
-                   "o-investigative" : [r for r in AllRoles if ["I"] == Categories[r]], "o-killing" : [r for r in AllRoles if ["K"] == Categories[r]],
-                   "o-protective" : [r for r in AllRoles if ["P"] == Categories[r]], "o-support" : [r for r in AllRoles if ["S"] == Categories[r]]}
-            if message.lower() != "all":
-                for r in All:
-                    for c in conditions:
-                        if c in ref:
-                            if r not in ref[c]:
-                                Valid.remove(r)
-                                break
+                for c in conditions:
+                    if c in ref:
+                        if r not in ref[c]:
+                            Valid.remove(r)
+                            break
         if Valid == []:
             await ctx.send("No roles exist that fit all parameters, sorry. :(")
         else:

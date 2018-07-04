@@ -110,6 +110,7 @@ class RoleDescriptions():
 - Neutral
 - Chaos/Killing
 - Human
+- Faction: *Troupe*
 - Unique""",colour=0xff0098)
         embed.set_thumbnail(url=icons["bard"])
         await where.send("__**Bard**__",embed=embed)
@@ -151,6 +152,7 @@ class RoleDescriptions():
 - Evil
 - Killing/Support
 - Wolf
+- Factions: *Vampiric, Wolves*
 - Unique
 - Achievable""",colour=0x9b0029)
         embed.set_thumbnail(url=icons["bloodhound"])
@@ -190,6 +192,7 @@ class RoleDescriptions():
 - Identical to their Time Lord.
 **Tags:**
 - Identical alignment to their Time Lord.
+- Faction: *Tardis*
 - Modifier
 - Achievable""",colour=0x204eff)
         embed.set_thumbnail(url=icons["companion"])
@@ -251,6 +254,7 @@ class RoleDescriptions():
 - Evil
 - Counteractive/Killing
 - Wolf
+- Faction: *Wolves*
 - Unique
 - Achievable""",colour=0xff5000)
         embed.set_thumbnail(url=icons["cyberhound"])
@@ -294,6 +298,7 @@ class RoleDescriptions():
 - Evil
 - Killing/Support
 - Wolf
+- Faction: *Wolves*
 - Unique""",colour=0xff5000)
         embed.set_thumbnail(url=icons["direwolf"])
         await where.send("__**Direwolf**__",embed=embed)
@@ -374,6 +379,7 @@ class RoleDescriptions():
 - Neutral
 - Protective/Support
 - Human
+- Faction: *Prophets*
 - Achievable""",colour=0xd1dfa2)
         embed.set_thumbnail(url=icons["emissary"])
         await where.send("__**Emissary**__",embed=embed)
@@ -388,13 +394,13 @@ class RoleDescriptions():
 *Measure Lifespan* - Once per game, after the Spinster uses *Spin Destiny*, the Fate must choose which night (after the current night) that the Herald must die upon. If the Herald is alive at the start of the day after this night, the Spinster, Fate and Inevitable will all commit Suicide.
 **Abilities:**
 - While the Spinster and Inevitable are alive, gains a Lunar Powerful Save at the start of each night.
-- Counts as a Witch for Objectives purposes.
 **Objectives:**
-- Change a player into the Herald and have at least one Witch survive until all other roles have been eliminated.
+- Change a player into the Herald and have at least one member of the Witches survive until all other roles have been eliminated.
 **Tags:**
 - Neutral
 - Chaos/Support
 - Unearthly
+- Factions: *Coven, Witches*
 - Unique""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["fate"])
         await where.send("__**Fate**__",embed=embed)
@@ -496,6 +502,7 @@ class RoleDescriptions():
 - See Page ('*w.roles_page*').
 - Can only be applied to a Unique role.
 **Tags:**
+- Faction: *School*
 - Modifier
 - Achievable""",colour=0xffffff)
         embed.set_thumbnail(url=icons["guide"])
@@ -562,6 +569,7 @@ class RoleDescriptions():
 - Neutral
 - Unearthly
 - Chaos/Killing
+- Faction: *Prophets*
 - Unique""",colour=0xd1dfa2)
         embed.set_thumbnail(url=icons["harbinger"])
         await where.send("__**Harbinger**__",embed=embed)
@@ -691,13 +699,13 @@ class RoleDescriptions():
 *Catalyse Doom* - Once per game, on the night that the Fate chose using *Measure Lifespan*, the Inevitable may target any player, causing them to Commit Suicide.
 **Abilities:**
 - While the Spinster and Fate are alive, gains a Lunar Powerful Save at the start of each night.
-- Counts as a Witch for Objectives purposes.
 **Objectives:**
-- Change a player into the Herald and have at least one Witch survive until all other roles have been eliminated.
+- Change a player into the Herald and have at least one member of the Witches survive until all other roles have been eliminated.
 **Tags:**
 - Neutral
 - Killing
 - Unearthly
+- Factions: *Coven, Witches*
 - Unique
 - Achievable""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["inevitable"])
@@ -892,6 +900,7 @@ class RoleDescriptions():
 **Objectives:**
 - Survive alongside the Bard at the end of the game.
 **Tags:**
+- Faction: *Troupe*
 - Modifier
 - Achievable""",colour=0xff0098)
         embed.set_thumbnail(url=icons["minstrel"])
@@ -968,6 +977,7 @@ class RoleDescriptions():
 - Neutral
 - Support
 - Human
+- Faction: *School*
 - Unique""",colour=0xffffff)
         embed.set_thumbnail(url=icons["page"])
         await where.send("__**Page**__",embed=embed)
@@ -1466,13 +1476,13 @@ class RoleDescriptions():
 *Spin Destiny* - Once per game, if the Spinster, Fate and Inevitable are all alive or Spectres, may choose any dead player to resurrect. This player becomes a Herald.
 **Abilities:**
 - While the Fate and Inevitable are alive, gains a Lunar Powerful Save at the start of each night.
-- Counts as a Witch for Objectives purposes.
 **Objectives:**
-- Change a player into the Herald and have at least one Witch survive until all other roles have been eliminated.
+- Change a player into the Herald and have at least one member of the Witches survive until all other roles have been eliminated.
 **Tags:**
 - Neutral
 - Support
 - Unearthly
+- Factions: *Coven, Witches*
 - Unique
 - Achievable""",colour=0xe897ff)
         embed.set_thumbnail(url=icons["spinster"])
@@ -1571,6 +1581,7 @@ class RoleDescriptions():
 - Good
 - Protective/Support
 - Human
+- Faction: *Tardis*
 - Unique
 - Achievable""",colour=0x204eff)
         embed.set_thumbnail(url=icons["tardisengineer"])
@@ -1613,7 +1624,8 @@ class RoleDescriptions():
 **Tags:**
 - Good
 - Investigative/Support
-- Unearthly""",colour=0x204eff)
+- Unearthly
+- Faction: *Tardis*""",colour=0x204eff)
         embed.set_thumbnail(url=icons["timelord"])
         await where.send("__**Time Lord**__",embed=embed)
 
@@ -1673,6 +1685,7 @@ class RoleDescriptions():
 - Evil
 - Support
 - Unearthly
+- Faction: *Vampiric*
 - Unique""",colour=0x9b0029)
         embed.set_thumbnail(url=icons["vampire"])
         await where.send("__**Vampire**__",embed=embed)
@@ -1712,7 +1725,8 @@ class RoleDescriptions():
 **Tags:**
 - Evil
 - Killing
-- Wolf""",colour=0xff5000)
+- Wolf
+- Faction: *Wolves*""",colour=0xff5000)
         embed.set_thumbnail(url=icons["werewolf"])
         await where.send("__**Werewolf**__",embed=embed)
 
@@ -1747,11 +1761,12 @@ class RoleDescriptions():
 - If the Medium is present and they are killed with *Poison*, every Witch becomes Evil and replaces their objective with ‘Have at least one Evil role survive until all Good and Neutral roles have been eliminated.’
 - If the Jester is present and they are killed with *Poison*, every Witch becomes Good and replaces their objective with ‘Have at least one Good role survive until all Evil and Neutral roles have been eliminated.’
 **Objectives:**
-- Have at least one Witch survive until all other roles have been eliminated.
+- Have at least one member of the Witches survive until all other roles have been eliminated.
 **Tags:**
 - Neutral
 - Killing/Protective
-- Unearthly""",colour=0xd800ff)
+- Unearthly
+- Faction: *Witches*""",colour=0xd800ff)
         embed.set_thumbnail(url=icons["witch"])
         await where.send("__**Witch**__",embed=embed)
 
