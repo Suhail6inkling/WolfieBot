@@ -829,7 +829,7 @@ class RoleDescriptions():
 - Have every player alive at the start of DAY 4 (not including themselves) be in the Winning Players. Any player who commits Suicide after the start of DAY 4 does not count to this. If the game ends before DAY 4, the Maid loses.
 **Tags:**
 - Neutral
-- Support
+- Chaos/Support
 - Human
 - Unique""",colour=0xff9bc4)
         embed.set_thumbnail(url=icons["maid"])
@@ -1569,7 +1569,7 @@ class RoleDescriptions():
 - Have at least one Good role survive until all Evil and Neutral roles have been eliminated.
 **Tags:**
 - Good
-- Counteractive/Support
+- Protective/Support
 - Human
 - Unique
 - Achievable""",colour=0x204eff)

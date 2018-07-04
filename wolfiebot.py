@@ -45,12 +45,12 @@ Categories = {"Alchemist" : ["Ch"], "Anarchist" : ["Ch, K"], "Arsonist" : ["Ch",
               "Cyberhound" : ["Co", "K"], "Dentist" : ["Co"], "Direwolf" : ["K", "S"], "Doctor" : ["K", "P"], "Dodomeki" : ["I"], "Drunk" : ["Ch"], "Emissary" : ["P", "S"], "Fate" : ["Ch", "S"],
               "Geneticist" : ["Ch", "S"], "Gladiator" : ["Co", "K"], "Glazier" : ["Co"], "Glitch" : ["Ch"], "Hacker" : ["I", "S"], "Hangman" : ["Ch", "Co"], "Harbinger" : ["Ch", "K"], "Heir" : ["Co"], "Herald" : ["Ch", "K"],
               "Hermit" : ["Co", "I"], "Hitman" : ["K"], "Hooligan" : ["K", "S"], "Hunter" : ["K", "P"], "Inevitable" : ["K"], "Inventor" : ["Ch", "K"], "Jailor" : ["Co", "P"],
-              "Jester" : ["Ch", "K"], "Knight" : ["K", "S"], "Kresnik" : ["I", "K"], "Mage" : ["Ch", "I"], "Maid" : ["S"], "Medium" : ["S"], "Merchant" : ["Ch", "S"],
+              "Jester" : ["Ch", "K"], "Knight" : ["K", "S"], "Kresnik" : ["I", "K"], "Mage" : ["Ch", "I"], "Maid" : ["Ch", "S"], "Medium" : ["S"], "Merchant" : ["Ch", "S"],
               "Multiple Agent" : ["Ch", "P"], "Noir" : ["I", "K"], "Page" : ["S"], "Paladin" : ["Co", "P"], "Philanthropist" : ["Co", "S"], "Pixie" : ["Co", "I"], "Politician" : ["K", "S"],
               "Poltergeist" : ["Ch", "I"], "Poser" : ["S"], "Priest" : ["Co", "S"], "Prince" : ["S"], "Psychic" : ["Ch", "S"], "Researcher" : ["I"], "Rogue" : ["Co", "P"],
               "Rōjinbi" : ["Ch"], "Romantic" : ["P"], "Santa" : ["S"], "Scarecrow" : ["Ch", "S"], "Seer" : ["I"], "Sentinel" : ["P"], "Sharpshooter" : ["I", "K"], "Shifter" : ["Ch"],
               "Shinigami" : ["Co", "K"], "Slasher" : ["Ch", "K"], "Souleater" : ["Ch", "K"], "Spider" : ["Co", "S"], "Spinster" : ["S"], "Spy" : ["I"], "Survivalist" : ["Co"],
-              "Sylph" : ["S"], "TARDIS Engineer" : ["Co", "S"], "Thief" : ["Ch", "Co"], "Time Lord" : ["I", "S"], "Understudy" : ["Ch", "S"], "Vampire" : ["S"], "Warlock" : ["Ch", "K"],
+              "Sylph" : ["S"], "TARDIS Engineer" : ["P", "S"], "Thief" : ["Ch", "Co"], "Time Lord" : ["I", "S"], "Understudy" : ["Ch", "S"], "Vampire" : ["S"], "Warlock" : ["Ch", "K"],
               "Werewolf" : ["K"], "Whisperer" : ["I", "S"], "Witch" : ["K", "P"]}
 
 Species = {"Alchemist" : "Arcane", "Anarchist" : "Human", "Arsonist" : "Human", "Backstabber" : "Human", "Bard" : "Human", "Baykok" : "Ethereal", "Bloodhound" : "Wolf", "Clockmaker" : "Human", "Cultist" : "Human", "Cyberhound" : "Wolf",
@@ -167,6 +167,8 @@ async def help(ctx):
 <w.roleguide> - Provides a link to the role creation guide.
 <w.library> - Provides a list of document links.
 
+<w.stats (@user)> - Gives scoreboard statistics for mentioned user, or self if no user is given.
+
 <w.rolelist> - Provides a list of roles in the game, plus commands to see more information.
 <w.listroles (space seperated list of tags as parameters)> - Lists all roles that have all the tags provided.
 <w.achieve (role)> - Lists nonstandard ways of gaining given role.
@@ -247,7 +249,7 @@ async def library(ctx):
 async def rolelist(ctx):
     await ctx.send("""__**Roles**__
 ```md
-[+][Alchemist] - Neutral, Chaos/Support, Human, Unique - <w.roles_alchemist>
+[+][Alchemist] - Neutral, Chaos/Support, Arcane, Unique - <w.roles_alchemist>
 [+][Arsonist] - Neutral, Killing, Human, Unique - <w.roles_arsonist>
 [+][Backstabber] - Evil, Counteractive/Killing, Human, Unique - <w.roles_backstabber>
 [+][Bard] - Neutral, Chaos/Killing, Human, Unique - <w.roles_bard>
@@ -261,10 +263,10 @@ async def rolelist(ctx):
 [+][Dentist] - Evil, Counteractive, Human, Unique - <w.roles_dentist>
 [+][Direwolf] - Evil, Killing/Support, Wolf, Unique - <w.roles_direwolf>
 [+][Doctor] - Good, Killing/Protective, Human - <w.roles_doctor>
-[+][Dodomeki] - Evil, Investigative, Non-Human, Unique, Achievable - <w.roles_dodomeki>
+[+][Dodomeki] - Evil, Investigative, Unearthly, Unique, Achievable - <w.roles_dodomeki>
 [+][Emissary] - Neutral, Protective/Support, Human, Achievable - <w.roles_emissary>
 [+][Drunk] - Neutral, Chaos, Human, Unique - <w.roles_drunk>
-[+][Fate] - Neutral, Chaos/Support, Non-Human, Unique - <w.roles_fate>
+[+][Fate] - Neutral, Chaos/Support, Unearthly, Unique - <w.roles_fate>
 [+][Feral] - Modifier - <w.roles_feral>
 [+][Geneticist] - Neutral, Chaos/Support, Human, Unique - <w.roles_geneticist>
 [+][Gladiator] - Good, Counteractive/Killing, Human, Unique - <w.roles_gladiator>
@@ -277,20 +279,20 @@ async def rolelist(ctx):
 [+][Hangman] - Neutral, Chaos/Counteractive, Human, Unique - <w.roles_hangman>
 [+][Harbinger] - Neutral, Chaos/Killing, Unearthly, Unique - <w.roles_harbinger>
 [+][Heir] - Evil, Counteractive, Human, Unique - <w.roles_heir>
-[+][Herald] - Neutral, Chaos/Killing, Non-Human, Unique, Achievable - <w.roles_herald>
+[+][Herald] - Neutral, Chaos/Killing, Arcane, Unique, Achievable - <w.roles_herald>
 [+][Hermit] - Neutral, Investigative/Counteractive, Human, Unique - <w.roles_hermit>
 [+][Hitman] - Neutral, Killing, Human - <w.roles_hitman>
 [+][Hooligan] - Evil, Killing/Support, Human - <w.roles_hooligan>
 [+][Hunter] - Good, Killing/Protective, Human - <w.roles_hunter>
-[+][Inevitable] - Neutral, Killing, Non-Human, Unique, Achievable - <w.roles_inevitable>
+[+][Inevitable] - Neutral, Killing, Unearthly, Unique, Achievable - <w.roles_inevitable>
 [+][Inventor] - Neutral, Chaos/Killing, Human, Unique - <w.roles_inventor>
 [+][Jailor] - Good, Counteractive/Protective, Human, Unique - <w.roles_jailor>
-[+][Jester] - Evil, Chaos/Killing, Non-Human - <w.roles_jester>
+[+][Jester] - Evil, Chaos/Killing, Ethereal - <w.roles_jester>
 [+][Knight] - Good, Killing/Support, Human, Unique - <w.roles_knight>
-[+][Kresnik] - Good, Investigative/Killing, Human, Unique - <w.roles_kresnik>
-[+][Mage] - Good, Chaos/Investigative, Human - <w.roles_mage>
+[+][Kresnik] - Good, Investigative/Killing, Arcane, Unique - <w.roles_kresnik>
+[+][Mage] - Good, Chaos/Investigative, Arcane - <w.roles_mage>
 [+][Maid] - Neutral, Support, Human, Unique - <w.roles_maid>
-[+][Medium] - Good, Support, Human - <w.roles_medium>
+[+][Medium] - Good, Support, Arcane - <w.roles_medium>
 [+][Merchant] - Neutral, Chaos/Support, Human, Unique - <w.roles_merchant>
 [+][Minstrel] - Modifier, Achievable - <w.roles_minstrel>
 [+][Morty] - Modifier - <w.roles_morty>
@@ -299,48 +301,49 @@ async def rolelist(ctx):
 ```""")
     await ctx.send("""```md
 [+][Page] - Neutral, Support, Human, Unique - <w.roles_page>
-[+][Paladin] - Good, Human, Counteractive/Protective, Unique, Achievable - <w.roles_paladin>
+[+][Paladin] - Good, Counteractive/Protective, Arcane, Unique, Achievable - <w.roles_paladin>
 [+][Philanthropist] - Neutral, Counteractive/Support, Human, Unique - <w.roles_philanthropist>
-[+][Pixie] - Good, Counteractive/Investigative, Non-Human - <w.roles_pixie>
+[+][Pixie] - Good, Counteractive/Investigative, Unearthly - <w.roles_pixie>
 [+][Politician] - Evil, Killing/Support, Human, Unique - <w.roles_politician>
-[+][Poltergeist] - Evil, Chaos/Investigative, Non-Human - <w.roles_poltergeist>
+[+][Poltergeist] - Evil, Chaos/Investigative, Ethereal - <w.roles_poltergeist>
 [+][Poser] - Good, Support, Human - <w.roles_poser>
 [+][Priest] - Good, Counteractive/Support, Human, Unique - <w.roles_priest>
 [+][Prince] - Good, Support, Human, Unique - <w.roles_prince>
-[+][Psychic] - Evil, Chaos/Support, Human, Unique - <w.roles_psychic>
+[+][Psychic] - Evil, Chaos/Support, Arcane, Unique - <w.roles_psychic>
 [+][Researcher] - Good, Investigative, Human, Unique - <w.roles_researcher>
 [+][Rogue] - Good, Counteractive/Protective, Human, Unique - <w.roles_rogue>
-[+][Rōjinbi] - Neutral, Chaos, Non-Human, Unique - <w.roles_rojinbi>
+[+][Rōjinbi] - Neutral, Chaos, Ethereal, Unique - <w.roles_rojinbi>
 [+][Romantic] - Neutral, Protective, Human, Unique - <w.roles_romantic>
-[+][Santa] - Neutral, Support, Non-Human, Unique - <w.roles_santa>
-[+][Scarecrow] - Neutral, Chaos/Support, Non-Human, Unique - <w.roles_scarecrow>
-[+][Seer] - Good, Investigative, Human - <w.roles_seer>
-[+][Sentinel] - Neutral, Protective, Non-Human - <w.roles_sentinel>
-[+][Shifter] - Neutral, Chaos, Non-Human - <w.roles_shifter>
-[+][Shinigami] - Evil, Counteractive/Killing, Non-Human, Unique - <w.roles_shinigami>
-[+][Slasher] - Neutral, Chaos/Killing, Non-Human, Unique - <w.roles_slasher>
-[+][Souleater] - Neutral, Chaos/Killing, Non-Human, Achievable - <w.roles_souleater>
+[+][Santa] - Neutral, Support, Unearthly, Unique - <w.roles_santa>
+[+][Scarecrow] - Neutral, Chaos/Support, Ethereal, Unique - <w.roles_scarecrow>
+[+][Seer] - Good, Investigative, Arcane - <w.roles_seer>
+[+][Sentinel] - Neutral, Protective, Unearthly - <w.roles_sentinel>
+[+][Sharpshooter] - Good, Investigative/Killing, Human, Unique - <w.roles_sharpshooter>
+[+][Shifter] - Neutral, Chaos, Ethereal - <w.roles_shifter>
+[+][Shinigami] - Evil, Counteractive/Killing, Unearthly, Unique - <w.roles_shinigami>
+[+][Slasher] - Neutral, Chaos/Killing, Unearthly, Unique - <w.roles_slasher>
+[+][Souleater] - Neutral, Chaos/Killing, Ethereal, Achievable - <w.roles_souleater>
 ```""")
     await ctx.send("""```md
 [+][Soulless] - Modifier, Achievable - <w.roles_soulless>
 [+][Spectre] - Modifier, Achievable - <w.roles_spectre>
 [+][Speedster] - Modifier - <w.roles_speedster>
-[+][Spider] - Evil, Counteractive/Support, Non-Human, Unique - <w.roles_spider>
-[+][Spinster] - Neutral, Support, Non-Human, Unique, Achievable - <w.roles_spinster>
+[+][Spider] - Evil, Counteractive/Support, Unearthly, Unique - <w.roles_spider>
+[+][Spinster] - Neutral, Support, Unearthly, Unique, Achievable - <w.roles_spinster>
 [+][Spy] - Good, Investigative, Human - <w.roles_spy>
 [+][Stand User] - Modifier - <w.roles_standuser>
 [+][Survivalist] - Neutral, Counteractive, Human - <w.roles_survivalist>
-[+][Sylph] - Good, Support, Non-Human, Unique - <w.roles_sylph>
-[+][TARDIS Engineer] - Good, Counteractive/Support, Human, Unique, Achievable - <w.roles_tardisengineer>
+[+][Sylph] - Good, Support, Ethereal, Unique - <w.roles_sylph>
+[+][TARDIS Engineer] - Good, Protective/Support, Human, Unique, Achievable - <w.roles_tardisengineer>
 [+][Thief] - Neutral, Chaos/Counteractive, Human, Unique - <w.roles_thief>
-[+][Time Lord] - Good, Investigative/Support, Non-Human - <w.roles_timelord>
+[+][Time Lord] - Good, Investigative/Support, Unearthly - <w.roles_timelord>
 [+][Twin] - Modifier - <w.roles_twin>
 [+][Understudy] - Neutral, Chaos/Support, Human, Unique - <w.roles_understudy>
-[+][Vampire] - Evil, Support, Non-Human, Unique - <w.roles_vampire>
-[+][Warlock] - Evil, Chaos/Killing, Human, Unique, Achievable - <w.roles_warlock>
+[+][Vampire] - Evil, Support, Unearthly, Unique - <w.roles_vampire>
+[+][Warlock] - Evil, Chaos/Killing, Arcane, Unique, Achievable - <w.roles_warlock>
 [+][Werewolf] - Evil, Killing, Wolf - <w.roles_werewolf>
-[+][Whisperer] - Good, Investigative/Support, Human, Unique - <w.roles_whisperer>
-[+][Witch] - Neutral, Killing/Protective, Non-Human - <w.roles_witch>
+[+][Whisperer] - Good, Investigative/Support, Arcane, Unique - <w.roles_whisperer>
+[+][Witch] - Neutral, Killing/Protective, Unearthly - <w.roles_witch>
 ```""")
 
 @client.command(pass_context=True)
