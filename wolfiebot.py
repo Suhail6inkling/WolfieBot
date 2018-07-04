@@ -553,6 +553,7 @@ Tags:
 Include 'all' in parameters to discard parameters and allow all roles.
 Include 'modifier' in parameters to include and limit selection to modifiers.
 Precede tags with 'x-' to exclude roles with them.
+Precede categories with 'o-' to exclude roles with two categories.
 
 Example: <w.listroles wolf>
 Output: '3 roles found:
@@ -595,7 +596,10 @@ Output: '3 roles found:
                    "x-human" : [r for r in AllRoles if "Human" != Species[r]], "x-arcane" : [r for r in AllRoles if "Arcane" != Species[r]],
                    "x-ethereal" : [r for r in AllRoles if "Ethereal" != Species[r]], "x-unearthly" : [r for r in AllRoles if "Unearthly" != Species[r]],
                    "x-wolf" : [r for r in AllRoles if "Wolf" != Species[r]],
-                   "x-unique" : [r for r in AllRoles if r not in UniqueRoles], "x-achievable" : [r for r in AllRoles if r not in AchievableRoles]}
+                   "x-unique" : [r for r in AllRoles if r not in UniqueRoles], "x-achievable" : [r for r in AllRoles if r not in AchievableRoles],
+                   "o-chaos" : [r for r in AllRoles if ["Ch"] == Categories[r]], "o-counteractive" : [r for r in AllRoles if ["Co"] == Categories[r]],
+                   "o-investigative" : [r for r in AllRoles if ["I"] == Categories[r]], "o-killing" : [r for r in AllRoles if ["K"] == Categories[r]],
+                   "o-protective" : [r for r in AllRoles if ["P"] == Categories[r]], "o-support" : [r for r in AllRoles if ["S"] == Categories[r]]}
             if message.lower() != "all":
                 for r in All:
                     for c in conditions:
