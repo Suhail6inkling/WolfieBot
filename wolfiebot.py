@@ -364,6 +364,7 @@ async def factionlist(ctx):
 [+][Coven] - <w.listroles coven>
 [+][Prophets] - <w.listroles prophets>
 [+][School] - <w.listroles school>
+[+][Tardis] - <w.listroles tardis>
 [+][Troupe] - <w.listroles troupe>
 [+][Vampiric] - <w.listroles vampiric>
 [+][Witches] - <w.listroles witches>
@@ -514,7 +515,7 @@ Output: 'Jailor'```""")
                "coven" : [r for r in All if "Coven" in Factions[r]], "prophets" : [r for r in All if "Prophets" in Factions[r]],
                "school" : [r for r in All if "School" in Factions[r]], "troupe" : [r for r in All if "Troupe" in Factions[r]],
                "vampiric" : [r for r in All if "Vampiric" in Factions[r]], "witches" : [r for r in All if "Witches" in Factions[r]],
-               "wolves" : [r for r in All if "Wolves" in Factions[r]],
+               "wolves" : [r for r in All if "Wolves" in Factions[r]], "tardis" : [r for r in All if "Tardis" in Factions[r]],
                "x-good" : [r for r in AllRoles if Alignments[r] != "G"], "x-evil" : [r for r in AllRoles if Alignments[r] != "E"],
                "x-neutral" : [r for r in AllRoles if Alignments[r] != "N"],
                "x-chaos" : [r for r in AllRoles if "Ch" not in Categories[r]], "x-counteractive" : [r for r in AllRoles if "Co" not in Categories[r]],
@@ -527,14 +528,14 @@ Output: 'Jailor'```""")
                "x-coven" : [r for r in All if "Coven" not in Factions[r]], "x-prophets" : [r for r in All if "Prophets" not in Factions[r]],
                "x-school" : [r for r in All if "School" not in Factions[r]], "x-troupe" : [r for r in All if "Troupe" not in Factions[r]],
                "x-vampiric" : [r for r in All if "Vampiric" not in Factions[r]], "x-witches" : [r for r in All if "Witches" not in Factions[r]],
-               "x-wolves" : [r for r in All if "Wolves" not in Factions[r]],
+               "x-wolves" : [r for r in All if "Wolves" not in Factions[r]], "x-tardis" : [r for r in All if "Tardis" not in Factions[r]],
                "o-chaos" : [r for r in AllRoles if ["Ch"] == Categories[r]], "o-counteractive" : [r for r in AllRoles if ["Co"] == Categories[r]],
                "o-investigative" : [r for r in AllRoles if ["I"] == Categories[r]], "o-killing" : [r for r in AllRoles if ["K"] == Categories[r]],
                "o-protective" : [r for r in AllRoles if ["P"] == Categories[r]], "o-support" : [r for r in AllRoles if ["S"] == Categories[r]],
                "o-coven" : [r for r in All if ["Coven"] == Factions[r]], "o-prophets" : [r for r in All if ["Prophets"] == Factions[r]],
                "o-school" : [r for r in All if ["School"] == Factions[r]], "o-troupe" : [r for r in All if ["Troupe"] == Factions[r]],
                "o-vampiric" : [r for r in All if ["Vampiric"] == Factions[r]], "o-witches" : [r for r in All if ["Witches"] == Factions[r]],
-               "o-wolves" : [r for r in All if ["Wolves"] == Factions[r]]}
+               "o-wolves" : [r for r in All if ["Wolves"] == Factions[r]], "o-tardis" : [r for r in All if ["Tardis"] == Factions[r]]}
         if message.lower() != "all":
             for r in All:
                 for c in conditions:
