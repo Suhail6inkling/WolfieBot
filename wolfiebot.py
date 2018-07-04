@@ -233,21 +233,21 @@ async def gamerules(ctx):
     embed=discord.Embed(description="""This link details the rules for playing Werewolf.
 If you have any questions or suggestions for improvement on the rules, contact Army with them. They'll be happy to help!
 (If that doesn't work, here's the link: https://bit.ly/werewolf-gamerules)""")
-    embed.set_author(name="Werewolf Party Game Rules", url='https://bit.ly/werewolf-gamerules', icon_url='https://i.imgur.com/soFqp3g.png')
+    embed.set_author(name="Werewolf Party Game Rules", url='https://bit.ly/werewolf-gamerules', icon_url='https://i.imgur.com/hYA0Uqu.png')
     await ctx.send(embed=embed)
 
 @client.command(pass_context=True)
 async def scoreboard(ctx):
     embed=discord.Embed(description="""This spreadsheet includes the scoreboards and a game tracker.
 (If that doesn't work, here's the link: https://bit.ly/werewolf-scoreboard)""")
-    embed.set_author(name="Werewolf Scoreboard/Tracker", url='https://bit.ly/werewolf-scoreboard', icon_url='https://i.imgur.com/soFqp3g.png')
+    embed.set_author(name="Werewolf Scoreboard/Tracker", url='https://bit.ly/werewolf-scoreboard', icon_url='https://i.imgur.com/hYA0Uqu.png')
     await ctx.send(embed=embed)
 
 @client.command(pass_context=True)
 async def roleguide(ctx):
     embed=discord.Embed(description="""This link details design principles for creating and suggesting roles.
 (If that doesn't work, here's the link: https://bit.ly/werewolf-roleguide)""")
-    embed.set_author(name="Army's Guide to Role Creation", url='https://bit.ly/werewolf-roleguide', icon_url='https://i.imgur.com/soFqp3g.png')
+    embed.set_author(name="Army's Guide to Role Creation", url='https://bit.ly/werewolf-roleguide', icon_url='https://i.imgur.com/hYA0Uqu.png')
     await ctx.send(embed=embed)
 
 @client.command(pass_context=True)
