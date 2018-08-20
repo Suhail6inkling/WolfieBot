@@ -96,7 +96,7 @@ class GameCommands():
             for c in [c for c in privchannels.channels]:
                 await c.delete()
             game_channel = self.client.get_channel(392995027909083137)
-            voting_channel = self.client.get_channel(393470084217176075)
+            voting_channel = self.client.get_channel(480455087869919244)
             perms = discord.PermissionOverwrite()
             perms.read_messages = True
             perms.send_messages = False
@@ -120,7 +120,7 @@ class GameCommands():
         return
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             game_channel = self.client.get_channel(392995027909083137)
-            voting_channel = self.client.get_channel(393470084217176075)
+            voting_channel = self.client.get_channel(480455087869919244)
             notes_channel = self.client.get_channel(454007847835926532)
             dead_channel = self.client.get_channel(392995124423950344)
             player_role = discord.utils.get(ctx.message.guild.roles, name="Player")
@@ -326,7 +326,7 @@ class GameCommands():
         global Day
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             game_channel = self.client.get_channel(392995027909083137)
-            voting_channel = self.client.get_channel(393470084217176075)
+            voting_channel = self.client.get_channel(480455087869919244)
             message = message.split("; ")
             n = message[0]
             secs = int(message[1])
@@ -381,7 +381,7 @@ class GameCommands():
     @commands.command(pass_context=True)
     async def playervote(self, ctx, s=900):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
-            voting_channel = self.client.get_channel(393470084217176075)
+            voting_channel = self.client.get_channel(480455087869919244)
             options = ""
             role = discord.utils.get(ctx.message.guild.roles, name="Player")
             players = [p.nick for p in ctx.message.guild.members if role in p.roles and p.nick != None]
@@ -611,7 +611,7 @@ class GameCommands():
     async def lockjaw(self, ctx, user: discord.Member, status="t"):
         if "Game Master" in [y.name for y in ctx.message.author.roles]:
             game_channel = self.client.get_channel(392995027909083137)
-            voting_channel = self.client.get_channel(393470084217176075)
+            voting_channel = self.client.get_channel(480455087869919244)
             status = status.lower()
             if status == "t" or status == "true":
                 gperms = discord.PermissionOverwrite()

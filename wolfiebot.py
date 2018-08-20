@@ -21,7 +21,7 @@ client = commands.Bot(command_prefix=prefix)
 startup_extensions = ["roledescriptions","gamecommands"]
 
 game_channel = client.get_channel(392995027909083137)
-voting_channel = client.get_channel(393470084217176075)
+voting_channel = client.get_channel(480455087869919244)
 notes_channel = client.get_channel(393476547954212874)
 dead_channel = client.get_channel(392995124423950344)
 
