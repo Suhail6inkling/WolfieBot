@@ -106,6 +106,8 @@ class GameCommands():
             perms.send_messages = True
             perms.add_reactions = True
             await game_channel.set_permissions(player_role, overwrite=perms)
+            async for message in voting_channel.history():
+                await message.delete()
             for user in guild.members:
                 await ctx.invoke(self.client.get_command("lockjaw"),user=user,status="f")
                 await ctx.invoke(self.client.get_command("medium"),user=user,status="f")
