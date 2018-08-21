@@ -384,7 +384,7 @@ class RoleDescriptions():
 - Protective/Support
 - Human
 - Faction: *Prophets*
-- Achievable""",colour=0xd1dfa2)
+- Achievable""",colour=0xd5ff77)
         embed.set_thumbnail(url=icons["emissary"])
         await where.send("__**Emissary**__",embed=embed)
 
@@ -493,7 +493,7 @@ class RoleDescriptions():
 - Neutral
 - Chaos
 - Ethereal
-- Unique""",colour=0xd1dfa2)
+- Unique""",colour=0xd5ff77)
         embed.set_thumbnail(url=icons["glitch"])
         await where.send("__**Glitch**__",embed=embed)
 
@@ -574,7 +574,7 @@ class RoleDescriptions():
 - Unearthly
 - Chaos/Killing
 - Faction: *Prophets*
-- Unique""",colour=0xd1dfa2)
+- Unique""",colour=0xd5ff77)
         embed.set_thumbnail(url=icons["harbinger"])
         await where.send("__**Harbinger**__",embed=embed)
 
@@ -607,7 +607,7 @@ class RoleDescriptions():
 *Ruin* - Must choose a player to target with an Unstoppable Attack every night. If the Herald does not choose a player, then a player is randomly chosen. If a player is randomly chosen, then that player may not be the Spinster, the Fate or the Inevitable. The Herald is told which player was randomly chosen.
 **Abilities:**
 - Gains an Active Standard Save at the start of every day.
-- Does not need to be eliminated to fulfill any other roles' Objectives.
+- Does not need to be eliminated to fulfill any other roles' Objectives, excluding roles in the Coven faction.
 **Objectives:**
 - Survive to see the Spinster, Fate and Inevitable die.
 **Tags:**
@@ -649,7 +649,7 @@ class RoleDescriptions():
 - At the start of NIGHT 1, a random player, other than the Hitman, becomes the Hitman's Client. The Hitman is told this player's identity and the Client is told that they have become such.
 - The Client, during that night, chooses a role. They must choose again if this role is not present in the game. The Hitman is informed of the Client's choice. All players with the role chosen by the Client become Targets.
 - If all Targets die by means other than an attack from the Hitman, or the Client is killed, a new Client is chosen and new Targets are set during the following night. 
-- After a Target is killed by the Hitman, the Hitman gains a Strong save, and a new Client is chosen who chooses a new role 
+- After a Target is killed by the Hitman, the Hitman gains a Strong save, and a new Client is chosen who chooses a new role.
 **Objectives:**
 - Kill an amount of Targets by the end of the game equal to a quarter of the amount of players, rounding down. 
 **Tags:**
@@ -1359,7 +1359,7 @@ class RoleDescriptions():
 **Tags:**
 - Neutral
 - Chaos
-- Ethereal""",colour=0xd1dfa2)
+- Ethereal""",colour=0xd5ff77)
         embed.set_thumbnail(url=icons["shifter"])
         await where.send("__**Shifter**__",embed=embed)
 
@@ -1420,7 +1420,7 @@ class RoleDescriptions():
 - Neutral
 - Chaos/Killing
 - Ethereal
-- Achievable""",colour=0xd1dfa2)
+- Achievable""",colour=0xd5ff77)
         embed.set_thumbnail(url=icons["souleater"])
         await where.send("__**Souleater**__",embed=embed)
 
@@ -1432,7 +1432,7 @@ class RoleDescriptions():
 - See Souleater ('*w.roles_souleater*').
 **Tags:**
 - Modifier
-- Achievable""",colour=0xd1dfa2)
+- Achievable""",colour=0xd5ff77)
         embed.set_thumbnail(url=icons["soulless"])
         await where.send("__**Soulless**__",embed=embed)
 
